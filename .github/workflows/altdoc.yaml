@@ -2,7 +2,6 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   pull_request:
-    branches:
     types:
       - opened
       - reopened
@@ -35,6 +34,7 @@ name: altdoc
 jobs:
   altdoc:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: altdoc-${{ github.event_name != 'pull_request' || github.run_id }}
@@ -70,10 +70,10 @@ jobs:
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
-          install.packages(c("downlit", "xml2"))
+          install.packages(c("downlit", "xml2", "remotes", "devtools"))
           install.packages(".", repos = NULL, type = "source")
-          install.packages("pkgload")
-          pkgload::load_all()
+          remotes::install_github("etiennebacher/altdoc")
+          devtools::load_all()
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = TRUE)
         shell: Rscript {0}
 
