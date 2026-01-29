@@ -1,7 +1,0 @@
-format:
-  html:
-    number-sections: true
-    toc: true
-    html-math-method: mathjax
-    fig-cap-location: top
-    echo: false
