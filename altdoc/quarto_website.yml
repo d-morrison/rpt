@@ -26,8 +26,6 @@ website:
         menu:
           - text: "Getting started"
             file: vignettes/getting-started.qmd
-          - text: "Intro vignette"
-            file: vignettes/quarto_vignette.qmd
           - text: "Advanced"
             file: vignettes/articles/quarto_article.qmd
   sidebar:
@@ -40,7 +38,6 @@ website:
         style: floating
         contents:
           - vignettes/getting-started.qmd
-          - vignettes/quarto_vignette.qmd
           - vignettes/articles/quarto_article.qmd
           - section: Advanced
             contents:
@@ -75,7 +72,4 @@ format:
     grid:
       sidebar-width: 340px
       margin-width: 340px
-  docx:
-    number-sections: true
-
 
