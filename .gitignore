@@ -26,3 +26,4 @@ README.html
 altdoc/freeze.rds
 _quarto/*
 !_quarto/_freeze/
+*.docx
