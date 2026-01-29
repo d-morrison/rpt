@@ -80,21 +80,21 @@ covr::package_coverage()
 2. **`devtools::document()`** - Generate/update documentation from roxygen2 comments
 3. **`devtools::test()`** - Run all test suites to ensure tests pass
 4. **`devtools::check()`** - Run R CMD check to validate package structure and compliance
-5. **`pkgdown::build_site()`** - **MANDATORY**: Build the full pkgdown website locally and inspect the output to ensure all documentation renders correctly, including vignettes, articles, and any special formats (e.g., RevealJS presentations)
+5. **`altdoc::render_docs(verbose = TRUE)`** - **MANDATORY**: Build the full documentation website locally and inspect the output to ensure all documentation renders correctly, including vignettes, articles, and any special formats (e.g., RevealJS presentations)
 
 These commands must be run in this order and all must pass without errors before pushing changes or requesting code review. This ensures that CI/CD workflows will pass and prevents wasting reviewer time on fixable issues.
 
-**IMPORTANT**: For changes affecting documentation or vignettes, you MUST build and visually inspect the pkgdown site output (located in `docs/`) to verify that everything renders as expected. This is especially critical for multi-format documents or custom output formats.
+**IMPORTANT**: For changes affecting documentation or vignettes, you MUST build and visually inspect the altdoc site output (located in `docs/`) to verify that everything renders as expected. This is especially critical for multi-format documents or custom output formats.
 
 ### Example Validation Workflow
 
 ```r
 # Complete validation sequence before committing
-devtools::document()    # Update documentation
-devtools::test()        # Verify all tests pass
-devtools::check()       # Run full package check
-lintr::lint_package()   # Verify code style
-pkgdown::build_site()   # Build pkgdown site to verify documentation
+devtools::document()              # Update documentation
+devtools::test()                  # Verify all tests pass
+devtools::check()                 # Run full package check
+lintr::lint_package()             # Verify code style
+altdoc::render_docs(verbose = TRUE)  # Build altdoc site to verify documentation
 
 # Manually inspect docs/ directory to verify rendering
 # Check docs/articles/*.html for correct output
