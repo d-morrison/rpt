@@ -27,3 +27,4 @@ Suggests:
     altdoc
 Config/testthat/edition: 3
 VignetteBuilder: knitr, quarto
+Config/Needs/website: quarto
