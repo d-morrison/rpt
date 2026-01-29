@@ -11,6 +11,7 @@ on:
       - 'man/**'
       - 'pkgdown/**'
       - 'vignettes/**'
+      - 'altdoc/**'
       - '_quarto.yml'
       - '.github/workflows/altdoc.yaml'
       - 'Readme.md'
