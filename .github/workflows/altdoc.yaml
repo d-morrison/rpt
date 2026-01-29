@@ -32,7 +32,7 @@ name: altdoc
 jobs:
   altdoc:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: altdoc-${{ github.event_name != 'pull_request' || github.run_id }}
@@ -57,13 +57,13 @@ jobs:
 
       - name: Build site
         run: |
-          # If parallel = TRUE in render_docs()
-          # future::plan(future::multicore)
+          # Enable parallel rendering for faster builds
+          future::plan(future::multicore)
           install.packages(c("downlit", "xml2", "remotes", "devtools"))
           install.packages(".", repos = NULL, type = "source")
           remotes::install_github("etiennebacher/altdoc")
           devtools::load_all()
-          altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
+          altdoc::render_docs(verbose = TRUE, parallel = TRUE, freeze = FALSE)
         shell: Rscript {0}
 
       # If event is a tag, set subdir to '<tag_name>'
