@@ -1,9 +1,6 @@
 ---
 title: "Getting Started"
-format: 
-  html: default
-  revealjs:
-    output-file: getting-started-revealjs.html
+format: html
 vignette: >
   %\VignetteIndexEntry{Getting Started}
   %\VignetteEngine{quarto::html}
