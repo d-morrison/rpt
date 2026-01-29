@@ -4,6 +4,7 @@ Callouts
 CodeFactor
 Codecov
 Lifecycle
+README
 RevealJS
 Tabsets
 ackage
@@ -17,6 +18,7 @@ js
 linter
 lintr
 mc
+md
 pkgdown
 serodynamics
 tabset
