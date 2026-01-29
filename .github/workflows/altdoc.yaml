@@ -14,6 +14,8 @@ on:
       - '_quarto.yml'
       - '.github/workflows/altdoc.yaml'
       - 'Readme.md'
+      - 'altdoc/**'
+      - 'index.qmd'
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'         # build on version tags
