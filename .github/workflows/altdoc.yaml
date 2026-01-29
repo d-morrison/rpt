@@ -32,7 +32,7 @@ name: altdoc
 jobs:
   altdoc:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: altdoc-${{ github.event_name != 'pull_request' || github.run_id }}
@@ -62,16 +62,20 @@ jobs:
           install.packages(".", repos = NULL, type = "source")
           remotes::install_github("etiennebacher/altdoc")
           devtools::load_all()
-          # Temporarily rename _metadata.yml to prevent multiple format rendering
-          # This allows keeping all formats for standalone use while only rendering HTML for the website
+          # Temporarily modify _metadata.yml to render HTML and DOCX only (skip revealjs)
+          # This keeps docx available on the website while avoiding timeout
           if (file.exists("vignettes/_metadata.yml")) {
-            file.rename("vignettes/_metadata.yml", "vignettes/_metadata.yml.tmp")
+            file.rename("vignettes/_metadata.yml", "vignettes/_metadata.yml.backup")
+            # Create temporary metadata with only html and docx formats
+            cat("format:\n  html:\n    number-sections: true\n    toc: true\n    html-math-method: mathjax\n    fig-cap-location: top\n    echo: false\n  docx:\n    number-sections: true\n", 
+                file = "vignettes/_metadata.yml")
           }
-          # Render website with HTML only
+          # Render website with HTML and DOCX
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
-          # Restore _metadata.yml
-          if (file.exists("vignettes/_metadata.yml.tmp")) {
-            file.rename("vignettes/_metadata.yml.tmp", "vignettes/_metadata.yml")
+          # Restore original _metadata.yml
+          if (file.exists("vignettes/_metadata.yml.backup")) {
+            file.remove("vignettes/_metadata.yml")
+            file.rename("vignettes/_metadata.yml.backup", "vignettes/_metadata.yml")
           }
         shell: Rscript {0}
 
