@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: ../docs/
+  render:
+    - "*.qmd"      # Render all Quarto markdown files
+    - "!data-raw/" # Exclude anything in the data-raw directory
 
 # Note: freeze functionality can be set at a project level or for individual .qmd files
 # execute:
