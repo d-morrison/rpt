@@ -58,6 +58,7 @@ jobs:
       - name: Build site
         run: |
           # Enable parallel rendering for faster builds
+          install.packages("future")
           future::plan(future::multicore)
           install.packages(c("downlit", "xml2", "remotes", "devtools"))
           install.packages(".", repos = NULL, type = "source")
