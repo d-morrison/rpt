@@ -47,7 +47,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Upload test results to Codecov
-        if: ${{ !cancelled() && secrets.CODECOV_TOKEN }}
+        if: ${{ !cancelled() && secrets.CODECOV_TOKEN != '' }}
         uses: codecov/test-results-action@HEAD
         with:
           fail_ci_if_error: true
@@ -55,7 +55,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - uses: codecov/codecov-action@v4
-        if: ${{ !cancelled() && secrets.CODECOV_TOKEN }}
+        if: ${{ !cancelled() && secrets.CODECOV_TOKEN != '' }}
         with:
           fail_ci_if_error: true
           file: ./cobertura.xml
