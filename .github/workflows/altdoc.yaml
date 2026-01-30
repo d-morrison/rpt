@@ -65,6 +65,7 @@ jobs:
           install.packages(".", repos = NULL, type = "source")
           remotes::install_github("etiennebacher/altdoc")
           library(altdoc)
+          library(yaml)
           devtools::load_all()
           sessioninfo::session_info()
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
