@@ -31,6 +31,9 @@ on:
 
 name: altdoc
 
+env:
+    PREVIEW_BRANCH: gh-pages
+
 jobs:
   altdoc:
     runs-on: ubuntu-latest
@@ -125,7 +128,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean-exclude: pr-preview
-          branch: gh-pages
+          branch: ${{ env.PREVIEW_BRANCH }}
           folder: docs
           # target-folder: $subdir # figure out later
 
@@ -135,8 +138,9 @@ jobs:
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: docs
-          wait-for-pages-deployment: true
+          preview-branch: ${{ env.PREVIEW_BRANCH }}
           comment: false
+          wait-for-pages-deployment: true
 
       # following https://github.com/rossjrw/pr-preview-action?tab=readme-ov-file#customise-the-sticky-comment:
       - uses: marocchino/sticky-pull-request-comment@v2
