@@ -58,10 +58,10 @@ jobs:
             connect
             website
           extra-packages: |
-            local::.
             r-lib/devtools
             d-morrison/altdoc@recursive-qmd-search
             quarto-dev/quarto
+            local::.
 
       - name: check quarto
         run: |
