@@ -100,6 +100,9 @@ jobs:
         env:
           QUARTO_LOG_LEVEL: DEBUG
           # Set the environment variable to the path where the action installs Chrome
+          # otherwise, we sometimes had trouble with quarto defaulting to
+          # use /usr/bin/google-chrome and then hanging.
+
           QUARTO_CHROMIUM: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: |
           # If parallel = TRUE in render_docs()
@@ -136,13 +139,38 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          clean: false
+          clean-exclude: pr-preview
           branch: gh-pages
           folder: docs
           # target-folder: $subdir # figure out later
 
       - name: Deploy PR Preview
         if: github.event_name == 'pull_request'
-        uses: rossjrw/pr-preview-action@main
+        uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: docs
+          wait-for-pages-deployment: true
+          comment: false
+
+      # following https://github.com/rossjrw/pr-preview-action?tab=readme-ov-file#customise-the-sticky-comment:
+      - uses: marocchino/sticky-pull-request-comment@v2
+        if: steps.preview-step.outputs.deployment-action == 'deploy' && env.deployment_status == 'success'
+        with:
+          header: pr-preview
+          recreate: true
+          message: |
+              [PR Preview Action](https://github.com/rossjrw/pr-preview-action) ${{ steps.preview-step.outputs.action-version }}
+              :---:
+              | <p><img src="https://qr.rossjrw.com/?url=${{ steps.preview-step.outputs.preview-url }}" height="100" align="right" alt="QR code for preview link"></p> :rocket: View preview at <br> ${{ steps.preview-step.outputs.preview-url }} <br><br>
+              | <h6>Built to branch [`${{ env.PREVIEW_BRANCH }}`](${{ github.server_url }}/${{ github.repository }}/tree/${{ env.PREVIEW_BRANCH }}) at ${{ steps.preview-step.outputs.action-start-time }}. <br> Preview will be ready when the [GitHub Pages deployment](${{ github.server_url }}/${{ github.repository }}/deployments) is complete. <br><br> </h6>
+
+      - uses: marocchino/sticky-pull-request-comment@v2
+        if: steps.preview-step.outputs.deployment-action == 'remove' && env.deployment_status == 'success'
+        with:
+            header: pr-preview
+            message: |
+                [PR Preview Action](https://github.com/rossjrw/pr-preview-action) ${{ steps.preview-step.outputs.action-version }}
+                :---:
+                Preview removed because the pull request was closed.
+                ${{ steps.preview-step.outputs.action-start-time }}
+
