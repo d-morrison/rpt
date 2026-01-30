@@ -60,7 +60,7 @@ jobs:
           extra-packages: |
             d-morrison/altdoc@recursive-qmd-search
             quarto-dev/quarto
-            any/sessioninfo
+            any::sessioninfo
             local::.
 
       - name: check quarto
