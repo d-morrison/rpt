@@ -61,6 +61,12 @@ jobs:
             local::.
             r-lib/devtools
             d-morrison/altdoc@recursive-qmd-search
+            quarto-dev/quarto
+
+      - name: check quarto
+        run: |
+          quarto check
+        shell: bash
 
       - name: Build site
         run: |
