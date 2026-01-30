@@ -64,6 +64,8 @@ jobs:
 
       - name: Build site
         run: |
+          # If parallel = TRUE in render_docs()
+          # future::plan(future::multicore)
           library(altdoc)
           devtools::load_all()
           sessioninfo::session_info()
