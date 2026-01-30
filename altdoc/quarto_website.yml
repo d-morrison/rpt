@@ -29,9 +29,9 @@ website:
         menu:
           - text: "Getting started"
             file: vignettes/getting-started.qmd
-          - text: "Intro vignette"
+          - text: "Quarto vignette example"
             file: vignettes/quarto_vignette.qmd
-          - text: "Advanced vignette"
+          - text: "Advanced quarto article"
             file: vignettes/articles/quarto_article.qmd
   sidebar:
     collapse-level: 1
