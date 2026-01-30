@@ -70,6 +70,8 @@ jobs:
       - name: Verify development environment
         shell: bash
         run: |
+          echo "=== Installing Chromium ==="
+          quarto install chromium
           echo "=== Development Environment Status ==="
           export QUARTO_LOG_LEVEL=DEBUG
           # Check R installation
@@ -81,7 +83,7 @@ jobs:
           quarto --version
           quarto check
           quarto list tools
-          quarto update chromium
+
 
           echo ""
           echo "Development environment setup complete!"
