@@ -63,11 +63,24 @@ jobs:
             quarto-dev/quarto
             local::.
 
-      - name: check quarto
-        run: |
-          quarto check
-          export QUARTO_LOG_LEVEL=DEBUG
+      # Verify development environment is properly configured
+      - name: Verify development environment
         shell: bash
+        run: |
+          echo "=== Development Environment Status ==="
+          export QUARTO_LOG_LEVEL=DEBUG
+          # Check R installation
+          Rscript -e 'cat("R version:", R.version.string, "\n")'
+
+          # Verify Quarto is installed and working
+          echo ""
+          echo "=== Quarto Status ==="
+          quarto --version
+          quarto check
+          quarto list tools
+
+          echo ""
+          echo "Development environment setup complete!"
 
       - name: Build site
         run: |
