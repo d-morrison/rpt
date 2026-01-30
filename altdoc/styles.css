@@ -16,7 +16,7 @@ pre code {
 
 /* Whole document: */
 body{
-  font-family: Source Sans Pro;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   font-size: 12pt;
 }
 /* Headers */
