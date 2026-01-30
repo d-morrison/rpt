@@ -63,6 +63,7 @@ jobs:
             any::lintr
             any::spelling
             any::rmarkdown
+            any::altdoc
           needs: check
 
       # Set up Quarto - required for rendering the website
