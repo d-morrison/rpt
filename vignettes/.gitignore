@@ -3,3 +3,7 @@
 *.html
 *.R
 *_files
+*.docx
+*.pdf
+*.pptx
+*_files
