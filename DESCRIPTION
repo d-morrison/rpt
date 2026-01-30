@@ -24,8 +24,7 @@ Suggests:
     testthat (>= 3.0.0),
     withr,
     quarto,
-    bslib,
-    altdoc
+    bslib
 Config/testthat/edition: 3
 VignetteBuilder: knitr, quarto
 Config/Needs/website: quarto
