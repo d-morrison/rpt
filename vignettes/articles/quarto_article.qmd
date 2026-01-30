@@ -219,17 +219,6 @@ print(result) # <4>
 3. Apply the example function from the package
 4. Display the results
 
-## Diagrams with Mermaid
-
-```{mermaid}
-%%| fig-cap: "Package workflow diagram"
-flowchart LR
-    A[Input Data] --> B[Validate]
-    B --> C[Process]
-    C --> D[Output Results]
-    D --> E[Visualize]
-```
-
 ## Mathematical Notation
 
 Quarto excels at mathematical notation. Here's an example of a statistical formula:
