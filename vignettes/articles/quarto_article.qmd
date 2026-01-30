@@ -3,9 +3,9 @@ title: "Advanced Quarto Article"
 author: "UC Davis Seroepidemiology Research Group (UCD-SERG)"
 date: "`r Sys.Date()`"
 format:
-  html: default
   revealjs:
     output-file: quarto_article-revealjs.html
+  html: default
   docx: default
 ---
 
