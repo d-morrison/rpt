@@ -39,7 +39,7 @@ env:
     PREVIEW_BRANCH: gh-pages
 
 jobs:
-  docs-build:
+  altdoc:
     runs-on: ubuntu-latest
     if: ${{ !(github.event_name == 'pull_request' && github.event.action == 'closed') }}
     timeout-minutes: 30
