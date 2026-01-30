@@ -58,9 +58,9 @@ jobs:
             connect
             website
           extra-packages: |
-            r-lib/devtools
             d-morrison/altdoc@recursive-qmd-search
             quarto-dev/quarto
+            any::sessioninfo
             local::.
 
       # Verify development environment is properly configured
@@ -86,8 +86,6 @@ jobs:
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
-          library(altdoc)
-          devtools::load_all()
           sessioninfo::session_info()
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}

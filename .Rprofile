@@ -5,4 +5,4 @@ if (interactive()) {
   suppressMessages(require(devtools))
 }
 
-message("starting  ending .Rprofile")
+message("ending .Rprofile")
