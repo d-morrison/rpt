@@ -46,15 +46,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Use a specific action to install Chrome
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: 'stable' # or a specific version number
-
-      - name: Install pandoc
-        uses: pandoc/actions/setup@v1
-
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
@@ -80,8 +71,6 @@ jobs:
       - name: Verify development environment
         shell: bash
         run: |
-          echo "=== Installing Chromium ==="
-          quarto install chromium
           echo "=== Development Environment Status ==="
           export QUARTO_LOG_LEVEL=DEBUG
           # Check R installation
@@ -92,21 +81,14 @@ jobs:
           echo "=== Quarto Status ==="
           quarto --version
           quarto check
-          quarto list tools
-
 
           echo ""
           echo "Development environment setup complete!"
 
       - name: Build site
         # uncomment the next two lines to get full debugging output
-        env:
-          QUARTO_LOG_LEVEL: DEBUG
-          # Set the environment variable to the path where the action installs Chrome
-          # otherwise, we sometimes had trouble with quarto defaulting to
-          # use /usr/bin/google-chrome and then hanging.
-
-          QUARTO_CHROMIUM: ${{ steps.setup-chrome.outputs.chrome-path }}
+        # env:
+          # QUARTO_LOG_LEVEL: DEBUG
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
