@@ -90,8 +90,8 @@ jobs:
 
       - name: Build site
         # uncomment the next two lines to get full debugging output
-        # env:
-        #   QUARTO_LOG_LEVEL: DEBUG
+        env:
+          QUARTO_LOG_LEVEL: DEBUG
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
