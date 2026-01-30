@@ -46,6 +46,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Use a specific action to install Chrome
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'stable' # or a specific version number
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
@@ -93,6 +99,8 @@ jobs:
         # uncomment the next two lines to get full debugging output
         env:
           QUARTO_LOG_LEVEL: DEBUG
+          # Set the environment variable to the path where the action installs Chrome
+          QUARTO_CHROMIUM: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
