@@ -61,10 +61,11 @@ jobs:
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
-          install.packages(c("downlit", "xml2", "remotes", "devtools"))
+          install.packages(c("downlit", "xml2", "remotes", "devtools", "sessioninfo"))
           install.packages(".", repos = NULL, type = "source")
           remotes::install_github("d-morrison/altdoc@recursive-qmd-search")
           devtools::load_all()
+          sessioninfo::session_info()
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
 
