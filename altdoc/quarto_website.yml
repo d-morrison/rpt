@@ -72,7 +72,7 @@ format:
     number-sections: false
     code-copy: true
     code-overflow: scroll
-    title-block-style: none
+    title-block-style: default
     toc: true
     grid:
       sidebar-width: 340px
