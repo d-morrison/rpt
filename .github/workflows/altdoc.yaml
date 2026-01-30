@@ -55,7 +55,8 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
           needs: |
             connect
@@ -95,7 +96,7 @@ jobs:
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
-          sessioninfo::session_info()
+          # sessioninfo::session_info() # already done in Install R dependencies
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
 
