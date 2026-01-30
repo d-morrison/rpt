@@ -130,6 +130,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -218,12 +219,12 @@
 </div>
 
 </section>
-<section id="introduction" class="slide level2">
-<h2>Introduction</h2>
+<section id="introduction" class="slide level2" data-number="1">
+<h2><span class="header-section-number">1</span> Introduction</h2>
 <p>This vignette demonstrates how to use Quarto (<code>.qmd</code>) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.</p>
 </section>
-<section id="why-use-quarto" class="slide level2">
-<h2>Why Use Quarto?</h2>
+<section id="why-use-quarto" class="slide level2 scrollable" data-number="2">
+<h2><span class="header-section-number">2</span> Why Use Quarto?</h2>
 <p>Quarto offers several advantages over traditional R Markdown:</p>
 <ol type="1">
 <li><strong>Enhanced features</strong>: Better support for cross-references, callouts, and other advanced formatting</li>
@@ -232,15 +233,15 @@
 <li><strong>Better publishing</strong>: Improved website and book publishing capabilities</li>
 </ol>
 </section>
-<section id="basic-example" class="slide level2">
-<h2>Basic Example</h2>
+<section id="basic-example" class="slide level2" data-number="3">
+<h2><span class="header-section-number">3</span> Basic Example</h2>
 <p>Here’s a basic example using the package:</p>
 <div class="cell">
 <pre><code>#&gt; [1] 4.5</code></pre>
 </div>
 </section>
-<section id="quarto-features" class="slide level2">
-<h2>Quarto Features</h2>
+<section id="quarto-features" class="slide level2" data-number="4">
+<h2><span class="header-section-number">4</span> Quarto Features</h2>
 <h3 id="callouts">Callouts</h3>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -280,11 +281,11 @@
 <span id="cb2-7"><a></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="quarto_vignette_files/figure-revealjs/fig-plot-1.png" width="960" class="r-stretch quarto-figure-center" id="fig-plot"><p class="caption">
+<img data-src="quarto_vignette_files/figure-revealjs/fig-plot-1.png" width="672" class="r-stretch quarto-figure-center" id="fig-plot"><p class="caption">
 Figure&nbsp;1: Example plot showing data distribution
 </p></section>
-<section id="equations" class="slide level2">
-<h2>Equations</h2>
+<section id="equations" class="slide level2" data-number="5">
+<h2><span class="header-section-number">5</span> Equations</h2>
 <p>Quarto has excellent support for mathematical equations using LaTeX syntax:</p>
 <p>Inline equation: <span class="math inline">\(E = mc^2\)</span></p>
 <p>Display equation:</p>
@@ -292,8 +293,8 @@ Figure&nbsp;1: Example plot showing data distribution
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
 \]</span></p>
 </section>
-<section id="tables" class="slide level2">
-<h2>Tables</h2>
+<section id="tables" class="slide level2" data-number="6">
+<h2><span class="header-section-number">6</span> Tables</h2>
 <div id="tbl-comparison" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -335,12 +336,12 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </figure>
 </div>
 </section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
+<section id="summary" class="slide level2" data-number="7">
+<h2><span class="header-section-number">7</span> Summary</h2>
 <p>Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation.</p>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+<section id="references" class="slide level2 smaller scrollable" data-number="8">
+<h2><span class="header-section-number">8</span> References</h2>
 <p>For more information, see:</p>
 <ul>
 <li><a href="https://quarto.org/">Quarto Documentation</a></li>
@@ -548,7 +549,7 @@ UCD-SERG. 2024. <em>Rpt: R Package Template</em>. <a href="https://github.com/UC
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

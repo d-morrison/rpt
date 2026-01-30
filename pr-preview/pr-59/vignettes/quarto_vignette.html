@@ -146,7 +146,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script><link rel="stylesheet" href="altdoc/styles.css">
+</script><link rel="stylesheet" href="../styles.css">
 </head>
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -375,7 +375,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.md" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -400,12 +400,6 @@ window.Quarto = {
  <span class="menu-text">Quarto Vignette Example</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../vignettes/articles/quarto_article.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced Quarto Article</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -414,19 +408,26 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 "></ul>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../vignettes/articles/quarto_article.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Quarto Article</span></a>
+  </div>
+</li>
+      </ul>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Reference</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../man/example_function.html" class="sidebar-item-text sidebar-link">
@@ -473,31 +474,30 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#why-use-quarto" id="toc-why-use-quarto" class="nav-link" data-scroll-target="#why-use-quarto">Why Use Quarto?</a></li>
-  <li><a href="#basic-example" id="toc-basic-example" class="nav-link" data-scroll-target="#basic-example">Basic Example</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#why-use-quarto" id="toc-why-use-quarto" class="nav-link" data-scroll-target="#why-use-quarto"><span class="header-section-number">2</span> Why Use Quarto?</a></li>
+  <li><a href="#basic-example" id="toc-basic-example" class="nav-link" data-scroll-target="#basic-example"><span class="header-section-number">3</span> Basic Example</a></li>
   <li>
-<a href="#quarto-features" id="toc-quarto-features" class="nav-link" data-scroll-target="#quarto-features">Quarto Features</a>
+<a href="#quarto-features" id="toc-quarto-features" class="nav-link" data-scroll-target="#quarto-features"><span class="header-section-number">4</span> Quarto Features</a>
   <ul class="collapse">
-<li><a href="#callouts" id="toc-callouts" class="nav-link" data-scroll-target="#callouts">Callouts</a></li>
-  <li><a href="#code-chunks-with-modern-syntax" id="toc-code-chunks-with-modern-syntax" class="nav-link" data-scroll-target="#code-chunks-with-modern-syntax">Code Chunks with Modern Syntax</a></li>
+<li><a href="#callouts" id="toc-callouts" class="nav-link" data-scroll-target="#callouts"><span class="header-section-number">4.1</span> Callouts</a></li>
+  <li><a href="#code-chunks-with-modern-syntax" id="toc-code-chunks-with-modern-syntax" class="nav-link" data-scroll-target="#code-chunks-with-modern-syntax"><span class="header-section-number">4.2</span> Code Chunks with Modern Syntax</a></li>
   </ul>
 </li>
-  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations">Equations</a></li>
-  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations"><span class="header-section-number">5</span> Equations</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">6</span> Tables</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7</span> Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/vignettes/quarto_vignette.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/vignettes/quarto_vignette.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/UCD-SERG/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto_vignette-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="quarto_vignette.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/quarto_vignette.html">Quarto Vignette Example</a></li></ol></nav><h1 class="title display-7">Quarto Vignette Example</h1></header><header id="title-block-header">
 
-</header><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+</header><section id="introduction" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">1</span> Introduction</h2>
 <p>This vignette demonstrates how to use Quarto (<code>.qmd</code>) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.</p>
-</section><section id="why-use-quarto" class="level2"><h2 class="anchored" data-anchor-id="why-use-quarto">Why Use Quarto?</h2>
+</section><section id="why-use-quarto" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="why-use-quarto">
+<span class="header-section-number">2</span> Why Use Quarto?</h2>
 <p>Quarto offers several advantages over traditional R Markdown:</p>
 <ol type="1">
 <li>
@@ -508,19 +508,16 @@ window.Quarto = {
 <strong>Modern syntax</strong>: Cleaner YAML and chunk options using <code>#|</code> syntax</li>
 <li>
 <strong>Better publishing</strong>: Improved website and book publishing capabilities</li>
-</ol></section><section id="basic-example" class="level2"><h2 class="anchored" data-anchor-id="basic-example">Basic Example</h2>
+</ol></section><section id="basic-example" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="basic-example">
+<span class="header-section-number">3</span> Basic Example</h2>
 <p>Here’s a basic example using the package:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create some sample data</span></span>
-<span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Use the example function</span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
-<span><span class="va">result</span></span>
-<span><span class="co">#&gt; [1] 4.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>#&gt; [1] 4.5</code></pre>
 </div>
-</section><section id="quarto-features" class="level2"><h2 class="anchored" data-anchor-id="quarto-features">Quarto Features</h2>
-<section id="callouts" class="level3"><h3 class="anchored" data-anchor-id="callouts">Callouts</h3>
+</section><section id="quarto-features" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="quarto-features">
+<span class="header-section-number">4</span> Quarto Features</h2>
+<section id="callouts" class="level3" data-number="4.1"><h3 data-number="4.1" class="anchored" data-anchor-id="callouts">
+<span class="header-section-number">4.1</span> Callouts</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -547,10 +544,11 @@ Tip
 <p>Quarto supports multiple types of callouts: note, tip, warning, important, and caution.</p>
 </div>
 </div>
-</section><section id="code-chunks-with-modern-syntax" class="level3"><h3 class="anchored" data-anchor-id="code-chunks-with-modern-syntax">Code Chunks with Modern Syntax</h3>
+</section><section id="code-chunks-with-modern-syntax" class="level3" data-number="4.2"><h3 data-number="4.2" class="anchored" data-anchor-id="code-chunks-with-modern-syntax">
+<span class="header-section-number">4.2</span> Code Chunks with Modern Syntax</h3>
 <p>You can use the modern <code>#|</code> syntax for chunk options:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a simple plot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a simple plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">sample_data</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Sample Data"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"Index"</span>, </span>
@@ -559,23 +557,25 @@ Tip
 <span>     col <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Example plot showing data distribution
+</figcaption><div aria-describedby="fig-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="quarto_vignette_files/figure-html/fig-plot-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Example plot showing data distribution
-</figcaption></figure>
+</figure>
 </div>
 </div>
 </div>
-</section></section><section id="equations" class="level2"><h2 class="anchored" data-anchor-id="equations">Equations</h2>
+</section></section><section id="equations" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="equations">
+<span class="header-section-number">5</span> Equations</h2>
 <p>Quarto has excellent support for mathematical equations using LaTeX syntax:</p>
 <p>Inline equation: <span class="math inline">\(E = mc^2\)</span></p>
 <p>Display equation:</p>
 <p><span class="math display">\[
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
 \]</span></p>
-</section><section id="tables" class="level2"><h2 class="anchored" data-anchor-id="tables">Tables</h2>
+</section><section id="tables" class="level2" data-number="6"><h2 data-number="6" class="anchored" data-anchor-id="tables">
+<span class="header-section-number">6</span> Tables</h2>
 <div id="tbl-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Comparison of R Markdown and Quarto
@@ -612,9 +612,11 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </div>
 </figure>
 </div>
-</section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
+</section><section id="summary" class="level2" data-number="7"><h2 data-number="7" class="anchored" data-anchor-id="summary">
+<span class="header-section-number">7</span> Summary</h2>
 <p>Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation.</p>
-</section><section id="references" class="level2"><h2 class="anchored" data-anchor-id="references">References</h2>
+</section><section id="references" class="level2" data-number="8"><h2 data-number="8" class="anchored" data-anchor-id="references">
+<span class="header-section-number">8</span> References</h2>
 <p>For more information, see:</p>
 <ul>
 <li><a href="https://quarto.org/">Quarto Documentation</a></li>
