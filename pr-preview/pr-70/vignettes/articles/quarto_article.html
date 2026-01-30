@@ -128,9 +128,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -514,12 +511,11 @@ window.Quarto = {
   </ul></li>
   <li><a href="#working-with-package-functions" id="toc-working-with-package-functions" class="nav-link" data-scroll-target="#working-with-package-functions"><span class="header-section-number">4</span> Working with Package Functions</a></li>
   <li><a href="#code-annotations" id="toc-code-annotations" class="nav-link" data-scroll-target="#code-annotations"><span class="header-section-number">5</span> Code Annotations</a></li>
-  <li><a href="#diagrams-with-mermaid" id="toc-diagrams-with-mermaid" class="nav-link" data-scroll-target="#diagrams-with-mermaid"><span class="header-section-number">6</span> Diagrams with Mermaid</a></li>
-  <li><a href="#mathematical-notation" id="toc-mathematical-notation" class="nav-link" data-scroll-target="#mathematical-notation"><span class="header-section-number">7</span> Mathematical Notation</a></li>
-  <li><a href="#tips-and-best-practices" id="toc-tips-and-best-practices" class="nav-link" data-scroll-target="#tips-and-best-practices"><span class="header-section-number">8</span> Tips and Best Practices</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">9</span> Conclusion</a></li>
-  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more"><span class="header-section-number">10</span> Learn More</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
+  <li><a href="#mathematical-notation" id="toc-mathematical-notation" class="nav-link" data-scroll-target="#mathematical-notation"><span class="header-section-number">6</span> Mathematical Notation</a></li>
+  <li><a href="#tips-and-best-practices" id="toc-tips-and-best-practices" class="nav-link" data-scroll-target="#tips-and-best-practices"><span class="header-section-number">7</span> Tips and Best Practices</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8</span> Conclusion</a></li>
+  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more"><span class="header-section-number">9</span> Learn More</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">10</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/vignettes/articles/quarto_article.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/vignettes/articles/quarto_article.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/UCD-SERG/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto_article-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="quarto_article.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
@@ -777,27 +773,8 @@ Table&nbsp;1: Summary statistics for example data
 <li>Display the results</li>
 </ol>
 </section>
-<section id="diagrams-with-mermaid" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="diagrams-with-mermaid"><span class="header-section-number">6</span> Diagrams with Mermaid</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    A[Input Data] --&gt; B[Validate]
-    B --&gt; C[Process]
-    C --&gt; D[Output Results]
-    D --&gt; E[Visualize]
-</pre>
-</div>
-<p></p><figcaption> Package workflow diagram</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="mathematical-notation" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="mathematical-notation"><span class="header-section-number">7</span> Mathematical Notation</h2>
+<section id="mathematical-notation" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="mathematical-notation"><span class="header-section-number">6</span> Mathematical Notation</h2>
 <p>Quarto excels at mathematical notation. Here’s an example of a statistical formula:</p>
 <p>The standard error of the mean is calculated as:</p>
 <p><span class="math display">\[
@@ -809,8 +786,8 @@ SE = \frac{s}{\sqrt{n}}
 CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 \]</span></p>
 </section>
-<section id="tips-and-best-practices" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="tips-and-best-practices"><span class="header-section-number">8</span> Tips and Best Practices</h2>
+<section id="tips-and-best-practices" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="tips-and-best-practices"><span class="header-section-number">7</span> Tips and Best Practices</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -835,20 +812,20 @@ CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 </div>
 </div>
 </section>
-<section id="conclusion" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">9</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8</span> Conclusion</h2>
 <p>This article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages. The integration with pkgdown makes it easy to create professional package websites.</p>
 </section>
-<section id="learn-more" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="learn-more"><span class="header-section-number">10</span> Learn More</h2>
+<section id="learn-more" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="learn-more"><span class="header-section-number">9</span> Learn More</h2>
 <ul>
 <li>Visit the <a href="https://ucd-serg.github.io/rpt/">package website</a></li>
 <li>Check out the <a href="https://github.com/UCD-SERG/rpt">GitHub repository</a></li>
 <li>Read the <a href="https://quarto.org/">Quarto documentation</a></li>
 </ul>
 </section>
-<section id="references" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="references"><span class="header-section-number">11</span> References</h2>
+<section id="references" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="references"><span class="header-section-number">10</span> References</h2>
 <div id="refs" role="list">
 
 </div>
