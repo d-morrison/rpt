@@ -3,7 +3,10 @@ title: "Advanced Quarto Article"
 author: "UC Davis Seroepidemiology Research Group (UCD-SERG)"
 date: "`r Sys.Date()`"
 format:
+  revealjs:
+    output-file: quarto_article-revealjs.html
   html: default
+  docx: default
 ---
 
 ```{r}
@@ -215,17 +218,6 @@ print(result) # <4>
 2. Create a simple numeric vector
 3. Apply the example function from the package
 4. Display the results
-
-## Diagrams with Mermaid
-
-```{mermaid}
-%%| fig-cap: "Package workflow diagram"
-flowchart LR
-    A[Input Data] --> B[Validate]
-    B --> C[Process]
-    C --> D[Output Results]
-    D --> E[Visualize]
-```
 
 ## Mathematical Notation
 
