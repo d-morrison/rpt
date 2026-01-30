@@ -4,6 +4,8 @@ author: "UC Davis Seroepidemiology Research Group (UCD-SERG)"
 date: "`r Sys.Date()`"
 format:
   html: default
+  revealjs:
+    output-file: quarto_article-revealjs.html
 ---
 
 ```{r}
