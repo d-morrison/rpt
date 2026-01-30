@@ -23,3 +23,7 @@ vignettes/articles/*.html
 README.html
 
 /.quarto/
+altdoc/freeze.rds
+_quarto/*
+!_quarto/_freeze/
+*.docx

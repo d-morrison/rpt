@@ -21,4 +21,3 @@ Useful links:
 \strong{Maintainer}: First Last \email{first.last@example.com}
 
 }
-\keyword{internal}

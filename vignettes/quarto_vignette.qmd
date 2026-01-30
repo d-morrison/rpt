@@ -4,6 +4,7 @@ format:
   html: default
   revealjs:
     output-file: quarto_vignette-revealjs.html
+  docx: default
 pkgdown:
   as_is: true
 vignette: >
@@ -113,5 +114,5 @@ For more information, see:
 
 - [Quarto Documentation](https://quarto.org/)
 - [Using Quarto with R](https://quarto.org/docs/computations/r.html)
-- [@R-base]
-- [@R-rpt]
+- @R-base
+- @R-rpt

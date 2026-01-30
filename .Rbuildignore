@@ -23,3 +23,11 @@
 ^CODE_OF_CONDUCT\.md$
 ^USAGE\.md$
 ^TEMPLATE_INFO\.md$
+^altdoc$
+^_quarto$
+^CONTRIBUTING\.md$
+^vignettes/*_files$
+^vignettes/articles/\.quarto$
+^vignettes/articles/*_files$
+^vignettes/articles$
+^index\.qmd$

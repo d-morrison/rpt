@@ -1,9 +1,12 @@
 ---
 title: "Getting Started"
-output: rmarkdown::html_vignette
+format: 
+  html: default
+  revealjs:
+    output-file: getting-started-revealjs.html
 vignette: >
   %\VignetteIndexEntry{Getting Started}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
