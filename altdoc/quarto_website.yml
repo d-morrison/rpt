@@ -64,8 +64,7 @@ website:
 
 format:
   html:
-    code-link: false # enables downlit; see https://altdoc.etiennebacher.com/#/man/render_docs.md#auto-link-for-quarto-websites
-    # but it seems that there are issues
+    code-link: true # enables downlit; see https://altdoc.etiennebacher.com/#/man/render_docs.md#auto-link-for-quarto-websites
     theme:
       light: default
       dark: darkly
