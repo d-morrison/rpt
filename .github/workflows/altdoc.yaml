@@ -63,7 +63,7 @@ jobs:
           # future::plan(future::multicore)
           install.packages(c("downlit", "xml2", "remotes", "devtools"))
           install.packages(".", repos = NULL, type = "source")
-          remotes::install_github("etiennebacher/altdoc")
+          remotes::install_github("d-morrison/altdoc@recursive-qmd-search")
           devtools::load_all()
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
