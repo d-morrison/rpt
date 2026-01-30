@@ -52,6 +52,9 @@ jobs:
         with:
           chrome-version: 'stable' # or a specific version number
 
+      - name: Install pandoc
+        uses: pandoc/actions/setup@v1
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
