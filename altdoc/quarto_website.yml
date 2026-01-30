@@ -31,7 +31,7 @@ website:
             file: vignettes/getting-started.qmd
           - text: "Intro vignette"
             file: vignettes/quarto_vignette.qmd
-          - text: "Advanced"
+          - text: "Advanced vignette"
             file: vignettes/articles/quarto_article.qmd
   sidebar:
     collapse-level: 1
