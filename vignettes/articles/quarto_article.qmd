@@ -6,6 +6,7 @@ format:
   html: default
   revealjs:
     output-file: quarto_article-revealjs.html
+  docx: default
 ---
 
 ```{r}
