@@ -5,14 +5,19 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/UCD-SERG/rpt/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/ucd-serg/rpt/graph/badge.svg)](https://app.codecov.io/gh/ucd-serg/rpt)
+coverage](https://codecov.io/gh/UCD-SERG/rpt/branch/main/graph/badge.svg)](https://app.codecov.io/gh/UCD-SERG/rpt)
 [![CodeFactor](https://www.codefactor.io/repository/github/UCD-SERG/rpt/badge)](https://www.codefactor.io/repository/github/UCD-SERG/rpt)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/rpt)](https://CRAN.R-project.org/package=rpt)
+status](https://www.r-pkg.org/badges/version/rpt)](https://cran.r-project.org/package=rpt)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![](https://www.r-pkg.org/badges/version/rpt)](https://cran.r-project.org/package=rpt)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/rpt)](https://cran.r-project.org/package=rpt)
+[![](http://cranlogs.r-pkg.org/badges/last-month/rpt)](https://cran.r-project.org/package=rpt)
+[![](http://cranlogs.r-pkg.org/badges/last-week/rpt)](https://cran.r-project.org/package=rpt)
+
 <!-- badges: end -->
 
 The goal of `{rpt}` is to …
