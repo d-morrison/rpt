@@ -70,7 +70,7 @@ format:
       dark: darkly
     css: styles.css
     number-sections: false
-    code-fold: true
+    code-fold: show
     echo: true
     code-copy: true
     code-overflow: scroll
