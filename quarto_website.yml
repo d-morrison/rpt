@@ -31,6 +31,8 @@ website:
             file: vignettes/getting-started.qmd
           - text: "Intro vignette"
             file: vignettes/quarto_vignette.qmd
+          - text: "Advanced"
+            file: vignettes/articles/quarto_article.qmd
   sidebar:
     collapse-level: 1
     contents:
@@ -42,6 +44,9 @@ website:
         contents:
           - vignettes/getting-started.qmd
           - vignettes/quarto_vignette.qmd
+          - section: Advanced
+            contents:
+              - vignettes/articles/quarto_article.qmd
       - section: $ALTDOC_MAN_BLOCK
         style: floating
       - text: News
