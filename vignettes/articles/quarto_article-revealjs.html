@@ -226,6 +226,15 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 
   <p class="date">2026-01-30</p>
 </section>
+<section class="slide level2">
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
 <section id="overview" class="slide level2" data-number="1">
 <h2><span class="header-section-number">1</span> Overview</h2>
 <p>This article demonstrates advanced features of Quarto for pkgdown articles. Unlike vignettes, articles are only available on the pkgdown website and are not included in the package bundle.</p>
@@ -251,19 +260,22 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <h3 id="cross-references">Cross-References</h3>
 <p>Quarto makes it easy to create cross-references. For example, see <a href="#/fig-scatter" class="quarto-xref">Figure&nbsp;1</a> for a scatter plot and <a href="#/tbl-summary" class="quarto-xref">Table&nbsp;1</a> for a summary table.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Generate sample data</span></span>
-<span id="cb1-2"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb1-4"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a><span class="co"># Create scatter plot</span></span>
-<span id="cb1-7"><a></a><span class="fu">plot</span>(x, y, </span>
-<span id="cb1-8"><a></a>     <span class="at">main =</span> <span class="st">"Example Scatter Plot"</span>,</span>
-<span id="cb1-9"><a></a>     <span class="at">xlab =</span> <span class="st">"X Variable"</span>,</span>
-<span id="cb1-10"><a></a>     <span class="at">ylab =</span> <span class="st">"Y Variable"</span>,</span>
-<span id="cb1-11"><a></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb1-12"><a></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>))</span>
-<span id="cb1-13"><a></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Generate sample data</span></span>
+<span id="cb2-2"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb2-4"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a><span class="co"># Create scatter plot</span></span>
+<span id="cb2-7"><a></a><span class="fu">plot</span>(x, y, </span>
+<span id="cb2-8"><a></a>     <span class="at">main =</span> <span class="st">"Example Scatter Plot"</span>,</span>
+<span id="cb2-9"><a></a>     <span class="at">xlab =</span> <span class="st">"X Variable"</span>,</span>
+<span id="cb2-10"><a></a>     <span class="at">ylab =</span> <span class="st">"Y Variable"</span>,</span>
+<span id="cb2-11"><a></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb2-12"><a></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>))</span>
+<span id="cb2-13"><a></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -279,6 +291,16 @@ Figure&nbsp;1: Scatter plot demonstrating cross-referencing
 </div>
 <h3 id="summary-tables">Summary Tables</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>data_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a></a>  <span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>, <span class="st">"SD"</span>, <span class="st">"Min"</span>, <span class="st">"Max"</span>),</span>
+<span id="cb3-3"><a></a>  <span class="at">X =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">median</span>(x), <span class="fu">sd</span>(x), <span class="fu">min</span>(x), <span class="fu">max</span>(x)),</span>
+<span id="cb3-4"><a></a>  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">mean</span>(y), <span class="fu">median</span>(y), <span class="fu">sd</span>(y), <span class="fu">min</span>(y), <span class="fu">max</span>(y))</span>
+<span id="cb3-5"><a></a>)</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_summary, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div id="tbl-summary" class="cell quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -331,9 +353,28 @@ Table&nbsp;1: Summary statistics for example data
 <h3 id="code-folding">Code Folding</h3>
 <p>You can make code chunks foldable:</p>
 <div class="cell">
-<pre><code>#&gt;   group value1.mean value1.sd value2.mean value2.sd
-#&gt; 1     A   101.61247  14.63952   51.727220 10.047051
-#&gt; 2     B    98.13191  13.84514   53.261796  8.934998</code></pre>
+<details class="code-fold">
+<summary>Show the code for data preparation</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Prepare more complex data</span></span>
+<span id="cb4-2"><a></a>complex_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-3"><a></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb4-4"><a></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">25</span>),</span>
+<span id="cb4-5"><a></a>  <span class="at">value1 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">15</span>),</span>
+<span id="cb4-6"><a></a>  <span class="at">value2 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">10</span>)</span>
+<span id="cb4-7"><a></a>)</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a><span class="co"># Calculate group statistics</span></span>
+<span id="cb4-10"><a></a>group_stats <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb4-11"><a></a>  <span class="fu">cbind</span>(value1, value2) <span class="sc">~</span> group, </span>
+<span id="cb4-12"><a></a>  <span class="at">data =</span> complex_data, </span>
+<span id="cb4-13"><a></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb4-14"><a></a>)</span>
+<span id="cb4-15"><a></a></span>
+<span id="cb4-16"><a></a><span class="fu">print</span>(group_stats)</span>
+<span id="cb4-17"><a></a><span class="co">#&gt;   group value1.mean value1.sd value2.mean value2.sd</span></span>
+<span id="cb4-18"><a></a><span class="co">#&gt; 1     A   101.61247  14.63952   51.727220 10.047051</span></span>
+<span id="cb4-19"><a></a><span class="co">#&gt; 2     B    98.13191  13.84514   53.261796  8.934998</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <h3 id="tabsets">Tabsets</h3>
 <div class="panel-tabset">
@@ -438,22 +479,52 @@ Table&nbsp;1: Summary statistics for example data
 <h2><span class="header-section-number">4</span> Working with Package Functions</h2>
 <p>Here’s how to use the package’s example function with different inputs:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 15
-#&gt; [1] 47.42519</code></pre>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Numeric vector</span></span>
+<span id="cb7-2"><a></a><span class="fu">example_function</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>))</span>
+<span id="cb7-3"><a></a><span class="co">#&gt; [1] 15</span></span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a><span class="co"># Using with generated data</span></span>
+<span id="cb7-6"><a></a>random_data <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span>
+<span id="cb7-7"><a></a><span class="fu">example_function</span>(random_data)</span>
+<span id="cb7-8"><a></a><span class="co">#&gt; [1] 47.42519</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </section>
-<section id="code-annotations" class="slide level2 scrollable" data-number="5">
+<section id="code-annotations" class="slide level2" data-number="5">
 <h2><span class="header-section-number">5</span> Code Annotations</h2>
 <p>Quarto supports code annotations for detailed explanations:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 3</code></pre>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>result <span class="ot">&lt;-</span> <span class="fu">example_function</span>(data)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a><span class="fu">print</span>(result)</span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5"></a><span class="co">#&gt; [1] 3</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Load sample data</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Create a simple numeric vector</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="3">Apply the example function from the package</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="4">Display the results</span>
+</dd>
+</dl>
 </div>
-<ol type="1">
-<li>Load sample data</li>
-<li>Create a simple numeric vector</li>
-<li>Apply the example function from the package</li>
-<li>Display the results</li>
-</ol>
+</div>
 </section>
 <section id="mathematical-notation" class="slide level2" data-number="6">
 <h2><span class="header-section-number">6</span> Mathematical Notation</h2>
