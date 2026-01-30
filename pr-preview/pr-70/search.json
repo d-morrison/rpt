@@ -1,22 +1,10 @@
 [
   {
-    "objectID": "vignettes/quarto_vignette.html",
-    "href": "vignettes/quarto_vignette.html",
-    "title": "Quarto Vignette Example",
-    "section": "",
-    "text": "This vignette demonstrates how to use Quarto (.qmd) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.",
-    "crumbs": [
-      "Documentation",
-      "Articles",
-      "Quarto Vignette Example"
-    ]
-  },
-  {
     "objectID": "vignettes/quarto_vignette.html#introduction",
     "href": "vignettes/quarto_vignette.html#introduction",
     "title": "Quarto Vignette Example",
-    "section": "",
-    "text": "This vignette demonstrates how to use Quarto (.qmd) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.",
+    "section": "\n1 Introduction",
+    "text": "1 Introduction\nThis vignette demonstrates how to use Quarto (.qmd) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -245,7 +233,7 @@
     "href": "vignettes/articles/quarto_article.html",
     "title": "Advanced Quarto Article",
     "section": "",
-    "text": "This article demonstrates advanced features of Quarto for pkgdown articles. Unlike vignettes, articles are only available on the pkgdown website and are not included in the package bundle.",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-01-30",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -257,8 +245,8 @@
     "objectID": "vignettes/articles/quarto_article.html#overview",
     "href": "vignettes/articles/quarto_article.html#overview",
     "title": "Advanced Quarto Article",
-    "section": "",
-    "text": "This article demonstrates advanced features of Quarto for pkgdown articles. Unlike vignettes, articles are only available on the pkgdown website and are not included in the package bundle.",
+    "section": "1 Overview",
+    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for pkgdown articles. Unlike vignettes, articles are only available on the pkgdown website and are not included in the package bundle.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -532,23 +520,11 @@
     "text": "3 Next Steps\nFor more information, see the package documentation."
   },
   {
-    "objectID": "vignettes/getting-started.html",
-    "href": "vignettes/getting-started.html",
-    "title": "Getting Started",
-    "section": "",
-    "text": "This vignette provides an introduction to the rpt package.",
-    "crumbs": [
-      "Documentation",
-      "Articles",
-      "Getting Started"
-    ]
-  },
-  {
     "objectID": "vignettes/getting-started.html#introduction",
     "href": "vignettes/getting-started.html#introduction",
     "title": "Getting Started",
-    "section": "",
-    "text": "This vignette provides an introduction to the rpt package.",
+    "section": "\n1 Introduction",
+    "text": "1 Introduction\nThis vignette provides an introduction to the rpt package.",
     "crumbs": [
       "Documentation",
       "Articles",
