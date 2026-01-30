@@ -83,6 +83,8 @@ jobs:
           echo "Development environment setup complete!"
 
       - name: Build site
+        env:
+          QUARTO_LOG_LEVEL: DEBUG
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
