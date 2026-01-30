@@ -130,6 +130,7 @@ jobs:
           # target-folder: $subdir # figure out later
 
       - name: Deploy PR Preview
+        id: preview-step
         if: github.event_name == 'pull_request'
         uses: rossjrw/pr-preview-action@v1
         with:
