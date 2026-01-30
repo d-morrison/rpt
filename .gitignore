@@ -28,3 +28,4 @@ altdoc/freeze.rds
 *.Rout
 _quarto/*
 !_quarto/_freeze/
+*.docx

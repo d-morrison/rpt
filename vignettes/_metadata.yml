@@ -18,7 +18,3 @@ format:
     fig-cap-location: top
   docx:
     number-sections: true
-  pptx:
-    number-sections: false
-    slide-level: 2
-    reference-location: document
