@@ -493,7 +493,11 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/quarto_vignette.html">Quarto Vignette Example</a></li></ol></nav><h1 class="title display-7">Quarto Vignette Example</h1></header><header id="title-block-header">
 
-</header><section id="introduction" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="introduction">
+</header><div class="cell">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="introduction" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="introduction">
 <span class="header-section-number">1</span> Introduction</h2>
 <p>This vignette demonstrates how to use Quarto (<code>.qmd</code>) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.</p>
 </section><section id="why-use-quarto" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="why-use-quarto">
@@ -512,7 +516,14 @@ window.Quarto = {
 <span class="header-section-number">3</span> Basic Example</h2>
 <p>Here’s a basic example using the package:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 4.5</code></pre>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create some sample data</span></span>
+<span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Use the example function</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
+<span><span class="va">result</span></span>
+<span><span class="co">#&gt; [1] 4.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </section><section id="quarto-features" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="quarto-features">
 <span class="header-section-number">4</span> Quarto Features</h2>
@@ -548,14 +559,14 @@ Tip
 <span class="header-section-number">4.2</span> Code Chunks with Modern Syntax</h3>
 <p>You can use the modern <code>#|</code> syntax for chunk options:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a simple plot</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a simple plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">sample_data</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Sample Data"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"Index"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"Value"</span>,</span>
 <span>     pch <span class="op">=</span> <span class="fl">19</span>,</span>
 <span>     col <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div id="fig-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Example plot showing data distribution
