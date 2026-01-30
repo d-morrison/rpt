@@ -4,6 +4,7 @@ format:
   html: default
   revealjs:
     output-file: getting-started-revealjs.html
+  docx: default
 vignette: >
   %\VignetteIndexEntry{Getting Started}
   %\VignetteEngine{quarto::html}

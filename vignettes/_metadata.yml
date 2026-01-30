@@ -4,10 +4,10 @@ format:
     toc: true
     html-math-method: mathjax
     fig-cap-location: top
-    echo: false
   revealjs:
     reference-location: document
-    echo: false
+    echo: true
+    code-fold: true
     html-math-method: mathjax
     scrollable: true
     auto-stretch: true
