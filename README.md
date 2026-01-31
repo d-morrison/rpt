@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/UCD-SERG/rpt/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/UCD-SERG/rpt/branch/main/graph/badge.svg)](https://app.codecov.io/gh/UCD-SERG/rpt)
-[![CodeFactor](https://www.codefactor.io/repository/github/UCD-SERG/rpt/badge)](https://www.codefactor.io/repository/github/UCD-SERG/rpt)
+[![CodeFactor](https://www.codefactor.io/repository/github/UCD-SERG/rpt/badge.svg)](https://www.codefactor.io/repository/github/UCD-SERG/rpt)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rpt)](https://cran.r-project.org/package=rpt)
 [![Lifecycle:
