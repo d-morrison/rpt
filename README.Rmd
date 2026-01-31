@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 library(badger)
 cat(
   badge_github_actions(alt = "R-CMD-check", action = "R-CMD-check.yaml"),
-  badge_codecov(alt = "Codecov test coverage"),
+  badge_codecov(alt = "Codecov test coverage", branch = "main"),
   badge_codefactor(alt = "CodeFactor"),
   badge_cran_release(alt = "CRAN status"),
   badge_lifecycle(stage = "experimental", alt = "Lifecycle: experimental"),
