@@ -88,7 +88,7 @@
     "href": "vignettes/quarto_vignette.html#summary",
     "title": "Quarto Vignette Example",
     "section": "\n7 Summary",
-    "text": "7 Summary\nQuarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation.",
+    "text": "7 Summary\nQuarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with documentation systems and offer enhanced capabilities for technical documentation.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -154,7 +154,7 @@
     "href": "vignettes/quarto_vignette-revealjs.html#summary",
     "title": "Quarto Vignette Example",
     "section": "7 Summary",
-    "text": "7 Summary\nQuarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation."
+    "text": "7 Summary\nQuarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with documentation systems and offer enhanced capabilities for technical documentation."
   },
   {
     "objectID": "vignettes/quarto_vignette-revealjs.html#references",
@@ -168,7 +168,7 @@
     "href": "vignettes/articles/quarto_article-revealjs.html#overview",
     "title": "Advanced Quarto Article",
     "section": "1 Overview",
-    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for pkgdown articles. Unlike vignettes, articles are only available on the pkgdown website and are not included in the package bundle."
+    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle."
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#when-to-use-articles-vs-vignettes",
@@ -217,7 +217,7 @@
     "href": "vignettes/articles/quarto_article-revealjs.html#conclusion",
     "title": "Advanced Quarto Article",
     "section": "8 Conclusion",
-    "text": "8 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages. The integration with pkgdown makes it easy to create professional package websites."
+    "text": "8 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages."
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#learn-more",
@@ -251,7 +251,7 @@
     "href": "vignettes/articles/quarto_article.html#overview",
     "title": "Advanced Quarto Article",
     "section": "1 Overview",
-    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for pkgdown articles. Unlike vignettes, articles are only available on the pkgdown website and are not included in the package bundle.",
+    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -342,7 +342,7 @@
     "href": "vignettes/articles/quarto_article.html#conclusion",
     "title": "Advanced Quarto Article",
     "section": "8 Conclusion",
-    "text": "8 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages. The integration with pkgdown makes it easy to create professional package websites.",
+    "text": "8 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -403,9 +403,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "{rpt} (R package template)",
+    "title": "rpt",
     "section": "",
-    "text": "The goal of {rpt} is to …\n\n\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code\n\n\n\n\n\nWhen building the pkgdown documentation site with pkgdown::build_site(), the function needs to download external JavaScript and CSS dependencies from CDNs (Content Delivery Networks). If you’re working in a restricted network environment, you’ll need to ensure access to the following CDNs:\n\nhttps://cdnjs.cloudflare.com/ - For headroom.js (sticky header functionality)\nhttps://cdn.jsdelivr.net/ - For bootstrap-toc.js (table of contents) and other Bootstrap dependencies\n\nWithout access to these CDNs, pkgdown::build_site() will fail with errors like:\nError: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'\nThese dependencies are automatically cached after the first download, so subsequent builds will be faster and won’t require network access unless the cache is cleared.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "text": "The goal of {rpt} is to …",
     "crumbs": [
       "Documentation",
       "Home"
@@ -414,9 +414,9 @@
   {
     "objectID": "index.html#installation",
     "href": "index.html#installation",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "You can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
+    "title": "rpt",
+    "section": "Installation",
+    "text": "Installation\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
     "crumbs": [
       "Documentation",
       "Home"
@@ -425,9 +425,9 @@
   {
     "objectID": "index.html#example",
     "href": "index.html#example",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "This is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
+    "title": "rpt",
+    "section": "Example",
+    "text": "Example\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
     "crumbs": [
       "Documentation",
       "Home"
@@ -436,9 +436,9 @@
   {
     "objectID": "index.html#development",
     "href": "index.html#development",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "When building the pkgdown documentation site with pkgdown::build_site(), the function needs to download external JavaScript and CSS dependencies from CDNs (Content Delivery Networks). If you’re working in a restricted network environment, you’ll need to ensure access to the following CDNs:\n\nhttps://cdnjs.cloudflare.com/ - For headroom.js (sticky header functionality)\nhttps://cdn.jsdelivr.net/ - For bootstrap-toc.js (table of contents) and other Bootstrap dependencies\n\nWithout access to these CDNs, pkgdown::build_site() will fail with errors like:\nError: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'\nThese dependencies are automatically cached after the first download, so subsequent builds will be faster and won’t require network access unless the cache is cleared.",
+    "title": "rpt",
+    "section": "Development",
+    "text": "Development\n\nBuilding the Documentation Site\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.",
     "crumbs": [
       "Documentation",
       "Home"
@@ -447,9 +447,9 @@
   {
     "objectID": "index.html#other-r-package-template-options",
     "href": "index.html#other-r-package-template-options",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "If you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
+    "title": "rpt",
+    "section": "Other R Package Template Options",
+    "text": "Other R Package Template Options\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
     "crumbs": [
       "Documentation",
       "Home"
@@ -458,9 +458,9 @@
   {
     "objectID": "index.html#code-of-conduct",
     "href": "index.html#code-of-conduct",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "Please note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "title": "rpt",
+    "section": "Code of Conduct",
+    "text": "Code of Conduct\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
     "crumbs": [
       "Documentation",
       "Home"
