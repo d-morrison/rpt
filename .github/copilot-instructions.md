@@ -81,10 +81,17 @@ covr::package_coverage()
 3. **`devtools::test()`** - Run all test suites to ensure tests pass
 4. **`devtools::check()`** - Run R CMD check to validate package structure and compliance
 5. **`altdoc::render_docs(verbose = TRUE)`** - **MANDATORY**: Build the full documentation website locally and inspect the output to ensure all documentation renders correctly, including vignettes, articles, and any special formats (e.g., RevealJS presentations)
+6. **`altdoc::preview_docs()`** - **MANDATORY BEFORE REVIEW**: Launch local preview server and visually inspect the rendered documentation in a browser to verify:
+   - All equations render correctly (check for LaTeX math symbols, not raw text or HTML)
+   - All code blocks display properly with syntax highlighting
+   - All images and figures load correctly  
+   - All links work (internal and external)
+   - Navigation sidebar functions properly
+   - Search functionality works
 
 These commands must be run in this order and all must pass without errors before pushing changes or requesting code review. This ensures that CI/CD workflows will pass and prevents wasting reviewer time on fixable issues.
 
-**IMPORTANT**: For changes affecting documentation or vignettes, you MUST build and visually inspect the altdoc site output (located in `docs/`) to verify that everything renders as expected. This is especially critical for multi-format documents or custom output formats.
+**IMPORTANT**: For changes affecting documentation or vignettes, you MUST build and visually inspect the documentation site output (located in `docs/`) to verify that everything renders as expected. **DO NOT REQUEST REVIEW** until you have personally verified the deployed documentation looks correct in a browser.
 
 ### Example Validation Workflow
 
@@ -97,8 +104,22 @@ lintr::lint_package()             # Verify code style
 altdoc::render_docs(verbose = TRUE)  # Build altdoc site to verify documentation
 
 # Manually inspect docs/ directory to verify rendering
-# Check docs/articles/*.html for correct output
-# Verify links, images, and special formats work correctly
+# Check docs/vignettes/*.md for correct output
+# Verify links and images work correctly
+
+# CRITICAL: Preview the site in a browser before requesting review
+altdoc::preview_docs()    # Launch preview server
+# Open browser and visually verify:
+# - Math equations render (not raw LaTeX or HTML)
+# - Code blocks have syntax highlighting
+# - All images display
+# - Navigation works
+# - Search works
+
+# Only commit and push if all checks pass AND visual inspection confirms correct rendering
+```
+# Check docs/vignettes/*.md for correct output
+# Verify links and images work correctly
 
 # Only commit and push if all checks pass AND visual inspection confirms correct rendering
 ```
@@ -125,6 +146,23 @@ altdoc::render_docs(verbose = TRUE)  # Build altdoc site to verify documentation
   - Use `@username` to credit **external** contributors only (not internal team members)
   - See [R Packages - NEWS.md](https://r-pkgs.org/other-markdown.html#sec-news) for details
 
+## Version Management
+
+**CRITICAL**: Always keep the development version ahead of the main branch version.
+
+- When working on a development branch, ensure the version in `DESCRIPTION` is higher than the version on `main`
+- Use the fourth component for development versions (e.g., `0.1.0.9000` for development following `0.1.0` release)
+- Before merging to `main`, update to a release version (e.g., `0.1.1`, `0.2.0`, etc.)
+- After merging a release to `main`, immediately bump the development version on the development branch
+
+### Version Numbering Guidelines
+
+- **Major version** (X.0.0): Breaking changes, major new features
+- **Minor version** (0.X.0): New features, backward compatible
+- **Patch version** (0.0.X): Bug fixes, backward compatible
+- **Development version** (0.0.0.X): Development work, not released
+
+See [R Packages - Version numbers](https://r-pkgs.org/lifecycle.html#sec-lifecycle-version-number) for details.
 ### Using Pipes to Emphasize Primary Inputs
 
 Use pipes (`|>` or `%>%`) to emphasize the primary input and make sequences of actions more readable:
@@ -167,7 +205,7 @@ Follow the guidance provided in the [UCD-SERG Lab Manual](https://ucd-serg.githu
 The template includes GitHub Actions workflows for:
 - R-CMD-check on multiple platforms
 - Test coverage reporting
-- pkgdown documentation deployment
+- altdoc documentation deployment
 - Spell checking
 - Linting
 - Version checking

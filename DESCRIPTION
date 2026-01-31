@@ -1,6 +1,6 @@
 Package: rpt
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9009
+Version: 0.0.0.9010
 Authors@R: c(
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
   )
@@ -17,14 +17,14 @@ Depends:
 Imports: 
     stats
 Suggests: 
+    altdoc,
     knitr,
     rmarkdown,
     spelling,
     testthat (>= 3.0.0),
     withr,
     quarto,
-    bslib,
-    altdoc
+    bslib
 Config/testthat/edition: 3
 VignetteBuilder: knitr, quarto
 Config/Needs/website: quarto

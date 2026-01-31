@@ -1,4 +1,5 @@
 inst/doc
 vignettes/*.html
 vignettes/*.R
-man/* linguist-generated
+README.md linguist-generated=true
+man/* linguist-generated=true
