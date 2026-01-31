@@ -20,7 +20,7 @@ on:
 jobs:
   copilot-setup-steps:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
 
@@ -44,7 +44,7 @@ jobs:
             libpng-dev \
             libtiff5-dev \
             libjpeg-dev
-      
+
       - name: Set up Pandoc
         uses: r-lib/actions/setup-pandoc@v2
 
@@ -53,7 +53,7 @@ jobs:
         with:
           r-version: 'release'
           use-public-rspm: true
-      
+
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
@@ -92,25 +92,29 @@ jobs:
           echo "These diagnostics provide information for Copilot to understand"
           echo "the current state of the package. Failures here do not fail the workflow."
           echo ""
-          
+
           echo "--- Linting with lintr::lint_package() ---"
           Rscript -e "lintr::lint_package()" || true
           echo ""
-          
+
           echo "--- Generating documentation with devtools::document() ---"
           Rscript -e "devtools::document()" || true
           echo ""
-          
+
           echo "--- Running tests with devtools::test() ---"
           Rscript -e "devtools::test()" || true
           echo ""
-          
+
           echo "--- Running R CMD check with devtools::check() ---"
           Rscript -e "devtools::check()" || true
           echo ""
-          
+
           echo "--- Rendering documentation with altdoc::render_docs(verbose = TRUE) ---"
           Rscript -e "altdoc::render_docs(verbose = TRUE)" || true
           echo ""
-          
+
+          echo "--- Rendering Readme.md from Readme.Rmd ---"
+          Rscript -e "rmarkdown::render("README.Rmd")" || true
+          echo ""
+
           echo "=== Package Diagnostics Complete ==="
