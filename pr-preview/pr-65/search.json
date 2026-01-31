@@ -403,9 +403,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "rpt",
+    "title": "{rpt} (R package template)",
     "section": "",
-    "text": "The goal of {rpt} is to …",
+    "text": "The goal of {rpt} is to …\n\n\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
     "crumbs": [
       "Documentation",
       "Home"
@@ -414,9 +414,9 @@
   {
     "objectID": "index.html#installation",
     "href": "index.html#installation",
-    "title": "rpt",
-    "section": "Installation",
-    "text": "Installation\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "You can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
     "crumbs": [
       "Documentation",
       "Home"
@@ -425,9 +425,9 @@
   {
     "objectID": "index.html#example",
     "href": "index.html#example",
-    "title": "rpt",
-    "section": "Example",
-    "text": "Example\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "This is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
     "crumbs": [
       "Documentation",
       "Home"
@@ -436,9 +436,9 @@
   {
     "objectID": "index.html#development",
     "href": "index.html#development",
-    "title": "rpt",
-    "section": "Development",
-    "text": "Development\n\nBuilding the Documentation Site\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "This package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.",
     "crumbs": [
       "Documentation",
       "Home"
@@ -447,9 +447,9 @@
   {
     "objectID": "index.html#other-r-package-template-options",
     "href": "index.html#other-r-package-template-options",
-    "title": "rpt",
-    "section": "Other R Package Template Options",
-    "text": "Other R Package Template Options\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "If you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
     "crumbs": [
       "Documentation",
       "Home"
@@ -458,9 +458,9 @@
   {
     "objectID": "index.html#code-of-conduct",
     "href": "index.html#code-of-conduct",
-    "title": "rpt",
-    "section": "Code of Conduct",
-    "text": "Code of Conduct\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "Please note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
     "crumbs": [
       "Documentation",
       "Home"
