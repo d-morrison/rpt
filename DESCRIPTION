@@ -25,7 +25,6 @@ Suggests:
     withr,
     quarto,
     bslib,
-    altdoc,
     badger
 Config/testthat/edition: 3
 VignetteBuilder: knitr, quarto
