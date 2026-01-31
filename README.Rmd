@@ -22,7 +22,7 @@ library(badger)
 cat(
   badge_github_actions(alt = "R-CMD-check", action = "R-CMD-check.yaml"),
   badge_codecov(alt = "Codecov test coverage", branch = "main"),
-  badge_codefactor(alt = "CodeFactor"),
+  badge_codefactor(alt = "CodeFactor", ref = "ucd-serg/rpt"), # case matters
   badge_cran_release(alt = "CRAN status"),
   badge_lifecycle(stage = "experimental", alt = "Lifecycle: experimental"),
   badge_cran_release(),
