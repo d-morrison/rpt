@@ -9,16 +9,9 @@ name: check-readme
 
 jobs:
   check-readme:
-    runs-on: ${{ matrix.config.os }}
-    container: ${{ matrix.config.os == 'ubuntu-latest' && 'rocker/verse:latest' || null }}
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - { os: ubuntu-latest, r: "release" }
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:latest
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
