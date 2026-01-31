@@ -454,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development">Development</a>
   <ul class="collapse">
-  <li><a href="#building-the-pkgdown-site" id="toc-building-the-pkgdown-site" class="nav-link" data-scroll-target="#building-the-pkgdown-site">Building the pkgdown Site</a></li>
+  <li><a href="#building-the-documentation-site" id="toc-building-the-documentation-site" class="nav-link" data-scroll-target="#building-the-documentation-site">Building the Documentation Site</a></li>
   </ul></li>
   <li><a href="#other-r-package-template-options" id="toc-other-r-package-template-options" class="nav-link" data-scroll-target="#other-r-package-template-options">Other R Package Template Options</a></li>
   <li><a href="#code-of-conduct" id="toc-code-of-conduct" class="nav-link" data-scroll-target="#code-of-conduct">Code of Conduct</a></li>
@@ -473,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rpt-r-package-template" class="level1">
 <h1><code>{rpt}</code> (<u>R</u> <u>p</u>ackage <u>t</u>emplate)</h1>
 <!-- badges: start -->
-<p><a href="https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml/badge.svg" class="img-fluid" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/ucd-serg/rpt"><img src="https://codecov.io/gh/ucd-serg/rpt/graph/badge.svg" class="img-fluid" alt="Codecov test coverage"></a> <a href="https://www.codefactor.io/repository/github/ucd-serg/rpt"><img src="https://www.codefactor.io/repository/github/ucd-serg/rpt/badge.png" class="img-fluid" alt="CodeFactor"></a> <a href="https://CRAN.R-project.org/package=rpt"><img src="https://www.r-pkg.org/badges/version/rpt.png" class="img-fluid" alt="CRAN status"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" class="img-fluid" alt="Lifecycle: experimental"></a> <!-- badges: end --></p>
+<p><a href="https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml/badge.svg" class="img-fluid" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/UCD-SERG/rpt"><img src="https://codecov.io/gh/UCD-SERG/rpt/graph/badge.svg" class="img-fluid" alt="Codecov test coverage"></a> <a href="https://www.codefactor.io/repository/github/ucd-serg/rpt"><img src="https://www.codefactor.io/repository/github/ucd-serg/rpt/badge.png" class="img-fluid" alt="CodeFactor"></a> <a href="https://CRAN.R-project.org/package=rpt"><img src="https://www.r-pkg.org/badges/version/rpt.png" class="img-fluid" alt="CRAN status"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" class="img-fluid" alt="Lifecycle: experimental"></a> <!-- badges: end --></p>
 <p>The goal of <code>{rpt}</code> is to …</p>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
@@ -489,16 +489,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="development" class="level2">
 <h2 class="anchored" data-anchor-id="development">Development</h2>
-<section id="building-the-pkgdown-site" class="level3">
-<h3 class="anchored" data-anchor-id="building-the-pkgdown-site">Building the pkgdown Site</h3>
-<p>When building the pkgdown documentation site with <code>pkgdown::build_site()</code>, the function needs to download external JavaScript and CSS dependencies from CDNs (Content Delivery Networks). If you’re working in a restricted network environment, you’ll need to ensure access to the following CDNs:</p>
-<ul>
-<li><code>https://cdnjs.cloudflare.com/</code> - For headroom.js (sticky header functionality)</li>
-<li><code>https://cdn.jsdelivr.net/</code> - For bootstrap-toc.js (table of contents) and other Bootstrap dependencies</li>
-</ul>
-<p>Without access to these CDNs, <code>pkgdown::build_site()</code> will fail with errors like:</p>
-<pre><code>Error: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'</code></pre>
-<p>These dependencies are automatically cached after the first download, so subsequent builds will be faster and won’t require network access unless the cache is cleared.</p>
+<section id="building-the-documentation-site" class="level3">
+<h3 class="anchored" data-anchor-id="building-the-documentation-site">Building the Documentation Site</h3>
+<p>This package uses <a href="https://altdoc.etiennebacher.com/">altdoc</a> with <a href="https://quarto.org/">Quarto</a> to build its documentation site. To build and preview the documentation locally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pkgload<span class="sc">::</span><span class="fu">load_all</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Render the documentation</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>altdoc<span class="sc">::</span><span class="fu">render_docs</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the site</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>altdoc<span class="sc">::</span><span class="fu">preview_docs</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.</p>
 </section>
 </section>
 <section id="other-r-package-template-options" class="level2">
