@@ -16,7 +16,7 @@ Replace `packagename` with your actual package name in:
 - [ ] `.Rbuildignore` (2 instances)
 - [ ] `.gitignore` (3 instances)
 - [ ] `README.Rmd` (multiple instances)
-- [ ] `pkgdown/_pkgdown.yml`
+- [ ] `altdoc/quarto_website.yml` (if needed for customization)
 - [ ] `.github/CONTRIBUTING.md`
 - [ ] `.github/ISSUE_TEMPLATE/issue_template.md`
 - [ ] `R/packagename-package.R` (rename file and update content)
@@ -68,17 +68,17 @@ Replace `packagename` with your actual package name in:
 
 - [ ] Enable GitHub Actions in repository settings
 - [ ] Set up Codecov (optional): add CODECOV_TOKEN secret
-- [ ] Enable GitHub Pages for pkgdown site
+- [ ] Enable GitHub Pages for altdoc site
 - [ ] Create initial release/tag when ready
 - [ ] Add repository topics/tags
 
 ## Documentation Website
 
-- [ ] Update `pkgdown/_pkgdown.yml` with your package structure
-- [ ] Organize functions into logical groups in reference section
-- [ ] Add/remove vignettes from articles section
-- [ ] Customize theme if desired
-- [ ] Build site locally: `pkgdown::build_site()`
+- [ ] Customize `altdoc/quarto_website.yml` if desired (theme, sidebar, etc.)
+- [ ] Organize functions and vignettes in the altdoc sidebar
+- [ ] Customize Quarto theme if desired
+- [ ] Build site locally: `pkgload::load_all(); altdoc::render_docs()`
+- [ ] Preview site locally: `altdoc::preview_docs()`
 
 ## Final Steps
 
@@ -86,7 +86,7 @@ Replace `packagename` with your actual package name in:
 - [ ] Commit all changes
 - [ ] Push to GitHub
 - [ ] Verify GitHub Actions workflows run successfully
-- [ ] Check pkgdown site is deployed correctly
+- [ ] Check altdoc site is deployed correctly
 - [ ] Create first issue/milestone for development
 - [ ] Invite collaborators if applicable
 

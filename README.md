@@ -1,9 +1,10 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `{rpt}` (<u>R</u> <u>p</u>ackage <u>t</u>emplate)
 
-<!-- badges: start -->
 
 [![R-CMD-check](https://github.com/UCD-SERG/rpt/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions)
 [![Codecov test
@@ -20,12 +21,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- badges: end -->
 
-The goal of `{rpt}` is to …
+The goal of `{rpt}` is to ...
 
 ## Installation
 
-You can install the development version of `{rpt}` from
-[GitHub](https://github.com/) with:
+You can install the development version of `{rpt}` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
@@ -36,6 +36,7 @@ pak::pak("UCD-SERG/rpt")
 
 This is a basic example which shows you how to solve a common problem:
 
+
 ``` r
 library(rpt)
 ## basic example code
@@ -43,39 +44,29 @@ library(rpt)
 
 ## Development
 
-### Building the pkgdown Site
+### Building the Documentation Site
 
-When building the pkgdown documentation site with
-`pkgdown::build_site()`, the function needs to download external
-JavaScript and CSS dependencies from CDNs (Content Delivery Networks).
-If you’re working in a restricted network environment, you’ll need to
-ensure access to the following CDNs:
+This package uses [altdoc](https://altdoc.etiennebacher.com/) with [Quarto](https://quarto.org/) to build its documentation site. To build and preview the documentation locally:
 
-- `https://cdnjs.cloudflare.com/` - For headroom.js (sticky header
-  functionality)
-- `https://cdn.jsdelivr.net/` - For bootstrap-toc.js (table of contents)
-  and other Bootstrap dependencies
+```r
+# Load the package
+pkgload::load_all()
 
-Without access to these CDNs, `pkgdown::build_site()` will fail with
-errors like:
+# Render the documentation
+altdoc::render_docs()
 
-    Error: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'
+# Preview the site
+altdoc::preview_docs()
+```
 
-These dependencies are automatically cached after the first download, so
-subsequent builds will be faster and won’t require network access unless
-the cache is cleared.
+The documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.
 
 ## Other R Package Template Options
 
-If you’re looking for alternative R package templates, you may also want
-to consider:
+If you're looking for alternative R package templates, you may also want to consider:
 
-- [r.pkg.template](https://github.com/insightsengineering/r.pkg.template/) -
-  A comprehensive R package template from Insights Engineering
+- [r.pkg.template](https://github.com/insightsengineering/r.pkg.template/) - A comprehensive R package template from Insights Engineering
 
 ## Code of Conduct
 
-Please note that the `{rpt}` project is released with a [Contributor
-Code of
-Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+Please note that the `{rpt}` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
