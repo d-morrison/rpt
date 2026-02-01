@@ -1,4 +1,4 @@
-# GitHub Copilot Setup Steps for R Package Template
+# GitHub Copilot Setup Steps
 #
 # This workflow configures the GitHub Copilot coding agent's environment
 # by preinstalling R and all required dependencies.
