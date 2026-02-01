@@ -17,6 +17,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![](http://cranlogs.r-pkg.org/badges/grand-total/rpt)](https://cran.r-project.org/package=rpt)
 [![](http://cranlogs.r-pkg.org/badges/last-month/rpt)](https://cran.r-project.org/package=rpt)
 [![](http://cranlogs.r-pkg.org/badges/last-week/rpt)](https://cran.r-project.org/package=rpt)
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://cran.r-project.org/web/licenses/MIT)
 
 <!-- badges: end -->
 
