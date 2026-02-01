@@ -146,7 +146,7 @@ jobs:
         with:
           source-dir: docs
           preview-branch: ${{ env.PREVIEW_BRANCH }}
-          comment: false
+          comment: "false"
           wait-for-pages-deployment: true
 
       # following https://github.com/rossjrw/pr-preview-action?tab=readme-ov-file#customise-the-sticky-comment:

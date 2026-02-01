@@ -209,6 +209,23 @@ For more details, see the [tidyverse style guide on pipes](https://style.tidyver
 
 Follow the guidance provided in the [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-manual/). The corresponding source files are available at [github.com/UCD-SERG/lab-manual](https://github.com/UCD-SERG/lab-manual) if easier to read.
 
+## Communication and Documentation
+
+### Explaining Changes in Pull Requests
+
+When making changes to code or workflows, **proactively explain your reasoning** in commit messages and PR descriptions:
+
+- **For version pinning decisions**: Explain whether you're using floating tags (e.g., `@v2`) vs. specific versions (e.g., `@v2.9.4`) and why
+- **For configuration changes**: Explain the rationale behind boolean vs. string values, or other non-obvious choices
+- **For workflow modifications**: Describe what problem you're solving and why your approach is the best solution
+- **For dependency updates**: Explain why you're updating and what benefits or fixes it brings
+
+**Example:**
+Instead of just changing `@v2.9.4` to `@v2`, include in your commit message or PR description:
+> "Using @v2 (moving tag) instead of @v2.9.4 (pinned version) to automatically receive bug fixes and updates within the v2 major version while maintaining stability."
+
+This proactive communication prevents reviewers from needing to ask clarifying questions and helps future maintainers understand the decisions made.
+
 ## Continuous Integration
 
 The template includes GitHub Actions workflows for:
