@@ -15,7 +15,7 @@ on:
       - 'altdoc/**'
       - 'vignettes/**'
       - '_quarto.yml'
-      - '.github/workflows/altdoc.yaml'
+      - '.github/workflows/docs.yaml'
       - 'README.md'
       - 'index.qmd'
   push:
