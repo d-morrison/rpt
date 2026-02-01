@@ -17,6 +17,7 @@ jobs:
       GITHUB_PAT: ${{ github.token }}
     permissions:
       pull-requests: read
+      contents: read # needed for private repos
 
     steps:
 
