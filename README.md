@@ -5,18 +5,19 @@
 
 <!-- badges: start -->
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/UCD-SERG/rpt/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/UCD-SERG/rpt/branch/main/graph/badge.svg)](https://app.codecov.io/gh/UCD-SERG/rpt)
 [![CodeFactor](https://www.codefactor.io/repository/github/ucd-serg/rpt/badge)](https://www.codefactor.io/repository/github/ucd-serg/rpt)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rpt)](https://cran.r-project.org/package=rpt)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![](https://www.r-pkg.org/badges/version/rpt)](https://cran.r-project.org/package=rpt)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/rpt)](https://cran.r-project.org/package=rpt)
 [![](http://cranlogs.r-pkg.org/badges/last-month/rpt)](https://cran.r-project.org/package=rpt)
 [![](http://cranlogs.r-pkg.org/badges/last-week/rpt)](https://cran.r-project.org/package=rpt)
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://cran.r-project.org/web/licenses/MIT)
 
 <!-- badges: end -->
 

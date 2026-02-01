@@ -20,15 +20,15 @@ knitr::opts_chunk$set(
 ```{r, echo = FALSE, message = FALSE, results='asis'}
 library(badger)
 cat(
+  badge_lifecycle(stage = "experimental", alt = "Lifecycle: experimental"),
   badge_github_actions(alt = "R-CMD-check", action = "R-CMD-check.yaml"),
   badge_codecov(alt = "Codecov test coverage", branch = "main"),
   badge_codefactor(alt = "CodeFactor", ref = "ucd-serg/rpt"), # case matters
   badge_cran_release(alt = "CRAN status"),
-  badge_lifecycle(stage = "experimental", alt = "Lifecycle: experimental"),
-  badge_cran_release(),
   badge_cran_download(type = "grand-total"),
   badge_cran_download(type = "last-month"),
-  badge_cran_download(type = "last-week")
+  badge_cran_download(type = "last-week"),
+  badger::badge_license()
 )
 ```
 
