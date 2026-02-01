@@ -94,7 +94,7 @@ jobs:
           echo ""
 
           echo "--- Linting with lintr::lint_package() ---"
-          Rscript -e "lintr::lint_package()" || true
+          Rscript -e "devtools::load_all(); lintr::lint_package()" || true
           echo ""
 
           echo "--- Generating documentation with devtools::document() ---"
