@@ -10,14 +10,15 @@ on:
       - reopened
       - synchronize
       - closed
-    paths:
-      - 'man/**'
-      - 'altdoc/**'
-      - 'vignettes/**'
-      - '_quarto.yml'
-      - '.github/workflows/docs.yaml'
-      - 'README.md'
-      - 'index.qmd'
+    # uncomment the following lines to restrict when this workflow runs:
+    # paths:
+    #   - 'man/**'
+    #   - 'altdoc/**'
+    #   - 'vignettes/**'
+    #   - '_quarto.yml'
+    #   - '.github/workflows/docs.yaml'
+    #   - 'README.md'
+    #   - 'index.qmd'
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'         # build on version tags
