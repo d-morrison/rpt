@@ -21,6 +21,15 @@ The repository includes a `.github/workflows/copilot-setup-steps.yml` workflow t
 3. Installs R package dependencies
 4. Verifies installation
 
+#### Skipping Setup Steps
+
+For pull requests that primarily edit workflows or other metadata rather than the main R package code, you can add the `skip-cp-setup` label to skip the heavy dependency installation steps. This allows Copilot to install dependencies on-the-fly as needed instead of pre-installing everything.
+
+When the `skip-cp-setup` label is present:
+- The workflow will only checkout the repository code
+- All dependency installation steps will be skipped
+- Copilot can still install specific dependencies as needed during task execution
+
 #### When to Use This Template
 
 1. Clone or use this repository as a template
