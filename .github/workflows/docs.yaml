@@ -15,7 +15,7 @@ on:
       - 'altdoc/**'
       - 'vignettes/**'
       - '_quarto.yml'
-      - '.github/workflows/altdoc.yaml'
+      - '.github/workflows/docs.yaml'
       - 'README.md'
       - 'index.qmd'
   push:
@@ -33,19 +33,19 @@ on:
         required: false
         default: ''
 
-name: altdoc
+name: docs
 
 env:
     PREVIEW_BRANCH: gh-pages
 
 jobs:
-  altdoc:
+  docs:
     runs-on: ubuntu-latest
     if: ${{ !(github.event_name == 'pull_request' && github.event.action == 'closed') }}
     timeout-minutes: 30
     # Only restrict concurrency for non-PR jobs
     concurrency:
-      group: altdoc-${{ github.event_name != 'pull_request' || github.run_id }}
+      group: docs-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
