@@ -1,4 +1,4 @@
-# GitHub Copilot Setup Steps for R Package Template
+# GitHub Copilot Setup Steps
 #
 # This workflow configures the GitHub Copilot coding agent's environment
 # by preinstalling R and all required dependencies.
@@ -118,7 +118,7 @@ jobs:
           echo ""
 
           echo "--- Linting with lintr::lint_package() ---"
-          Rscript -e "lintr::lint_package()" || true
+          Rscript -e "devtools::load_all(); lintr::lint_package()" || true
           echo ""
 
           echo "--- Generating documentation with devtools::document() ---"
@@ -138,7 +138,7 @@ jobs:
           echo ""
 
           echo "--- Rendering Readme.md from Readme.Rmd ---"
-          Rscript -e "rmarkdown::render("README.Rmd")" || true
+          Rscript -e "rmarkdown::render('README.Rmd')" || true
           echo ""
 
           echo "=== Package Diagnostics Complete ==="
