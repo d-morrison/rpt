@@ -114,7 +114,7 @@ jobs:
           echo ""
 
           echo "--- Rendering Readme.md from Readme.Rmd ---"
-          Rscript -e "rmarkdown::render("README.Rmd")" || true
+          Rscript -e "rmarkdown::render('README.Rmd')" || true
           echo ""
 
           echo "=== Package Diagnostics Complete ==="
