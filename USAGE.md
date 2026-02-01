@@ -144,7 +144,7 @@ The template includes these workflows:
 - **version-check**: Ensures version is incremented
 - **pr-commands**: Allows `/document` and `/style` commands in PRs
 - **R-check-docs**: Ensures documentation is up to date
-- **copilot-setup-steps**: Configures GitHub Copilot environment
+- **copilot-setup-steps**: Configures GitHub Copilot environment (add `skip-cp-setup` label to skip setup for workflow/metadata PRs)
 
 ### pkgdown PR Preview Comments
 
