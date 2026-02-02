@@ -5,8 +5,6 @@ format:
   revealjs:
     output-file: quarto_vignette-revealjs.html
   docx: default
-filters:
-  - slidebreak
 vignette: >
   %\VignetteIndexEntry{Quarto Vignette Example}
   %\VignetteEngine{quarto::html}
@@ -38,8 +36,6 @@ Quarto offers several advantages over traditional R Markdown:
 3. **Modern syntax**: Cleaner YAML and chunk options using `#|` syntax
 4. **Better publishing**: Improved website and book publishing capabilities
 
-{{< slidebreak >}}
-
 ## Basic Example
 
 Here's a basic example using the package:
@@ -64,8 +60,6 @@ This is a callout block that highlights important information.
 ::: {.callout-tip}
 Quarto supports multiple types of callouts: note, tip, warning, important, and caution.
 :::
-
-{{< slidebreak >}}
 
 ### Code Chunks with Modern Syntax
 

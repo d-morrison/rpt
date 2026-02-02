@@ -6,6 +6,12 @@ A Quarto shortcode extension that inserts an untitled slide break in presentatio
 
 This extension is included in the repository. It will be automatically available when rendering Quarto documents in this project.
 
+## When to Use
+
+Use this extension when you need to create presentations (RevealJS or PowerPoint) from Quarto documents and want to insert slide breaks without titles. This is particularly useful for separating content into distinct slides during presentations.
+
+**Note**: This extension only affects presentation formats. When rendering to HTML or DOCX for documentation, the shortcode has no effect.
+
 ## Usage
 
 Add the extension to your document's YAML frontmatter:
