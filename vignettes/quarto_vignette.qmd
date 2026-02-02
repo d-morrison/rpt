@@ -5,6 +5,8 @@ format:
   revealjs:
     output-file: quarto_vignette-revealjs.html
   docx: default
+filters:
+  - slidebreak
 vignette: >
   %\VignetteIndexEntry{Quarto Vignette Example}
   %\VignetteEngine{quarto::html}
@@ -35,6 +37,8 @@ Quarto offers several advantages over traditional R Markdown:
 2. **Multiple engines**: Works with R, Python, Julia, and Observable
 3. **Modern syntax**: Cleaner YAML and chunk options using `#|` syntax
 4. **Better publishing**: Improved website and book publishing capabilities
+
+{{< slidebreak >}}
 
 ## Basic Example
 
