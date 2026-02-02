@@ -25,6 +25,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
+      actions: read
 
     timeout-minutes: 55
 
@@ -142,3 +143,11 @@ jobs:
           echo ""
 
           echo "=== Package Diagnostics Complete ==="
+
+      - name: Download workflow logs from recent commits
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "=== Downloading Workflow Logs ==="
+          bash .github/scripts/download-workflow-logs.sh
