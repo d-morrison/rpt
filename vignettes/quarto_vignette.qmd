@@ -61,6 +61,8 @@ This is a callout block that highlights important information.
 Quarto supports multiple types of callouts: note, tip, warning, important, and caution.
 :::
 
+{{< slidebreak >}}
+
 ### Code Chunks with Modern Syntax
 
 You can use the modern `#|` syntax for chunk options:
