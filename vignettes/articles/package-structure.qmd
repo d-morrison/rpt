@@ -157,7 +157,46 @@ In well-designed packages, you typically see:
 1. **Clear hierarchy**: Lower-level utility functions are called by higher-level API functions
 2. **Limited cross-dependencies**: Functions in the same "layer" don't call each other excessively
 3. **Focused functions**: Each function has a clear purpose with limited dependencies
+
+In the `rpt` package, we can see this pattern:
+
+- `validate_input()` is a low-level helper (no package dependencies)
+- `clean_data()` calls `validate_input()` 
+- `calculate_statistic()` calls `clean_data()`
+- `format_result()` is a low-level formatter (no package dependencies)
+- `example_function()` is a high-level API that calls `calculate_statistic()` and `format_result()`
+- `calculate_summary()` is another high-level API that calls `clean_data()` and `example_function()`
+
+This creates a clear layered architecture with well-separated concerns.
 :::
+
+## Package Architecture
+
+### Current Structure
+
+Let's examine the actual structure of the `rpt` package:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+# List all functions in the package
+pkg_functions <- ls(asNamespace("rpt"))
+cat("Package functions:\n")
+cat(paste("-", sort(pkg_functions), collapse = "\n"))
+```
+
+The dependency relationships are:
+
+- **Exported functions** (user-facing API):
+  - `example_function()`: Calls `calculate_statistic()` → `format_result()`
+  - `calculate_summary()`: Calls `clean_data()` → `example_function()`
+
+- **Internal functions** (implementation details):
+  - `validate_input()`: No package dependencies (leaf function)
+  - `clean_data()`: Calls `validate_input()`
+  - `calculate_statistic()`: Calls `clean_data()`
+  - `format_result()`: No package dependencies (leaf function)
+
+This architecture demonstrates good separation of concerns with clear data flow from validation through cleaning to calculation and formatting.
 
 ## Advanced Usage
 
@@ -232,31 +271,35 @@ Include dependency graphs in:
 When adding new functions or modifying dependencies, regenerate the foodweb graphs to keep documentation current. Consider adding automated checks in your CI/CD pipeline.
 :::
 
-## Example: Growing Package
+## Exploring Specific Functions
 
-As this package grows, the dependency graph will become more interesting. Here's a hypothetical example of what it might look like with additional functions:
+You can focus on specific functions to understand their dependencies:
 
-::: {.callout-note collapse="true"}
-## Hypothetical Example
+### Example Function Dependencies
 
-Imagine we add these functions:
-
-- `validate_input()` - Input validation helper
-- `calculate_statistic()` - Main calculation function
-- `format_output()` - Output formatting function
-- `example_function()` - High-level API function (existing)
-
-With `example_function()` calling `validate_input()`, `calculate_statistic()`, and `format_output()`, and `calculate_statistic()` calling `stats::median()`, the dependency graph would show:
-
-```
-example_function() -> { validate_input(), calculate_statistic(), format_output() }
-calculate_statistic() -> { stats::median() }
-validate_input()
-format_output()
+```{r}
+#| label: fig-example-function
+#| fig-cap: "Dependency graph for example_function showing all related functions"
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+fw_example <- foodweb(FUN = example_function)
+plot(fw_example)
 ```
 
-This would clearly show that `example_function()` is the main entry point, with well-separated concerns for validation, calculation, and formatting.
-:::
+### Summary Function Dependencies
+
+```{r}
+#| label: fig-summary-function
+#| fig-cap: "Dependency graph for calculate_summary showing its relationships"
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+fw_summary <- foodweb(FUN = calculate_summary)
+plot(fw_summary)
+```
+
+These focused views help understand:
+
+- What functions a specific function depends on (its dependencies)
+- What functions depend on a specific function (its dependents)
+- The complete call chain for a given function
 
 ## Best Practices
 
@@ -286,7 +329,12 @@ This article demonstrated how to use `foodwebr` to visualize and understand pack
 - Integration with `tidygraph` enables advanced graph analysis
 - Regular visualization helps maintain clean architecture
 
-As the `rpt` package grows, these visualization tools will become increasingly valuable for understanding and maintaining the codebase.
+The `rpt` package demonstrates a clean layered architecture with:
+- Low-level utility functions (`validate_input`, `format_result`)
+- Mid-level processing functions (`clean_data`, `calculate_statistic`)
+- High-level API functions (`example_function`, `calculate_summary`)
+
+This structure makes the code easier to understand, test, and maintain.
 
 ## References
 
