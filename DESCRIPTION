@@ -18,6 +18,7 @@ Imports:
     stats
 Suggests: 
     altdoc,
+    foodwebr,
     knitr,
     rmarkdown,
     spelling,
