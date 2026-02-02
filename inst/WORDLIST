@@ -2,9 +2,12 @@ CMD
 Callouts
 CodeFactor
 Codecov
+DOCX
 Lifecycle
 MathJax
 RevealJS
+Shortcode
+Slidebreak
 Tabsets
 ackage
 altdoc
@@ -14,9 +17,12 @@ cdot
 emplate
 foldable
 frac
+frontmatter
 linter
 lintr
 mc
 pkgdown
 serodynamics
+shortcode
+slidebreak
 tabset
