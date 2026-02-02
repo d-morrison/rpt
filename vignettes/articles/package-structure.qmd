@@ -329,9 +329,9 @@ This article demonstrated how to use `foodwebr` to visualize and understand pack
 - Regular visualization helps maintain clean architecture
 
 The `rpt` package demonstrates a clean layered architecture with:
-- Low-level utility functions (`validate_input`, `format_result`)
-- Mid-level processing functions (`clean_data`, `calculate_statistic`)
-- High-level API functions (`example_function`, `calculate_summary`)
+- Low-level utility functions (`validate_input()`, `format_result()`)
+- Mid-level processing functions (`clean_data()`, `calculate_statistic()`)
+- High-level API functions (`example_function()`, `calculate_summary()`)
 
 This structure makes the code easier to understand, test, and maintain.
 
