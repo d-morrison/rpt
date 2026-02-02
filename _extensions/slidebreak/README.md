@@ -53,7 +53,7 @@ Here's the main content on a new slide.
 
 In RevealJS or PowerPoint, this will create:
 1. A slide titled "Introduction" with content
-2. An untitled slide break
+2. A new blank/untitled slide (from the slidebreak)
 3. A slide titled "Main Content"
 
 In HTML or DOCX, the slidebreak has no effect, and content flows normally.
