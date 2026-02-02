@@ -16,5 +16,3 @@ format:
     number-sections: true
     number-depth: 2
     fig-cap-location: top
-  docx:
-    number-sections: true

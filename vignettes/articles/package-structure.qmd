@@ -2,12 +2,10 @@
 title: "Package Function Structure"
 author: "UC Davis Seroepidemiology Research Group (UCD-SERG)"
 date: "`r Sys.Date()`"
-prefer-html: true
 format:
   revealjs:
     output-file: package-structure-revealjs.html
   html: default
-  docx: default
 ---
 
 ```{r}
