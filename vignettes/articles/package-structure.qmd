@@ -217,7 +217,6 @@ if (requireNamespace("tidygraph", quietly = TRUE)) {
 You can pass additional arguments to customize the graph appearance:
 
 ```{r}
-#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
 #| eval: false
 # These arguments are passed to DiagrammeR::grViz()
 plot(fw_pkg, 

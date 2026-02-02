@@ -16,6 +16,12 @@ test_that("calculate_summary handles NA values", {
 
 test_that("calculate_summary handles errors", {
   expect_error(calculate_summary(character()), "Input must be numeric")
-  expect_error(calculate_summary(numeric()), "Input must have at least one element")
-  expect_error(calculate_summary(c(NA_real_, NA_real_, NA_real_)), "Input cannot be all NA values")
+  expect_error(
+    calculate_summary(numeric()),
+    "Input must have at least one element"
+  )
+  expect_error(
+    calculate_summary(c(NA_real_, NA_real_, NA_real_)),
+    "Input cannot be all NA values"
+  )
 })

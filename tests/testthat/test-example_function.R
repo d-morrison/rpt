@@ -7,6 +7,12 @@ test_that("example_function works", {
 
 test_that("example_function handles errors", {
   expect_error(example_function(character()), "Input must be numeric")
-  expect_error(example_function(numeric()), "Input must have at least one element")
-  expect_error(example_function(c(NA_real_, NA_real_, NA_real_)), "Input cannot be all NA values")
+  expect_error(
+    example_function(numeric()),
+    "Input must have at least one element"
+  )
+  expect_error(
+    example_function(c(NA_real_, NA_real_, NA_real_)),
+    "Input cannot be all NA values"
+  )
 })
