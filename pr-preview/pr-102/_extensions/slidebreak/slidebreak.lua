@@ -6,9 +6,10 @@ function slidebreak()
   -- Get the current output format
   local format = quarto.doc.is_format
   
-  -- Insert slide break (---) for revealjs and powerpoint/pptx formats
+  -- Insert slide break for revealjs and powerpoint/pptx formats
   if format("revealjs") or format("pptx") or format("powerpoint") then
-    return pandoc.RawBlock('markdown', '---')
+    -- Use HorizontalRule which creates a slide separator in RevealJS
+    return pandoc.HorizontalRule()
   end
   
   -- Return empty for html and docx formats (and any other format)
