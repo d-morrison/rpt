@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
   fig.width = 7,
   fig.height = 5
 )
+# Check if we're rendering to a format that supports HTML widgets
+is_html_output <- knitr::is_html_output()
 ```
 
 ```{r setup}
@@ -80,7 +82,7 @@ The `plot()` method creates an interactive visualization using DiagrammeR:
 ```{r}
 #| label: fig-basic-foodweb
 #| fig-cap: "Basic function dependency graph for example_function"
-#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
 plot(fw)
 ```
 
@@ -123,7 +125,7 @@ fw_pkg
 ```{r}
 #| label: fig-package-foodweb
 #| fig-cap: "Complete dependency graph for all package functions"
-#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
 plot(fw_pkg)
 ```
 
@@ -278,7 +280,7 @@ You can focus on specific functions to understand their dependencies:
 ```{r}
 #| label: fig-example-function
 #| fig-cap: "Dependency graph for example_function showing all related functions"
-#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
 fw_example <- foodweb(FUN = example_function)
 plot(fw_example)
 ```
@@ -288,7 +290,7 @@ plot(fw_example)
 ```{r}
 #| label: fig-summary-function
 #| fig-cap: "Dependency graph for calculate_summary showing its relationships"
-#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
 fw_summary <- foodweb(FUN = calculate_summary)
 plot(fw_summary)
 ```
