@@ -32,3 +32,4 @@
 ^vignettes/articles$
 ^index\.qmd$
 ^\.Rprofile$
+^_extensions$

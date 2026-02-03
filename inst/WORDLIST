@@ -3,10 +3,13 @@ Callouts
 CodeFactor
 Codecov
 DiagrammeR
+DOCX
 Lifecycle
 MathJax
 README
 RevealJS
+Shortcode
+Slidebreak
 Tabsets
 ackage
 altdoc
@@ -21,10 +24,13 @@ foodwebr
 formatter
 frac
 graphviz
+frontmatter
 linter
 lintr
 mc
 pkgdown
 serodynamics
+shortcode
+slidebreak
 tabset
 tidygraph
