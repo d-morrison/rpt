@@ -16,4 +16,17 @@ rpt*.tgz
 **/*.quarto_ipynb
 vignettes/*.pdf
 vignettes/*.tex
+vignettes/*_files/
+vignettes/*.html
+vignettes/articles/*_files/
+vignettes/articles/*.html
 README.html
+
+/.quarto/
+altdoc/freeze.rds
+*.Rout.save
+*.Rout
+_quarto/*
+!_quarto/_freeze/
+*.docx
+*.knit.md

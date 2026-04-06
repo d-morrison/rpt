@@ -1,3 +1,4 @@
+# Workflow derived from https://github.com/RMI-PACTA/actions/blob/main/.github/workflows/R-semver-check.yml
 ---
 on:
   pull_request:
@@ -16,11 +17,13 @@ jobs:
       GITHUB_PAT: ${{ github.token }}
     permissions:
       pull-requests: read
+      contents: read # needed for private repos
 
     steps:
 
       - name: Check if version increment is required
         id: check_label
+        shell: bash
         run: |
           if [[ '${{ contains(github.event.pull_request.labels.*.name, 'no version increment') }}' == 'true' ]]; then
             echo "Version increment not required (label present)"
@@ -72,5 +75,8 @@ jobs:
             message('PR branch version: ', working_version); \
             compare_version <- desc::desc_get_version('compare/DESCRIPTION'); \
             message('main branch version: ', compare_version); \
-            stopifnot(working_version > compare_version); \
+            if (working_version <= compare_version) { \
+              message('Call usethis::use_version() in the R Console to increment the \"dev\" version number.'); \
+              stopifnot(working_version > compare_version); \
+            } else message('All set!'); \
           "

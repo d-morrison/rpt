@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^r\.package\.template\.Rcheck$
@@ -12,6 +14,7 @@
 ^\.github$
 ^LICENSE\.md$
 ^\.lintr$
+^\.lintr\.R$
 ^_quarto\.yml$
 ^\.quarto$
 ^vignettes/\.quarto$
@@ -20,3 +23,13 @@
 ^CODE_OF_CONDUCT\.md$
 ^USAGE\.md$
 ^TEMPLATE_INFO\.md$
+^altdoc$
+^_quarto$
+^CONTRIBUTING\.md$
+^vignettes/*_files$
+^vignettes/articles/\.quarto$
+^vignettes/articles/*_files$
+^vignettes/articles$
+^index\.qmd$
+^\.Rprofile$
+^_extensions$

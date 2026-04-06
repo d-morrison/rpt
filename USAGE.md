@@ -16,7 +16,7 @@ This guide walks you through using this R package template to create your own pa
    - `.Rbuildignore`
    - `.gitignore`
    - `README.Rmd`
-   - `pkgdown/_pkgdown.yml`
+   - `altdoc/quarto_website.yml` (if needed for customization)
    - `.github/CONTRIBUTING.md`
    - `.github/ISSUE_TEMPLATE/issue_template.md`
    - Rename `packagename.Rproj` to `yourpackage.Rproj`
@@ -136,7 +136,7 @@ The template includes these workflows:
 
 - **R-CMD-check**: Checks package on multiple platforms
 - **test-coverage**: Computes test coverage
-- **pkgdown**: Builds and deploys documentation website
+- **altdoc**: Builds and deploys documentation website
 - **check-readme**: Ensures README.md is up to date
 - **check-spelling**: Checks spelling in documentation
 - **lint-changed-files**: Lints code in pull requests
@@ -144,7 +144,36 @@ The template includes these workflows:
 - **version-check**: Ensures version is incremented
 - **pr-commands**: Allows `/document` and `/style` commands in PRs
 - **R-check-docs**: Ensures documentation is up to date
-- **copilot-setup-steps**: Configures GitHub Copilot environment
+- **copilot-setup-steps**: Configures GitHub Copilot environment (add `skip-cp-setup` label to skip setup for workflow/metadata PRs)
+
+### pkgdown PR Preview Comments
+
+The **pkgdown** workflow automatically posts a comment on pull requests with a link to the preview documentation. This comment behavior can be configured in `.github/workflows/pkgdown.yaml`:
+
+**Current configuration** (recommended):
+```yaml
+- name: Notify pkgdown deployment
+  uses: hasura/comment-progress@v2.2.0
+  with:
+    id: pkgdown-deploy
+    recreate: true  # Deletes old comment and creates new one at bottom of PR
+```
+
+**Alternative options:**
+
+1. **`recreate: true`** (current setting):
+   - Deletes any existing preview comment
+   - Creates a new comment at the bottom of the PR conversation
+   - Ensures the preview link is always visible and never gets hidden in collapsed sections
+   - Best for: Keeping preview easily accessible in long PR conversations
+
+2. **`append: false`** (previous setting):
+   - Updates the existing comment in place
+   - Comment stays at its original position in the conversation
+   - May get hidden when GitHub collapses old comments in long threads
+   - Best for: Minimal comment clutter, but preview may become hard to find
+
+Choose `recreate: true` if you want the preview link to always be visible at the end of the PR conversation, or `append: false` if you prefer to minimize the number of comments and don't mind searching for the preview link.
 
 ## Best Practices
 
@@ -169,12 +198,12 @@ Add dependencies to DESCRIPTION:
 - **Suggests**: Optional packages (for tests, vignettes)
 - **Depends**: Packages that must be attached (rarely needed)
 
-### Configuring pkgdown
+### Configuring altdoc
 
-Edit `pkgdown/_pkgdown.yml` to customize your documentation website:
-- Add/remove reference sections
-- Organize articles
-- Customize theme
+Customize your documentation website by editing files in `altdoc/`:
+- `quarto_website.yml`: Configure Quarto site settings, theme, sidebar, and navigation
+- Build site locally: `pkgload::load_all(); altdoc::render_docs()`
+- Preview site: `altdoc::preview_docs()`
 
 ## Getting Help
 
