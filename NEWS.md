@@ -1,5 +1,7 @@
 # rpt (development version)
 
+* Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) using the Quarto `slides` format alias (#103)
+
 * Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.
 * Removed pkgdown-specific configurations and workflows.
 * Retained RevealJS multi-format support for Quarto vignettes and articles.
