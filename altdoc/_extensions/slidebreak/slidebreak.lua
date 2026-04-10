@@ -4,10 +4,12 @@
 
 function slidebreak()
   -- Get the current output format
+  -- See: https://quarto.org/docs/extensions/lua-api.html#format-detection
   local format = quarto.doc.is_format
   
   -- Insert slide break for all slide/presentation formats
   -- The "slides" alias matches revealjs, pptx, beamer, and any future slide formats
+  -- See: https://quarto.org/docs/extensions/lua-api.html#format-detection
   if format("slides") then
     -- Use HorizontalRule which creates a slide separator in presentation formats
     return pandoc.HorizontalRule()
