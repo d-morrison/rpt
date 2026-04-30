@@ -1,5 +1,6 @@
 # rpt (development version)
 
+* Installed Quarto extensions for enhanced documentation: `d-morrison/div-anchors` (permalink anchors for theorem/proof divs), `d-morrison/equation-anchors` (permalink anchors for equations), and `sun123zxy/callouty-theorem` (render theorems as callout blocks). Added callouty-theorem YAML settings based on `d-morrison/rme`.
 * Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.
 * Removed pkgdown-specific configurations and workflows.
 * Retained RevealJS multi-format support for Quarto vignettes and articles.
