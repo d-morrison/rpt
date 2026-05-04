@@ -219,6 +219,77 @@ print(result) # <4>
 3. Apply the example function from the package
 4. Display the results
 
+## Theorem Environments
+
+The `callouty-theorem` extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.
+
+### Definitions and Theorems
+
+::: {#def-se}
+## Standard Error
+
+The **standard error** of the mean for a sample of size $n$ with standard deviation $s$ is:
+
+$$SE = \frac{s}{\sqrt{n}}$$
+:::
+
+::: {#thm-clt}
+## Central Limit Theorem
+
+Let $X_1, X_2, \ldots, X_n$ be independent and identically distributed random variables with mean $\mu$ and finite variance $\sigma^2$. Then as $n \to \infty$:
+
+$$\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1)$$
+:::
+
+::: {.proof}
+See any standard probability textbook.
+:::
+
+### Lemmas and Corollaries
+
+::: {#lem-var-sum}
+## Variance of a Sum
+
+For independent random variables $X$ and $Y$:
+
+$$\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$$
+:::
+
+::: {#cor-se-clt}
+## Confidence Interval from CLT
+
+By @thm-clt and @def-se, an approximate 95% confidence interval for $\mu$ is:
+
+$$\bar{x} \pm 1.96 \cdot SE$$
+:::
+
+### Examples and Exercises
+
+::: {#exm-ci}
+## 95% Confidence Interval
+
+For the sample below, we calculate a 95% confidence interval for the mean:
+
+```{r}
+set.seed(42)
+sample_vals <- rnorm(50, mean = 5, sd = 2)
+n <- length(sample_vals)
+se <- sd(sample_vals) / sqrt(n)
+ci <- mean(sample_vals) + c(-1, 1) * 1.96 * se
+cat(sprintf("Mean = %.3f, 95%% CI: [%.3f, %.3f]\n", mean(sample_vals), ci[1], ci[2]))
+```
+:::
+
+::: {#exr-se}
+## Exercise: Computing Standard Error
+
+Compute the standard error for a sample of size $n = 100$ with sample standard deviation $s = 15$.
+:::
+
+::: {.solution}
+$$SE = \frac{15}{\sqrt{100}} = \frac{15}{10} = 1.5$$
+:::
+
 ## Mathematical Notation
 
 Quarto excels at mathematical notation. Here's an example of a statistical formula:
