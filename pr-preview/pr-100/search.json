@@ -526,7 +526,7 @@
     "href": "man/rpt-package.html",
     "title": "rpt",
     "section": "",
-    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
+    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\nAuthors:\n\n\nFirst Last first.last@example.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
     "crumbs": [
       "Documentation",
       "Reference",
@@ -538,7 +538,7 @@
     "href": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
     "title": "rpt",
     "section": "",
-    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
+    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\nAuthors:\n\n\nFirst Last first.last@example.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
     "crumbs": [
       "Documentation",
       "Reference",
