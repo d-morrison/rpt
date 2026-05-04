@@ -83,6 +83,38 @@ plot(sample_data,
      col = "steelblue")
 ```
 
+## Theorem Environments
+
+Quarto supports theorem and proof environments that integrate with the `callouty-theorem` extension to render as styled callout blocks.
+
+::: {#def-mean}
+## Sample Mean
+
+The **sample mean** of observations $x_1, x_2, \ldots, x_n$ is:
+
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+:::
+
+::: {#thm-mean-unbiased}
+## Unbiasedness of the Sample Mean
+
+The sample mean $\bar{x}$ is an unbiased estimator of the population mean $\mu$:
+
+$$E[\bar{x}] = \mu$$
+:::
+
+::: {.proof}
+By linearity of expectation:
+$$E[\bar{x}] = E\!\left[\frac{1}{n}\sum_{i=1}^{n} x_i\right] = \frac{1}{n}\sum_{i=1}^{n} E[x_i] = \frac{1}{n} \cdot n\mu = \mu. \qquad \square$$
+:::
+
+::: {#exm-mean-calc}
+## Computing the Sample Mean
+
+For the data $\{1, 2, 3, 4, 5\}$:
+$$\bar{x} = \frac{1+2+3+4+5}{5} = 3$$
+:::
+
 ## Equations
 
 Quarto has excellent support for mathematical equations using LaTeX syntax:

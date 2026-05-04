@@ -10,11 +10,13 @@ example_function(x)
 \item{x}{A numeric vector}
 }
 \value{
-The median of the input vector
+The median of the input vector, rounded to 2 decimal places
 }
 \description{
 This is an example function that demonstrates basic functionality.
+It validates, cleans, calculates statistics, and formats the result.
 }
 \examples{
 example_function(c(1, 2, 3, 4, 5))
+example_function(c(1, NA, 3, 4, 5))
 }
