@@ -1,5 +1,14 @@
 # rpt (development version)
 
+* Added demonstration of mathematical notation in roxygen2 comments, showing both cross-format compatible syntax (`\eqn{}`, `\deqn{}`) and HTML-only LaTeX notation (`$$`, `$`)
+* Installed Quarto extensions for enhanced documentation: `d-morrison/div-anchors` (permalink anchors for theorem/proof divs), `d-morrison/equation-anchors` (permalink anchors for equations), and `sun123zxy/callouty-theorem` (render theorems as callout blocks). Added callouty-theorem YAML settings based on `d-morrison/rme`.
+* Added package structure visualization article using foodwebr to demonstrate function dependencies and call graphs
+* Created layered helper function architecture for realistic foodwebr demonstrations
+* Added `calculate_summary()` function for computing summary statistics
+
+* Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.
+* Removed pkgdown-specific configurations and workflows.
+* Retained RevealJS multi-format support for Quarto vignettes and articles.
 * Fixed index page rendering by switching from `index.md` to `index.qmd` to properly process Quarto include directive (#58)
 * Switched from `pkgdown` to `altdoc` (#45)
 * Updated lintr configuration to match serodynamics reference with enhanced linter rules

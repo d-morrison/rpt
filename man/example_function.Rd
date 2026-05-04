@@ -10,11 +10,15 @@ example_function(x)
 \item{x}{A numeric vector}
 }
 \value{
-The median of the input vector
+The median of the input vector, rounded to 2 decimal places
 }
 \description{
-This is an example function that demonstrates basic functionality and
-various ways to include mathematical notation in roxygen2 documentation.
+This is an example function that demonstrates basic functionality.
+It validates, cleans, calculates statistics, and formats the result.
+}
+\details{
+This function also demonstrates various ways to include mathematical
+notation in roxygen2 documentation.
 }
 \section{Mathematical Notation in roxygen2}{
 \subsection{Using \verb{\eqn{}} for inline math (works in all formats)}{
@@ -43,4 +47,5 @@ In general, the median minimizes $\sum_{i=1}^{n} |x_i - m|$.
 
 \examples{
 example_function(c(1, 2, 3, 4, 5))
+example_function(c(1, NA, 3, 4, 5))
 }

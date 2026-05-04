@@ -5,8 +5,6 @@ format:
   revealjs:
     output-file: quarto_vignette-revealjs.html
   docx: default
-pkgdown:
-  as_is: true
 vignette: >
   %\VignetteIndexEntry{Quarto Vignette Example}
   %\VignetteEngine{quarto::html}
@@ -38,6 +36,8 @@ Quarto offers several advantages over traditional R Markdown:
 3. **Modern syntax**: Cleaner YAML and chunk options using `#|` syntax
 4. **Better publishing**: Improved website and book publishing capabilities
 
+{{< slidebreak >}}
+
 ## Basic Example
 
 Here's a basic example using the package:
@@ -63,6 +63,8 @@ This is a callout block that highlights important information.
 Quarto supports multiple types of callouts: note, tip, warning, important, and caution.
 :::
 
+{{< slidebreak >}}
+
 ### Code Chunks with Modern Syntax
 
 You can use the modern `#|` syntax for chunk options:
@@ -80,6 +82,38 @@ plot(sample_data,
      pch = 19,
      col = "steelblue")
 ```
+
+## Theorem Environments
+
+Quarto supports theorem and proof environments that integrate with the `callouty-theorem` extension to render as styled callout blocks.
+
+::: {#def-mean}
+## Sample Mean
+
+The **sample mean** of observations $x_1, x_2, \ldots, x_n$ is:
+
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+:::
+
+::: {#thm-mean-unbiased}
+## Unbiasedness of the Sample Mean
+
+The sample mean $\bar{x}$ is an unbiased estimator of the population mean $\mu$:
+
+$$E[\bar{x}] = \mu$$
+:::
+
+::: {.proof}
+By linearity of expectation:
+$$E[\bar{x}] = E\!\left[\frac{1}{n}\sum_{i=1}^{n} x_i\right] = \frac{1}{n}\sum_{i=1}^{n} E[x_i] = \frac{1}{n} \cdot n\mu = \mu. \qquad \square$$
+:::
+
+::: {#exm-mean-calc}
+## Computing the Sample Mean
+
+For the data $\{1, 2, 3, 4, 5\}$:
+$$\bar{x} = \frac{1+2+3+4+5}{5} = 3$$
+:::
 
 ## Equations
 
@@ -106,7 +140,7 @@ $$
 
 ## Summary
 
-Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation.
+Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with documentation systems and offer enhanced capabilities for technical documentation.
 
 ## References
 

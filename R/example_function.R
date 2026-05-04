@@ -1,7 +1,10 @@
 #' Example Function with Mathematical Notation
 #'
-#' This is an example function that demonstrates basic functionality and
-#' various ways to include mathematical notation in roxygen2 documentation.
+#' This is an example function that demonstrates basic functionality.
+#' It validates, cleans, calculates statistics, and formats the result.
+#'
+#' This function also demonstrates various ways to include mathematical
+#' notation in roxygen2 documentation.
 #'
 #' # Mathematical Notation in roxygen2
 #'
@@ -26,11 +29,13 @@
 #'
 #' @param x A numeric vector
 #'
-#' @return The median of the input vector
+#' @return The median of the input vector, rounded to 2 decimal places
 #' @export
 #'
 #' @examples
 #' example_function(c(1, 2, 3, 4, 5))
+#' example_function(c(1, NA, 3, 4, 5))
 example_function <- function(x) {
-  stats::median(x)
+  result <- calculate_statistic(x)
+  format_result(result)
 }

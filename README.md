@@ -5,14 +5,20 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/ucd-serg/rpt/graph/badge.svg)](https://app.codecov.io/gh/ucd-serg/rpt)
-[![CodeFactor](https://www.codefactor.io/repository/github/ucd-serg/rpt/badge)](https://www.codefactor.io/repository/github/ucd-serg/rpt)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/rpt)](https://CRAN.R-project.org/package=rpt)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/UCD-SERG/rpt/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UCD-SERG/rpt/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/UCD-SERG/rpt/branch/main/graph/badge.svg)](https://app.codecov.io/gh/UCD-SERG/rpt)
+[![CodeFactor](https://www.codefactor.io/repository/github/ucd-serg/rpt/badge)](https://www.codefactor.io/repository/github/ucd-serg/rpt)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rpt)](https://cran.r-project.org/package=rpt)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/rpt)](https://cran.r-project.org/package=rpt)
+[![](http://cranlogs.r-pkg.org/badges/last-month/rpt)](https://cran.r-project.org/package=rpt)
+[![](http://cranlogs.r-pkg.org/badges/last-week/rpt)](https://cran.r-project.org/package=rpt)
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://cran.r-project.org/web/licenses/MIT)
+
 <!-- badges: end -->
 
 The goal of `{rpt}` is to …
@@ -38,27 +44,25 @@ library(rpt)
 
 ## Development
 
-### Building the pkgdown Site
+### Building the Documentation Site
 
-When building the pkgdown documentation site with
-`pkgdown::build_site()`, the function needs to download external
-JavaScript and CSS dependencies from CDNs (Content Delivery Networks).
-If you’re working in a restricted network environment, you’ll need to
-ensure access to the following CDNs:
+This package uses [altdoc](https://altdoc.etiennebacher.com/) with
+[Quarto](https://quarto.org/) to build its documentation site. To build
+and preview the documentation locally:
 
-- `https://cdnjs.cloudflare.com/` - For headroom.js (sticky header
-  functionality)
-- `https://cdn.jsdelivr.net/` - For bootstrap-toc.js (table of contents)
-  and other Bootstrap dependencies
+``` r
+# Load the package
+pkgload::load_all()
 
-Without access to these CDNs, `pkgdown::build_site()` will fail with
-errors like:
+# Render the documentation
+altdoc::render_docs()
 
-    Error: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'
+# Preview the site
+altdoc::preview_docs()
+```
 
-These dependencies are automatically cached after the first download, so
-subsequent builds will be faster and won’t require network access unless
-the cache is cleared.
+The documentation is automatically built and deployed to GitHub Pages
+via GitHub Actions when changes are pushed to the main branch.
 
 ## Other R Package Template Options
 
