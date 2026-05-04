@@ -312,8 +312,56 @@
 <img data-src="quarto_vignette_files/figure-revealjs/fig-plot-1.png" width="672" class="r-stretch quarto-figure-center" id="fig-plot"><p class="caption">
 Figure&nbsp;1: Example plot showing data distribution
 </p></section>
-<section id="equations" class="slide level2" data-number="5">
-<h2><span class="header-section-number">5</span> Equations</h2>
+<section id="theorem-environments" class="slide level2" data-number="5">
+<h2><span class="header-section-number">5</span> Theorem Environments</h2>
+<p>Quarto supports theorem and proof environments that integrate with the <code>callouty-theorem</code> extension to render as styled callout blocks.</p>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="def-mean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Sample Mean)</strong></span> The <strong>sample mean</strong> of observations <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> is:</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="thm-mean-unbiased" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Unbiasedness of the Sample Mean)</strong></span> The sample mean <span class="math inline">\(\bar{x}\)</span> is an unbiased estimator of the population mean <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[E[\bar{x}] = \mu\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>By linearity of expectation: <span class="math display">\[E[\bar{x}] = E\!\left[\frac{1}{n}\sum_{i=1}^{n} x_i\right] = \frac{1}{n}\sum_{i=1}^{n} E[x_i] = \frac{1}{n} \cdot n\mu = \mu. \qquad \square\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="exm-mean-calc" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 (Computing the Sample Mean)</strong></span> For the data <span class="math inline">\(\{1, 2, 3, 4, 5\}\)</span>: <span class="math display">\[\bar{x} = \frac{1+2+3+4+5}{5} = 3\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="equations" class="slide level2" data-number="6">
+<h2><span class="header-section-number">6</span> Equations</h2>
 <p>Quarto has excellent support for mathematical equations using LaTeX syntax:</p>
 <p>Inline equation: <span class="math inline">\(E = mc^2\)</span></p>
 <p>Display equation:</p>
@@ -321,8 +369,8 @@ Figure&nbsp;1: Example plot showing data distribution
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
 \]</span></p>
 </section>
-<section id="tables" class="slide level2" data-number="6">
-<h2><span class="header-section-number">6</span> Tables</h2>
+<section id="tables" class="slide level2" data-number="7">
+<h2><span class="header-section-number">7</span> Tables</h2>
 <div id="tbl-comparison" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -364,12 +412,12 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </figure>
 </div>
 </section>
-<section id="summary" class="slide level2" data-number="7">
-<h2><span class="header-section-number">7</span> Summary</h2>
+<section id="summary" class="slide level2" data-number="8">
+<h2><span class="header-section-number">8</span> Summary</h2>
 <p>Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with documentation systems and offer enhanced capabilities for technical documentation.</p>
 </section>
-<section id="references" class="slide level2 smaller scrollable" data-number="8">
-<h2><span class="header-section-number">8</span> References</h2>
+<section id="references" class="slide level2 smaller scrollable" data-number="9">
+<h2><span class="header-section-number">9</span> References</h2>
 <p>For more information, see:</p>
 <ul>
 <li><a href="https://quarto.org/">Quarto Documentation</a></li>

@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="UC Davis Seroepidemiology Research Group (UCD-SERG)">
-  <meta name="dcterms.date" content="2026-04-30">
+  <meta name="dcterms.date" content="2026-05-04">
   <title>rpt – Advanced Quarto Article</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -229,7 +229,7 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 </div>
 </div>
 
-  <p class="date">2026-04-30</p>
+  <p class="date">2026-05-04</p>
 </section>
 <section class="slide level2">
 
@@ -531,8 +531,112 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 </section>
-<section id="mathematical-notation" class="slide level2" data-number="6">
-<h2><span class="header-section-number">6</span> Mathematical Notation</h2>
+<section id="theorem-environments" class="slide level2" data-number="6">
+<h2><span class="header-section-number">6</span> Theorem Environments</h2>
+<p>The <code>callouty-theorem</code> extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.</p>
+<h3 id="definitions-and-theorems">Definitions and Theorems</h3>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="def-se" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Standard Error)</strong></span> The <strong>standard error</strong> of the mean for a sample of size <span class="math inline">\(n\)</span> with standard deviation <span class="math inline">\(s\)</span> is:</p>
+<p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="thm-clt" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Central Limit Theorem)</strong></span> Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be independent and identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>. Then as <span class="math inline">\(n \to \infty\)</span>:</p>
+<p><span class="math display">\[\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1)\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>See any standard probability textbook.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="lemmas-and-corollaries">Lemmas and Corollaries</h3>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="lem-var-sum" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 1 (Variance of a Sum)</strong></span> For independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
+<p><span class="math display">\[\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="cor-se-clt" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 1 (Confidence Interval from CLT)</strong></span> By <a href="#/thm-clt" class="quarto-xref">Theorem&nbsp;1</a> and <a href="#/def-se" class="quarto-xref">Definition&nbsp;1</a>, an approximate 95% confidence interval for <span class="math inline">\(\mu\)</span> is:</p>
+<p><span class="math display">\[\bar{x} \pm 1.96 \cdot SE\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="examples-and-exercises">Examples and Exercises</h3>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="exm-ci" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 (95% Confidence Interval)</strong></span> For the sample below, we calculate a 95% confidence interval for the mean:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb8-2"><a></a>sample_vals <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb8-3"><a></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_vals)</span>
+<span id="cb8-4"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_vals) <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb8-5"><a></a>ci <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_vals) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb8-6"><a></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Mean = %.3f, 95%% CI: [%.3f, %.3f]</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">mean</span>(sample_vals), ci[<span class="dv">1</span>], ci[<span class="dv">2</span>]))</span>
+<span id="cb8-7"><a></a><span class="co">#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="exr-se" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1 (Exercise: Computing Standard Error)</strong></span> Compute the standard error for a sample of size <span class="math inline">\(n = 100\)</span> with sample standard deviation <span class="math inline">\(s = 15\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[SE = \frac{15}{\sqrt{100}} = \frac{15}{10} = 1.5\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mathematical-notation" class="slide level2" data-number="7">
+<h2><span class="header-section-number">7</span> Mathematical Notation</h2>
 <p>Quarto excels at mathematical notation. Here’s an example of a statistical formula:</p>
 <p>The standard error of the mean is calculated as:</p>
 <p><span class="math display">\[
@@ -544,8 +648,8 @@ SE = \frac{s}{\sqrt{n}}
 CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 \]</span></p>
 </section>
-<section id="tips-and-best-practices" class="slide level2 scrollable" data-number="7">
-<h2><span class="header-section-number">7</span> Tips and Best Practices</h2>
+<section id="tips-and-best-practices" class="slide level2 scrollable" data-number="8">
+<h2><span class="header-section-number">8</span> Tips and Best Practices</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -567,20 +671,20 @@ CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 </div>
 </div>
 </section>
-<section id="conclusion" class="slide level2" data-number="8">
-<h2><span class="header-section-number">8</span> Conclusion</h2>
+<section id="conclusion" class="slide level2" data-number="9">
+<h2><span class="header-section-number">9</span> Conclusion</h2>
 <p>This article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages.</p>
 </section>
-<section id="learn-more" class="slide level2" data-number="9">
-<h2><span class="header-section-number">9</span> Learn More</h2>
+<section id="learn-more" class="slide level2" data-number="10">
+<h2><span class="header-section-number">10</span> Learn More</h2>
 <ul>
 <li>Visit the <a href="https://ucd-serg.github.io/rpt/">package website</a></li>
 <li>Check out the <a href="https://github.com/UCD-SERG/rpt">GitHub repository</a></li>
 <li>Read the <a href="https://quarto.org/">Quarto documentation</a></li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable" data-number="10">
-<h2><span class="header-section-number">10</span> References</h2>
+<section id="references" class="slide level2 smaller scrollable" data-number="11">
+<h2><span class="header-section-number">11</span> References</h2>
 <div id="refs" role="list">
 
 </div>
