@@ -18,17 +18,6 @@
 #' The sample median for odd \eqn{n} is defined as:
 #' \deqn{m = x_{(n+1)/2}}
 #'
-#' ## Using `$$` for display math (HTML/pkgdown only)
-#'
-#' Requires roxygen2 >= 7.0.0.
-#'
-#' Simple display equation:
-#' $$y = mx + b$$
-#'
-#' ## Using `$` for inline math (HTML/pkgdown only, requires roxygen2 >= 7.0.0)
-#'
-#' Simple inline math: $a + b = c$.
-#'
 #' @param x A numeric vector
 #'
 #' @return The median of the input vector, rounded to 2 decimal places
