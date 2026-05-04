@@ -18,7 +18,9 @@
 #' The sample median for odd \eqn{n} is defined as:
 #' \deqn{m = x_{(n+1)/2}}
 #'
-#' ## Using `$$` for display math (HTML/pkgdown only, requires roxygen2 >= 7.0.0)
+#' ## Using `$$` for display math (HTML/pkgdown only)
+#'
+#' Requires roxygen2 >= 7.0.0.
 #'
 #' For even sample sizes, the median is the average of the two middle values:
 #' $$m = \frac{x_{(n/2)} + x_{(n/2+1)}}{2}$$

@@ -38,6 +38,7 @@ md
 permalink
 pkgdown
 qquad
+roxygen
 serodynamics
 shortcode
 slidebreak
