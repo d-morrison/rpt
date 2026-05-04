@@ -103,6 +103,8 @@ div.csl-indent {
 <link href="../../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-dbf22739c68fc316d727e9fdf85a1c89.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
+<link href="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -364,6 +366,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../../vignettes/articles/quarto_article.html">
  <span class="dropdown-text">Advanced</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../vignettes/articles/package-structure.html">
+ <span class="dropdown-text">Package Structure</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -439,6 +445,12 @@ window.Quarto = {
  <span class="menu-text">Advanced Quarto Article</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../vignettes/articles/package-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package Function Structure</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -452,6 +464,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../man/calculate_summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">calculate_summary</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../man/example_function.html" class="sidebar-item-text sidebar-link">
@@ -519,11 +537,17 @@ window.Quarto = {
   </ul></li>
   <li><a href="#working-with-package-functions" id="toc-working-with-package-functions" class="nav-link" data-scroll-target="#working-with-package-functions"><span class="header-section-number">4</span> Working with Package Functions</a></li>
   <li><a href="#code-annotations" id="toc-code-annotations" class="nav-link" data-scroll-target="#code-annotations"><span class="header-section-number">5</span> Code Annotations</a></li>
-  <li><a href="#mathematical-notation" id="toc-mathematical-notation" class="nav-link" data-scroll-target="#mathematical-notation"><span class="header-section-number">6</span> Mathematical Notation</a></li>
-  <li><a href="#tips-and-best-practices" id="toc-tips-and-best-practices" class="nav-link" data-scroll-target="#tips-and-best-practices"><span class="header-section-number">7</span> Tips and Best Practices</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8</span> Conclusion</a></li>
-  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more"><span class="header-section-number">9</span> Learn More</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">10</span> References</a></li>
+  <li><a href="#theorem-environments" id="toc-theorem-environments" class="nav-link" data-scroll-target="#theorem-environments"><span class="header-section-number">6</span> Theorem Environments</a>
+  <ul class="collapse">
+  <li><a href="#definitions-and-theorems" id="toc-definitions-and-theorems" class="nav-link" data-scroll-target="#definitions-and-theorems"><span class="header-section-number">6.1</span> Definitions and Theorems</a></li>
+  <li><a href="#lemmas-and-corollaries" id="toc-lemmas-and-corollaries" class="nav-link" data-scroll-target="#lemmas-and-corollaries"><span class="header-section-number">6.2</span> Lemmas and Corollaries</a></li>
+  <li><a href="#examples-and-exercises" id="toc-examples-and-exercises" class="nav-link" data-scroll-target="#examples-and-exercises"><span class="header-section-number">6.3</span> Examples and Exercises</a></li>
+  </ul></li>
+  <li><a href="#mathematical-notation" id="toc-mathematical-notation" class="nav-link" data-scroll-target="#mathematical-notation"><span class="header-section-number">7</span> Mathematical Notation</a></li>
+  <li><a href="#tips-and-best-practices" id="toc-tips-and-best-practices" class="nav-link" data-scroll-target="#tips-and-best-practices"><span class="header-section-number">8</span> Tips and Best Practices</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">9</span> Conclusion</a></li>
+  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more"><span class="header-section-number">10</span> Learn More</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/vignettes/articles/quarto_article.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/vignettes/articles/quarto_article.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/UCD-SERG/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto_article-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="quarto_article.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
@@ -811,7 +835,7 @@ Table&nbsp;1: Summary statistics for example data
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using with generated data</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>random_data <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">example_function</span>(random_data)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 47.42519</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 47.43</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -849,8 +873,145 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 </section>
-<section id="mathematical-notation" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="mathematical-notation"><span class="header-section-number">6</span> Mathematical Notation</h2>
+<section id="theorem-environments" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="theorem-environments"><span class="header-section-number">6</span> Theorem Environments</h2>
+<p>The <code>callouty-theorem</code> extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.</p>
+<section id="definitions-and-theorems" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="definitions-and-theorems"><span class="header-section-number">6.1</span> Definitions and Theorems</h3>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-se" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Standard Error)</strong></span> The <strong>standard error</strong> of the mean for a sample of size <span class="math inline">\(n\)</span> with standard deviation <span class="math inline">\(s\)</span> is:</p>
+<p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-clt" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Central Limit Theorem)</strong></span> Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be independent and identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>. Then as <span class="math inline">\(n \to \infty\)</span>:</p>
+<p><span class="math display">\[\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1)\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>See any standard probability textbook.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lemmas-and-corollaries" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="lemmas-and-corollaries"><span class="header-section-number">6.2</span> Lemmas and Corollaries</h3>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="lem-var-sum" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 1 (Variance of a Sum)</strong></span> For independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
+<p><span class="math display">\[\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="cor-se-clt" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 1 (Confidence Interval from CLT)</strong></span> By <a href="#thm-clt" class="quarto-xref">Theorem&nbsp;1</a> and <a href="#def-se" class="quarto-xref">Definition&nbsp;1</a>, an approximate 95% confidence interval for <span class="math inline">\(\mu\)</span> is:</p>
+<p><span class="math display">\[\bar{x} \pm 1.96 \cdot SE\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="examples-and-exercises" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="examples-and-exercises"><span class="header-section-number">6.3</span> Examples and Exercises</h3>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-ci" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 (95% Confidence Interval)</strong></span> For the sample below, we calculate a 95% confidence interval for the mean:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sample_vals <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_vals)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_vals) <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_vals) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Mean = %.3f, 95%% CI: [%.3f, %.3f]</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">mean</span>(sample_vals), ci[<span class="dv">1</span>], ci[<span class="dv">2</span>]))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exr-se" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1 (Exercise: Computing Standard Error)</strong></span> Compute the standard error for a sample of size <span class="math inline">\(n = 100\)</span> with sample standard deviation <span class="math inline">\(s = 15\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[SE = \frac{15}{\sqrt{100}} = \frac{15}{10} = 1.5\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mathematical-notation" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="mathematical-notation"><span class="header-section-number">7</span> Mathematical Notation</h2>
 <p>Quarto excels at mathematical notation. Here’s an example of a statistical formula:</p>
 <p>The standard error of the mean is calculated as:</p>
 <p><span class="math display">\[
@@ -862,10 +1023,10 @@ SE = \frac{s}{\sqrt{n}}
 CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 \]</span></p>
 </section>
-<section id="tips-and-best-practices" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="tips-and-best-practices"><span class="header-section-number">7</span> Tips and Best Practices</h2>
+<section id="tips-and-best-practices" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="tips-and-best-practices"><span class="header-section-number">8</span> Tips and Best Practices</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -874,7 +1035,7 @@ CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Click to expand this section for additional tips:</p>
 <ol type="1">
@@ -888,24 +1049,200 @@ CI = \bar{x} \pm t_{\alpha/2, n-1} \cdot SE
 </div>
 </div>
 </section>
-<section id="conclusion" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">9</span> Conclusion</h2>
 <p>This article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages.</p>
 </section>
-<section id="learn-more" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="learn-more"><span class="header-section-number">9</span> Learn More</h2>
+<section id="learn-more" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="learn-more"><span class="header-section-number">10</span> Learn More</h2>
 <ul>
 <li>Visit the <a href="https://ucd-serg.github.io/rpt/">package website</a></li>
 <li>Check out the <a href="https://github.com/UCD-SERG/rpt">GitHub repository</a></li>
 <li>Read the <a href="https://quarto.org/">Quarto documentation</a></li>
 </ul>
 </section>
-<section id="references" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="references"><span class="header-section-number">10</span> References</h2>
+<section id="references" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="references"><span class="header-section-number">11</span> References</h2>
 <div id="refs" role="list">
 
 </div>
 
+
+<script>
+function getQuartoHeadingAnchorIcon() {
+  const afterBodyScript = document.getElementById("quarto-html-after-body");
+  if (!afterBodyScript) {
+    return null;
+  }
+
+  const match = afterBodyScript.textContent.match(/const icon = ["']([^"']+)["']/);
+  return match ? match[1] : null;
+}
+
+// Quarto chain-link glyph from Bootstrap Icons.
+const chainLinkIconFallback = "\ue9cb";
+const headingAnchorIcon = getQuartoHeadingAnchorIcon();
+const defaultAnchorIconFallback =
+  headingAnchorIcon && headingAnchorIcon !== "#" ? headingAnchorIcon : chainLinkIconFallback;
+
+function getDefaultAnchorTemplate() {
+  // Prefer Quarto heading anchors first so the visible chain-link icon is reused.
+  const defaultAnchor =
+    document.querySelector(".anchored > a.anchorjs-link") ||
+    document.querySelector("a.anchorjs-link[data-anchorjs-icon]");
+  if (!defaultAnchor) {
+    return null;
+  }
+
+  return {
+    // Detect icon value from the template anchor's attribute or text.
+    icon: defaultAnchor.getAttribute("data-anchorjs-icon") || defaultAnchor.textContent.trim(),
+    hasDataIcon: defaultAnchor.hasAttribute("data-anchorjs-icon"),
+    style: defaultAnchor.getAttribute("style")
+  };
+}
+
+function normalizeAnchorIcon(icon) {
+  if (!icon || icon === "#") {
+    return defaultAnchorIconFallback;
+  }
+
+  return icon;
+}
+
+function createChainLinkSvgIcon() {
+  const svgNs = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNs, "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("fill", "currentColor");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  svg.setAttribute("class", "equation-anchor-icon");
+
+  [
+    "M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-2H11a4 4 0 0 1-4 3H4a4 4 0 0 1 0-8h2.354z",
+    "M9.646 10.5H12a3 3 0 1 0 0-6H9a3 3 0 0 0-2.83 2H5a4 4 0 0 1 4-3h3a4 4 0 0 1 0 8H9.646z",
+    "M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"
+  ].forEach(function (pathData) {
+    const path = document.createElementNS(svgNs, "path");
+    path.setAttribute("d", pathData);
+    svg.appendChild(path);
+  });
+
+  return svg;
+}
+
+function alignEquationAnchorWithDefault(anchor, template) {
+  if (!anchor) {
+    return;
+  }
+
+  anchor.classList.remove("external");
+  anchor.classList.add("no-external");
+
+  const normalizedIcon = normalizeAnchorIcon(template && template.icon);
+  if (normalizedIcon === chainLinkIconFallback) {
+    anchor.removeAttribute("data-anchorjs-icon");
+    anchor.textContent = "";
+    anchor.appendChild(createChainLinkSvgIcon());
+  } else if (template && template.hasDataIcon) {
+    anchor.setAttribute("data-anchorjs-icon", normalizedIcon);
+    anchor.textContent = normalizedIcon;
+  } else {
+    anchor.removeAttribute("data-anchorjs-icon");
+    anchor.textContent = normalizedIcon;
+  }
+
+  if (template && template.style) {
+    anchor.setAttribute("style", template.style);
+  } else {
+    anchor.removeAttribute("style");
+  }
+}
+
+function alignEquationAnchorsWithDefault() {
+  const template = getDefaultAnchorTemplate();
+  document.querySelectorAll("a.equation-anchor").forEach(function (anchor) {
+    alignEquationAnchorWithDefault(anchor, template);
+  });
+}
+
+function ensureEquationAnchorStyles() {
+  if (document.getElementById("equation-anchor-styles")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.id = "equation-anchor-styles";
+  style.textContent = `
+    .equation-anchor-target {
+      --equation-anchor-offset: 1.2rem;
+      position: relative;
+      display: block;
+    }
+    .equation-anchor {
+      position: absolute;
+      left: calc(-1 * var(--equation-anchor-offset));
+      top: 50%;
+      transform: translateY(-50%);
+      text-decoration: none;
+      opacity: 0.7;
+      font-size: 0.9em;
+    }
+    .equation-anchor:hover {
+      opacity: 1;
+    }
+    .equation-anchor-icon {
+      width: 0.9em;
+      height: 0.9em;
+      vertical-align: -0.125em;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  ensureEquationAnchorStyles();
+
+  let counter = 0;
+
+  document.querySelectorAll(".math.display").forEach(function (mathEl) {
+    // For labeled equations, Quarto wraps the math display span in an eq-* span.
+    // For unlabeled equations, use the parent element (typically a <p>).
+    const labeledContainer = mathEl.closest("[id^='eq-']");
+    const target = labeledContainer || mathEl.parentElement;
+
+    if (!target) {
+      return;
+    }
+
+    // Skip if already processed.
+    if (target.querySelector(".equation-anchor")) {
+      return;
+    }
+
+    // Use the labeled container's id, or assign an auto-generated id.
+    let id = labeledContainer ? labeledContainer.id : target.id;
+    if (!id) {
+      counter++;
+      id = "eq-anchor-" + counter;
+      target.id = id;
+    }
+
+    target.classList.add("equation-anchor-target");
+
+    const anchor = document.createElement("a");
+    anchor.className = "equation-anchor anchorjs-link";
+    anchor.href = "#" + id;
+    anchor.setAttribute("aria-label", "Permalink to this equation");
+    target.appendChild(anchor);
+  });
+
+  alignEquationAnchorsWithDefault();
+});
+
+window.addEventListener("load", alignEquationAnchorsWithDefault);
+</script>
 
 </section>
 

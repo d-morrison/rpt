@@ -96,7 +96,9 @@ div.csl-indent {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-dbf22739c68fc316d727e9fdf85a1c89.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
+<link href="../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -347,6 +349,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../vignettes/articles/quarto_article.html">
  <span class="dropdown-text">Advanced</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../vignettes/articles/package-structure.html">
+ <span class="dropdown-text">Package Structure</span></a>
+  </li>  
     </ul>
 </li>
 </ul>
@@ -416,6 +422,12 @@ window.Quarto = {
  <span class="menu-text">Advanced Quarto Article</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../vignettes/articles/package-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package Function Structure</span></a>
+  </div>
+</li>
       </ul>
 </li>
       </ul>
@@ -430,6 +442,12 @@ window.Quarto = {
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/calculate_summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">calculate_summary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../man/example_function.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">example_function</span></a>
@@ -491,10 +509,11 @@ window.Quarto = {
   <li><a href="#code-chunks-with-modern-syntax" id="toc-code-chunks-with-modern-syntax" class="nav-link" data-scroll-target="#code-chunks-with-modern-syntax"><span class="header-section-number">4.2</span> Code Chunks with Modern Syntax</a></li>
   </ul>
 </li>
-  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations"><span class="header-section-number">5</span> Equations</a></li>
-  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">6</span> Tables</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7</span> Summary</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
+  <li><a href="#theorem-environments" id="toc-theorem-environments" class="nav-link" data-scroll-target="#theorem-environments"><span class="header-section-number">5</span> Theorem Environments</a></li>
+  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations"><span class="header-section-number">6</span> Equations</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">7</span> Tables</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8</span> Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/vignettes/quarto_vignette.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/vignettes/quarto_vignette.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/UCD-SERG/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto_vignette-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="quarto_vignette.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -584,16 +603,75 @@ Figure&nbsp;1: Example plot showing data distribution
 </div>
 </div>
 </div>
-</section></section><section id="equations" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="equations">
-<span class="header-section-number">5</span> Equations</h2>
+</section></section><section id="theorem-environments" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="theorem-environments">
+<span class="header-section-number">5</span> Theorem Environments</h2>
+<p>Quarto supports theorem and proof environments that integrate with the <code>callouty-theorem</code> extension to render as styled callout blocks.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-mean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Sample Mean)</strong></span> The <strong>sample mean</strong> of observations <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> is:</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-mean-unbiased" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Unbiasedness of the Sample Mean)</strong></span> The sample mean <span class="math inline">\(\bar{x}\)</span> is an unbiased estimator of the population mean <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[E[\bar{x}] = \mu\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>By linearity of expectation: <span class="math display">\[E[\bar{x}] = E\!\left[\frac{1}{n}\sum_{i=1}^{n} x_i\right] = \frac{1}{n}\sum_{i=1}^{n} E[x_i] = \frac{1}{n} \cdot n\mu = \mu. \qquad \square\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-mean-calc" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 (Computing the Sample Mean)</strong></span> For the data <span class="math inline">\(\{1, 2, 3, 4, 5\}\)</span>: <span class="math display">\[\bar{x} = \frac{1+2+3+4+5}{5} = 3\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="equations" class="level2" data-number="6"><h2 data-number="6" class="anchored" data-anchor-id="equations">
+<span class="header-section-number">6</span> Equations</h2>
 <p>Quarto has excellent support for mathematical equations using LaTeX syntax:</p>
 <p>Inline equation: <span class="math inline">\(E = mc^2\)</span></p>
 <p>Display equation:</p>
 <p><span class="math display">\[
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
 \]</span></p>
-</section><section id="tables" class="level2" data-number="6"><h2 data-number="6" class="anchored" data-anchor-id="tables">
-<span class="header-section-number">6</span> Tables</h2>
+</section><section id="tables" class="level2" data-number="7"><h2 data-number="7" class="anchored" data-anchor-id="tables">
+<span class="header-section-number">7</span> Tables</h2>
 <div id="tbl-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Comparison of R Markdown and Quarto
@@ -630,11 +708,11 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </div>
 </figure>
 </div>
-</section><section id="summary" class="level2" data-number="7"><h2 data-number="7" class="anchored" data-anchor-id="summary">
-<span class="header-section-number">7</span> Summary</h2>
+</section><section id="summary" class="level2" data-number="8"><h2 data-number="8" class="anchored" data-anchor-id="summary">
+<span class="header-section-number">8</span> Summary</h2>
 <p>Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with documentation systems and offer enhanced capabilities for technical documentation.</p>
-</section><section id="references" class="level2" data-number="8"><h2 data-number="8" class="anchored" data-anchor-id="references">
-<span class="header-section-number">8</span> References</h2>
+</section><section id="references" class="level2" data-number="9"><h2 data-number="9" class="anchored" data-anchor-id="references">
+<span class="header-section-number">9</span> References</h2>
 <p>For more information, see:</p>
 <ul>
 <li><a href="https://quarto.org/">Quarto Documentation</a></li>
@@ -644,7 +722,181 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </ul>
 
 
+<script>
+function getQuartoHeadingAnchorIcon() {
+  const afterBodyScript = document.getElementById("quarto-html-after-body");
+  if (!afterBodyScript) {
+    return null;
+  }
 
+  const match = afterBodyScript.textContent.match(/const icon = ["']([^"']+)["']/);
+  return match ? match[1] : null;
+}
+
+// Quarto chain-link glyph from Bootstrap Icons.
+const chainLinkIconFallback = "\ue9cb";
+const headingAnchorIcon = getQuartoHeadingAnchorIcon();
+const defaultAnchorIconFallback =
+  headingAnchorIcon && headingAnchorIcon !== "#" ? headingAnchorIcon : chainLinkIconFallback;
+
+function getDefaultAnchorTemplate() {
+  // Prefer Quarto heading anchors first so the visible chain-link icon is reused.
+  const defaultAnchor =
+    document.querySelector(".anchored > a.anchorjs-link") ||
+    document.querySelector("a.anchorjs-link[data-anchorjs-icon]");
+  if (!defaultAnchor) {
+    return null;
+  }
+
+  return {
+    // Detect icon value from the template anchor's attribute or text.
+    icon: defaultAnchor.getAttribute("data-anchorjs-icon") || defaultAnchor.textContent.trim(),
+    hasDataIcon: defaultAnchor.hasAttribute("data-anchorjs-icon"),
+    style: defaultAnchor.getAttribute("style")
+  };
+}
+
+function normalizeAnchorIcon(icon) {
+  if (!icon || icon === "#") {
+    return defaultAnchorIconFallback;
+  }
+
+  return icon;
+}
+
+function createChainLinkSvgIcon() {
+  const svgNs = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNs, "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("fill", "currentColor");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  svg.setAttribute("class", "equation-anchor-icon");
+
+  [
+    "M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-2H11a4 4 0 0 1-4 3H4a4 4 0 0 1 0-8h2.354z",
+    "M9.646 10.5H12a3 3 0 1 0 0-6H9a3 3 0 0 0-2.83 2H5a4 4 0 0 1 4-3h3a4 4 0 0 1 0 8H9.646z",
+    "M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"
+  ].forEach(function (pathData) {
+    const path = document.createElementNS(svgNs, "path");
+    path.setAttribute("d", pathData);
+    svg.appendChild(path);
+  });
+
+  return svg;
+}
+
+function alignEquationAnchorWithDefault(anchor, template) {
+  if (!anchor) {
+    return;
+  }
+
+  anchor.classList.remove("external");
+  anchor.classList.add("no-external");
+
+  const normalizedIcon = normalizeAnchorIcon(template && template.icon);
+  if (normalizedIcon === chainLinkIconFallback) {
+    anchor.removeAttribute("data-anchorjs-icon");
+    anchor.textContent = "";
+    anchor.appendChild(createChainLinkSvgIcon());
+  } else if (template && template.hasDataIcon) {
+    anchor.setAttribute("data-anchorjs-icon", normalizedIcon);
+    anchor.textContent = normalizedIcon;
+  } else {
+    anchor.removeAttribute("data-anchorjs-icon");
+    anchor.textContent = normalizedIcon;
+  }
+
+  if (template && template.style) {
+    anchor.setAttribute("style", template.style);
+  } else {
+    anchor.removeAttribute("style");
+  }
+}
+
+function alignEquationAnchorsWithDefault() {
+  const template = getDefaultAnchorTemplate();
+  document.querySelectorAll("a.equation-anchor").forEach(function (anchor) {
+    alignEquationAnchorWithDefault(anchor, template);
+  });
+}
+
+function ensureEquationAnchorStyles() {
+  if (document.getElementById("equation-anchor-styles")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.id = "equation-anchor-styles";
+  style.textContent = `
+    .equation-anchor-target {
+      --equation-anchor-offset: 1.2rem;
+      position: relative;
+      display: block;
+    }
+    .equation-anchor {
+      position: absolute;
+      left: calc(-1 * var(--equation-anchor-offset));
+      top: 50%;
+      transform: translateY(-50%);
+      text-decoration: none;
+      opacity: 0.7;
+      font-size: 0.9em;
+    }
+    .equation-anchor:hover {
+      opacity: 1;
+    }
+    .equation-anchor-icon {
+      width: 0.9em;
+      height: 0.9em;
+      vertical-align: -0.125em;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  ensureEquationAnchorStyles();
+
+  let counter = 0;
+
+  document.querySelectorAll(".math.display").forEach(function (mathEl) {
+    // For labeled equations, Quarto wraps the math display span in an eq-* span.
+    // For unlabeled equations, use the parent element (typically a <p>).
+    const labeledContainer = mathEl.closest("[id^='eq-']");
+    const target = labeledContainer || mathEl.parentElement;
+
+    if (!target) {
+      return;
+    }
+
+    // Skip if already processed.
+    if (target.querySelector(".equation-anchor")) {
+      return;
+    }
+
+    // Use the labeled container's id, or assign an auto-generated id.
+    let id = labeledContainer ? labeledContainer.id : target.id;
+    if (!id) {
+      counter++;
+      id = "eq-anchor-" + counter;
+      target.id = id;
+    }
+
+    target.classList.add("equation-anchor-target");
+
+    const anchor = document.createElement("a");
+    anchor.className = "equation-anchor anchorjs-link";
+    anchor.href = "#" + id;
+    anchor.setAttribute("aria-label", "Permalink to this equation");
+    target.appendChild(anchor);
+  });
+
+  alignEquationAnchorsWithDefault();
+});
+
+window.addEventListener("load", alignEquationAnchorsWithDefault);
+</script>
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-R-base" class="csl-entry" role="listitem">
 R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
