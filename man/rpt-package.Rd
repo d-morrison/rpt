@@ -20,4 +20,9 @@ Useful links:
 \author{
 \strong{Maintainer}: First Last \email{first.last@example.com}
 
+Authors:
+\itemize{
+  \item First Last \email{first.last@example.com}
+}
+
 }

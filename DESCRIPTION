@@ -1,6 +1,6 @@
 Package: rpt
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9011
+Version: 0.0.0.9012
 Authors@R: c(
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
   )
@@ -10,7 +10,6 @@ URL: https://github.com/UCD-SERG/rpt, https://ucd-serg.github.io/rpt/
 BugReports: https://github.com/UCD-SERG/rpt/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Language: en-US
 Depends: 
     R (>= 4.1.0)
@@ -29,3 +28,4 @@ Suggests:
 Config/testthat/edition: 3
 VignetteBuilder: knitr, quarto
 Config/Needs/website: quarto
+Config/roxygen2/version: 8.0.0
