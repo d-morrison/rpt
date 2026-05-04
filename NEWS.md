@@ -1,5 +1,9 @@
 # rpt (development version)
 
+* Added package structure visualization article using foodwebr to demonstrate function dependencies and call graphs
+* Created layered helper function architecture for realistic foodwebr demonstrations
+* Added `calculate_summary()` function for computing summary statistics
+
 * Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.
 * Removed pkgdown-specific configurations and workflows.
 * Retained RevealJS multi-format support for Quarto vignettes and articles.

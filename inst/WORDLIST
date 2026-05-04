@@ -2,9 +2,11 @@ CMD
 Callouts
 CodeFactor
 Codecov
+DiagrammeR
 DOCX
 Lifecycle
 MathJax
+README
 RevealJS
 Shortcode
 Slidebreak
@@ -14,9 +16,14 @@ altdoc
 callout
 callouts
 cdot
+codebases
 emplate
 foldable
+foodweb
+foodwebr
+formatter
 frac
+graphviz
 frontmatter
 linter
 lintr
@@ -26,3 +33,4 @@ serodynamics
 shortcode
 slidebreak
 tabset
+tidygraph
