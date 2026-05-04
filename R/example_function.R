@@ -22,12 +22,12 @@
 #'
 #' Requires roxygen2 >= 7.0.0.
 #'
-#' For even sample sizes, the median is the average of the two middle values:
-#' $$m = \frac{x_{(n/2)} + x_{(n/2+1)}}{2}$$
+#' Simple display equation:
+#' $$y = mx + b$$
 #'
 #' ## Using `$` for inline math (HTML/pkgdown only, requires roxygen2 >= 7.0.0)
 #'
-#' In general, the median minimizes $\sum_{i=1}^{n} |x_i - m|$.
+#' Simple inline math: $a + b = c$.
 #'
 #' @param x A numeric vector
 #'
