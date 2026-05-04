@@ -3,6 +3,9 @@ project:
   output-dir: ../docs/
   render:
     - "*.qmd"      # Render all Quarto markdown files
+    - "*.md"       # Also render plain markdown files
+    - "!README.md" # Except README which is used in index
+    - "!index.md"  # Except index which is replaced by index.qmd
     - "!data-raw/" # Exclude anything in the data-raw directory
 
 # Note: freeze functionality can be set at a project level or for individual .qmd files
@@ -13,8 +16,6 @@ website:
   title: "$ALTDOC_PACKAGE_NAME"
   repo-url: https://github.com/UCD-SERG/rpt
   repo-actions: [edit, source, issue]
-  # search:
-  #   exclude: preview/
   navbar:
     search: true
     pinned: false
@@ -31,6 +32,10 @@ website:
             file: vignettes/getting-started.qmd
           - text: "Intro vignette"
             file: vignettes/quarto_vignette.qmd
+          - text: "Advanced"
+            file: vignettes/articles/quarto_article.qmd
+          - text: "Package Structure"
+            file: vignettes/articles/package-structure.qmd
   sidebar:
     collapse-level: 1
     contents:
@@ -42,20 +47,22 @@ website:
         contents:
           - vignettes/getting-started.qmd
           - vignettes/quarto_vignette.qmd
+          - section: Advanced
+            contents:
+              - vignettes/articles/quarto_article.qmd
+              - vignettes/articles/package-structure.qmd
       - section: $ALTDOC_MAN_BLOCK
         style: floating
       - text: News
-        file: $ALTDOC_NEWS
-      - text: Changelog
-        file: $ALTDOC_CHANGELOG
+        file: NEWS.md
       - text: License
-        file: $ALTDOC_LICENSE
-      - text: Licence
-        file: $ALTDOC_LICENCE
+        file: LICENSE.md
       - text: Code of conduct
-        file: $ALTDOC_CODE_OF_CONDUCT
+        file: CODE_OF_CONDUCT.md
+      - text: Contributing
+        file: CONTRIBUTING.md
       - text: Citation
-        file: $ALTDOC_CITATION
+        file: CITATION.md
 
 format:
   html:
@@ -65,6 +72,8 @@ format:
       dark: darkly
     css: styles.css
     number-sections: false
+    code-fold: show
+    echo: true
     code-copy: true
     code-overflow: scroll
     title-block-style: none
@@ -73,4 +82,73 @@ format:
       sidebar-width: 340px
       margin-width: 340px
 
+filters:
+  - slidebreak
+  - d-morrison/div-anchors
+  - d-morrison/equation-anchors
+  - sun123zxy/callouty-theorem
+  - quarto
+
+callouty-theorem:
+  thm:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  lem:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  cor:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  prp:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  cnj:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  def:
+    override-title: false
+    callout:
+      type: tip
+      appearance: minimal
+  exm:
+    override-title: false
+    callout:
+      type: tip
+      appearance: minimal
+  exr:
+    override-title: false
+    callout:
+      type: tip
+      appearance: minimal
+  proof:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: true
+      icon: true
+  solution:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: true
+      icon: false
+  remark:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: false
+      icon: true
 

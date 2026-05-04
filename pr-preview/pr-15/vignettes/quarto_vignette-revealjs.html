@@ -6,8 +6,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
+<link href="../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <title>rpt – Quarto Vignette Example</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,6 +18,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -97,7 +102,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -114,7 +118,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -219,6 +223,15 @@
 </div>
 
 </section>
+<section class="slide level2">
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
 <section id="introduction" class="slide level2" data-number="1">
 <h2><span class="header-section-number">1</span> Introduction</h2>
 <p>This vignette demonstrates how to use Quarto (<code>.qmd</code>) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.</p>
@@ -237,7 +250,16 @@
 <h2><span class="header-section-number">3</span> Basic Example</h2>
 <p>Here’s a basic example using the package:</p>
 <div class="cell">
-<pre><code>#&gt; [1] 4.5</code></pre>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Create some sample data</span></span>
+<span id="cb2-2"><a></a>sample_data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Use the example function</span></span>
+<span id="cb2-5"><a></a>result <span class="ot">&lt;-</span> <span class="fu">example_function</span>(sample_data)</span>
+<span id="cb2-6"><a></a>result</span>
+<span id="cb2-7"><a></a><span class="co">#&gt; [1] 4.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </section>
 <section id="quarto-features" class="slide level2" data-number="4">
@@ -269,23 +291,77 @@
 </div>
 </div>
 </div>
+</section>
+<section class="slide level2">
+
 <h3 id="code-chunks-with-modern-syntax">Code Chunks with Modern Syntax</h3>
 <p>You can use the modern <code>#|</code> syntax for chunk options:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Create a simple plot</span></span>
-<span id="cb2-2"><a></a><span class="fu">plot</span>(sample_data, </span>
-<span id="cb2-3"><a></a>     <span class="at">main =</span> <span class="st">"Sample Data"</span>, </span>
-<span id="cb2-4"><a></a>     <span class="at">xlab =</span> <span class="st">"Index"</span>, </span>
-<span id="cb2-5"><a></a>     <span class="at">ylab =</span> <span class="st">"Value"</span>,</span>
-<span id="cb2-6"><a></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb2-7"><a></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Create a simple plot</span></span>
+<span id="cb3-2"><a></a><span class="fu">plot</span>(sample_data, </span>
+<span id="cb3-3"><a></a>     <span class="at">main =</span> <span class="st">"Sample Data"</span>, </span>
+<span id="cb3-4"><a></a>     <span class="at">xlab =</span> <span class="st">"Index"</span>, </span>
+<span id="cb3-5"><a></a>     <span class="at">ylab =</span> <span class="st">"Value"</span>,</span>
+<span id="cb3-6"><a></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb3-7"><a></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 
 </div>
 <img data-src="quarto_vignette_files/figure-revealjs/fig-plot-1.png" width="672" class="r-stretch quarto-figure-center" id="fig-plot"><p class="caption">
 Figure&nbsp;1: Example plot showing data distribution
 </p></section>
-<section id="equations" class="slide level2" data-number="5">
-<h2><span class="header-section-number">5</span> Equations</h2>
+<section id="theorem-environments" class="slide level2" data-number="5">
+<h2><span class="header-section-number">5</span> Theorem Environments</h2>
+<p>Quarto supports theorem and proof environments that integrate with the <code>callouty-theorem</code> extension to render as styled callout blocks.</p>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="def-mean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Sample Mean)</strong></span> The <strong>sample mean</strong> of observations <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> is:</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="thm-mean-unbiased" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Unbiasedness of the Sample Mean)</strong></span> The sample mean <span class="math inline">\(\bar{x}\)</span> is an unbiased estimator of the population mean <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[E[\bar{x}] = \mu\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>By linearity of expectation: <span class="math display">\[E[\bar{x}] = E\!\left[\frac{1}{n}\sum_{i=1}^{n} x_i\right] = \frac{1}{n}\sum_{i=1}^{n} E[x_i] = \frac{1}{n} \cdot n\mu = \mu. \qquad \square\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div id="exm-mean-calc" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 (Computing the Sample Mean)</strong></span> For the data <span class="math inline">\(\{1, 2, 3, 4, 5\}\)</span>: <span class="math display">\[\bar{x} = \frac{1+2+3+4+5}{5} = 3\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="equations" class="slide level2" data-number="6">
+<h2><span class="header-section-number">6</span> Equations</h2>
 <p>Quarto has excellent support for mathematical equations using LaTeX syntax:</p>
 <p>Inline equation: <span class="math inline">\(E = mc^2\)</span></p>
 <p>Display equation:</p>
@@ -293,8 +369,8 @@ Figure&nbsp;1: Example plot showing data distribution
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
 \]</span></p>
 </section>
-<section id="tables" class="slide level2" data-number="6">
-<h2><span class="header-section-number">6</span> Tables</h2>
+<section id="tables" class="slide level2" data-number="7">
+<h2><span class="header-section-number">7</span> Tables</h2>
 <div id="tbl-comparison" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -336,12 +412,12 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </figure>
 </div>
 </section>
-<section id="summary" class="slide level2" data-number="7">
-<h2><span class="header-section-number">7</span> Summary</h2>
-<p>Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation.</p>
+<section id="summary" class="slide level2" data-number="8">
+<h2><span class="header-section-number">8</span> Summary</h2>
+<p>Quarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with documentation systems and offer enhanced capabilities for technical documentation.</p>
 </section>
-<section id="references" class="slide level2 smaller scrollable" data-number="8">
-<h2><span class="header-section-number">8</span> References</h2>
+<section id="references" class="slide level2 smaller scrollable" data-number="9">
+<h2><span class="header-section-number">9</span> References</h2>
 <p>For more information, see:</p>
 <ul>
 <li><a href="https://quarto.org/">Quarto Documentation</a></li>
@@ -351,9 +427,185 @@ Table&nbsp;1: Comparison of R Markdown and Quarto
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<script>
+function getQuartoHeadingAnchorIcon() {
+  const afterBodyScript = document.getElementById("quarto-html-after-body");
+  if (!afterBodyScript) {
+    return null;
+  }
+
+  const match = afterBodyScript.textContent.match(/const icon = ["']([^"']+)["']/);
+  return match ? match[1] : null;
+}
+
+// Quarto chain-link glyph from Bootstrap Icons.
+const chainLinkIconFallback = "\ue9cb";
+const headingAnchorIcon = getQuartoHeadingAnchorIcon();
+const defaultAnchorIconFallback =
+  headingAnchorIcon && headingAnchorIcon !== "#" ? headingAnchorIcon : chainLinkIconFallback;
+
+function getDefaultAnchorTemplate() {
+  // Prefer Quarto heading anchors first so the visible chain-link icon is reused.
+  const defaultAnchor =
+    document.querySelector(".anchored > a.anchorjs-link") ||
+    document.querySelector("a.anchorjs-link[data-anchorjs-icon]");
+  if (!defaultAnchor) {
+    return null;
+  }
+
+  return {
+    // Detect icon value from the template anchor's attribute or text.
+    icon: defaultAnchor.getAttribute("data-anchorjs-icon") || defaultAnchor.textContent.trim(),
+    hasDataIcon: defaultAnchor.hasAttribute("data-anchorjs-icon"),
+    style: defaultAnchor.getAttribute("style")
+  };
+}
+
+function normalizeAnchorIcon(icon) {
+  if (!icon || icon === "#") {
+    return defaultAnchorIconFallback;
+  }
+
+  return icon;
+}
+
+function createChainLinkSvgIcon() {
+  const svgNs = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNs, "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("fill", "currentColor");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  svg.setAttribute("class", "equation-anchor-icon");
+
+  [
+    "M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-2H11a4 4 0 0 1-4 3H4a4 4 0 0 1 0-8h2.354z",
+    "M9.646 10.5H12a3 3 0 1 0 0-6H9a3 3 0 0 0-2.83 2H5a4 4 0 0 1 4-3h3a4 4 0 0 1 0 8H9.646z",
+    "M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"
+  ].forEach(function (pathData) {
+    const path = document.createElementNS(svgNs, "path");
+    path.setAttribute("d", pathData);
+    svg.appendChild(path);
+  });
+
+  return svg;
+}
+
+function alignEquationAnchorWithDefault(anchor, template) {
+  if (!anchor) {
+    return;
+  }
+
+  anchor.classList.remove("external");
+  anchor.classList.add("no-external");
+
+  const normalizedIcon = normalizeAnchorIcon(template && template.icon);
+  if (normalizedIcon === chainLinkIconFallback) {
+    anchor.removeAttribute("data-anchorjs-icon");
+    anchor.textContent = "";
+    anchor.appendChild(createChainLinkSvgIcon());
+  } else if (template && template.hasDataIcon) {
+    anchor.setAttribute("data-anchorjs-icon", normalizedIcon);
+    anchor.textContent = normalizedIcon;
+  } else {
+    anchor.removeAttribute("data-anchorjs-icon");
+    anchor.textContent = normalizedIcon;
+  }
+
+  if (template && template.style) {
+    anchor.setAttribute("style", template.style);
+  } else {
+    anchor.removeAttribute("style");
+  }
+}
+
+function alignEquationAnchorsWithDefault() {
+  const template = getDefaultAnchorTemplate();
+  document.querySelectorAll("a.equation-anchor").forEach(function (anchor) {
+    alignEquationAnchorWithDefault(anchor, template);
+  });
+}
+
+function ensureEquationAnchorStyles() {
+  if (document.getElementById("equation-anchor-styles")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.id = "equation-anchor-styles";
+  style.textContent = `
+    .equation-anchor-target {
+      --equation-anchor-offset: 1.2rem;
+      position: relative;
+      display: block;
+    }
+    .equation-anchor {
+      position: absolute;
+      left: calc(-1 * var(--equation-anchor-offset));
+      top: 50%;
+      transform: translateY(-50%);
+      text-decoration: none;
+      opacity: 0.7;
+      font-size: 0.9em;
+    }
+    .equation-anchor:hover {
+      opacity: 1;
+    }
+    .equation-anchor-icon {
+      width: 0.9em;
+      height: 0.9em;
+      vertical-align: -0.125em;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  ensureEquationAnchorStyles();
+
+  let counter = 0;
+
+  document.querySelectorAll(".math.display").forEach(function (mathEl) {
+    // For labeled equations, Quarto wraps the math display span in an eq-* span.
+    // For unlabeled equations, use the parent element (typically a <p>).
+    const labeledContainer = mathEl.closest("[id^='eq-']");
+    const target = labeledContainer || mathEl.parentElement;
+
+    if (!target) {
+      return;
+    }
+
+    // Skip if already processed.
+    if (target.querySelector(".equation-anchor")) {
+      return;
+    }
+
+    // Use the labeled container's id, or assign an auto-generated id.
+    let id = labeledContainer ? labeledContainer.id : target.id;
+    if (!id) {
+      counter++;
+      id = "eq-anchor-" + counter;
+      target.id = id;
+    }
+
+    target.classList.add("equation-anchor-target");
+
+    const anchor = document.createElement("a");
+    anchor.className = "equation-anchor anchorjs-link";
+    anchor.href = "#" + id;
+    anchor.setAttribute("aria-label", "Permalink to this equation");
+    target.appendChild(anchor);
+  });
+
+  alignEquationAnchorsWithDefault();
+});
+
+window.addEventListener("load", alignEquationAnchorsWithDefault);
+</script>
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-R-base" class="csl-entry" role="listitem">
-R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
 <div id="ref-R-rpt" class="csl-entry" role="listitem">
 UCD-SERG. 2024. <em>Rpt: R Package Template</em>. <a href="https://github.com/UCD-SERG/rpt">https://github.com/UCD-SERG/rpt</a>.
