@@ -454,7 +454,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="rpt-development-version" class="level1">
 <h1>rpt (development version)</h1>
 <ul>
-<li><p>Fixed LaTeX macros appearing as visible raw text on the documentation website (<a href="https://github.com/UCD-SERG/rpt/issues/111">#111</a>) by including macros from the submodule directly in each article via a knitr chunk that strips HTML comments</p></li>
+<li><p>Fixed LaTeX macros appearing as visible raw text on the documentation website (<a href="https://github.com/UCD-SERG/rpt/issues/111">#111</a>) by adding a knitr chunk to each vignette/article that reads <code>macros.qmd</code> from the submodule, converts <code>\providecommand</code> to <code>\def</code> for MathJax v3 compatibility, and outputs a hidden display-math block</p></li>
 <li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for <code>revealjs</code>, <code>pptx</code>, and <code>beamer</code> formats explicitly (<a href="https://github.com/UCD-SERG/rpt/issues/103">#103</a>)</p></li>
 <li><p>Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (<code>\eqn{}</code>, <code>\deqn{}</code>)</p></li>
 <li><p>Installed Quarto extensions for enhanced documentation: <code>d-morrison/div-anchors</code> (permalink anchors for theorem/proof divs), <code>d-morrison/equation-anchors</code> (permalink anchors for equations), and <code>sun123zxy/callouty-theorem</code> (render theorems as callout blocks). Added callouty-theorem YAML settings based on <code>d-morrison/rme</code>.</p></li>
