@@ -128,7 +128,32 @@ div.csl-indent {
   }
 }</script><link href="../../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
 <script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="../../site_libs/viz-1.8.2/viz.js"></script><link href="../../site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="../../site_libs/grViz-binding-1.0.12/grViz.js"></script><link rel="stylesheet" href="../../styles.css">
+<script src="../../site_libs/grViz-binding-1.0.12/grViz.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="../../styles.css">
 </head>
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -533,8 +558,15 @@ div.csl-indent {
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/UCD-SERG/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="package-structure-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="package-structure.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/quarto_article.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/package-structure.html">Package Function Structure</a></li></ol></nav><h1 class="title display-7">Package Function Structure</h1></header><!-- LaTeX macros for MathJax - hidden from view but processed by MathJax --><div id="mathjax-macros" style="display:none">
-$$
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/quarto_article.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/package-structure.html">Package Function Structure</a></li></ol></nav><h1 class="title display-7">Package Function Structure</h1></header><header id="title-block-header">
+<p class="author">UC Davis Seroepidemiology Research Group (UCD-SERG)</p>
+
+<p class="date">2026-05-05</p>
+</header><div class="cell">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><span class="math display">\[
 \providecommand{\cbl}[1]{\mathopen{}\left\{#1\right.}
 \providecommand{\cb}[1]{\mathopen{}\left\{#1\right\}\mathclose{}}
 \providecommand{\cbmat}[1]{\mathopen{}\left\{\begin{matrix}#1\end{matrix}\right\}\mathclose{}}
@@ -709,7 +741,6 @@ $$
 \providecommand{\xderiv}[2]{\frac{\partial^2}{\partial #1 \partial #2}}
 \providecommand{\xderivf}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
 \providecommand{\xderivff}[3]{\frac{\partial^2 #3}{\partial #1 \partial #2}}
-
 \providecommand{\red}[1]{{\color{red}#1}}
 \providecommand{\green}[1]{{\color{green}#1}}
 \providecommand{\blue}[1]{{\color{blue}#1}}
@@ -902,8 +933,6 @@ $$
 \def\odds{\omega}
 \def\OR{\operatorname{OR}}
 \def\ror{\theta}
- 
-
 \def\logodds{\eta}
 \providecommand{\logoddsf}[1]{\logodds \paren{#1}}
 \def\difflogodds{\Delta \eta}
@@ -966,17 +995,7 @@ $$
 \def\stdresid{r'}
 \def\modresid{r^*}
 \providecommand{\residv}{\vec{r}}
-$$
-</div>
-
-<header id="title-block-header">
-<p class="author">UC Davis Seroepidemiology Research Group (UCD-SERG)</p>
-
-<p class="date">2026-05-05</p>
-</header><div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+\]</span></p>
 <section id="overview" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="overview">
 <span class="header-section-number">1</span> Overview</h2>
 <p>This article demonstrates how to visualize the structure and dependencies of package functions using the <a href="https://lewinfox.com/foodwebr/"><code>foodwebr</code></a> package. Understanding function dependencies helps developers:</p>
@@ -1036,8 +1055,8 @@ $$
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption><div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5ec4959be02ac10b052b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5ec4959be02ac10b052b">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ea650093cf37b487e1fe" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ea650093cf37b487e1fe">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -1100,8 +1119,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption><div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3ad0e49f22a64d2eae6c" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-3ad0e49f22a64d2eae6c">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-02d9b3d08831e7a08a73" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-02d9b3d08831e7a08a73">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -1338,8 +1357,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption><div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-dd9a87dee75ab233c36e" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-dd9a87dee75ab233c36e">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-048c55bcd1cbaeb8cc0f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-048c55bcd1cbaeb8cc0f">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -1353,8 +1372,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption><div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-30dd2956cc06298567d7" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-30dd2956cc06298567d7">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-2c37b0ea7e5988b2585b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2c37b0ea7e5988b2585b">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>

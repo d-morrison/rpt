@@ -554,9 +554,22 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/quarto_article.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/quarto_article.html">Advanced Quarto Article</a></li></ol></nav><h1 class="title display-7">Advanced Quarto Article</h1></header>
 
-<!-- LaTeX macros for MathJax - hidden from view but processed by MathJax -->
-<div id="mathjax-macros" style="display:none">
-$$
+
+<header id="title-block-header">
+
+<p class="author">UC Davis Seroepidemiology Research Group (UCD-SERG)</p>
+
+<p class="date">2026-05-05</p>
+</header>
+
+
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><span class="math display">\[
 \providecommand{\cbl}[1]{\mathopen{}\left\{#1\right.}
 \providecommand{\cb}[1]{\mathopen{}\left\{#1\right\}\mathclose{}}
 \providecommand{\cbmat}[1]{\mathopen{}\left\{\begin{matrix}#1\end{matrix}\right\}\mathclose{}}
@@ -731,7 +744,6 @@ $$
 \providecommand{\xderiv}[2]{\frac{\partial^2}{\partial #1 \partial #2}}
 \providecommand{\xderivf}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
 \providecommand{\xderivff}[3]{\frac{\partial^2 #3}{\partial #1 \partial #2}}
-
 \providecommand{\red}[1]{{\color{red}#1}}
 \providecommand{\green}[1]{{\color{green}#1}}
 \providecommand{\blue}[1]{{\color{blue}#1}}
@@ -924,8 +936,6 @@ $$
 \def\odds{\omega}
 \def\OR{\operatorname{OR}}
 \def\ror{\theta}
- 
-
 \def\logodds{\eta}
 \providecommand{\logoddsf}[1]{\logodds \paren{#1}}
 \def\difflogodds{\Delta \eta}
@@ -988,23 +998,7 @@ $$
 \def\stdresid{r'}
 \def\modresid{r^*}
 \providecommand{\residv}{\vec{r}}
-$$
-</div>
-
-<header id="title-block-header">
-
-<p class="author">UC Davis Seroepidemiology Research Group (UCD-SERG)</p>
-
-<p class="date">2026-05-05</p>
-</header>
-
-
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+\]</span></p>
 <section id="overview" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1</span> Overview</h2>
 <p>This article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle.</p>

@@ -517,8 +517,13 @@ window.Quarto = {
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/vignettes/quarto_vignette.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/vignettes/quarto_vignette.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/UCD-SERG/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto_vignette-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="quarto_vignette.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/quarto_vignette.html">Quarto Vignette Example</a></li></ol></nav><h1 class="title display-7">Quarto Vignette Example</h1></header><!-- LaTeX macros for MathJax - hidden from view but processed by MathJax --><div id="mathjax-macros" style="display:none">
-$$
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/quarto_vignette.html">Quarto Vignette Example</a></li></ol></nav><h1 class="title display-7">Quarto Vignette Example</h1></header><header id="title-block-header">
+
+</header><div class="cell">
+<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><span class="math display">\[
 \providecommand{\cbl}[1]{\mathopen{}\left\{#1\right.}
 \providecommand{\cb}[1]{\mathopen{}\left\{#1\right\}\mathclose{}}
 \providecommand{\cbmat}[1]{\mathopen{}\left\{\begin{matrix}#1\end{matrix}\right\}\mathclose{}}
@@ -693,7 +698,6 @@ $$
 \providecommand{\xderiv}[2]{\frac{\partial^2}{\partial #1 \partial #2}}
 \providecommand{\xderivf}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
 \providecommand{\xderivff}[3]{\frac{\partial^2 #3}{\partial #1 \partial #2}}
-
 \providecommand{\red}[1]{{\color{red}#1}}
 \providecommand{\green}[1]{{\color{green}#1}}
 \providecommand{\blue}[1]{{\color{blue}#1}}
@@ -886,8 +890,6 @@ $$
 \def\odds{\omega}
 \def\OR{\operatorname{OR}}
 \def\ror{\theta}
- 
-
 \def\logodds{\eta}
 \providecommand{\logoddsf}[1]{\logodds \paren{#1}}
 \def\difflogodds{\Delta \eta}
@@ -950,15 +952,7 @@ $$
 \def\stdresid{r'}
 \def\modresid{r^*}
 \providecommand{\residv}{\vec{r}}
-$$
-</div>
-
-<header id="title-block-header">
-
-</header><div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+\]</span></p>
 <section id="introduction" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="introduction">
 <span class="header-section-number">1</span> Introduction</h2>
 <p>This vignette demonstrates how to use Quarto (<code>.qmd</code>) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.</p>
