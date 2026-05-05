@@ -135,142 +135,95 @@
     "text": "3 Next Steps\nFor more information, see the package documentation."
   },
   {
-    "objectID": "man/rpt-package.html",
-    "href": "man/rpt-package.html",
-    "title": "rpt",
-    "section": "",
-    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\nAuthors:\n\n\nFirst Last first.last@example.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
-    "crumbs": [
-      "Documentation",
-      "Reference",
-      "rpt-package"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#overview",
+    "href": "vignettes/articles/package-structure-revealjs.html#overview",
+    "title": "Package Function Structure",
+    "section": "1 Overview",
+    "text": "1 Overview\nThis article demonstrates how to visualize the structure and dependencies of package functions using the foodwebr package. Understanding function dependencies helps developers:\n\nNavigate and understand codebases more quickly\nIdentify potential refactoring opportunities\nDocument architecture and design decisions\nOnboard new contributors more effectively"
   },
   {
-    "objectID": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
-    "href": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
-    "title": "rpt",
-    "section": "",
-    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\nAuthors:\n\n\nFirst Last first.last@example.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
-    "crumbs": [
-      "Documentation",
-      "Reference",
-      "rpt-package"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#what-is-foodwebr",
+    "href": "vignettes/articles/package-structure-revealjs.html#what-is-foodwebr",
+    "title": "Package Function Structure",
+    "section": "2 What is foodwebr?",
+    "text": "2 What is foodwebr?\nThe foodwebr package creates dependency graphs showing which functions call which other functions. These visualizations are particularly useful for:\n\nExploring unfamiliar codebases\nUnderstanding function relationships\nIdentifying central or isolated functions\nPlanning refactoring efforts"
   },
   {
-    "objectID": "man/calculate_summary.html",
-    "href": "man/calculate_summary.html",
-    "title": "rpt",
-    "section": "",
-    "text": "Calculate multiple summary statistics for a numeric vector.\n\ncalculate_summary(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nA named list with mean, median, and standard deviation\n\n\nCodelibrary(\"rpt\")\n\ncalculate_summary(c(1, 2, 3, 4, 5))\n\n$mean\n[1] 3\n\n$median\n[1] 3\n\n$sd\n[1] 1.58\n\nCodecalculate_summary(c(1, NA, 3, 4, 5))\n\n$mean\n[1] 3.25\n\n$median\n[1] 3.5\n\n$sd\n[1] 1.71",
-    "crumbs": [
-      "Documentation",
-      "Reference",
-      "calculate_summary"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#installing-foodwebr",
+    "href": "vignettes/articles/package-structure-revealjs.html#installing-foodwebr",
+    "title": "Package Function Structure",
+    "section": "3 Installing foodwebr",
+    "text": "3 Installing foodwebr\nIf you don’t have foodwebr installed, you can install it from CRAN:\n\n\nCode\ninstall.packages(\"foodwebr\")\n\n\nOr from GitHub for the latest development version:\n\n\nCode\ndevtools::install_github(\"lewinfox/foodwebr\")"
   },
   {
-    "objectID": "man/calculate_summary.html#calculate-summary-statistics",
-    "href": "man/calculate_summary.html#calculate-summary-statistics",
-    "title": "rpt",
-    "section": "",
-    "text": "Calculate multiple summary statistics for a numeric vector.\n\ncalculate_summary(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nA named list with mean, median, and standard deviation\n\n\nCodelibrary(\"rpt\")\n\ncalculate_summary(c(1, 2, 3, 4, 5))\n\n$mean\n[1] 3\n\n$median\n[1] 3\n\n$sd\n[1] 1.58\n\nCodecalculate_summary(c(1, NA, 3, 4, 5))\n\n$mean\n[1] 3.25\n\n$median\n[1] 3.5\n\n$sd\n[1] 1.71",
-    "crumbs": [
-      "Documentation",
-      "Reference",
-      "calculate_summary"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#visualizing-package-structure",
+    "href": "vignettes/articles/package-structure-revealjs.html#visualizing-package-structure",
+    "title": "Package Function Structure",
+    "section": "4 Visualizing Package Structure",
+    "text": "4 Visualizing Package Structure\nBasic Usage\nThe foodweb() function analyzes function dependencies. When examining a package, you typically want to look at specific functions or the entire package namespace:\n\n\nCode\nlibrary(foodwebr)\n\n# Create a foodweb for the example_function\nfw &lt;- foodweb(FUN = example_function)\nfw\n#&gt; # A `foodweb`: 6 vertices and 7 edges \n#&gt; digraph 'foodweb' {\n#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }\n#&gt;   calculate_summary() -&gt; { example_function(), format_result(), clean_data() }\n#&gt;   calculate_statistic() -&gt; { clean_data() }\n#&gt;   format_result()\n#&gt;   clean_data() -&gt; { validate_input() }\n#&gt;   validate_input()\n#&gt; }\n\n\nPlotting the Dependency Graph\nThe plot() method creates an interactive visualization using DiagrammeR:\n\n\nCode\nplot(fw)\n\n\n\n\nFigure 1: Basic function dependency graph for example_function\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding the Graph\n\n\n\nNodes represent individual functions\nEdges (arrows) show function calls\nAn arrow from A to B means “A calls B”\nIsolated nodes indicate functions with no dependencies or dependents\n\n\n\n\nFiltering Options\nBy default, foodwebr filters to show only functions directly related to the specified function. You can control this behavior:\n\n\nCode\n# Show only connected functions (default)\nfw_filtered &lt;- foodweb(FUN = example_function, filter = TRUE)\n\n# Show all functions in the environment\nfw_all &lt;- foodweb(FUN = example_function, filter = FALSE)\n\n\nExamining the Entire Package\nTo see all exported and internal functions in the package:\n\n\nCode\n# Get the package namespace environment\npkg_env &lt;- asNamespace(\"rpt\")\n\n# Create foodweb for entire package\nfw_pkg &lt;- foodweb(env = pkg_env)\nfw_pkg\n#&gt; # A `foodweb`: 6 vertices and 7 edges \n#&gt; digraph 'foodweb' {\n#&gt;   calculate_statistic() -&gt; { clean_data() }\n#&gt;   calculate_summary() -&gt; { clean_data(), example_function(), format_result() }\n#&gt;   clean_data() -&gt; { validate_input() }\n#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }\n#&gt;   format_result()\n#&gt;   validate_input()\n#&gt; }\n\n\n\n\nCode\nplot(fw_pkg)\n\n\n\n\nFigure 2: Complete dependency graph for all package functions"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "The goal of {rpt} is to …\n\n\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#analyzing-dependencies",
+    "href": "vignettes/articles/package-structure-revealjs.html#analyzing-dependencies",
+    "title": "Package Function Structure",
+    "section": "5 Analyzing Dependencies",
+    "text": "5 Analyzing Dependencies\nUnderstanding Function Roles\nFrom the dependency graph, you can identify different types of functions:\n\nLeaf functions: Functions that don’t call any other package functions (only base R or external packages)\nRoot functions: Functions that are called by many others but don’t call package functions themselves\nHub functions: Functions that both call and are called by many functions\nIsolated functions: Functions with no connections to others\n\nExample Analysis\nFor our package:\n\n\nCode\n# Convert to text representation for inspection\ncat(as.character(fw_pkg))\n#&gt; digraph 'foodweb' {\n#&gt;   \"calculate_statistic()\" -&gt; { \"clean_data()\" }\n#&gt;   \"calculate_summary()\" -&gt; { \"clean_data()\", \"example_function()\", \"format_result()\" }\n#&gt;   \"clean_data()\" -&gt; { \"validate_input()\" }\n#&gt;   \"example_function()\" -&gt; { \"calculate_statistic()\", \"format_result()\" }\n#&gt;   \"format_result()\"\n#&gt;   \"validate_input()\"\n#&gt; }\n\n\n\n\n\n\n\n\nDependency Patterns\n\n\nIn well-designed packages, you typically see:\n\nClear hierarchy: Lower-level utility functions are called by higher-level API functions\nLimited cross-dependencies: Functions in the same “layer” don’t call each other excessively\nFocused functions: Each function has a clear purpose with limited dependencies\n\nIn the rpt package, we can see this pattern:\n\nvalidate_input() is a low-level helper (no package dependencies)\nclean_data() calls validate_input()\ncalculate_statistic() calls clean_data()\nformat_result() is a low-level formatter (no package dependencies)\nexample_function() is a high-level API that calls calculate_statistic() and format_result()\ncalculate_summary() is another high-level API that calls clean_data() and example_function()\n\nThis creates a clear layered architecture with well-separated concerns."
   },
   {
-    "objectID": "index.html#installation",
-    "href": "index.html#installation",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "You can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#package-architecture",
+    "href": "vignettes/articles/package-structure-revealjs.html#package-architecture",
+    "title": "Package Function Structure",
+    "section": "6 Package Architecture",
+    "text": "6 Package Architecture\nCurrent Structure\nLet’s examine the actual structure of the rpt package:\n\n\nCode\n# List all functions in the package\npkg_functions &lt;- ls(asNamespace(\"rpt\"))\ncat(\"Package functions:\\n\")\n#&gt; Package functions:\ncat(paste(\"-\", sort(pkg_functions), collapse = \"\\n\"))\n#&gt; - calculate_statistic\n#&gt; - calculate_summary\n#&gt; - clean_data\n#&gt; - example_function\n#&gt; - format_result\n#&gt; - validate_input\n\n\nThe dependency relationships are:\n\nExported functions (user-facing API):\n\nexample_function(): Calls calculate_statistic() → format_result()\ncalculate_summary(): Calls clean_data() → example_function()\n\nInternal functions (implementation details):\n\nvalidate_input(): No package dependencies (leaf function)\nclean_data(): Calls validate_input()\ncalculate_statistic(): Calls clean_data()\nformat_result(): No package dependencies (leaf function)\n\n\nThis architecture demonstrates good separation of concerns with clear data flow from validation through cleaning to calculation and formatting."
   },
   {
-    "objectID": "index.html#example",
-    "href": "index.html#example",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "This is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#advanced-usage",
+    "href": "vignettes/articles/package-structure-revealjs.html#advanced-usage",
+    "title": "Package Function Structure",
+    "section": "7 Advanced Usage",
+    "text": "7 Advanced Usage\nUsing with tidygraph\nThe tidygraph package provides powerful tools for graph analysis. You can convert a foodweb object to work with these tools:\n\n\nCode\nif (requireNamespace(\"tidygraph\", quietly = TRUE)) {\n  tg &lt;- tidygraph::as_tbl_graph(fw_pkg)\n  print(tg)\n}\n#&gt; # A tbl_graph: 6 nodes and 7 edges\n#&gt; #\n#&gt; # A directed acyclic simple graph with 1 component\n#&gt; #\n#&gt; # Node Data: 6 × 1 (active)\n#&gt;   name               \n#&gt;   &lt;chr&gt;              \n#&gt; 1 calculate_statistic\n#&gt; 2 calculate_summary  \n#&gt; 3 clean_data         \n#&gt; 4 example_function   \n#&gt; 5 format_result      \n#&gt; 6 validate_input     \n#&gt; #\n#&gt; # Edge Data: 7 × 2\n#&gt;    from    to\n#&gt;   &lt;int&gt; &lt;int&gt;\n#&gt; 1     1     3\n#&gt; 2     2     3\n#&gt; 3     2     4\n#&gt; # ℹ 4 more rows\n\n\nCustomizing Visualizations\nYou can pass additional arguments to customize the graph appearance:\n\n\nCode\n# These arguments are passed to DiagrammeR::grViz()\nplot(fw_pkg, \n     width = 800, \n     height = 600)\n\n\nExporting as Text\nGet the graphviz DOT representation:\n\n\nCode\n# As text\nfoodweb_text &lt;- foodweb(env = asNamespace(\"rpt\"), as.text = TRUE)\ncat(foodweb_text)\n#&gt; digraph 'foodweb' {\n#&gt;   \"calculate_statistic()\" -&gt; { \"clean_data()\" }\n#&gt;   \"calculate_summary()\" -&gt; { \"clean_data()\", \"example_function()\", \"format_result()\" }\n#&gt;   \"clean_data()\" -&gt; { \"validate_input()\" }\n#&gt;   \"example_function()\" -&gt; { \"calculate_statistic()\", \"format_result()\" }\n#&gt;   \"format_result()\"\n#&gt;   \"validate_input()\"\n#&gt; }"
   },
   {
-    "objectID": "index.html#development",
-    "href": "index.html#development",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "This package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#practical-applications",
+    "href": "vignettes/articles/package-structure-revealjs.html#practical-applications",
+    "title": "Package Function Structure",
+    "section": "8 Practical Applications",
+    "text": "8 Practical Applications\nCode Review\nUse dependency graphs during code review to:\n\nVerify that new functions follow existing architectural patterns\nIdentify unexpected dependencies\nEnsure proper separation of concerns\nDetect circular dependencies\n\nRefactoring\nBefore refactoring:\n\nGenerate a dependency graph of the affected area\nIdentify all functions that will be impacted\nPlan changes to minimize ripple effects\nAfter refactoring, regenerate the graph to verify improvements\n\nDocumentation\nInclude dependency graphs in:\n\nDeveloper documentation\nArchitecture decision records\nPackage vignettes (like this one!)\nREADME files for complex packages\n\n\n\n\n\n\n\nKeeping Documentation Updated\n\n\nWhen adding new functions or modifying dependencies, regenerate the foodweb graphs to keep documentation current. Consider adding automated checks in your CI/CD pipeline."
   },
   {
-    "objectID": "index.html#other-r-package-template-options",
-    "href": "index.html#other-r-package-template-options",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "If you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#exploring-specific-functions",
+    "href": "vignettes/articles/package-structure-revealjs.html#exploring-specific-functions",
+    "title": "Package Function Structure",
+    "section": "9 Exploring Specific Functions",
+    "text": "9 Exploring Specific Functions\nYou can focus on specific functions to understand their dependencies:\nExample Function Dependencies\n\n\nCode\nfw_example &lt;- foodweb(FUN = example_function)\nplot(fw_example)\n\n\n\n\nFigure 3: Dependency graph for example_function showing all related functions\n\n\n\n\n\n\n\n\nSummary Function Dependencies\n\n\nCode\nfw_summary &lt;- foodweb(FUN = calculate_summary)\nplot(fw_summary)\n\n\n\n\nFigure 4: Dependency graph for calculate_summary showing its relationships\n\n\n\n\n\n\n\n\nThese focused views help understand:\n\nWhat functions a specific function depends on (its dependencies)\nWhat functions depend on a specific function (its dependents)\nThe complete call chain for a given function"
   },
   {
-    "objectID": "index.html#code-of-conduct",
-    "href": "index.html#code-of-conduct",
-    "title": "{rpt} (R package template)",
-    "section": "",
-    "text": "Please note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#best-practices",
+    "href": "vignettes/articles/package-structure-revealjs.html#best-practices",
+    "title": "Package Function Structure",
+    "section": "10 Best Practices",
+    "text": "10 Best Practices\nWhen designing package architecture:\n\nMinimize dependencies: Each function should have a clear, focused purpose\nAvoid circular dependencies: A should not call B if B calls A\nLayer your functions: Separate low-level utilities from high-level APIs\nDocument dependencies: Use foodwebr graphs in your documentation\nReview regularly: Check dependency graphs during code review"
   },
   {
-    "objectID": "man/example_function.html",
-    "href": "man/example_function.html",
-    "title": "rpt",
-    "section": "",
-    "text": "This is an example function that demonstrates basic functionality. It validates, cleans, calculates statistics, and formats the result.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThis function also demonstrates various ways to include mathematical notation in roxygen2 documentation.\n\nThe median of the input vector, rounded to 2 decimal places\n\n\nThe median is a measure of central tendency where \\(x_{0.5}\\) represents the value that splits the data in half.\n\nThe sample median for odd \\(n\\) is defined as:\n\n\n\\(m = x_{(n+1)/2}\\)\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3\n\nCodeexample_function(c(1, NA, 3, 4, 5))\n\n[1] 3.5",
-    "crumbs": [
-      "Documentation",
-      "Reference",
-      "example_function"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#learn-more",
+    "href": "vignettes/articles/package-structure-revealjs.html#learn-more",
+    "title": "Package Function Structure",
+    "section": "11 Learn More",
+    "text": "11 Learn More\n\nfoodwebr documentation: https://lewinfox.com/foodwebr/\nPackage website: https://ucd-serg.github.io/rpt/\nGitHub repository: https://github.com/UCD-SERG/rpt\nDiagrammeR: https://rich-iannone.github.io/DiagrammeR/\ntidygraph: https://tidygraph.data-imaginist.com/"
   },
   {
-    "objectID": "man/example_function.html#example-function-with-mathematical-notation",
-    "href": "man/example_function.html#example-function-with-mathematical-notation",
-    "title": "rpt",
-    "section": "",
-    "text": "This is an example function that demonstrates basic functionality. It validates, cleans, calculates statistics, and formats the result.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThis function also demonstrates various ways to include mathematical notation in roxygen2 documentation.\n\nThe median of the input vector, rounded to 2 decimal places\n\n\nThe median is a measure of central tendency where \\(x_{0.5}\\) represents the value that splits the data in half.\n\nThe sample median for odd \\(n\\) is defined as:\n\n\n\\(m = x_{(n+1)/2}\\)\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3\n\nCodeexample_function(c(1, NA, 3, 4, 5))\n\n[1] 3.5",
-    "crumbs": [
-      "Documentation",
-      "Reference",
-      "example_function"
-    ]
+    "objectID": "vignettes/articles/package-structure-revealjs.html#summary",
+    "href": "vignettes/articles/package-structure-revealjs.html#summary",
+    "title": "Package Function Structure",
+    "section": "12 Summary",
+    "text": "12 Summary\nThis article demonstrated how to use foodwebr to visualize and understand package function dependencies. Key takeaways:\n\nfoodwebr creates interactive dependency graphs\nFiltering options help focus on specific functions or show entire packages\nDependency graphs aid in code review, refactoring, and documentation\nIntegration with tidygraph enables advanced graph analysis\nRegular visualization helps maintain clean architecture\n\nThe rpt package demonstrates a clean layered architecture with: - Low-level utility functions (validate_input(), format_result()) - Mid-level processing functions (clean_data(), calculate_statistic()) - High-level API functions (example_function(), calculate_summary())\nThis structure makes the code easier to understand, test, and maintain."
+  },
+  {
+    "objectID": "vignettes/articles/package-structure-revealjs.html#references",
+    "href": "vignettes/articles/package-structure-revealjs.html#references",
+    "title": "Package Function Structure",
+    "section": "13 References",
+    "text": "13 References"
   },
   {
     "objectID": "vignettes/articles/package-structure.html",
@@ -455,95 +408,375 @@
     ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#overview",
-    "href": "vignettes/articles/package-structure-revealjs.html#overview",
-    "title": "Package Function Structure",
+    "objectID": "man/example_function.html",
+    "href": "man/example_function.html",
+    "title": "rpt",
+    "section": "",
+    "text": "This is an example function that demonstrates basic functionality. It validates, cleans, calculates statistics, and formats the result.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThis function also demonstrates various ways to include mathematical notation in roxygen2 documentation.\n\nThe median of the input vector, rounded to 2 decimal places\n\n\nThe median is a measure of central tendency where \\(x_{0.5}\\) represents the value that splits the data in half.\n\nThe sample median for odd \\(n\\) is defined as:\n\n\n\\(m = x_{(n+1)/2}\\)\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3\n\nCodeexample_function(c(1, NA, 3, 4, 5))\n\n[1] 3.5",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "example_function"
+    ]
+  },
+  {
+    "objectID": "man/example_function.html#example-function-with-mathematical-notation",
+    "href": "man/example_function.html#example-function-with-mathematical-notation",
+    "title": "rpt",
+    "section": "",
+    "text": "This is an example function that demonstrates basic functionality. It validates, cleans, calculates statistics, and formats the result.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThis function also demonstrates various ways to include mathematical notation in roxygen2 documentation.\n\nThe median of the input vector, rounded to 2 decimal places\n\n\nThe median is a measure of central tendency where \\(x_{0.5}\\) represents the value that splits the data in half.\n\nThe sample median for odd \\(n\\) is defined as:\n\n\n\\(m = x_{(n+1)/2}\\)\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3\n\nCodeexample_function(c(1, NA, 3, 4, 5))\n\n[1] 3.5",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "example_function"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "The goal of {rpt} is to …\n\n\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "You can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#example",
+    "href": "index.html#example",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "This is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#development",
+    "href": "index.html#development",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "This package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#other-r-package-template-options",
+    "href": "index.html#other-r-package-template-options",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "If you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#code-of-conduct",
+    "href": "index.html#code-of-conduct",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "Please note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "man/calculate_summary.html",
+    "href": "man/calculate_summary.html",
+    "title": "rpt",
+    "section": "",
+    "text": "Calculate multiple summary statistics for a numeric vector.\n\ncalculate_summary(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nA named list with mean, median, and standard deviation\n\n\nCodelibrary(\"rpt\")\n\ncalculate_summary(c(1, 2, 3, 4, 5))\n\n$mean\n[1] 3\n\n$median\n[1] 3\n\n$sd\n[1] 1.58\n\nCodecalculate_summary(c(1, NA, 3, 4, 5))\n\n$mean\n[1] 3.25\n\n$median\n[1] 3.5\n\n$sd\n[1] 1.71",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "calculate_summary"
+    ]
+  },
+  {
+    "objectID": "man/calculate_summary.html#calculate-summary-statistics",
+    "href": "man/calculate_summary.html#calculate-summary-statistics",
+    "title": "rpt",
+    "section": "",
+    "text": "Calculate multiple summary statistics for a numeric vector.\n\ncalculate_summary(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nA named list with mean, median, and standard deviation\n\n\nCodelibrary(\"rpt\")\n\ncalculate_summary(c(1, 2, 3, 4, 5))\n\n$mean\n[1] 3\n\n$median\n[1] 3\n\n$sd\n[1] 1.58\n\nCodecalculate_summary(c(1, NA, 3, 4, 5))\n\n$mean\n[1] 3.25\n\n$median\n[1] 3.5\n\n$sd\n[1] 1.71",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "calculate_summary"
+    ]
+  },
+  {
+    "objectID": "man/rpt-package.html",
+    "href": "man/rpt-package.html",
+    "title": "rpt",
+    "section": "",
+    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\nAuthors:\n\n\nFirst Last first.last@example.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "rpt-package"
+    ]
+  },
+  {
+    "objectID": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
+    "href": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
+    "title": "rpt",
+    "section": "",
+    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\nAuthors:\n\n\nFirst Last first.last@example.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "rpt-package"
+    ]
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article.html",
+    "href": "vignettes/articles/quarto_article.html",
+    "title": "Advanced Quarto Article",
+    "section": "",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-05\nCode\nlibrary(rpt)",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article.html#overview",
+    "href": "vignettes/articles/quarto_article.html#overview",
+    "title": "Advanced Quarto Article",
     "section": "1 Overview",
-    "text": "1 Overview\nThis article demonstrates how to visualize the structure and dependencies of package functions using the foodwebr package. Understanding function dependencies helps developers:\n\nNavigate and understand codebases more quickly\nIdentify potential refactoring opportunities\nDocument architecture and design decisions\nOnboard new contributors more effectively"
+    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle.",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#what-is-foodwebr",
-    "href": "vignettes/articles/package-structure-revealjs.html#what-is-foodwebr",
-    "title": "Package Function Structure",
-    "section": "2 What is foodwebr?",
-    "text": "2 What is foodwebr?\nThe foodwebr package creates dependency graphs showing which functions call which other functions. These visualizations are particularly useful for:\n\nExploring unfamiliar codebases\nUnderstanding function relationships\nIdentifying central or isolated functions\nPlanning refactoring efforts"
+    "objectID": "vignettes/articles/quarto_article.html#when-to-use-articles-vs-vignettes",
+    "href": "vignettes/articles/quarto_article.html#when-to-use-articles-vs-vignettes",
+    "title": "Advanced Quarto Article",
+    "section": "2 When to Use Articles vs Vignettes",
+    "text": "2 When to Use Articles vs Vignettes\nVignettes should be used for:\n\nCore package documentation\nEssential usage examples\nContent that users need offline\n\nArticles are better for:\n\nExtended tutorials\nCase studies and detailed examples\nContent with large datasets or external dependencies\nSupplementary material",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#installing-foodwebr",
-    "href": "vignettes/articles/package-structure-revealjs.html#installing-foodwebr",
-    "title": "Package Function Structure",
-    "section": "3 Installing foodwebr",
-    "text": "3 Installing foodwebr\nIf you don’t have foodwebr installed, you can install it from CRAN:\n\n\nCode\ninstall.packages(\"foodwebr\")\n\n\nOr from GitHub for the latest development version:\n\n\nCode\ndevtools::install_github(\"lewinfox/foodwebr\")"
+    "objectID": "vignettes/articles/quarto_article.html#advanced-quarto-features",
+    "href": "vignettes/articles/quarto_article.html#advanced-quarto-features",
+    "title": "Advanced Quarto Article",
+    "section": "3 Advanced Quarto Features",
+    "text": "3 Advanced Quarto Features\n\n3.1 Cross-References\nQuarto makes it easy to create cross-references. For example, see Figure 1 for a scatter plot and Table 1 for a summary table.\n\n\nCode\n# Generate sample data\nset.seed(123)\nx &lt;- rnorm(100)\ny &lt;- 2 * x + rnorm(100, 0, 0.5)\n\n# Create scatter plot\nplot(x, y, \n     main = \"Example Scatter Plot\",\n     xlab = \"X Variable\",\n     ylab = \"Y Variable\",\n     pch = 16,\n     col = rgb(0.2, 0.4, 0.6, 0.6))\nabline(lm(y ~ x), col = \"red\", lwd = 2)\n\n\n\n\n\nFigure 1: Scatter plot demonstrating cross-referencing\n\n\n\n\n\n\n\n\n\n\n3.2 Summary Tables\n\n\nCode\ndata_summary &lt;- data.frame(\n  Statistic = c(\"Mean\", \"Median\", \"SD\", \"Min\", \"Max\"),\n  X = c(mean(x), median(x), sd(x), min(x), max(x)),\n  Y = c(mean(y), median(y), sd(y), min(y), max(y))\n)\n\nknitr::kable(data_summary, digits = 3)\n\n\n\n\nTable 1: Summary statistics for example data\n\n\n\n\n\n\nStatistic\nX\nY\n\n\n\n\nMean\n0.090\n0.127\n\n\nMedian\n0.062\n0.137\n\n\nSD\n0.913\n1.865\n\n\nMin\n-2.309\n-4.586\n\n\nMax\n2.187\n4.675\n\n\n\n\n\n\n\n\nAs shown in Table 1, the variables have similar distributions.\n\n\n3.3 Code Folding\nYou can make code chunks foldable:\n\n\nShow the code for data preparation\n# Prepare more complex data\ncomplex_data &lt;- data.frame(\n  id = 1:50,\n  group = rep(c(\"A\", \"B\"), each = 25),\n  value1 = rnorm(50, 100, 15),\n  value2 = rnorm(50, 50, 10)\n)\n\n# Calculate group statistics\ngroup_stats &lt;- aggregate(\n  cbind(value1, value2) ~ group, \n  data = complex_data, \n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\nprint(group_stats)\n#&gt;   group value1.mean value1.sd value2.mean value2.sd\n#&gt; 1     A   101.61247  14.63952   51.727220 10.047051\n#&gt; 2     B    98.13191  13.84514   53.261796  8.934998\n\n\n\n\n3.4 Tabsets\n\nPlot ViewSummary ViewRaw Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#&gt;        id              group        value1           value2     \n#&gt;  Min.   : 1.00   Length   :50   Min.   : 79.60   Min.   :32.43  \n#&gt;  1st Qu.:13.25   N.unique : 2   1st Qu.: 89.29   1st Qu.:46.76  \n#&gt;  Median :25.50   N.blank  : 0   Median : 96.64   Median :51.04  \n#&gt;  Mean   :25.50   Min.nchar: 1   Mean   : 99.87   Mean   :52.49  \n#&gt;  3rd Qu.:37.75   Max.nchar: 1   3rd Qu.:107.93   3rd Qu.:59.34  \n#&gt;  Max.   :50.00                  Max.   :132.98   Max.   :72.93\n\n\n\n\n#&gt;    id group    value1   value2\n#&gt; 1   1     A 132.98216 46.24397\n#&gt; 2   2     A 119.68619 44.38124\n#&gt; 3   3     A  96.02282 46.56083\n#&gt; 4   4     A 108.14791 50.90497\n#&gt; 5   5     A  93.78490 65.98509\n#&gt; 6   6     A  92.85630 49.11435\n#&gt; 7   7     A  88.17096 60.80799\n#&gt; 8   8     A  91.08074 56.30754\n#&gt; 9   9     A 124.76361 48.86360\n#&gt; 10 10     A  99.18958 34.67098\n\n\n\n\n\n\n3.5 Advanced Callouts\n\n\n\n\n\n\nImportantImportant Considerations\n\n\n\nWhen using this package in production:\n\nAlways validate input data\nCheck for missing values\nConsider computational complexity\n\n\n\n\n\n\n\n\n\nWarningPerformance Warning\n\n\n\nLarge datasets may require additional memory and processing time.\n\n\n\n\n3.6 Columns Layout\n\n\nLeft Column\nThis demonstrates a two-column layout in Quarto.\n\nFeature 1\nFeature 2\nFeature 3\n\n\nRight Column\nYou can place different content in each column.",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#visualizing-package-structure",
-    "href": "vignettes/articles/package-structure-revealjs.html#visualizing-package-structure",
-    "title": "Package Function Structure",
-    "section": "4 Visualizing Package Structure",
-    "text": "4 Visualizing Package Structure\nBasic Usage\nThe foodweb() function analyzes function dependencies. When examining a package, you typically want to look at specific functions or the entire package namespace:\n\n\nCode\nlibrary(foodwebr)\n\n# Create a foodweb for the example_function\nfw &lt;- foodweb(FUN = example_function)\nfw\n#&gt; # A `foodweb`: 6 vertices and 7 edges \n#&gt; digraph 'foodweb' {\n#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }\n#&gt;   calculate_summary() -&gt; { example_function(), format_result(), clean_data() }\n#&gt;   calculate_statistic() -&gt; { clean_data() }\n#&gt;   format_result()\n#&gt;   clean_data() -&gt; { validate_input() }\n#&gt;   validate_input()\n#&gt; }\n\n\nPlotting the Dependency Graph\nThe plot() method creates an interactive visualization using DiagrammeR:\n\n\nCode\nplot(fw)\n\n\n\n\nFigure 1: Basic function dependency graph for example_function\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding the Graph\n\n\n\nNodes represent individual functions\nEdges (arrows) show function calls\nAn arrow from A to B means “A calls B”\nIsolated nodes indicate functions with no dependencies or dependents\n\n\n\n\nFiltering Options\nBy default, foodwebr filters to show only functions directly related to the specified function. You can control this behavior:\n\n\nCode\n# Show only connected functions (default)\nfw_filtered &lt;- foodweb(FUN = example_function, filter = TRUE)\n\n# Show all functions in the environment\nfw_all &lt;- foodweb(FUN = example_function, filter = FALSE)\n\n\nExamining the Entire Package\nTo see all exported and internal functions in the package:\n\n\nCode\n# Get the package namespace environment\npkg_env &lt;- asNamespace(\"rpt\")\n\n# Create foodweb for entire package\nfw_pkg &lt;- foodweb(env = pkg_env)\nfw_pkg\n#&gt; # A `foodweb`: 6 vertices and 7 edges \n#&gt; digraph 'foodweb' {\n#&gt;   calculate_statistic() -&gt; { clean_data() }\n#&gt;   calculate_summary() -&gt; { clean_data(), example_function(), format_result() }\n#&gt;   clean_data() -&gt; { validate_input() }\n#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }\n#&gt;   format_result()\n#&gt;   validate_input()\n#&gt; }\n\n\n\n\nCode\nplot(fw_pkg)\n\n\n\n\nFigure 2: Complete dependency graph for all package functions"
+    "objectID": "vignettes/articles/quarto_article.html#working-with-package-functions",
+    "href": "vignettes/articles/quarto_article.html#working-with-package-functions",
+    "title": "Advanced Quarto Article",
+    "section": "4 Working with Package Functions",
+    "text": "4 Working with Package Functions\nHere’s how to use the package’s example function with different inputs:\n\n\nCode\n# Numeric vector\nexample_function(c(5, 10, 15, 20, 25))\n#&gt; [1] 15\n\n# Using with generated data\nrandom_data &lt;- runif(10, min = 0, max = 100)\nexample_function(random_data)\n#&gt; [1] 47.43",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#analyzing-dependencies",
-    "href": "vignettes/articles/package-structure-revealjs.html#analyzing-dependencies",
-    "title": "Package Function Structure",
-    "section": "5 Analyzing Dependencies",
-    "text": "5 Analyzing Dependencies\nUnderstanding Function Roles\nFrom the dependency graph, you can identify different types of functions:\n\nLeaf functions: Functions that don’t call any other package functions (only base R or external packages)\nRoot functions: Functions that are called by many others but don’t call package functions themselves\nHub functions: Functions that both call and are called by many functions\nIsolated functions: Functions with no connections to others\n\nExample Analysis\nFor our package:\n\n\nCode\n# Convert to text representation for inspection\ncat(as.character(fw_pkg))\n#&gt; digraph 'foodweb' {\n#&gt;   \"calculate_statistic()\" -&gt; { \"clean_data()\" }\n#&gt;   \"calculate_summary()\" -&gt; { \"clean_data()\", \"example_function()\", \"format_result()\" }\n#&gt;   \"clean_data()\" -&gt; { \"validate_input()\" }\n#&gt;   \"example_function()\" -&gt; { \"calculate_statistic()\", \"format_result()\" }\n#&gt;   \"format_result()\"\n#&gt;   \"validate_input()\"\n#&gt; }\n\n\n\n\n\n\n\n\nDependency Patterns\n\n\nIn well-designed packages, you typically see:\n\nClear hierarchy: Lower-level utility functions are called by higher-level API functions\nLimited cross-dependencies: Functions in the same “layer” don’t call each other excessively\nFocused functions: Each function has a clear purpose with limited dependencies\n\nIn the rpt package, we can see this pattern:\n\nvalidate_input() is a low-level helper (no package dependencies)\nclean_data() calls validate_input()\ncalculate_statistic() calls clean_data()\nformat_result() is a low-level formatter (no package dependencies)\nexample_function() is a high-level API that calls calculate_statistic() and format_result()\ncalculate_summary() is another high-level API that calls clean_data() and example_function()\n\nThis creates a clear layered architecture with well-separated concerns."
+    "objectID": "vignettes/articles/quarto_article.html#code-annotations",
+    "href": "vignettes/articles/quarto_article.html#code-annotations",
+    "title": "Advanced Quarto Article",
+    "section": "5 Code Annotations",
+    "text": "5 Code Annotations\nQuarto supports code annotations for detailed explanations:\n\n\nCode\n1\n2data &lt;- c(1, 2, 3, 4, 5)\n3result &lt;- example_function(data)\n4print(result)\n#&gt; [1] 3\n\n\n\n1\n\nLoad sample data\n\n2\n\nCreate a simple numeric vector\n\n3\n\nApply the example function from the package\n\n4\n\nDisplay the results",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#package-architecture",
-    "href": "vignettes/articles/package-structure-revealjs.html#package-architecture",
-    "title": "Package Function Structure",
-    "section": "6 Package Architecture",
-    "text": "6 Package Architecture\nCurrent Structure\nLet’s examine the actual structure of the rpt package:\n\n\nCode\n# List all functions in the package\npkg_functions &lt;- ls(asNamespace(\"rpt\"))\ncat(\"Package functions:\\n\")\n#&gt; Package functions:\ncat(paste(\"-\", sort(pkg_functions), collapse = \"\\n\"))\n#&gt; - calculate_statistic\n#&gt; - calculate_summary\n#&gt; - clean_data\n#&gt; - example_function\n#&gt; - format_result\n#&gt; - validate_input\n\n\nThe dependency relationships are:\n\nExported functions (user-facing API):\n\nexample_function(): Calls calculate_statistic() → format_result()\ncalculate_summary(): Calls clean_data() → example_function()\n\nInternal functions (implementation details):\n\nvalidate_input(): No package dependencies (leaf function)\nclean_data(): Calls validate_input()\ncalculate_statistic(): Calls clean_data()\nformat_result(): No package dependencies (leaf function)\n\n\nThis architecture demonstrates good separation of concerns with clear data flow from validation through cleaning to calculation and formatting."
+    "objectID": "vignettes/articles/quarto_article.html#theorem-environments",
+    "href": "vignettes/articles/quarto_article.html#theorem-environments",
+    "title": "Advanced Quarto Article",
+    "section": "6 Theorem Environments",
+    "text": "6 Theorem Environments\nThe callouty-theorem extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.\n\n6.1 Definitions and Theorems\n\n\n\n\n\n\n\nDefinition 1 (Standard Error) The standard error of the mean for a sample of size \\(n\\) with standard deviation \\(s\\) is:\n\\[SE = \\frac{s}{\\sqrt{n}}\\]\n\n\n\n\n\n\n\n\n\n\n\nTheorem 1 (Central Limit Theorem) Let \\(X_1, X_2, \\ldots, X_n\\) be independent and identically distributed random variables with mean \\(\\mu\\) and finite variance \\(\\sigma^2\\). Then as \\(n \\to \\infty\\):\n\\[\\frac{\\bar{X} - \\mu}{\\sigma / \\sqrt{n}} \\xrightarrow{d} N(0, 1)\\]\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\n\nProof. See any standard probability textbook.\n\n\n\n\n\n\n6.2 Lemmas and Corollaries\n\n\n\n\n\n\n\nLemma 1 (Variance of a Sum) For independent random variables \\(X\\) and \\(Y\\):\n\\[\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\]\n\n\n\n\n\n\n\n\n\n\n\nCorollary 1 (Confidence Interval from CLT) By Theorem 1 and Definition 1, an approximate 95% confidence interval for \\(\\mu\\) is:\n\\[\\bar{x} \\pm 1.96 \\cdot SE\\]\n\n\n\n\n\n\n6.3 Examples and Exercises\n\n\n\n\n\n\n\nExample 1 (95% Confidence Interval) For the sample below, we calculate a 95% confidence interval for the mean:\n\n\nCode\nset.seed(42)\nsample_vals &lt;- rnorm(50, mean = 5, sd = 2)\nn &lt;- length(sample_vals)\nse &lt;- sd(sample_vals) / sqrt(n)\nci &lt;- mean(sample_vals) + c(-1, 1) * 1.96 * se\ncat(sprintf(\"Mean = %.3f, 95%% CI: [%.3f, %.3f]\\n\", mean(sample_vals), ci[1], ci[2]))\n#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 1 (Exercise: Computing Standard Error) Compute the standard error for a sample of size \\(n = 100\\) with sample standard deviation \\(s = 15\\).\n\n\n\n\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\n\nSolution. \\[SE = \\frac{15}{\\sqrt{100}} = \\frac{15}{10} = 1.5\\]",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#advanced-usage",
-    "href": "vignettes/articles/package-structure-revealjs.html#advanced-usage",
-    "title": "Package Function Structure",
-    "section": "7 Advanced Usage",
-    "text": "7 Advanced Usage\nUsing with tidygraph\nThe tidygraph package provides powerful tools for graph analysis. You can convert a foodweb object to work with these tools:\n\n\nCode\nif (requireNamespace(\"tidygraph\", quietly = TRUE)) {\n  tg &lt;- tidygraph::as_tbl_graph(fw_pkg)\n  print(tg)\n}\n#&gt; # A tbl_graph: 6 nodes and 7 edges\n#&gt; #\n#&gt; # A directed acyclic simple graph with 1 component\n#&gt; #\n#&gt; # Node Data: 6 × 1 (active)\n#&gt;   name               \n#&gt;   &lt;chr&gt;              \n#&gt; 1 calculate_statistic\n#&gt; 2 calculate_summary  \n#&gt; 3 clean_data         \n#&gt; 4 example_function   \n#&gt; 5 format_result      \n#&gt; 6 validate_input     \n#&gt; #\n#&gt; # Edge Data: 7 × 2\n#&gt;    from    to\n#&gt;   &lt;int&gt; &lt;int&gt;\n#&gt; 1     1     3\n#&gt; 2     2     3\n#&gt; 3     2     4\n#&gt; # ℹ 4 more rows\n\n\nCustomizing Visualizations\nYou can pass additional arguments to customize the graph appearance:\n\n\nCode\n# These arguments are passed to DiagrammeR::grViz()\nplot(fw_pkg, \n     width = 800, \n     height = 600)\n\n\nExporting as Text\nGet the graphviz DOT representation:\n\n\nCode\n# As text\nfoodweb_text &lt;- foodweb(env = asNamespace(\"rpt\"), as.text = TRUE)\ncat(foodweb_text)\n#&gt; digraph 'foodweb' {\n#&gt;   \"calculate_statistic()\" -&gt; { \"clean_data()\" }\n#&gt;   \"calculate_summary()\" -&gt; { \"clean_data()\", \"example_function()\", \"format_result()\" }\n#&gt;   \"clean_data()\" -&gt; { \"validate_input()\" }\n#&gt;   \"example_function()\" -&gt; { \"calculate_statistic()\", \"format_result()\" }\n#&gt;   \"format_result()\"\n#&gt;   \"validate_input()\"\n#&gt; }"
+    "objectID": "vignettes/articles/quarto_article.html#mathematical-notation",
+    "href": "vignettes/articles/quarto_article.html#mathematical-notation",
+    "title": "Advanced Quarto Article",
+    "section": "7 Mathematical Notation",
+    "text": "7 Mathematical Notation\nQuarto excels at mathematical notation. Here’s an example of a statistical formula:\nThe standard error of the mean is calculated as:\n\\[\nSE = \\frac{s}{\\sqrt{n}}\n\\]\nwhere \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.\nFor a confidence interval:\n\\[\nCI = \\bar{x} \\pm t_{\\alpha/2, n-1} \\cdot SE\n\\]",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#practical-applications",
-    "href": "vignettes/articles/package-structure-revealjs.html#practical-applications",
-    "title": "Package Function Structure",
-    "section": "8 Practical Applications",
-    "text": "8 Practical Applications\nCode Review\nUse dependency graphs during code review to:\n\nVerify that new functions follow existing architectural patterns\nIdentify unexpected dependencies\nEnsure proper separation of concerns\nDetect circular dependencies\n\nRefactoring\nBefore refactoring:\n\nGenerate a dependency graph of the affected area\nIdentify all functions that will be impacted\nPlan changes to minimize ripple effects\nAfter refactoring, regenerate the graph to verify improvements\n\nDocumentation\nInclude dependency graphs in:\n\nDeveloper documentation\nArchitecture decision records\nPackage vignettes (like this one!)\nREADME files for complex packages\n\n\n\n\n\n\n\nKeeping Documentation Updated\n\n\nWhen adding new functions or modifying dependencies, regenerate the foodweb graphs to keep documentation current. Consider adding automated checks in your CI/CD pipeline."
+    "objectID": "vignettes/articles/quarto_article.html#tips-and-best-practices",
+    "href": "vignettes/articles/quarto_article.html#tips-and-best-practices",
+    "title": "Advanced Quarto Article",
+    "section": "8 Tips and Best Practices",
+    "text": "8 Tips and Best Practices\n\n\n\n\n\n\nTipExpanding tip section\n\n\n\n\n\nClick to expand this section for additional tips:\n\nUse descriptive chunk labels for better organization\nSet global chunk options at the beginning\nUse cross-references to link related content\nLeverage callouts for important information\nConsider code folding for long code blocks",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#exploring-specific-functions",
-    "href": "vignettes/articles/package-structure-revealjs.html#exploring-specific-functions",
-    "title": "Package Function Structure",
-    "section": "9 Exploring Specific Functions",
-    "text": "9 Exploring Specific Functions\nYou can focus on specific functions to understand their dependencies:\nExample Function Dependencies\n\n\nCode\nfw_example &lt;- foodweb(FUN = example_function)\nplot(fw_example)\n\n\n\n\nFigure 3: Dependency graph for example_function showing all related functions\n\n\n\n\n\n\n\n\nSummary Function Dependencies\n\n\nCode\nfw_summary &lt;- foodweb(FUN = calculate_summary)\nplot(fw_summary)\n\n\n\n\nFigure 4: Dependency graph for calculate_summary showing its relationships\n\n\n\n\n\n\n\n\nThese focused views help understand:\n\nWhat functions a specific function depends on (its dependencies)\nWhat functions depend on a specific function (its dependents)\nThe complete call chain for a given function"
+    "objectID": "vignettes/articles/quarto_article.html#conclusion",
+    "href": "vignettes/articles/quarto_article.html#conclusion",
+    "title": "Advanced Quarto Article",
+    "section": "9 Conclusion",
+    "text": "9 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages.",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#best-practices",
-    "href": "vignettes/articles/package-structure-revealjs.html#best-practices",
-    "title": "Package Function Structure",
-    "section": "10 Best Practices",
-    "text": "10 Best Practices\nWhen designing package architecture:\n\nMinimize dependencies: Each function should have a clear, focused purpose\nAvoid circular dependencies: A should not call B if B calls A\nLayer your functions: Separate low-level utilities from high-level APIs\nDocument dependencies: Use foodwebr graphs in your documentation\nReview regularly: Check dependency graphs during code review"
+    "objectID": "vignettes/articles/quarto_article.html#learn-more",
+    "href": "vignettes/articles/quarto_article.html#learn-more",
+    "title": "Advanced Quarto Article",
+    "section": "10 Learn More",
+    "text": "10 Learn More\n\nVisit the package website\nCheck out the GitHub repository\nRead the Quarto documentation",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#learn-more",
-    "href": "vignettes/articles/package-structure-revealjs.html#learn-more",
-    "title": "Package Function Structure",
-    "section": "11 Learn More",
-    "text": "11 Learn More\n\nfoodwebr documentation: https://lewinfox.com/foodwebr/\nPackage website: https://ucd-serg.github.io/rpt/\nGitHub repository: https://github.com/UCD-SERG/rpt\nDiagrammeR: https://rich-iannone.github.io/DiagrammeR/\ntidygraph: https://tidygraph.data-imaginist.com/"
+    "objectID": "vignettes/articles/quarto_article.html#references",
+    "href": "vignettes/articles/quarto_article.html#references",
+    "title": "Advanced Quarto Article",
+    "section": "11 References",
+    "text": "11 References",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Advanced",
+      "Advanced Quarto Article"
+    ]
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#summary",
-    "href": "vignettes/articles/package-structure-revealjs.html#summary",
-    "title": "Package Function Structure",
-    "section": "12 Summary",
-    "text": "12 Summary\nThis article demonstrated how to use foodwebr to visualize and understand package function dependencies. Key takeaways:\n\nfoodwebr creates interactive dependency graphs\nFiltering options help focus on specific functions or show entire packages\nDependency graphs aid in code review, refactoring, and documentation\nIntegration with tidygraph enables advanced graph analysis\nRegular visualization helps maintain clean architecture\n\nThe rpt package demonstrates a clean layered architecture with: - Low-level utility functions (validate_input(), format_result()) - Mid-level processing functions (clean_data(), calculate_statistic()) - High-level API functions (example_function(), calculate_summary())\nThis structure makes the code easier to understand, test, and maintain."
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#overview",
+    "href": "vignettes/articles/quarto_article-revealjs.html#overview",
+    "title": "Advanced Quarto Article",
+    "section": "1 Overview",
+    "text": "1 Overview\nThis article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle."
   },
   {
-    "objectID": "vignettes/articles/package-structure-revealjs.html#references",
-    "href": "vignettes/articles/package-structure-revealjs.html#references",
-    "title": "Package Function Structure",
-    "section": "13 References",
-    "text": "13 References"
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#when-to-use-articles-vs-vignettes",
+    "href": "vignettes/articles/quarto_article-revealjs.html#when-to-use-articles-vs-vignettes",
+    "title": "Advanced Quarto Article",
+    "section": "2 When to Use Articles vs Vignettes",
+    "text": "2 When to Use Articles vs Vignettes\nVignettes should be used for:\n\nCore package documentation\nEssential usage examples\nContent that users need offline\n\nArticles are better for:\n\nExtended tutorials\nCase studies and detailed examples\nContent with large datasets or external dependencies\nSupplementary material"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#advanced-quarto-features",
+    "href": "vignettes/articles/quarto_article-revealjs.html#advanced-quarto-features",
+    "title": "Advanced Quarto Article",
+    "section": "3 Advanced Quarto Features",
+    "text": "3 Advanced Quarto Features\nCross-References\nQuarto makes it easy to create cross-references. For example, see Figure 1 for a scatter plot and Table 1 for a summary table.\n\n\nCode\n# Generate sample data\nset.seed(123)\nx &lt;- rnorm(100)\ny &lt;- 2 * x + rnorm(100, 0, 0.5)\n\n# Create scatter plot\nplot(x, y, \n     main = \"Example Scatter Plot\",\n     xlab = \"X Variable\",\n     ylab = \"Y Variable\",\n     pch = 16,\n     col = rgb(0.2, 0.4, 0.6, 0.6))\nabline(lm(y ~ x), col = \"red\", lwd = 2)\n\n\n\n\n\nFigure 1: Scatter plot demonstrating cross-referencing\n\n\n\n\n\n\n\n\nSummary Tables\n\n\nCode\ndata_summary &lt;- data.frame(\n  Statistic = c(\"Mean\", \"Median\", \"SD\", \"Min\", \"Max\"),\n  X = c(mean(x), median(x), sd(x), min(x), max(x)),\n  Y = c(mean(y), median(y), sd(y), min(y), max(y))\n)\n\nknitr::kable(data_summary, digits = 3)\n\n\n\n\nTable 1: Summary statistics for example data\n\n\n\n\n\n\nStatistic\nX\nY\n\n\n\n\nMean\n0.090\n0.127\n\n\nMedian\n0.062\n0.137\n\n\nSD\n0.913\n1.865\n\n\nMin\n-2.309\n-4.586\n\n\nMax\n2.187\n4.675\n\n\n\n\n\n\n\n\nAs shown in Table 1, the variables have similar distributions.\nCode Folding\nYou can make code chunks foldable:\n\n\nShow the code for data preparation\n# Prepare more complex data\ncomplex_data &lt;- data.frame(\n  id = 1:50,\n  group = rep(c(\"A\", \"B\"), each = 25),\n  value1 = rnorm(50, 100, 15),\n  value2 = rnorm(50, 50, 10)\n)\n\n# Calculate group statistics\ngroup_stats &lt;- aggregate(\n  cbind(value1, value2) ~ group, \n  data = complex_data, \n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\nprint(group_stats)\n#&gt;   group value1.mean value1.sd value2.mean value2.sd\n#&gt; 1     A   101.61247  14.63952   51.727220 10.047051\n#&gt; 2     B    98.13191  13.84514   53.261796  8.934998\n\n\nTabsets\n\nPlot ViewSummary ViewRaw Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#&gt;        id              group        value1           value2     \n#&gt;  Min.   : 1.00   Length   :50   Min.   : 79.60   Min.   :32.43  \n#&gt;  1st Qu.:13.25   N.unique : 2   1st Qu.: 89.29   1st Qu.:46.76  \n#&gt;  Median :25.50   N.blank  : 0   Median : 96.64   Median :51.04  \n#&gt;  Mean   :25.50   Min.nchar: 1   Mean   : 99.87   Mean   :52.49  \n#&gt;  3rd Qu.:37.75   Max.nchar: 1   3rd Qu.:107.93   3rd Qu.:59.34  \n#&gt;  Max.   :50.00                  Max.   :132.98   Max.   :72.93\n\n\n\n\n#&gt;    id group    value1   value2\n#&gt; 1   1     A 132.98216 46.24397\n#&gt; 2   2     A 119.68619 44.38124\n#&gt; 3   3     A  96.02282 46.56083\n#&gt; 4   4     A 108.14791 50.90497\n#&gt; 5   5     A  93.78490 65.98509\n#&gt; 6   6     A  92.85630 49.11435\n#&gt; 7   7     A  88.17096 60.80799\n#&gt; 8   8     A  91.08074 56.30754\n#&gt; 9   9     A 124.76361 48.86360\n#&gt; 10 10     A  99.18958 34.67098\n\n\n\n\nAdvanced Callouts\n\n\n\n\n\n\nImportant Considerations\n\n\nWhen using this package in production:\n\nAlways validate input data\nCheck for missing values\nConsider computational complexity\n\n\n\n\n\n\n\n\n\n\nPerformance Warning\n\n\nLarge datasets may require additional memory and processing time.\n\n\n\nColumns Layout\n\n\nLeft Column\nThis demonstrates a two-column layout in Quarto.\n\nFeature 1\nFeature 2\nFeature 3\n\n\nRight Column\nYou can place different content in each column."
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#working-with-package-functions",
+    "href": "vignettes/articles/quarto_article-revealjs.html#working-with-package-functions",
+    "title": "Advanced Quarto Article",
+    "section": "4 Working with Package Functions",
+    "text": "4 Working with Package Functions\nHere’s how to use the package’s example function with different inputs:\n\n\nCode\n# Numeric vector\nexample_function(c(5, 10, 15, 20, 25))\n#&gt; [1] 15\n\n# Using with generated data\nrandom_data &lt;- runif(10, min = 0, max = 100)\nexample_function(random_data)\n#&gt; [1] 47.43"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#code-annotations",
+    "href": "vignettes/articles/quarto_article-revealjs.html#code-annotations",
+    "title": "Advanced Quarto Article",
+    "section": "5 Code Annotations",
+    "text": "5 Code Annotations\nQuarto supports code annotations for detailed explanations:\n\n\nCode\n1\n2data &lt;- c(1, 2, 3, 4, 5)\n3result &lt;- example_function(data)\n4print(result)\n#&gt; [1] 3\n\n\n\n1\n\nLoad sample data\n\n2\n\nCreate a simple numeric vector\n\n3\n\nApply the example function from the package\n\n4\n\nDisplay the results"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#theorem-environments",
+    "href": "vignettes/articles/quarto_article-revealjs.html#theorem-environments",
+    "title": "Advanced Quarto Article",
+    "section": "6 Theorem Environments",
+    "text": "6 Theorem Environments\nThe callouty-theorem extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.\nDefinitions and Theorems\n\n\n\n\nDefinition 1 (Standard Error) The standard error of the mean for a sample of size \\(n\\) with standard deviation \\(s\\) is:\n\\[SE = \\frac{s}{\\sqrt{n}}\\]\n\n\n\n\n\n\n\n\nTheorem 1 (Central Limit Theorem) Let \\(X_1, X_2, \\ldots, X_n\\) be independent and identically distributed random variables with mean \\(\\mu\\) and finite variance \\(\\sigma^2\\). Then as \\(n \\to \\infty\\):\n\\[\\frac{\\bar{X} - \\mu}{\\sigma / \\sqrt{n}} \\xrightarrow{d} N(0, 1)\\]\n\n\n\n\n\n\n\n\n\n\nProof\n\n\n\nProof. See any standard probability textbook.\n\n\n\n\nLemmas and Corollaries\n\n\n\n\nLemma 1 (Variance of a Sum) For independent random variables \\(X\\) and \\(Y\\):\n\\[\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\]\n\n\n\n\n\n\n\n\nCorollary 1 (Confidence Interval from CLT) By Theorem 1 and Definition 1, an approximate 95% confidence interval for \\(\\mu\\) is:\n\\[\\bar{x} \\pm 1.96 \\cdot SE\\]\n\n\n\n\nExamples and Exercises\n\n\n\n\nExample 1 (95% Confidence Interval) For the sample below, we calculate a 95% confidence interval for the mean:\n\n\nCode\nset.seed(42)\nsample_vals &lt;- rnorm(50, mean = 5, sd = 2)\nn &lt;- length(sample_vals)\nse &lt;- sd(sample_vals) / sqrt(n)\nci &lt;- mean(sample_vals) + c(-1, 1) * 1.96 * se\ncat(sprintf(\"Mean = %.3f, 95%% CI: [%.3f, %.3f]\\n\", mean(sample_vals), ci[1], ci[2]))\n#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]\n\n\n\n\n\n\n\n\n\n\nExercise 1 (Exercise: Computing Standard Error) Compute the standard error for a sample of size \\(n = 100\\) with sample standard deviation \\(s = 15\\).\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution. \\[SE = \\frac{15}{\\sqrt{100}} = \\frac{15}{10} = 1.5\\]"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#mathematical-notation",
+    "href": "vignettes/articles/quarto_article-revealjs.html#mathematical-notation",
+    "title": "Advanced Quarto Article",
+    "section": "7 Mathematical Notation",
+    "text": "7 Mathematical Notation\nQuarto excels at mathematical notation. Here’s an example of a statistical formula:\nThe standard error of the mean is calculated as:\n\\[\nSE = \\frac{s}{\\sqrt{n}}\n\\]\nwhere \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.\nFor a confidence interval:\n\\[\nCI = \\bar{x} \\pm t_{\\alpha/2, n-1} \\cdot SE\n\\]"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#tips-and-best-practices",
+    "href": "vignettes/articles/quarto_article-revealjs.html#tips-and-best-practices",
+    "title": "Advanced Quarto Article",
+    "section": "8 Tips and Best Practices",
+    "text": "8 Tips and Best Practices\n\n\n\n\n\n\nExpanding tip section\n\n\nClick to expand this section for additional tips:\n\nUse descriptive chunk labels for better organization\nSet global chunk options at the beginning\nUse cross-references to link related content\nLeverage callouts for important information\nConsider code folding for long code blocks"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#conclusion",
+    "href": "vignettes/articles/quarto_article-revealjs.html#conclusion",
+    "title": "Advanced Quarto Article",
+    "section": "9 Conclusion",
+    "text": "9 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages."
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#learn-more",
+    "href": "vignettes/articles/quarto_article-revealjs.html#learn-more",
+    "title": "Advanced Quarto Article",
+    "section": "10 Learn More",
+    "text": "10 Learn More\n\nVisit the package website\nCheck out the GitHub repository\nRead the Quarto documentation"
+  },
+  {
+    "objectID": "vignettes/articles/quarto_article-revealjs.html#references",
+    "href": "vignettes/articles/quarto_article-revealjs.html#references",
+    "title": "Advanced Quarto Article",
+    "section": "11 References",
+    "text": "11 References"
   },
   {
     "objectID": "vignettes/quarto_vignette-revealjs.html#introduction",
