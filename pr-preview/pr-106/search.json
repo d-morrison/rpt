@@ -4,7 +4,7 @@
     "href": "NEWS.html",
     "title": "rpt (development version)",
     "section": "",
-    "text": "rpt (development version)\n\nExtended slidebreak shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) using the Quarto slides format alias (#103)\nInstalled Quarto extensions for enhanced documentation: d-morrison/div-anchors (permalink anchors for theorem/proof divs), d-morrison/equation-anchors (permalink anchors for equations), and sun123zxy/callouty-theorem (render theorems as callout blocks). Added callouty-theorem YAML settings based on d-morrison/rme.\nAdded package structure visualization article using foodwebr to demonstrate function dependencies and call graphs\nCreated layered helper function architecture for realistic foodwebr demonstrations\nAdded calculate_summary() function for computing summary statistics\nSwitched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.\nRemoved pkgdown-specific configurations and workflows.\nRetained RevealJS multi-format support for Quarto vignettes and articles.\nFixed index page rendering by switching from index.md to index.qmd to properly process Quarto include directive (#58)\nSwitched from pkgdown to altdoc (#45)\nUpdated lintr configuration to match serodynamics reference with enhanced linter rules\nPR preview comments now use recreate: true to ensure they always appear at the bottom of the PR conversation, preventing them from being hidden in collapsed sections (#31)\nAdded RevealJS presentation format for Quarto vignettes and articles in pkgdown documentation. HTML pages now display an “Other Formats” section with links to slide versions (#29)\n\n\n\nrpt 0.0.0.9000\n\nInitial development version",
+    "text": "rpt (development version)\n\nExtended slidebreak shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for revealjs, pptx, and beamer formats explicitly (#103)\nInstalled Quarto extensions for enhanced documentation: d-morrison/div-anchors (permalink anchors for theorem/proof divs), d-morrison/equation-anchors (permalink anchors for equations), and sun123zxy/callouty-theorem (render theorems as callout blocks). Added callouty-theorem YAML settings based on d-morrison/rme.\nAdded package structure visualization article using foodwebr to demonstrate function dependencies and call graphs\nCreated layered helper function architecture for realistic foodwebr demonstrations\nAdded calculate_summary() function for computing summary statistics\nSwitched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.\nRemoved pkgdown-specific configurations and workflows.\nRetained RevealJS multi-format support for Quarto vignettes and articles.\nFixed index page rendering by switching from index.md to index.qmd to properly process Quarto include directive (#58)\nSwitched from pkgdown to altdoc (#45)\nUpdated lintr configuration to match serodynamics reference with enhanced linter rules\nPR preview comments now use recreate: true to ensure they always appear at the bottom of the PR conversation, preventing them from being hidden in collapsed sections (#31)\nAdded RevealJS presentation format for Quarto vignettes and articles in pkgdown documentation. HTML pages now display an “Other Formats” section with links to slide versions (#29)\n\n\n\nrpt 0.0.0.9000\n\nInitial development version",
     "crumbs": [
       "Documentation",
       "News"
@@ -59,7 +59,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9012, https://github.com/UCD-SERG/rpt.",
+    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9013, https://github.com/UCD-SERG/rpt.",
     "crumbs": [
       "Documentation",
       "Citation"
@@ -230,7 +230,7 @@
     "href": "vignettes/articles/package-structure.html",
     "title": "Package Function Structure",
     "section": "",
-    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-04\nCodelibrary(rpt)",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-05\nCodelibrary(rpt)",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -550,7 +550,7 @@
     "href": "vignettes/articles/quarto_article.html",
     "title": "Advanced Quarto Article",
     "section": "",
-    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-04\nCode\nlibrary(rpt)",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-05\nCode\nlibrary(rpt)",
     "crumbs": [
       "Documentation",
       "Articles",

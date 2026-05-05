@@ -454,7 +454,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="rpt-development-version" class="level1">
 <h1>rpt (development version)</h1>
 <ul>
-<li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) using the Quarto <code>slides</code> format alias (<a href="https://github.com/UCD-SERG/rpt/issues/103">#103</a>)</p></li>
+<li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for <code>revealjs</code>, <code>pptx</code>, and <code>beamer</code> formats explicitly (<a href="https://github.com/UCD-SERG/rpt/issues/103">#103</a>)</p></li>
 <li><p>Installed Quarto extensions for enhanced documentation: <code>d-morrison/div-anchors</code> (permalink anchors for theorem/proof divs), <code>d-morrison/equation-anchors</code> (permalink anchors for equations), and <code>sun123zxy/callouty-theorem</code> (render theorems as callout blocks). Added callouty-theorem YAML settings based on <code>d-morrison/rme</code>.</p></li>
 <li><p>Added package structure visualization article using foodwebr to demonstrate function dependencies and call graphs</p></li>
 <li><p>Created layered helper function architecture for realistic foodwebr demonstrations</p></li>
