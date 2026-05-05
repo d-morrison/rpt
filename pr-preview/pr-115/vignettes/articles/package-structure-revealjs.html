@@ -748,8 +748,8 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption>
 <div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-eb552d8fd1c91242080e" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-eb552d8fd1c91242080e">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c965e706bfe9bb57cb37" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-c965e706bfe9bb57cb37">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -795,15 +795,16 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <span id="cb7-4"><a></a><span class="co"># Create foodweb for entire package</span></span>
 <span id="cb7-5"><a></a>fw_pkg <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">env =</span> pkg_env)</span>
 <span id="cb7-6"><a></a>fw_pkg</span>
-<span id="cb7-7"><a></a><span class="co">#&gt; # A `foodweb`: 6 vertices and 7 edges </span></span>
+<span id="cb7-7"><a></a><span class="co">#&gt; # A `foodweb`: 7 vertices and 7 edges </span></span>
 <span id="cb7-8"><a></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
 <span id="cb7-9"><a></a><span class="co">#&gt;   calculate_statistic() -&gt; { clean_data() }</span></span>
 <span id="cb7-10"><a></a><span class="co">#&gt;   calculate_summary() -&gt; { clean_data(), example_function(), format_result() }</span></span>
 <span id="cb7-11"><a></a><span class="co">#&gt;   clean_data() -&gt; { validate_input() }</span></span>
 <span id="cb7-12"><a></a><span class="co">#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }</span></span>
 <span id="cb7-13"><a></a><span class="co">#&gt;   format_result()</span></span>
-<span id="cb7-14"><a></a><span class="co">#&gt;   validate_input()</span></span>
-<span id="cb7-15"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-14"><a></a><span class="co">#&gt;   load_latex_macros()</span></span>
+<span id="cb7-15"><a></a><span class="co">#&gt;   validate_input()</span></span>
+<span id="cb7-16"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
@@ -817,8 +818,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption>
 <div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-69dc0cc6127193d5ffd8" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-69dc0cc6127193d5ffd8">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a2c7b4d3fcfd747be054" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-a2c7b4d3fcfd747be054">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"load_latex_macros()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -847,8 +848,9 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span id="cb9-6"><a></a><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
 <span id="cb9-7"><a></a><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
 <span id="cb9-8"><a></a><span class="co">#&gt;   "format_result()"</span></span>
-<span id="cb9-9"><a></a><span class="co">#&gt;   "validate_input()"</span></span>
-<span id="cb9-10"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-9"><a></a><span class="co">#&gt;   "load_latex_macros()"</span></span>
+<span id="cb9-10"><a></a><span class="co">#&gt;   "validate_input()"</span></span>
+<span id="cb9-11"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -897,7 +899,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span id="cb10-8"><a></a><span class="co">#&gt; - clean_data</span></span>
 <span id="cb10-9"><a></a><span class="co">#&gt; - example_function</span></span>
 <span id="cb10-10"><a></a><span class="co">#&gt; - format_result</span></span>
-<span id="cb10-11"><a></a><span class="co">#&gt; - validate_input</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-11"><a></a><span class="co">#&gt; - load_latex_macros</span></span>
+<span id="cb10-12"><a></a><span class="co">#&gt; - validate_input</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The dependency relationships are:</p>
@@ -928,11 +931,11 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span id="cb11-2"><a></a>  tg <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(fw_pkg)</span>
 <span id="cb11-3"><a></a>  <span class="fu">print</span>(tg)</span>
 <span id="cb11-4"><a></a>}</span>
-<span id="cb11-5"><a></a><span class="co">#&gt; # A tbl_graph: 6 nodes and 7 edges</span></span>
+<span id="cb11-5"><a></a><span class="co">#&gt; # A tbl_graph: 7 nodes and 7 edges</span></span>
 <span id="cb11-6"><a></a><span class="co">#&gt; #</span></span>
-<span id="cb11-7"><a></a><span class="co">#&gt; # A directed acyclic simple graph with 1 component</span></span>
+<span id="cb11-7"><a></a><span class="co">#&gt; # A directed acyclic simple graph with 2 components</span></span>
 <span id="cb11-8"><a></a><span class="co">#&gt; #</span></span>
-<span id="cb11-9"><a></a><span class="co">#&gt; # Node Data: 6 × 1 (active)</span></span>
+<span id="cb11-9"><a></a><span class="co">#&gt; # Node Data: 7 × 1 (active)</span></span>
 <span id="cb11-10"><a></a><span class="co">#&gt;   name               </span></span>
 <span id="cb11-11"><a></a><span class="co">#&gt;   &lt;chr&gt;              </span></span>
 <span id="cb11-12"><a></a><span class="co">#&gt; 1 calculate_statistic</span></span>
@@ -940,15 +943,16 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span id="cb11-14"><a></a><span class="co">#&gt; 3 clean_data         </span></span>
 <span id="cb11-15"><a></a><span class="co">#&gt; 4 example_function   </span></span>
 <span id="cb11-16"><a></a><span class="co">#&gt; 5 format_result      </span></span>
-<span id="cb11-17"><a></a><span class="co">#&gt; 6 validate_input     </span></span>
-<span id="cb11-18"><a></a><span class="co">#&gt; #</span></span>
-<span id="cb11-19"><a></a><span class="co">#&gt; # Edge Data: 7 × 2</span></span>
-<span id="cb11-20"><a></a><span class="co">#&gt;    from    to</span></span>
-<span id="cb11-21"><a></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb11-22"><a></a><span class="co">#&gt; 1     1     3</span></span>
-<span id="cb11-23"><a></a><span class="co">#&gt; 2     2     3</span></span>
-<span id="cb11-24"><a></a><span class="co">#&gt; 3     2     4</span></span>
-<span id="cb11-25"><a></a><span class="co">#&gt; # ℹ 4 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-17"><a></a><span class="co">#&gt; 6 load_latex_macros  </span></span>
+<span id="cb11-18"><a></a><span class="co">#&gt; 7 validate_input     </span></span>
+<span id="cb11-19"><a></a><span class="co">#&gt; #</span></span>
+<span id="cb11-20"><a></a><span class="co">#&gt; # Edge Data: 7 × 2</span></span>
+<span id="cb11-21"><a></a><span class="co">#&gt;    from    to</span></span>
+<span id="cb11-22"><a></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb11-23"><a></a><span class="co">#&gt; 1     1     3</span></span>
+<span id="cb11-24"><a></a><span class="co">#&gt; 2     2     3</span></span>
+<span id="cb11-25"><a></a><span class="co">#&gt; 3     2     4</span></span>
+<span id="cb11-26"><a></a><span class="co">#&gt; # ℹ 4 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <h3 id="customizing-visualizations">Customizing Visualizations</h3>
@@ -976,8 +980,9 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span id="cb13-7"><a></a><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
 <span id="cb13-8"><a></a><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
 <span id="cb13-9"><a></a><span class="co">#&gt;   "format_result()"</span></span>
-<span id="cb13-10"><a></a><span class="co">#&gt;   "validate_input()"</span></span>
-<span id="cb13-11"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-10"><a></a><span class="co">#&gt;   "load_latex_macros()"</span></span>
+<span id="cb13-11"><a></a><span class="co">#&gt;   "validate_input()"</span></span>
+<span id="cb13-12"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -1037,8 +1042,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption>
 <div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-2ed90134139964ae7942" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-2ed90134139964ae7942">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ea80b042b601457f1fa2" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-ea80b042b601457f1fa2">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -1056,8 +1061,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption>
 <div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-63a27523ce44bac44253" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-63a27523ce44bac44253">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e759a531602f857337d7" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-e759a531602f857337d7">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
