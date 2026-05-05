@@ -127,6 +127,11 @@ altdoc::preview_docs()    # Launch preview server
 
 # Only commit and push if all checks pass AND visual inspection confirms correct rendering
 ```
+# Check docs/vignettes/*.md for correct output
+# Verify links and images work correctly
+
+# Only commit and push if all checks pass AND visual inspection confirms correct rendering
+```
 
 ## Package Structure
 
