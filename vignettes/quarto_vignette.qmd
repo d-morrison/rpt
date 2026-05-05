@@ -23,6 +23,13 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
+```{r load-macros, results='asis', echo=FALSE, message=FALSE}
+macros_lines <- readLines("../../macros/macros.qmd")
+macros_lines <- gsub("<!--.*?-->", "", macros_lines, perl = TRUE)
+macros_lines <- macros_lines[nzchar(trimws(macros_lines))]
+cat("$$\n", paste(macros_lines, collapse = "\n"), "\n$$\n", sep = "")
+```
+
 ## Introduction
 
 This vignette demonstrates how to use Quarto (`.qmd`) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.

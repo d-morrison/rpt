@@ -24,6 +24,13 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
+```{r load-macros, results='asis', echo=FALSE, message=FALSE}
+macros_lines <- readLines("../../../macros/macros.qmd")
+macros_lines <- gsub("<!--.*?-->", "", macros_lines, perl = TRUE)
+macros_lines <- macros_lines[nzchar(trimws(macros_lines))]
+cat("$$\n", paste(macros_lines, collapse = "\n"), "\n$$\n", sep = "")
+```
+
 ## Overview
 
 This article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle.

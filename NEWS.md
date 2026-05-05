@@ -1,6 +1,6 @@
 # rpt (development version)
 
-- Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by wrapping them in a hidden `$$...$$` MathJax block (`include-before-body`) instead of using `include-in-header`
+- Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by including macros from the submodule directly in each article via a knitr chunk that strips HTML comments
 
 * Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for `revealjs`, `pptx`, and `beamer` formats explicitly (#103)
 * Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (`\eqn{}`, `\deqn{}`)
