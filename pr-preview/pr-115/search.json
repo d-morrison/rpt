@@ -550,7 +550,7 @@
     "href": "vignettes/articles/quarto_article.html",
     "title": "Advanced Quarto Article",
     "section": "",
-    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-05\nCode\nlibrary(rpt)",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-05-05\nCodelibrary(rpt)",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -562,7 +562,7 @@
     "objectID": "vignettes/articles/quarto_article.html#overview",
     "href": "vignettes/articles/quarto_article.html#overview",
     "title": "Advanced Quarto Article",
-    "section": "1 Overview",
+    "section": "\n1 Overview",
     "text": "1 Overview\nThis article demonstrates advanced features of Quarto for package documentation. Unlike vignettes, articles are only available on the documentation website and are not included in the package bundle.",
     "crumbs": [
       "Documentation",
@@ -575,7 +575,7 @@
     "objectID": "vignettes/articles/quarto_article.html#when-to-use-articles-vs-vignettes",
     "href": "vignettes/articles/quarto_article.html#when-to-use-articles-vs-vignettes",
     "title": "Advanced Quarto Article",
-    "section": "2 When to Use Articles vs Vignettes",
+    "section": "\n2 When to Use Articles vs Vignettes",
     "text": "2 When to Use Articles vs Vignettes\nVignettes should be used for:\n\nCore package documentation\nEssential usage examples\nContent that users need offline\n\nArticles are better for:\n\nExtended tutorials\nCase studies and detailed examples\nContent with large datasets or external dependencies\nSupplementary material",
     "crumbs": [
       "Documentation",
@@ -588,8 +588,8 @@
     "objectID": "vignettes/articles/quarto_article.html#advanced-quarto-features",
     "href": "vignettes/articles/quarto_article.html#advanced-quarto-features",
     "title": "Advanced Quarto Article",
-    "section": "3 Advanced Quarto Features",
-    "text": "3 Advanced Quarto Features\n\n3.1 Cross-References\nQuarto makes it easy to create cross-references. For example, see Figure 1 for a scatter plot and Table 1 for a summary table.\n\n\nCode\n# Generate sample data\nset.seed(123)\nx &lt;- rnorm(100)\ny &lt;- 2 * x + rnorm(100, 0, 0.5)\n\n# Create scatter plot\nplot(x, y, \n     main = \"Example Scatter Plot\",\n     xlab = \"X Variable\",\n     ylab = \"Y Variable\",\n     pch = 16,\n     col = rgb(0.2, 0.4, 0.6, 0.6))\nabline(lm(y ~ x), col = \"red\", lwd = 2)\n\n\n\n\n\nFigure 1: Scatter plot demonstrating cross-referencing\n\n\n\n\n\n\n\n\n\n\n3.2 Summary Tables\n\n\nCode\ndata_summary &lt;- data.frame(\n  Statistic = c(\"Mean\", \"Median\", \"SD\", \"Min\", \"Max\"),\n  X = c(mean(x), median(x), sd(x), min(x), max(x)),\n  Y = c(mean(y), median(y), sd(y), min(y), max(y))\n)\n\nknitr::kable(data_summary, digits = 3)\n\n\n\n\nTable 1: Summary statistics for example data\n\n\n\n\n\n\nStatistic\nX\nY\n\n\n\n\nMean\n0.090\n0.127\n\n\nMedian\n0.062\n0.137\n\n\nSD\n0.913\n1.865\n\n\nMin\n-2.309\n-4.586\n\n\nMax\n2.187\n4.675\n\n\n\n\n\n\n\n\nAs shown in Table 1, the variables have similar distributions.\n\n\n3.3 Code Folding\nYou can make code chunks foldable:\n\n\nShow the code for data preparation\n# Prepare more complex data\ncomplex_data &lt;- data.frame(\n  id = 1:50,\n  group = rep(c(\"A\", \"B\"), each = 25),\n  value1 = rnorm(50, 100, 15),\n  value2 = rnorm(50, 50, 10)\n)\n\n# Calculate group statistics\ngroup_stats &lt;- aggregate(\n  cbind(value1, value2) ~ group, \n  data = complex_data, \n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\nprint(group_stats)\n#&gt;   group value1.mean value1.sd value2.mean value2.sd\n#&gt; 1     A   101.61247  14.63952   51.727220 10.047051\n#&gt; 2     B    98.13191  13.84514   53.261796  8.934998\n\n\n\n\n3.4 Tabsets\n\nPlot ViewSummary ViewRaw Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#&gt;        id              group        value1           value2     \n#&gt;  Min.   : 1.00   Length   :50   Min.   : 79.60   Min.   :32.43  \n#&gt;  1st Qu.:13.25   N.unique : 2   1st Qu.: 89.29   1st Qu.:46.76  \n#&gt;  Median :25.50   N.blank  : 0   Median : 96.64   Median :51.04  \n#&gt;  Mean   :25.50   Min.nchar: 1   Mean   : 99.87   Mean   :52.49  \n#&gt;  3rd Qu.:37.75   Max.nchar: 1   3rd Qu.:107.93   3rd Qu.:59.34  \n#&gt;  Max.   :50.00                  Max.   :132.98   Max.   :72.93\n\n\n\n\n#&gt;    id group    value1   value2\n#&gt; 1   1     A 132.98216 46.24397\n#&gt; 2   2     A 119.68619 44.38124\n#&gt; 3   3     A  96.02282 46.56083\n#&gt; 4   4     A 108.14791 50.90497\n#&gt; 5   5     A  93.78490 65.98509\n#&gt; 6   6     A  92.85630 49.11435\n#&gt; 7   7     A  88.17096 60.80799\n#&gt; 8   8     A  91.08074 56.30754\n#&gt; 9   9     A 124.76361 48.86360\n#&gt; 10 10     A  99.18958 34.67098\n\n\n\n\n\n\n3.5 Advanced Callouts\n\n\n\n\n\n\nImportantImportant Considerations\n\n\n\nWhen using this package in production:\n\nAlways validate input data\nCheck for missing values\nConsider computational complexity\n\n\n\n\n\n\n\n\n\nWarningPerformance Warning\n\n\n\nLarge datasets may require additional memory and processing time.\n\n\n\n\n3.6 Columns Layout\n\n\nLeft Column\nThis demonstrates a two-column layout in Quarto.\n\nFeature 1\nFeature 2\nFeature 3\n\n\nRight Column\nYou can place different content in each column.",
+    "section": "\n3 Advanced Quarto Features",
+    "text": "3 Advanced Quarto Features\n\n3.1 Cross-References\nQuarto makes it easy to create cross-references. For example, see Figure 1 for a scatter plot and Table 1 for a summary table.\n\nCode# Generate sample data\nset.seed(123)\nx &lt;- rnorm(100)\ny &lt;- 2 * x + rnorm(100, 0, 0.5)\n\n# Create scatter plot\nplot(x, y, \n     main = \"Example Scatter Plot\",\n     xlab = \"X Variable\",\n     ylab = \"Y Variable\",\n     pch = 16,\n     col = rgb(0.2, 0.4, 0.6, 0.6))\nabline(lm(y ~ x), col = \"red\", lwd = 2)\n\n\n\nFigure 1: Scatter plot demonstrating cross-referencing\n\n\n\n\n\n\n\n\n3.2 Summary Tables\n\nCodedata_summary &lt;- data.frame(\n  Statistic = c(\"Mean\", \"Median\", \"SD\", \"Min\", \"Max\"),\n  X = c(mean(x), median(x), sd(x), min(x), max(x)),\n  Y = c(mean(y), median(y), sd(y), min(y), max(y))\n)\n\nknitr::kable(data_summary, digits = 3)\n\n\nTable 1: Summary statistics for example data\n\n\n\n\nStatistic\nX\nY\n\n\n\nMean\n0.090\n0.127\n\n\nMedian\n0.062\n0.137\n\n\nSD\n0.913\n1.865\n\n\nMin\n-2.309\n-4.586\n\n\nMax\n2.187\n4.675\n\n\n\n\n\n\n\n\nAs shown in Table 1, the variables have similar distributions.\n\n3.3 Code Folding\nYou can make code chunks foldable:\n\nShow the code for data preparation# Prepare more complex data\ncomplex_data &lt;- data.frame(\n  id = 1:50,\n  group = rep(c(\"A\", \"B\"), each = 25),\n  value1 = rnorm(50, 100, 15),\n  value2 = rnorm(50, 50, 10)\n)\n\n# Calculate group statistics\ngroup_stats &lt;- aggregate(\n  cbind(value1, value2) ~ group, \n  data = complex_data, \n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\nprint(group_stats)\n#&gt;   group value1.mean value1.sd value2.mean value2.sd\n#&gt; 1     A   101.61247  14.63952   51.727220 10.047051\n#&gt; 2     B    98.13191  13.84514   53.261796  8.934998\n\n\n\n3.4 Tabsets\n\n\nPlot View\nSummary View\nRaw Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#&gt;        id              group        value1           value2     \n#&gt;  Min.   : 1.00   Length   :50   Min.   : 79.60   Min.   :32.43  \n#&gt;  1st Qu.:13.25   N.unique : 2   1st Qu.: 89.29   1st Qu.:46.76  \n#&gt;  Median :25.50   N.blank  : 0   Median : 96.64   Median :51.04  \n#&gt;  Mean   :25.50   Min.nchar: 1   Mean   : 99.87   Mean   :52.49  \n#&gt;  3rd Qu.:37.75   Max.nchar: 1   3rd Qu.:107.93   3rd Qu.:59.34  \n#&gt;  Max.   :50.00                  Max.   :132.98   Max.   :72.93\n\n\n\n\n#&gt;    id group    value1   value2\n#&gt; 1   1     A 132.98216 46.24397\n#&gt; 2   2     A 119.68619 44.38124\n#&gt; 3   3     A  96.02282 46.56083\n#&gt; 4   4     A 108.14791 50.90497\n#&gt; 5   5     A  93.78490 65.98509\n#&gt; 6   6     A  92.85630 49.11435\n#&gt; 7   7     A  88.17096 60.80799\n#&gt; 8   8     A  91.08074 56.30754\n#&gt; 9   9     A 124.76361 48.86360\n#&gt; 10 10     A  99.18958 34.67098\n\n\n\n\n\n3.5 Advanced Callouts\n\n\n\n\n\n\nImportantImportant Considerations\n\n\n\nWhen using this package in production:\n\nAlways validate input data\nCheck for missing values\nConsider computational complexity\n\n\n\n\n\n\n\n\n\nWarningPerformance Warning\n\n\n\nLarge datasets may require additional memory and processing time.\n\n\n\n3.6 Columns Layout\n\n\nLeft Column\nThis demonstrates a two-column layout in Quarto.\n\nFeature 1\nFeature 2\nFeature 3\n\n\nRight Column\nYou can place different content in each column.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -601,21 +601,8 @@
     "objectID": "vignettes/articles/quarto_article.html#working-with-package-functions",
     "href": "vignettes/articles/quarto_article.html#working-with-package-functions",
     "title": "Advanced Quarto Article",
-    "section": "4 Working with Package Functions",
-    "text": "4 Working with Package Functions\nHere’s how to use the package’s example function with different inputs:\n\n\nCode\n# Numeric vector\nexample_function(c(5, 10, 15, 20, 25))\n#&gt; [1] 15\n\n# Using with generated data\nrandom_data &lt;- runif(10, min = 0, max = 100)\nexample_function(random_data)\n#&gt; [1] 47.43",
-    "crumbs": [
-      "Documentation",
-      "Articles",
-      "Advanced",
-      "Advanced Quarto Article"
-    ]
-  },
-  {
-    "objectID": "vignettes/articles/quarto_article.html#code-annotations",
-    "href": "vignettes/articles/quarto_article.html#code-annotations",
-    "title": "Advanced Quarto Article",
-    "section": "5 Code Annotations",
-    "text": "5 Code Annotations\nQuarto supports code annotations for detailed explanations:\n\n\nCode\n1\n2data &lt;- c(1, 2, 3, 4, 5)\n3result &lt;- example_function(data)\n4print(result)\n#&gt; [1] 3\n\n\n\n1\n\nLoad sample data\n\n2\n\nCreate a simple numeric vector\n\n3\n\nApply the example function from the package\n\n4\n\nDisplay the results",
+    "section": "\n4 Working with Package Functions",
+    "text": "4 Working with Package Functions\nHere’s how to use the package’s example function with different inputs:\n\nCode# Numeric vector\nexample_function(c(5, 10, 15, 20, 25))\n#&gt; [1] 15\n\n# Using with generated data\nrandom_data &lt;- runif(10, min = 0, max = 100)\nexample_function(random_data)\n#&gt; [1] 47.43",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -627,8 +614,8 @@
     "objectID": "vignettes/articles/quarto_article.html#theorem-environments",
     "href": "vignettes/articles/quarto_article.html#theorem-environments",
     "title": "Advanced Quarto Article",
-    "section": "6 Theorem Environments",
-    "text": "6 Theorem Environments\nThe callouty-theorem extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.\n\n6.1 Definitions and Theorems\n\n\n\n\n\n\n\nDefinition 1 (Standard Error) The standard error of the mean for a sample of size \\(n\\) with standard deviation \\(s\\) is:\n\\[SE = \\frac{s}{\\sqrt{n}}\\]\n\n\n\n\n\n\n\n\n\n\n\nTheorem 1 (Central Limit Theorem) Let \\(X_1, X_2, \\ldots, X_n\\) be independent and identically distributed random variables with mean \\(\\mu\\) and finite variance \\(\\sigma^2\\). Then as \\(n \\to \\infty\\):\n\\[\\frac{\\bar{X} - \\mu}{\\sigma / \\sqrt{n}} \\xrightarrow{d} N(0, 1)\\]\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\n\nProof. See any standard probability textbook.\n\n\n\n\n\n\n6.2 Lemmas and Corollaries\n\n\n\n\n\n\n\nLemma 1 (Variance of a Sum) For independent random variables \\(X\\) and \\(Y\\):\n\\[\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\]\n\n\n\n\n\n\n\n\n\n\n\nCorollary 1 (Confidence Interval from CLT) By Theorem 1 and Definition 1, an approximate 95% confidence interval for \\(\\mu\\) is:\n\\[\\bar{x} \\pm 1.96 \\cdot SE\\]\n\n\n\n\n\n\n6.3 Examples and Exercises\n\n\n\n\n\n\n\nExample 1 (95% Confidence Interval) For the sample below, we calculate a 95% confidence interval for the mean:\n\n\nCode\nset.seed(42)\nsample_vals &lt;- rnorm(50, mean = 5, sd = 2)\nn &lt;- length(sample_vals)\nse &lt;- sd(sample_vals) / sqrt(n)\nci &lt;- mean(sample_vals) + c(-1, 1) * 1.96 * se\ncat(sprintf(\"Mean = %.3f, 95%% CI: [%.3f, %.3f]\\n\", mean(sample_vals), ci[1], ci[2]))\n#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 1 (Exercise: Computing Standard Error) Compute the standard error for a sample of size \\(n = 100\\) with sample standard deviation \\(s = 15\\).\n\n\n\n\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\n\nSolution. \\[SE = \\frac{15}{\\sqrt{100}} = \\frac{15}{10} = 1.5\\]",
+    "section": "\n5 Theorem Environments",
+    "text": "5 Theorem Environments\nThe callouty-theorem extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.\n\n5.1 Definitions and Theorems\n\n\n\n\n\n\n\nDefinition 1 (Standard Error) The standard error of the mean for a sample of size \\(n\\) with standard deviation \\(s\\) is:\n\\[SE = \\frac{s}{\\sqrt{n}}\\]\n\n\n\n\n\n\n\n\n\n\n\nTheorem 1 (Central Limit Theorem) Let \\(X_1, X_2, \\ldots, X_n\\) be independent and identically distributed random variables with mean \\(\\mu\\) and finite variance \\(\\sigma^2\\). Then as \\(n \\to \\infty\\):\n\\[\\frac{\\bar{X} - \\mu}{\\sigma / \\sqrt{n}} \\xrightarrow{d} N(0, 1)\\]\n\n\n\n\n\n\n\n\n\n\nNoteProof\n\n\n\n\n\n\nProof. See any standard probability textbook.\n\n\n\n\n\n5.2 Lemmas and Corollaries\n\n\n\n\n\n\n\nLemma 1 (Variance of a Sum) For independent random variables \\(X\\) and \\(Y\\):\n\\[\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\]\n\n\n\n\n\n\n\n\n\n\n\nCorollary 1 (Confidence Interval from CLT) By Theorem 1 and Definition 1, an approximate 95% confidence interval for \\(\\mu\\) is:\n\\[\\bar{x} \\pm 1.96 \\cdot SE\\]\n\n\n\n\n\n5.3 Examples and Exercises\n\n\n\n\n\n\n\nExample 1 (95% Confidence Interval) For the sample below, we calculate a 95% confidence interval for the mean:\n\nCodeset.seed(42)\nsample_vals &lt;- rnorm(50, mean = 5, sd = 2)\nn &lt;- length(sample_vals)\nse &lt;- sd(sample_vals) / sqrt(n)\nci &lt;- mean(sample_vals) + c(-1, 1) * 1.96 * se\ncat(sprintf(\"Mean = %.3f, 95%% CI: [%.3f, %.3f]\\n\", mean(sample_vals), ci[1], ci[2]))\n#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 1 (Exercise: Computing Standard Error) Compute the standard error for a sample of size \\(n = 100\\) with sample standard deviation \\(s = 15\\).\n\n\n\n\n\n\n\n\n\n\nNoteSolution\n\n\n\n\n\n\nSolution. \\[SE = \\frac{15}{\\sqrt{100}} = \\frac{15}{10} = 1.5\\]",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -640,8 +627,8 @@
     "objectID": "vignettes/articles/quarto_article.html#mathematical-notation",
     "href": "vignettes/articles/quarto_article.html#mathematical-notation",
     "title": "Advanced Quarto Article",
-    "section": "7 Mathematical Notation",
-    "text": "7 Mathematical Notation\nQuarto excels at mathematical notation. Here’s an example of a statistical formula:\nThe standard error of the mean is calculated as:\n\\[\nSE = \\frac{s}{\\sqrt{n}}\n\\]\nwhere \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.\nFor a confidence interval:\n\\[\nCI = \\bar{x} \\pm t_{\\alpha/2, n-1} \\cdot SE\n\\]",
+    "section": "\n6 Mathematical Notation",
+    "text": "6 Mathematical Notation\nQuarto excels at mathematical notation. Here’s an example of a statistical formula:\nThe standard error of the mean is calculated as:\n\\[\nSE = \\frac{s}{\\sqrt{n}}\n\\]\nwhere \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.\nFor a confidence interval:\n\\[\nCI = \\bar{x} \\pm t_{\\alpha/2, n-1} \\cdot SE\n\\]",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -653,8 +640,8 @@
     "objectID": "vignettes/articles/quarto_article.html#tips-and-best-practices",
     "href": "vignettes/articles/quarto_article.html#tips-and-best-practices",
     "title": "Advanced Quarto Article",
-    "section": "8 Tips and Best Practices",
-    "text": "8 Tips and Best Practices\n\n\n\n\n\n\nTipExpanding tip section\n\n\n\n\n\nClick to expand this section for additional tips:\n\nUse descriptive chunk labels for better organization\nSet global chunk options at the beginning\nUse cross-references to link related content\nLeverage callouts for important information\nConsider code folding for long code blocks",
+    "section": "\n7 Tips and Best Practices",
+    "text": "7 Tips and Best Practices\n\n\n\n\n\n\nTipExpanding tip section\n\n\n\n\n\nClick to expand this section for additional tips:\n\nUse descriptive chunk labels for better organization\nSet global chunk options at the beginning\nUse cross-references to link related content\nLeverage callouts for important information\nConsider code folding for long code blocks",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -666,8 +653,8 @@
     "objectID": "vignettes/articles/quarto_article.html#conclusion",
     "href": "vignettes/articles/quarto_article.html#conclusion",
     "title": "Advanced Quarto Article",
-    "section": "9 Conclusion",
-    "text": "9 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages.",
+    "section": "\n8 Conclusion",
+    "text": "8 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages.",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -679,8 +666,8 @@
     "objectID": "vignettes/articles/quarto_article.html#learn-more",
     "href": "vignettes/articles/quarto_article.html#learn-more",
     "title": "Advanced Quarto Article",
-    "section": "10 Learn More",
-    "text": "10 Learn More\n\nVisit the package website\nCheck out the GitHub repository\nRead the Quarto documentation",
+    "section": "\n9 Learn More",
+    "text": "9 Learn More\n\nVisit the package website\n\nCheck out the GitHub repository\n\nRead the Quarto documentation",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -692,8 +679,8 @@
     "objectID": "vignettes/articles/quarto_article.html#references",
     "href": "vignettes/articles/quarto_article.html#references",
     "title": "Advanced Quarto Article",
-    "section": "11 References",
-    "text": "11 References",
+    "section": "\n10 References",
+    "text": "10 References",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -730,53 +717,46 @@
     "text": "4 Working with Package Functions\nHere’s how to use the package’s example function with different inputs:\n\n\nCode\n# Numeric vector\nexample_function(c(5, 10, 15, 20, 25))\n#&gt; [1] 15\n\n# Using with generated data\nrandom_data &lt;- runif(10, min = 0, max = 100)\nexample_function(random_data)\n#&gt; [1] 47.43"
   },
   {
-    "objectID": "vignettes/articles/quarto_article-revealjs.html#code-annotations",
-    "href": "vignettes/articles/quarto_article-revealjs.html#code-annotations",
-    "title": "Advanced Quarto Article",
-    "section": "5 Code Annotations",
-    "text": "5 Code Annotations\nQuarto supports code annotations for detailed explanations:\n\n\nCode\n1\n2data &lt;- c(1, 2, 3, 4, 5)\n3result &lt;- example_function(data)\n4print(result)\n#&gt; [1] 3\n\n\n\n1\n\nLoad sample data\n\n2\n\nCreate a simple numeric vector\n\n3\n\nApply the example function from the package\n\n4\n\nDisplay the results"
-  },
-  {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#theorem-environments",
     "href": "vignettes/articles/quarto_article-revealjs.html#theorem-environments",
     "title": "Advanced Quarto Article",
-    "section": "6 Theorem Environments",
-    "text": "6 Theorem Environments\nThe callouty-theorem extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.\nDefinitions and Theorems\n\n\n\n\nDefinition 1 (Standard Error) The standard error of the mean for a sample of size \\(n\\) with standard deviation \\(s\\) is:\n\\[SE = \\frac{s}{\\sqrt{n}}\\]\n\n\n\n\n\n\n\n\nTheorem 1 (Central Limit Theorem) Let \\(X_1, X_2, \\ldots, X_n\\) be independent and identically distributed random variables with mean \\(\\mu\\) and finite variance \\(\\sigma^2\\). Then as \\(n \\to \\infty\\):\n\\[\\frac{\\bar{X} - \\mu}{\\sigma / \\sqrt{n}} \\xrightarrow{d} N(0, 1)\\]\n\n\n\n\n\n\n\n\n\n\nProof\n\n\n\nProof. See any standard probability textbook.\n\n\n\n\nLemmas and Corollaries\n\n\n\n\nLemma 1 (Variance of a Sum) For independent random variables \\(X\\) and \\(Y\\):\n\\[\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\]\n\n\n\n\n\n\n\n\nCorollary 1 (Confidence Interval from CLT) By Theorem 1 and Definition 1, an approximate 95% confidence interval for \\(\\mu\\) is:\n\\[\\bar{x} \\pm 1.96 \\cdot SE\\]\n\n\n\n\nExamples and Exercises\n\n\n\n\nExample 1 (95% Confidence Interval) For the sample below, we calculate a 95% confidence interval for the mean:\n\n\nCode\nset.seed(42)\nsample_vals &lt;- rnorm(50, mean = 5, sd = 2)\nn &lt;- length(sample_vals)\nse &lt;- sd(sample_vals) / sqrt(n)\nci &lt;- mean(sample_vals) + c(-1, 1) * 1.96 * se\ncat(sprintf(\"Mean = %.3f, 95%% CI: [%.3f, %.3f]\\n\", mean(sample_vals), ci[1], ci[2]))\n#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]\n\n\n\n\n\n\n\n\n\n\nExercise 1 (Exercise: Computing Standard Error) Compute the standard error for a sample of size \\(n = 100\\) with sample standard deviation \\(s = 15\\).\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution. \\[SE = \\frac{15}{\\sqrt{100}} = \\frac{15}{10} = 1.5\\]"
+    "section": "5 Theorem Environments",
+    "text": "5 Theorem Environments\nThe callouty-theorem extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.\nDefinitions and Theorems\n\n\n\n\nDefinition 1 (Standard Error) The standard error of the mean for a sample of size \\(n\\) with standard deviation \\(s\\) is:\n\\[SE = \\frac{s}{\\sqrt{n}}\\]\n\n\n\n\n\n\n\n\nTheorem 1 (Central Limit Theorem) Let \\(X_1, X_2, \\ldots, X_n\\) be independent and identically distributed random variables with mean \\(\\mu\\) and finite variance \\(\\sigma^2\\). Then as \\(n \\to \\infty\\):\n\\[\\frac{\\bar{X} - \\mu}{\\sigma / \\sqrt{n}} \\xrightarrow{d} N(0, 1)\\]\n\n\n\n\n\n\n\n\n\n\nProof\n\n\n\nProof. See any standard probability textbook.\n\n\n\n\nLemmas and Corollaries\n\n\n\n\nLemma 1 (Variance of a Sum) For independent random variables \\(X\\) and \\(Y\\):\n\\[\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\]\n\n\n\n\n\n\n\n\nCorollary 1 (Confidence Interval from CLT) By Theorem 1 and Definition 1, an approximate 95% confidence interval for \\(\\mu\\) is:\n\\[\\bar{x} \\pm 1.96 \\cdot SE\\]\n\n\n\n\nExamples and Exercises\n\n\n\n\nExample 1 (95% Confidence Interval) For the sample below, we calculate a 95% confidence interval for the mean:\n\n\nCode\nset.seed(42)\nsample_vals &lt;- rnorm(50, mean = 5, sd = 2)\nn &lt;- length(sample_vals)\nse &lt;- sd(sample_vals) / sqrt(n)\nci &lt;- mean(sample_vals) + c(-1, 1) * 1.96 * se\ncat(sprintf(\"Mean = %.3f, 95%% CI: [%.3f, %.3f]\\n\", mean(sample_vals), ci[1], ci[2]))\n#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]\n\n\n\n\n\n\n\n\n\n\nExercise 1 (Exercise: Computing Standard Error) Compute the standard error for a sample of size \\(n = 100\\) with sample standard deviation \\(s = 15\\).\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution. \\[SE = \\frac{15}{\\sqrt{100}} = \\frac{15}{10} = 1.5\\]"
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#mathematical-notation",
     "href": "vignettes/articles/quarto_article-revealjs.html#mathematical-notation",
     "title": "Advanced Quarto Article",
-    "section": "7 Mathematical Notation",
-    "text": "7 Mathematical Notation\nQuarto excels at mathematical notation. Here’s an example of a statistical formula:\nThe standard error of the mean is calculated as:\n\\[\nSE = \\frac{s}{\\sqrt{n}}\n\\]\nwhere \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.\nFor a confidence interval:\n\\[\nCI = \\bar{x} \\pm t_{\\alpha/2, n-1} \\cdot SE\n\\]"
+    "section": "6 Mathematical Notation",
+    "text": "6 Mathematical Notation\nQuarto excels at mathematical notation. Here’s an example of a statistical formula:\nThe standard error of the mean is calculated as:\n\\[\nSE = \\frac{s}{\\sqrt{n}}\n\\]\nwhere \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.\nFor a confidence interval:\n\\[\nCI = \\bar{x} \\pm t_{\\alpha/2, n-1} \\cdot SE\n\\]"
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#tips-and-best-practices",
     "href": "vignettes/articles/quarto_article-revealjs.html#tips-and-best-practices",
     "title": "Advanced Quarto Article",
-    "section": "8 Tips and Best Practices",
-    "text": "8 Tips and Best Practices\n\n\n\n\n\n\nExpanding tip section\n\n\nClick to expand this section for additional tips:\n\nUse descriptive chunk labels for better organization\nSet global chunk options at the beginning\nUse cross-references to link related content\nLeverage callouts for important information\nConsider code folding for long code blocks"
+    "section": "7 Tips and Best Practices",
+    "text": "7 Tips and Best Practices\n\n\n\n\n\n\nExpanding tip section\n\n\nClick to expand this section for additional tips:\n\nUse descriptive chunk labels for better organization\nSet global chunk options at the beginning\nUse cross-references to link related content\nLeverage callouts for important information\nConsider code folding for long code blocks"
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#conclusion",
     "href": "vignettes/articles/quarto_article-revealjs.html#conclusion",
     "title": "Advanced Quarto Article",
-    "section": "9 Conclusion",
-    "text": "9 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages."
+    "section": "8 Conclusion",
+    "text": "8 Conclusion\nThis article demonstrates the advanced capabilities of Quarto for creating rich, interactive documentation for R packages."
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#learn-more",
     "href": "vignettes/articles/quarto_article-revealjs.html#learn-more",
     "title": "Advanced Quarto Article",
-    "section": "10 Learn More",
-    "text": "10 Learn More\n\nVisit the package website\nCheck out the GitHub repository\nRead the Quarto documentation"
+    "section": "9 Learn More",
+    "text": "9 Learn More\n\nVisit the package website\nCheck out the GitHub repository\nRead the Quarto documentation"
   },
   {
     "objectID": "vignettes/articles/quarto_article-revealjs.html#references",
     "href": "vignettes/articles/quarto_article-revealjs.html#references",
     "title": "Advanced Quarto Article",
-    "section": "11 References",
-    "text": "11 References"
+    "section": "10 References",
+    "text": "10 References"
   },
   {
     "objectID": "vignettes/quarto_vignette-revealjs.html#introduction",
