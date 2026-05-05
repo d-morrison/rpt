@@ -1,14 +1,32 @@
-#' Example Function
+#' Example Function with Mathematical Notation
 #'
 #' This is an example function that demonstrates basic functionality.
+#' It validates, cleans, calculates statistics, and formats the result.
+#'
+#' This function also demonstrates various ways to include mathematical
+#' notation in roxygen2 documentation.
+#'
+#' # Mathematical Notation in roxygen2
+#'
+#' ## Using `\eqn{}` for inline math (works in all formats)
+#'
+#' The median is a measure of central tendency where \eqn{x_{0.5}} represents
+#' the value that splits the data in half.
+#'
+#' ## Using `\deqn{}` for display equations (works in all formats)
+#'
+#' The sample median for odd \eqn{n} is defined as:
+#' \deqn{m = x_{(n+1)/2}}
 #'
 #' @param x A numeric vector
 #'
-#' @return The median of the input vector
+#' @return The median of the input vector, rounded to 2 decimal places
 #' @export
 #'
 #' @examples
 #' example_function(c(1, 2, 3, 4, 5))
+#' example_function(c(1, NA, 3, 4, 5))
 example_function <- function(x) {
-  stats::median(x)
+  result <- calculate_statistic(x)
+  format_result(result)
 }

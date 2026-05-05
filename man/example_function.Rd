@@ -2,7 +2,7 @@
 % Please edit documentation in R/example_function.R
 \name{example_function}
 \alias{example_function}
-\title{Example Function}
+\title{Example Function with Mathematical Notation}
 \usage{
 example_function(x)
 }
@@ -10,11 +10,31 @@ example_function(x)
 \item{x}{A numeric vector}
 }
 \value{
-The median of the input vector
+The median of the input vector, rounded to 2 decimal places
 }
 \description{
 This is an example function that demonstrates basic functionality.
+It validates, cleans, calculates statistics, and formats the result.
 }
+\details{
+This function also demonstrates various ways to include mathematical
+notation in roxygen2 documentation.
+}
+\section{Mathematical Notation in roxygen2}{
+\subsection{Using \verb{\eqn{}} for inline math (works in all formats)}{
+
+The median is a measure of central tendency where \eqn{x_{0.5}} represents
+the value that splits the data in half.
+}
+
+\subsection{Using \verb{\deqn{}} for display equations (works in all formats)}{
+
+The sample median for odd \eqn{n} is defined as:
+\deqn{m = x_{(n+1)/2}}
+}
+}
+
 \examples{
 example_function(c(1, 2, 3, 4, 5))
+example_function(c(1, NA, 3, 4, 5))
 }
