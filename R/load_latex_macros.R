@@ -22,7 +22,9 @@ load_latex_macros <- function(path) {
     return(invisible(NULL))
   }
   lines <- readLines(path, warn = FALSE)
-  lines <- lines[!grepl("^\\s*<!--", lines) & nzchar(trimws(lines))]
+  # Strip inline HTML comments, then remove blank/comment-only lines
+  lines <- gsub("<!--.*?-->", "", lines, perl = TRUE)
+  lines <- lines[nzchar(trimws(lines))]
 
   # MathJax v3 does not support \providecommand; convert to \def
   lines <- vapply(lines, function(line) {
@@ -42,7 +44,5 @@ load_latex_macros <- function(path) {
     line
   }, character(1L), USE.NAMES = FALSE)
 
-  cat('::: {style="display:none"}\n$$\n')
-  cat(paste(lines, collapse = "\n"), "\n")
-  cat("$$\n:::\n")
+  cat('::: {style="display:none"}\n$$\n', paste(lines, collapse = "\n"), '\n$$\n:::\n', sep = "")
 }
