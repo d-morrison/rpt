@@ -33,3 +33,4 @@
 ^index\.qmd$
 ^\.Rprofile$
 ^_extensions$
+^macros$

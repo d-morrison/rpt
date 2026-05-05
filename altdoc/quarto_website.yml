@@ -81,6 +81,8 @@ format:
     grid:
       sidebar-width: 340px
       margin-width: 340px
+    include-in-header:
+      - ../macros/macros.qmd
 
 filters:
   - slidebreak

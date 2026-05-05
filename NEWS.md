@@ -1,5 +1,7 @@
 # rpt (development version)
 
+- Added `d-morrison/macros` as a git submodule at `macros/`, providing LaTeX math macros for Quarto documents (#111)
+
 * Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for `revealjs`, `pptx`, and `beamer` formats explicitly (#103)
 * Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (`\eqn{}`, `\deqn{}`)
 * Installed Quarto extensions for enhanced documentation: `d-morrison/div-anchors` (permalink anchors for theorem/proof divs), `d-morrison/equation-anchors` (permalink anchors for equations), and `sun123zxy/callouty-theorem` (render theorems as callout blocks). Added callouty-theorem YAML settings based on `d-morrison/rme`.
