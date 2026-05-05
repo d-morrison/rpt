@@ -29,6 +29,12 @@ jobs:
           extra-packages: any::covr, any::xml2, local::.
           needs: coverage
 
+      - name: Install GPG for Codecov
+        run: |
+          apt-get update
+          apt-get install -y gpg
+        shell: bash
+
       - name: Test coverage
         run: |
           cov <- covr::package_coverage(
