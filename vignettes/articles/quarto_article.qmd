@@ -24,9 +24,7 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
-```{r load-macros, results='asis', echo=FALSE, message=FALSE}
-rpt:::load_latex_macros("../../../macros/macros.qmd")
-```
+{{< include ../../../macros/macros.qmd >}}
 
 ## Overview
 
@@ -207,21 +205,6 @@ example_function(c(5, 10, 15, 20, 25))
 random_data <- runif(10, min = 0, max = 100)
 example_function(random_data)
 ```
-
-## Code Annotations
-
-Quarto supports code annotations for detailed explanations:
-
-```{r}
-# <1>
-data <- c(1, 2, 3, 4, 5) # <2>
-result <- example_function(data) # <3>
-print(result) # <4>
-```
-1. Load sample data
-2. Create a simple numeric vector
-3. Apply the example function from the package
-4. Display the results
 
 ## Theorem Environments
 

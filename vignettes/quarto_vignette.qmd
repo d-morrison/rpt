@@ -23,9 +23,7 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
-```{r load-macros, results='asis', echo=FALSE, message=FALSE}
-rpt:::load_latex_macros("../../macros/macros.qmd")
-```
+{{< include ../../macros/macros.qmd >}}
 
 ## Introduction
 

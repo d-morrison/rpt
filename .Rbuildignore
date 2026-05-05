@@ -34,3 +34,5 @@
 ^\.Rprofile$
 ^_extensions$
 ^macros$
+^\.positai$
+^\.claude$
