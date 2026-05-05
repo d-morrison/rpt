@@ -34,6 +34,8 @@ website:
             file: vignettes/quarto_vignette.qmd
           - text: "Advanced"
             file: vignettes/articles/quarto_article.qmd
+          - text: "Package Structure"
+            file: vignettes/articles/package-structure.qmd
   sidebar:
     collapse-level: 1
     contents:
@@ -48,6 +50,7 @@ website:
           - section: Advanced
             contents:
               - vignettes/articles/quarto_article.qmd
+              - vignettes/articles/package-structure.qmd
       - section: $ALTDOC_MAN_BLOCK
         style: floating
       - text: News
@@ -81,5 +84,71 @@ format:
 
 filters:
   - slidebreak
+  - d-morrison/div-anchors
+  - d-morrison/equation-anchors
+  - sun123zxy/callouty-theorem
   - quarto
+
+callouty-theorem:
+  thm:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  lem:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  cor:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  prp:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  cnj:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  def:
+    override-title: false
+    callout:
+      type: tip
+      appearance: minimal
+  exm:
+    override-title: false
+    callout:
+      type: tip
+      appearance: minimal
+  exr:
+    override-title: false
+    callout:
+      type: tip
+      appearance: minimal
+  proof:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: true
+      icon: true
+  solution:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: true
+      icon: false
+  remark:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: false
+      icon: true
 
