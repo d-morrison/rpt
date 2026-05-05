@@ -8,7 +8,7 @@ This extension is included in the repository. It will be automatically available
 
 ## When to Use
 
-Use this extension when you need to create presentations (RevealJS or PowerPoint) from Quarto documents and want to insert slide breaks without titles. This is particularly useful for separating content into distinct slides during presentations.
+Use this extension when you need to create presentations (RevealJS, PowerPoint, or Beamer) from Quarto documents and want to insert slide breaks without titles. This is particularly useful for separating content into distinct slides during presentations.
 
 **Note**: This extension only affects presentation formats. When rendering to HTML or DOCX for documentation, the shortcode has no effect.
 
@@ -40,7 +40,7 @@ More content here.
 
 ## Behavior
 
-- **RevealJS and PowerPoint formats**: Inserts a slide break (`---`), creating a new slide without a title
+- **All slide deck formats (RevealJS, PowerPoint, Beamer)**: Inserts a slide break (`---`), creating a new slide without a title
 - **HTML and DOCX formats**: Does nothing (the shortcode is silently ignored)
 
 ## Example
@@ -57,7 +57,7 @@ Welcome to the presentation!
 Here's the main content on a new slide.
 ```
 
-In RevealJS or PowerPoint, this will create:
+In any slide format (RevealJS, PowerPoint, or Beamer), this will create:
 1. A slide titled "Introduction" with content
 2. A new blank/untitled slide (from the slidebreak)
 3. A slide titled "Main Content"
