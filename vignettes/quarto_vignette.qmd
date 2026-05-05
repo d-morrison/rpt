@@ -24,10 +24,7 @@ library(rpt)
 ```
 
 ```{r load-macros, results='asis', echo=FALSE, message=FALSE}
-macros_lines <- readLines("../../macros/macros.qmd")
-macros_lines <- gsub("<!--.*?-->", "", macros_lines, perl = TRUE)
-macros_lines <- macros_lines[nzchar(trimws(macros_lines))]
-cat("$$\n", paste(macros_lines, collapse = "\n"), "\n$$\n", sep = "")
+rpt:::load_latex_macros("../../macros/macros.qmd")
 ```
 
 ## Introduction
