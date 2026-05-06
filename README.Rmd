@@ -86,7 +86,7 @@ RevealJS, PowerPoint (`.pptx`), and Beamer (LaTeX). Use it to insert a new
 slide in any format:
 
 ``` markdown
-{{< slidebreak >}}
+{{</* slidebreak */>}}
 ```
 
 ### Mathematical Notation in roxygen2
@@ -115,7 +115,7 @@ A `macros` git submodule (located at `vignettes/macros/`) provides shared LaTeX
 macro definitions. Include it in any vignette or article with:
 
 ``` markdown
-{{< include macros/macros.qmd >}}
+{{</* include macros/macros.qmd */>}}
 ```
 
 Quarto/pandoc expands the macros at compile time, so MathJax on the website
