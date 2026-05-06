@@ -1,11 +1,11 @@
 Beamer
+CLT
 CMD
 Callouts
-CLT
 CodeFactor
 Codecov
-DiagrammeR
 DOCX
+DiagrammeR
 Lifecycle
 MathJax
 README
@@ -28,8 +28,8 @@ foodweb
 foodwebr
 formatter
 frac
-graphviz
 frontmatter
+graphviz
 infty
 ldots
 linter
@@ -38,6 +38,7 @@ mc
 md
 permalink
 pkgdown
+qmd
 qquad
 roxygen
 serodynamics
