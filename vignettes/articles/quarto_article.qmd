@@ -24,11 +24,7 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
-::: {style="display:none"}
-$$
 {{< include ../../../macros/macros.qmd >}}
-$$
-:::
 
 ## Overview
 
