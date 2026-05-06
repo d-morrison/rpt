@@ -23,6 +23,8 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
+{{< include macros/macros.qmd >}}
+
 ## Introduction
 
 This vignette demonstrates how to use Quarto (`.qmd`) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages.

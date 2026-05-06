@@ -25,7 +25,7 @@ is_html_output <- knitr::is_html_output()
 library(rpt)
 ```
 
-{{< include ../../../macros/macros.qmd >}}
+{{< include ../macros/macros.qmd >}}
 
 ## Overview
 

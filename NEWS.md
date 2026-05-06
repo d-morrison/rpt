@@ -1,6 +1,6 @@
 # rpt (development version)
 
-- Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by including macros from the submodule directly in each article via Quarto's `{{< include >}}` shortcode; Quarto/pandoc expands the macro definitions at compile time, so no `$$...$$` wrapper or runtime MathJax processing is required
+- Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by moving the `macros` git submodule to `vignettes/macros/`, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple `{{< include macros/macros.qmd >}}` shortcode; Quarto/pandoc expands the macro definitions at compile time
 
 * Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for `revealjs`, `pptx`, and `beamer` formats explicitly (#103)
 * Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (`\eqn{}`, `\deqn{}`)
