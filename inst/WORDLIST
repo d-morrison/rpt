@@ -36,6 +36,7 @@ linter
 lintr
 mc
 md
+pandoc
 permalink
 pkgdown
 qmd
