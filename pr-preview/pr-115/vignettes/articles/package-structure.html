@@ -541,6 +541,10 @@ div.csl-indent {
 <details open="" class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/UCD-SERG/rpt">rpt</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<div style="display:none">
+<p>$$ </p>
+<p>$$</p>
+</div>
 <section id="overview" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="overview">
 <span class="header-section-number">1</span> Overview</h2>
 <p>This article demonstrates how to visualize the structure and dependencies of package functions using the <a href="https://lewinfox.com/foodwebr/"><code>foodwebr</code></a> package. Understanding function dependencies helps developers:</p>
@@ -600,8 +604,8 @@ div.csl-indent {
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption><div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-41bb01b9922f24e44cc2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-41bb01b9922f24e44cc2">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-581dfbb72774fcf0c64d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-581dfbb72774fcf0c64d">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -647,14 +651,13 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <span><span class="co"># Create foodweb for entire package</span></span>
 <span><span class="va">fw_pkg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://www.lewinfox.com/foodwebr/reference/foodweb.html">foodweb</a></span><span class="op">(</span>env <span class="op">=</span> <span class="va">pkg_env</span><span class="op">)</span></span>
 <span><span class="va">fw_pkg</span></span>
-<span><span class="co">#&gt; # A `foodweb`: 7 vertices and 7 edges </span></span>
+<span><span class="co">#&gt; # A `foodweb`: 6 vertices and 7 edges </span></span>
 <span><span class="co">#&gt; digraph 'foodweb' {</span></span>
 <span><span class="co">#&gt;   calculate_statistic() -&gt; { clean_data() }</span></span>
 <span><span class="co">#&gt;   calculate_summary() -&gt; { clean_data(), example_function(), format_result() }</span></span>
 <span><span class="co">#&gt;   clean_data() -&gt; { validate_input() }</span></span>
 <span><span class="co">#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }</span></span>
 <span><span class="co">#&gt;   format_result()</span></span>
-<span><span class="co">#&gt;   load_latex_macros()</span></span>
 <span><span class="co">#&gt;   validate_input()</span></span>
 <span><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -665,8 +668,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption><div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-7cd65e96cc478e7597a8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-7cd65e96cc478e7597a8">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"load_latex_macros()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-85c1805b89463b5100f7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-85c1805b89463b5100f7">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -697,7 +700,6 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
 <span><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
 <span><span class="co">#&gt;   "format_result()"</span></span>
-<span><span class="co">#&gt;   "load_latex_macros()"</span></span>
 <span><span class="co">#&gt;   "validate_input()"</span></span>
 <span><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -759,7 +761,6 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span><span class="co">#&gt; - clean_data</span></span>
 <span><span class="co">#&gt; - example_function</span></span>
 <span><span class="co">#&gt; - format_result</span></span>
-<span><span class="co">#&gt; - load_latex_macros</span></span>
 <span><span class="co">#&gt; - validate_input</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
@@ -803,11 +804,11 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span>  <span class="va">tg</span> <span class="op">&lt;-</span> <span class="fu">tidygraph</span><span class="fu">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/tbl_graph.html">as_tbl_graph</a></span><span class="op">(</span><span class="va">fw_pkg</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tg</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; # A tbl_graph: 7 nodes and 7 edges</span></span>
+<span><span class="co">#&gt; # A tbl_graph: 6 nodes and 7 edges</span></span>
 <span><span class="co">#&gt; #</span></span>
-<span><span class="co">#&gt; # A directed acyclic simple graph with 2 components</span></span>
+<span><span class="co">#&gt; # A directed acyclic simple graph with 1 component</span></span>
 <span><span class="co">#&gt; #</span></span>
-<span><span class="co">#&gt; # Node Data: 7 × 1 (active)</span></span>
+<span><span class="co">#&gt; # Node Data: 6 × 1 (active)</span></span>
 <span><span class="co">#&gt;   name               </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;              </span></span>
 <span><span class="co">#&gt; 1 calculate_statistic</span></span>
@@ -815,8 +816,7 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span><span class="co">#&gt; 3 clean_data         </span></span>
 <span><span class="co">#&gt; 4 example_function   </span></span>
 <span><span class="co">#&gt; 5 format_result      </span></span>
-<span><span class="co">#&gt; 6 load_latex_macros  </span></span>
-<span><span class="co">#&gt; 7 validate_input     </span></span>
+<span><span class="co">#&gt; 6 validate_input     </span></span>
 <span><span class="co">#&gt; #</span></span>
 <span><span class="co">#&gt; # Edge Data: 7 × 2</span></span>
 <span><span class="co">#&gt;    from    to</span></span>
@@ -850,7 +850,6 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <span><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
 <span><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
 <span><span class="co">#&gt;   "format_result()"</span></span>
-<span><span class="co">#&gt;   "load_latex_macros()"</span></span>
 <span><span class="co">#&gt;   "validate_input()"</span></span>
 <span><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -907,8 +906,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption><div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-143aa3fe03180a2fdaad" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-143aa3fe03180a2fdaad">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-1ee13c0e120c2327b552" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1ee13c0e120c2327b552">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -922,8 +921,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption><div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3a2f8c3c8157707334e8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-3a2f8c3c8157707334e8">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-88e8c53bae8ef0e749b6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-88e8c53bae8ef0e749b6">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
