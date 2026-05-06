@@ -25,6 +25,8 @@ is_html_output <- knitr::is_html_output()
 library(rpt)
 ```
 
+{{< include ../macros/macros.qmd >}}
+
 ## Overview
 
 This article demonstrates how to visualize the structure and dependencies of package functions using the [`foodwebr`](https://lewinfox.com/foodwebr/) package. Understanding function dependencies helps developers:

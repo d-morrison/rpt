@@ -30,7 +30,10 @@
 ^vignettes/articles/\.quarto$
 ^vignettes/articles/*_files$
 ^vignettes/articles$
+^vignettes/macros/\.git
+^vignettes/macros/\.github
 ^index\.qmd$
 ^\.Rprofile$
 ^_extensions$
-^macros$
+^\.positai$
+^\.claude$

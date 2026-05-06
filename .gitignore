@@ -31,3 +31,4 @@ _quarto/*
 *.docx
 *.knit.md
 tests/testthat/_snaps/
+.positai

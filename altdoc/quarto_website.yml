@@ -2,11 +2,12 @@ project:
   type: website
   output-dir: ../docs/
   render:
-    - "*.qmd"      # Render all Quarto markdown files
-    - "*.md"       # Also render plain markdown files
-    - "!README.md" # Except README which is used in index
-    - "!index.md"  # Except index which is replaced by index.qmd
-    - "!data-raw/" # Exclude anything in the data-raw directory
+    - "*.qmd"              # Render all Quarto markdown files
+    - "*.md"               # Also render plain markdown files
+    - "!README.md"         # Except README which is used in index
+    - "!index.md"          # Except index which is replaced by index.qmd
+    - "!data-raw/"         # Exclude anything in the data-raw directory
+    - "!vignettes/macros/" # Exclude macros submodule (include-only, not a standalone article)
 
 # Note: freeze functionality can be set at a project level or for individual .qmd files
 # execute:
@@ -81,8 +82,6 @@ format:
     grid:
       sidebar-width: 340px
       margin-width: 340px
-    include-in-header:
-      - ../macros/macros.qmd
 
 filters:
   - slidebreak

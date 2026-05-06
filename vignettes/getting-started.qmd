@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 library(rpt)
 ```
 
+{{< include macros/macros.qmd >}}
+
 ## Introduction
 
 This vignette provides an introduction to the `{rpt}` package.
