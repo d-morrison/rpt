@@ -98,6 +98,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Julia
+        if: steps.check_label.outputs.skip != 'true'
+        uses: julia-actions/setup-julia@v2
+
       - name: Verify development environment
         if: steps.check_label.outputs.skip != 'true'
         run: |

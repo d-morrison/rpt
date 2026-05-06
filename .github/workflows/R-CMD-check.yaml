@@ -35,6 +35,9 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v2
+
       # Quarto is already included in rocker/verse container
       # Only install Quarto for non-container builds (macOS, Windows)
       - uses: quarto-dev/quarto-actions/setup@v2
