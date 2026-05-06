@@ -1,5 +1,14 @@
 # rpt (development version)
 
+- Updated README to cover new template features:
+  - Working examples for `example_function()` and `calculate_summary()`
+  - Multi-format Quarto vignettes/articles (HTML, RevealJS slides, DOCX)
+  - `slidebreak` shortcode for RevealJS, PowerPoint, and Beamer slide decks
+  - Mathematical notation in roxygen2 (`\eqn{}`, `\deqn{}`)
+  - Preinstalled Quarto extensions (`div-anchors`, `equation-anchors`, `callouty-theorem`)
+  - LaTeX macro submodule at `vignettes/macros/`
+  - Package structure visualization article using `foodwebr`
+
 - Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by moving the `macros` git submodule to `vignettes/macros/`, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple `{{< include macros/macros.qmd >}}` shortcode; Quarto/pandoc expands the macro definitions at compile time
 
 * Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for `revealjs`, `pptx`, and `beamer` formats explicitly (#103)

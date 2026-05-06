@@ -34,7 +34,10 @@ cat(
 
 <!-- badges: end -->
 
-The goal of `{rpt}` is to ...
+The goal of `{rpt}` is to provide a template for creating R packages following
+[UCD-SERG](https://github.com/UCD-SERG) standards. It includes example
+functions, documentation patterns, Quarto-based documentation infrastructure,
+and GitHub Actions workflows to help you get started quickly.
 
 ## Installation
 
@@ -47,12 +50,83 @@ pak::pak("UCD-SERG/rpt")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+The package ships with two exported functions as starting points.
+
+`example_function()` computes the median of a numeric vector, removing `NA`
+values automatically:
 
 ```{r example}
 library(rpt)
-## basic example code
+example_function(c(1, 2, 3, 4, 5))
+example_function(c(1, NA, 3, 4, 5))
 ```
+
+`calculate_summary()` returns the mean, median, and standard deviation as a
+named list:
+
+```{r summary-example}
+calculate_summary(c(1, 2, 3, 4, 5))
+```
+
+## Template Features
+
+### Multi-Format Quarto Vignettes and Articles
+
+Vignettes and articles in this template are written in Quarto (`.qmd`) and can
+be rendered to multiple output formats from a single source file:
+
+- **HTML** — default format for the documentation website
+- **RevealJS slides** — presentation version of every vignette/article
+- **DOCX** — Word document version for sharing outside the web
+
+### Slide Break Shortcode
+
+A `slidebreak` shortcode is included and works across all slide deck formats:
+RevealJS, PowerPoint (`.pptx`), and Beamer (LaTeX). Use it to insert a new
+slide in any format:
+
+``` markdown
+{{< slidebreak >}}
+```
+
+### Mathematical Notation in roxygen2
+
+Function documentation can include inline and display equations using standard
+`roxygen2` macros that render correctly in both HTML and PDF help pages:
+
+- `\eqn{x_{0.5}}` for inline math
+- `\deqn{m = x_{(n+1)/2}}` for display equations
+
+See `?example_function` for a worked example.
+
+### Quarto Extensions
+
+The following Quarto extensions are preinstalled to enhance documentation:
+
+| Extension | Purpose |
+|---|---|
+| [`d-morrison/div-anchors`](https://github.com/d-morrison/div-anchors) | Permalink anchors for theorem/proof divs |
+| [`d-morrison/equation-anchors`](https://github.com/d-morrison/equation-anchors) | Permalink anchors for numbered equations |
+| [`sun123zxy/callouty-theorem`](https://github.com/sun123zxy/callouty-theorem) | Render theorems, definitions, and proofs as callout blocks |
+
+### LaTeX Macro Submodule
+
+A `macros` git submodule (located at `vignettes/macros/`) provides shared LaTeX
+macro definitions. Include it in any vignette or article with:
+
+``` markdown
+{{< include macros/macros.qmd >}}
+```
+
+Quarto/pandoc expands the macros at compile time, so MathJax on the website
+receives only standard LaTeX.
+
+### Package Structure Visualization
+
+The [Package Function Structure](https://ucd-serg.github.io/rpt/articles/package-structure.html)
+article demonstrates how to use
+[`foodwebr`](https://lewinfox.com/foodwebr/) to generate dependency graphs for
+your package functions.
 
 ## Development
 
