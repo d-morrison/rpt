@@ -454,6 +454,16 @@ ul.task-list li input[type="checkbox"] {
 <section id="rpt-development-version" class="level1">
 <h1>rpt (development version)</h1>
 <ul>
+<li><p>Updated README to cover new template features:</p>
+<ul>
+<li>Working examples for <code>example_function()</code> and <code>calculate_summary()</code></li>
+<li>Multi-format Quarto vignettes/articles (HTML, RevealJS slides, DOCX)</li>
+<li><code>slidebreak</code> shortcode for RevealJS, PowerPoint, and Beamer slide decks</li>
+<li>Mathematical notation in roxygen2 (<code>\eqn{}</code>, <code>\deqn{}</code>)</li>
+<li>Preinstalled Quarto extensions (<code>div-anchors</code>, <code>equation-anchors</code>, <code>callouty-theorem</code>)</li>
+<li>LaTeX macro submodule at <code>vignettes/macros/</code></li>
+<li>Package structure visualization article using <code>foodwebr</code></li>
+</ul></li>
 <li><p>Fixed LaTeX macros appearing as visible raw text on the documentation website (<a href="https://github.com/UCD-SERG/rpt/issues/111">#111</a>) by moving the <code>macros</code> git submodule to <code>vignettes/macros/</code>, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple <code>{{&lt; include macros/macros.qmd &gt;}}</code> shortcode; Quarto/pandoc expands the macro definitions at compile time</p></li>
 <li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for <code>revealjs</code>, <code>pptx</code>, and <code>beamer</code> formats explicitly (<a href="https://github.com/UCD-SERG/rpt/issues/103">#103</a>)</p></li>
 <li><p>Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (<code>\eqn{}</code>, <code>\deqn{}</code>)</p></li>
