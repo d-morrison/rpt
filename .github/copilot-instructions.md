@@ -226,6 +226,10 @@ Instead of just changing `@v2.9.4` to `@v2`, include in your commit message or P
 
 This proactive communication prevents reviewers from needing to ask clarifying questions and helps future maintainers understand the decisions made.
 
+### Before Requesting Human Review
+
+Before requesting human review, run `copilot-review`, address any valid comments, and repeat until it does not produce any new valid comments. Do not ask for human review while there are still unresolved valid comments from `copilot-review`.
+
 ## Continuous Integration
 
 The template includes GitHub Actions workflows for:
