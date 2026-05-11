@@ -5,6 +5,9 @@ on:
     types: [opened, synchronize, reopened, labeled, unlabeled]
     branches:
       - main
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'vignettes/**'
 
 name: Version increment check
 
