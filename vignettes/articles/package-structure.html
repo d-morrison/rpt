@@ -336,7 +336,22 @@ div.csl-indent {
 </li>
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-versions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Versions</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-versions">
+<li>
+    <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/">
+ <span class="dropdown-text">Stable</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/dev/">
+ <span class="dropdown-text">Development</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/UCD-SERG/rpt"> <i class="bi bi-github" role="img" aria-label="rpt GitHub">
 </i> 
 <span class="menu-text"></span></a>
@@ -600,8 +615,8 @@ div.csl-indent {
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption><div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-02b831d7243b16376927" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-02b831d7243b16376927">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3b6de6511fdbefe0780a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3b6de6511fdbefe0780a">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -664,8 +679,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption><div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-588b702714c1010ef27f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-588b702714c1010ef27f">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-867276ae0d190b8af885" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-867276ae0d190b8af885">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -902,8 +917,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption><div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-40264bbe42ec68c9a68d" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-40264bbe42ec68c9a68d">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4888863ae6028aa5698c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4888863ae6028aa5698c">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -917,8 +932,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption><div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-15c7db76d0f742afb720" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-15c7db76d0f742afb720">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-5f71d23743ae01f910d2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-5f71d23743ae01f910d2">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>

@@ -21,6 +21,12 @@ website:
     search: true
     pinned: false
     right:
+      - text: Versions
+        menu:
+          - text: Stable
+            href: https://ucd-serg.github.io/rpt/
+          - text: Development
+            href: https://ucd-serg.github.io/rpt/dev/
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
         aria-label: $ALTDOC_PACKAGE_NAME GitHub
@@ -152,4 +158,3 @@ callouty-theorem:
       appearance: default
       collapse: false
       icon: true
-
