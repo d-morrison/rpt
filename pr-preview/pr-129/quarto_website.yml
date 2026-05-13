@@ -23,9 +23,9 @@ website:
     right:
       - text: Versions
         menu:
-          - text: Stable
+          - text: "v1.0.0 (stable)"
             href: https://ucd-serg.github.io/rpt/
-          - text: Development
+          - text: "0.0.0.9017 (dev)"
             href: https://ucd-serg.github.io/rpt/dev/
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
