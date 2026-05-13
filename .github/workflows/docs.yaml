@@ -1,8 +1,9 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
-# Deploys altdoc for Pull Requests, tags, and pushes to main branch
+# Deploys altdoc for Pull Requests, releases, and pushes to main branch.
 # PRs are deployed to /preview/pr<number>/
-# Tags are deployed to /<tag>/
+# Main branch is deployed to /dev/ (development docs)
+# Releases are deployed to / (stable docs)
 on:
   pull_request:
     types:
@@ -20,19 +21,20 @@ on:
     #   - 'README.md'
     #   - 'index.qmd'
   push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'         # build on version tags
-      - '!v[0-9]+.[0-9]+.[0-9]+.[0-9]+' # but not if version involves a dev component
     branches:
       - main
   release:
     types: [published]
   workflow_dispatch:
     inputs:
-      tag:
-        description: Tag to deploy
-        required: false
-        default: ''
+      version:
+        description: Documentation version to deploy
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - stable
 
 name: docs
 
@@ -112,24 +114,29 @@ jobs:
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
 
-      # If event is a tag, set subdir to '<tag_name>'
-      - name: "[tag] Set documentation subdirectory"
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+      # If event is workflow_dispatch with stable selected, deploy to root
+      - name: '[dispatch stable] Set documentation subdirectory to root'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable'
         run: |
-          echo "subdir=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "subdir=" >> $GITHUB_ENV
 
-      # If event is workflow_dispatch, set subdir to 'inputs.tag'
-      - name: '[dispatch] Set documentation subdirectory'
-        if: github.event_name == 'workflow_dispatch'
+      # If event is workflow_dispatch with dev selected, deploy to /dev/
+      - name: '[dispatch dev] Set documentation subdirectory to /dev/'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'dev'
         run: |
-          echo "subdir=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
+          echo "subdir=dev" >> $GITHUB_ENV
 
-      # If event is a push to main (not a tag), set subdir to empty (deploy to root)
-      - name: "[main] Set documentation subdirectory to root"
+      # If event is a release, deploy stable docs to root
+      - name: "[release] Set documentation subdirectory to root"
+        if: github.event_name == 'release'
+        run: |
+          echo "subdir=" >> $GITHUB_ENV
+
+      # If event is a push to main, deploy development docs to /dev/
+      - name: "[main] Set documentation subdirectory to /dev/"
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          echo "PKGDOWN_DEV_MODE=release" >> $GITHUB_ENV
-          echo "subdir=docs" >> $GITHUB_ENV
+          echo "subdir=dev" >> $GITHUB_ENV
 
       - name: Debug subdir
         run: |
@@ -139,10 +146,12 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          clean-exclude: pr-preview
+          clean-exclude: |
+            pr-preview
+            dev
           branch: gh-pages # potentially different from ${{ env.PREVIEW_BRANCH }}
           folder: docs
-          # target-folder: $subdir # figure out later
+          target-folder: ${{ env.subdir }}
 
       - name: Deploy PR Preview
         id: preview-step

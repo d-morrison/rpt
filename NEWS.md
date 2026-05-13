@@ -9,6 +9,10 @@
   - LaTeX macro submodule at `vignettes/macros/`
   - Package structure visualization article using `foodwebr`
 
+- Updated the docs workflow for altdoc multiversion deployment inspired by
+  `etiennebacher/jarl`: pushes to `main` now deploy documentation to `/dev/`,
+  while releases deploy stable documentation to `/`.
+
 - Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by moving the `macros` git submodule to `vignettes/macros/`, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple `{{< include macros/macros.qmd >}}` shortcode; Quarto/pandoc expands the macro definitions at compile time
 
 * Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for `revealjs`, `pptx`, and `beamer` formats explicitly (#103)
