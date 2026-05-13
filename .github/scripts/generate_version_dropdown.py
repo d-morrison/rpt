@@ -17,31 +17,59 @@ import sys
 # Update this when adapting the template for a different repository.
 BASE_URL = "https://ucd-serg.github.io/rpt/"
 
+# --- Helpers ---
+
+
+def _parse_version(content):
+    """Return the Version field from DESCRIPTION file content, or None."""
+    for line in content.splitlines():
+        m = re.match(r"^Version:\s+(.+)", line)
+        if m:
+            return m.group(1).strip()
+    return None
+
+
+def _run_git(*args):
+    """Run a git command and return the CompletedProcess result.
+
+    Raises SystemExit with a descriptive message if git is not found.
+    """
+    try:
+        return subprocess.run(["git", *args], capture_output=True, text=True)
+    except OSError as e:
+        print(f"git command not found: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
 # --- Gather version information ---
 
-# Get the development version from DESCRIPTION
+# Get the development version from DESCRIPTION.
+# On release builds the checked-out DESCRIPTION contains the release version
+# (e.g. "1.0.0"), not the dev version.  Read origin/main:DESCRIPTION instead
+# so the /dev/ link is always labeled with the actual development version.
+# Fall back to the local file if the git command fails (e.g. no remote).
 dev_version = None
-try:
-    with open("DESCRIPTION") as f:
-        for line in f:
-            m = re.match(r"^Version:\s+(.+)", line)
-            if m:
-                dev_version = m.group(1).strip()
-                break
-except OSError as e:
-    print(f"Could not open DESCRIPTION: {e}", file=sys.stderr)
-    sys.exit(1)
+
+result = _run_git("show", "origin/main:DESCRIPTION")
+if result.returncode == 0:
+    dev_version = _parse_version(result.stdout)
+
+if dev_version is None:
+    # Fallback: read local DESCRIPTION (works for non-release builds)
+    try:
+        with open("DESCRIPTION") as f:
+            dev_version = _parse_version(f.read())
+    except OSError as e:
+        print(f"Could not open DESCRIPTION: {e}", file=sys.stderr)
+        sys.exit(1)
+
 if dev_version is None:
     print("Could not find Version field in DESCRIPTION", file=sys.stderr)
     sys.exit(1)
 
 # Get release tags (vX.Y.Z only; tags with a dev component like v1.0.0.9000
 # are excluded because they are not final releases)
-result = subprocess.run(
-    ["git", "tag", "--sort=-version:refname"],
-    capture_output=True,
-    text=True,
-)
+result = _run_git("tag", "--sort=-version:refname")
 if result.returncode != 0:
     print(f"git tag command failed:\n{result.stderr}", file=sys.stderr)
     sys.exit(1)
