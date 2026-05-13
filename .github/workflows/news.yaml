@@ -4,6 +4,9 @@ on:
     types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
     branches:
       - main
+    paths-ignore:
+      - '.github/workflows/**'
+      
 jobs:
   Check-Changelog:
     name: Check Changelog Action
