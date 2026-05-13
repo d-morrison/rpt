@@ -27,6 +27,9 @@ with open("DESCRIPTION") as f:
         if m:
             dev_version = m.group(1).strip()
             break
+if dev_version is None:
+    print("Could not find Version field in DESCRIPTION", file=sys.stderr)
+    sys.exit(1)
 
 # Get release tags (vX.Y.Z only; tags with a dev component like v1.0.0.9000
 # are excluded because they are not final releases)
@@ -35,6 +38,9 @@ result = subprocess.run(
     capture_output=True,
     text=True,
 )
+if result.returncode != 0:
+    print(f"git tag command failed:\n{result.stderr}", file=sys.stderr)
+    sys.exit(1)
 all_tags = result.stdout.strip().split("\n") if result.stdout.strip() else []
 release_tags = [t for t in all_tags if re.match(r"^v\d+\.\d+\.\d+$", t)]
 latest_tag = release_tags[0] if release_tags else None
