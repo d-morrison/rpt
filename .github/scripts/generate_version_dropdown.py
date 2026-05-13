@@ -32,12 +32,13 @@ def _parse_version(content):
 def _run_git(*args):
     """Run a git command and return the CompletedProcess result.
 
-    Raises SystemExit with a descriptive message if git is not found.
+    Calls sys.exit(1) with a descriptive message if the git executable
+    cannot be launched (e.g. git not installed or permission denied).
     """
     try:
         return subprocess.run(["git", *args], capture_output=True, text=True)
     except OSError as e:
-        print(f"git command not found: {e}", file=sys.stderr)
+        print(f"Failed to execute git command: {e}", file=sys.stderr)
         sys.exit(1)
 
 
