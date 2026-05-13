@@ -148,8 +148,12 @@ if prev_tags:
 
 # Write the updated file
 new_lines = lines[:start_idx] + new_block + lines[end_idx:]
-with open("altdoc/quarto_website.yml", "w") as f:
-    f.writelines(new_lines)
+try:
+    with open("altdoc/quarto_website.yml", "w") as f:
+        f.writelines(new_lines)
+except OSError as e:
+    print(f"Could not write to altdoc/quarto_website.yml: {e}", file=sys.stderr)
+    sys.exit(1)
 
 print("Updated Versions dropdown:")
 print("".join(new_block))
