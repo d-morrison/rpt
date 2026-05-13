@@ -13,6 +13,13 @@
   `etiennebacher/jarl`: pushes to `main` now deploy documentation to `/dev/`,
   while releases deploy stable documentation to `/`.
 
+- Enhanced the docs site version dropdown to show version numbers: the current
+  release is labeled with its tag (e.g., `v1.0.0 (stable)`), the development
+  version is labeled with its `DESCRIPTION` version (e.g., `0.0.0.9017 (dev)`),
+  and a "Previous versions" section lists all older release tags with links to
+  their archived docs. Releases are now also deployed to a versioned subdirectory
+  (e.g., `/v1.0.0/`) so prior docs remain accessible after new releases.
+
 - Fixed LaTeX macros appearing as visible raw text on the documentation website (#111) by moving the `macros` git submodule to `vignettes/macros/`, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple `{{< include macros/macros.qmd >}}` shortcode; Quarto/pandoc expands the macro definitions at compile time
 
 * Extended `slidebreak` shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for `revealjs`, `pptx`, and `beamer` formats explicitly (#103)
