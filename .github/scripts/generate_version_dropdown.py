@@ -21,12 +21,16 @@ BASE_URL = "https://ucd-serg.github.io/rpt/"
 
 # Get the development version from DESCRIPTION
 dev_version = None
-with open("DESCRIPTION") as f:
-    for line in f:
-        m = re.match(r"^Version:\s+(.+)", line)
-        if m:
-            dev_version = m.group(1).strip()
-            break
+try:
+    with open("DESCRIPTION") as f:
+        for line in f:
+            m = re.match(r"^Version:\s+(.+)", line)
+            if m:
+                dev_version = m.group(1).strip()
+                break
+except OSError as e:
+    print(f"Could not open DESCRIPTION: {e}", file=sys.stderr)
+    sys.exit(1)
 if dev_version is None:
     print("Could not find Version field in DESCRIPTION", file=sys.stderr)
     sys.exit(1)
@@ -48,8 +52,12 @@ prev_tags = release_tags[1:] if len(release_tags) > 1 else []
 
 # --- Locate and replace the Versions block in quarto_website.yml ---
 
-with open("altdoc/quarto_website.yml") as f:
-    lines = f.readlines()
+try:
+    with open("altdoc/quarto_website.yml") as f:
+        lines = f.readlines()
+except OSError as e:
+    print(f"Could not open altdoc/quarto_website.yml: {e}", file=sys.stderr)
+    sys.exit(1)
 
 # Find the "- text: Versions" line in the navbar configuration
 start_idx = None

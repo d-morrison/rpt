@@ -155,7 +155,7 @@ jobs:
           clean-exclude: |
             pr-preview
             dev
-            v*
+            v[0-9]*
           branch: gh-pages # potentially different from ${{ env.PREVIEW_BRANCH }}
           folder: docs
           target-folder: ${{ env.subdir }}
