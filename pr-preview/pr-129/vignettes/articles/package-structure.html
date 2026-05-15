@@ -96,9 +96,9 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-23063a2ee913c99e939777d405b9c457.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-02da43bb2c35d8eb1545a06609d290ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-23063a2ee913c99e939777d405b9c457.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dbf22739c68fc316d727e9fdf85a1c89.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-656316d6d04240f7b7e07197a8824120.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
 <link href="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -615,8 +615,8 @@ div.csl-indent {
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption><div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5cd7cc8b3cf557edc691" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5cd7cc8b3cf557edc691">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4139fb4e9cf100118e07" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4139fb4e9cf100118e07">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -679,8 +679,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption><div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-79dc6fe1602e70eff1af" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-79dc6fe1602e70eff1af">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-9d42bf36fde909e58501" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-9d42bf36fde909e58501">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -747,10 +747,10 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <li>
 <code>format_result()</code> is a low-level formatter (no package dependencies)</li>
 <li>
-<code><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function()</a></code> is a high-level API that calls <code>calculate_statistic()</code> and <code>format_result()</code>
+<code><a href="https://rdrr.io/pkg/rpt/man/example_function.html">example_function()</a></code> is a high-level API that calls <code>calculate_statistic()</code> and <code>format_result()</code>
 </li>
 <li>
-<code><a href="https://ucd-serg.github.io/rpt/man/calculate_summary.html">calculate_summary()</a></code> is another high-level API that calls <code>clean_data()</code> and <code><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function()</a></code>
+<code><a href="https://rdrr.io/pkg/rpt/man/calculate_summary.html">calculate_summary()</a></code> is another high-level API that calls <code>clean_data()</code> and <code><a href="https://rdrr.io/pkg/rpt/man/example_function.html">example_function()</a></code>
 </li>
 </ul>
 <p>This creates a clear layered architecture with well-separated concerns.</p>
@@ -781,10 +781,10 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <strong>Exported functions</strong> (user-facing API):
 <ul>
 <li>
-<code><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function()</a></code>: Calls <code>calculate_statistic()</code> → <code>format_result()</code>
+<code><a href="https://rdrr.io/pkg/rpt/man/example_function.html">example_function()</a></code>: Calls <code>calculate_statistic()</code> → <code>format_result()</code>
 </li>
 <li>
-<code><a href="https://ucd-serg.github.io/rpt/man/calculate_summary.html">calculate_summary()</a></code>: Calls <code>clean_data()</code> → <code><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function()</a></code>
+<code><a href="https://rdrr.io/pkg/rpt/man/calculate_summary.html">calculate_summary()</a></code>: Calls <code>clean_data()</code> → <code><a href="https://rdrr.io/pkg/rpt/man/example_function.html">example_function()</a></code>
 </li>
 </ul>
 </li>
@@ -917,8 +917,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption><div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-c36f77f24e66e9f43195" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c36f77f24e66e9f43195">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-078ddf8706177d6035ff" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-078ddf8706177d6035ff">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -932,8 +932,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption><div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-f043577e3ea0cca472c5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f043577e3ea0cca472c5">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-051af014497e37fff307" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-051af014497e37fff307">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -986,7 +986,7 @@ Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 <li>Integration with <code>tidygraph</code> enables advanced graph analysis</li>
 <li>Regular visualization helps maintain clean architecture</li>
 </ul>
-<p>The <code>rpt</code> package demonstrates a clean layered architecture with: - Low-level utility functions (<code>validate_input()</code>, <code>format_result()</code>) - Mid-level processing functions (<code>clean_data()</code>, <code>calculate_statistic()</code>) - High-level API functions (<code><a href="https://ucd-serg.github.io/rpt/man/example_function.html">example_function()</a></code>, <code><a href="https://ucd-serg.github.io/rpt/man/calculate_summary.html">calculate_summary()</a></code>)</p>
+<p>The <code>rpt</code> package demonstrates a clean layered architecture with: - Low-level utility functions (<code>validate_input()</code>, <code>format_result()</code>) - Mid-level processing functions (<code>clean_data()</code>, <code>calculate_statistic()</code>) - High-level API functions (<code><a href="https://rdrr.io/pkg/rpt/man/example_function.html">example_function()</a></code>, <code><a href="https://rdrr.io/pkg/rpt/man/calculate_summary.html">calculate_summary()</a></code>)</p>
 <p>This structure makes the code easier to understand, test, and maintain.</p>
 </section><section id="references" class="level2" data-number="13"><h2 data-number="13" class="anchored" data-anchor-id="references">
 <span class="header-section-number">13</span> References</h2>
