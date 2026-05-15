@@ -32,3 +32,5 @@ _quarto/*
 *.knit.md
 tests/testthat/_snaps/
 .positai
+# Python cache
+__pycache__/
