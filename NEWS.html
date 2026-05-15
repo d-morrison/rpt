@@ -296,11 +296,16 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-versions">    
         <li>
     <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/">
- <span class="dropdown-text">Stable</span></a>
+ <span class="dropdown-text">v1.0.1 (stable)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/dev/">
- <span class="dropdown-text">Development</span></a>
+ <span class="dropdown-text">0.0.0.9018 (dev)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/v1.0.0/">
+ <span class="dropdown-text">v1.0.0</span></a>
   </li>  
     </ul>
   </li>
@@ -480,6 +485,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Package structure visualization article using <code>foodwebr</code></li>
 </ul></li>
 <li><p>Updated the docs workflow for altdoc multiversion deployment inspired by <code>etiennebacher/jarl</code>: pushes to <code>main</code> now deploy documentation to <code>/dev/</code>, while releases deploy stable documentation to <code>/</code>.</p></li>
+<li><p>Enhanced the docs site version dropdown to show version numbers: the current release is labeled with its tag (e.g., <code>v1.0.0 (stable)</code>), the development version is labeled with its <code>DESCRIPTION</code> version (e.g., <code>0.0.0.9017 (dev)</code>), and a “Previous versions” section lists all older release tags with links to their archived docs. Releases are now also deployed to a versioned subdirectory (e.g., <code>/v1.0.0/</code>) so prior docs remain accessible after new releases.</p></li>
 <li><p>Fixed LaTeX macros appearing as visible raw text on the documentation website (<a href="https://github.com/UCD-SERG/rpt/issues/111">#111</a>) by moving the <code>macros</code> git submodule to <code>vignettes/macros/</code>, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple <code>{{&lt; include macros/macros.qmd &gt;}}</code> shortcode; Quarto/pandoc expands the macro definitions at compile time</p></li>
 <li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for <code>revealjs</code>, <code>pptx</code>, and <code>beamer</code> formats explicitly (<a href="https://github.com/UCD-SERG/rpt/issues/103">#103</a>)</p></li>
 <li><p>Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (<code>\eqn{}</code>, <code>\deqn{}</code>)</p></li>

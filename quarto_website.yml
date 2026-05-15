@@ -23,10 +23,13 @@ website:
     right:
       - text: Versions
         menu:
-          - text: Stable
+          - text: "v1.0.1 (stable)"
             href: https://ucd-serg.github.io/rpt/
-          - text: Development
+          - text: "0.0.0.9018 (dev)"
             href: https://ucd-serg.github.io/rpt/dev/
+          - text: "---"
+          - text: "v1.0.0"
+            href: https://ucd-serg.github.io/rpt/v1.0.0/
       - icon: github
         href: $ALTDOC_PACKAGE_URL_GITHUB
         aria-label: $ALTDOC_PACKAGE_NAME GitHub
