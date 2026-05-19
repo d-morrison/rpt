@@ -59,10 +59,14 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          HAS_REVIEW=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER/reviews" \
-            --jq '[.[] | select(.user.login == "Copilot" or .user.login == "copilot-pull-request-reviewer")] | length > 0' \
-            2>/dev/null) || HAS_REVIEW=false
-          if [ "$HAS_REVIEW" = "true" ]; then
+          # --paginate to avoid missing Copilot's review on busy PRs where
+          # it falls beyond the first page (30 reviews); --jq runs per page
+          # and outputs concatenate, so `head -n1` collapses to non-empty
+          # iff any page yields a match.
+          HAS_REVIEW_ID=$(gh api --paginate "repos/${{ github.repository }}/pulls/$PR_NUMBER/reviews" \
+            --jq '.[] | select(.user.login == "Copilot" or .user.login == "copilot-pull-request-reviewer") | .id' \
+            2>/dev/null | head -n1)
+          if [ -n "$HAS_REVIEW_ID" ]; then
             echo "Copilot already submitted a review; restoring d-morrison and removing label"
             gh api -X POST \
               "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
