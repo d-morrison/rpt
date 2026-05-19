@@ -2,28 +2,40 @@ name: Copilot Review Request Handling
 
 on:
   pull_request:
-    types: [review_requested]
+    types: [review_requested, closed]
   pull_request_review:
     types: [submitted]
 
 # `start` and `finish` fire on different events, so we can't pass state via
-# step outputs. We use the label `ai-review-in-progress` as a marker: `start`
+# step outputs. The `ai-review-in-progress` label is the marker: `start`
 # adds it after removing d-morrison; `finish` only re-requests d-morrison if
-# the marker is present (and clears it). This keeps the workflow from adding
-# d-morrison to PRs where they were never originally a reviewer.
+# the marker is currently present (queried live via API, not from the event
+# payload, because Copilot can submit a review before the `start` job has
+# applied the label). `cleanup_on_close` strips the label if a PR closes
+# without Copilot ever submitting a review, so it doesn't linger.
 
 jobs:
   start:
     if: |
       github.event_name == 'pull_request' &&
+      github.event.action == 'review_requested' &&
       (github.event.requested_reviewer.login == 'Copilot' ||
-       github.event.requested_reviewer.login == 'copilot-pull-request-reviewer[bot]') &&
+       github.event.requested_reviewer.login == 'copilot-pull-request-reviewer') &&
       contains(github.event.pull_request.requested_reviewers.*.login, 'd-morrison')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
       issues: write
     steps:
+      - name: Ensure ai-review-in-progress label exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "ai-review-in-progress" --color "ededed" --force \
+            --description "Copilot/Claude is reviewing this PR; d-morrison's review request has been temporarily removed" \
+            --repo "${{ github.repository }}" \
+            || echo "::warning::failed to create ai-review-in-progress label"
+
       - name: Remove review request from d-morrison while Copilot is reviewing
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -38,12 +50,34 @@ jobs:
             -f "labels[]=ai-review-in-progress" \
             || echo "::warning::failed to add ai-review-in-progress label to PR #$PR_NUMBER"
 
+      # Race recovery: if Copilot submitted its review before this job got to
+      # run, the `finish` job will have already checked for the label, found
+      # it missing, and exited — leaving d-morrison removed. Re-check now
+      # that we hold the label, and undo if so.
+      - name: Recover if Copilot already submitted a review
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          HAS_REVIEW=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER/reviews" \
+            --jq '[.[] | select(.user.login == "Copilot" or .user.login == "copilot-pull-request-reviewer")] | length > 0' \
+            2>/dev/null) || HAS_REVIEW=false
+          if [ "$HAS_REVIEW" = "true" ]; then
+            echo "Copilot already submitted a review; restoring d-morrison and removing label"
+            gh api -X POST \
+              "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
+              -f "reviewers[]=d-morrison" \
+              || echo "::warning::failed to recover d-morrison as reviewer on PR #$PR_NUMBER"
+            gh api -X DELETE \
+              "repos/${{ github.repository }}/issues/$PR_NUMBER/labels/ai-review-in-progress" \
+              || echo "::warning::failed to remove ai-review-in-progress label from PR #$PR_NUMBER"
+          fi
+
   finish:
     if: |
       github.event_name == 'pull_request_review' &&
       (github.event.review.user.login == 'Copilot' ||
-       github.event.review.user.login == 'copilot-pull-request-reviewer[bot]') &&
-      contains(github.event.pull_request.labels.*.name, 'ai-review-in-progress')
+       github.event.review.user.login == 'copilot-pull-request-reviewer')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -54,6 +88,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
+          # Query live label state; the event payload can be stale if `start`
+          # hasn't applied the label yet (in which case `start`'s recovery
+          # step will handle restoration).
+          HAS_LABEL=$(gh api "repos/${{ github.repository }}/issues/$PR_NUMBER/labels" \
+            --jq '[.[].name] | any(. == "ai-review-in-progress")' \
+            2>/dev/null) || HAS_LABEL=false
+          if [ "$HAS_LABEL" != "true" ]; then
+            echo "ai-review-in-progress label not present; skipping (start job has not yet removed d-morrison)"
+            exit 0
+          fi
           gh api -X POST \
             "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
             -f "reviewers[]=d-morrison" \
@@ -61,3 +105,22 @@ jobs:
           gh api -X DELETE \
             "repos/${{ github.repository }}/issues/$PR_NUMBER/labels/ai-review-in-progress" \
             || echo "::warning::failed to remove ai-review-in-progress label from PR #$PR_NUMBER"
+
+  cleanup_on_close:
+    if: |
+      github.event_name == 'pull_request' &&
+      github.event.action == 'closed' &&
+      contains(github.event.pull_request.labels.*.name, 'ai-review-in-progress')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Strip stale ai-review-in-progress label
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh api -X DELETE \
+            "repos/${{ github.repository }}/issues/$PR_NUMBER/labels/ai-review-in-progress" \
+            || echo "::warning::failed to remove stale ai-review-in-progress label from PR #$PR_NUMBER"
