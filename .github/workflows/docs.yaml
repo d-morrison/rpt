@@ -124,19 +124,26 @@ jobs:
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
+          # Preconditions: confirm the YAML still has the shape we're about
+          # to mutate. yq -i would happily *create* `.website.repo-url` if
+          # someone renamed the top-level key to (say) `site:`, leaving the
+          # real settings untouched and the postcondition check below
+          # passing green. Catch that here before we write anything.
+          yq -e '.website | has("repo-url")' altdoc/quarto_website.yml >/dev/null \
+            || { echo "::error::altdoc/quarto_website.yml has no .website.repo-url — schema may have changed; rewrite would silently create a misplaced key"; exit 1; }
+          yq -e '.website.navbar.right[] | select(.icon == "github")' altdoc/quarto_website.yml >/dev/null \
+            || { echo "::error::altdoc/quarto_website.yml has no navbar entry with icon: github — rewrite would silently no-op"; exit 1; }
+
           yq -i '.website."repo-url" = "https://github.com/" + strenv(HEAD_REPO)' altdoc/quarto_website.yml
           yq -i '.website."repo-branch" = strenv(HEAD_REF)' altdoc/quarto_website.yml
           yq -i '(.website.navbar.right[] | select(.icon == "github")).href = strenv(PR_URL)' altdoc/quarto_website.yml
-          # Assert each rewrite actually landed — a silent no-op (e.g. the
-          # github icon entry was renamed or removed) would leave links
-          # pointing at main, defeating the purpose of this step.
+
+          # Postcondition: confirm each rewrite produced the expected value.
           ACTUAL_REPO_URL=$(yq '.website."repo-url"' altdoc/quarto_website.yml)
           ACTUAL_BRANCH=$(yq '.website."repo-branch"' altdoc/quarto_website.yml)
           ACTUAL_NAV_HREF=$(yq '.website.navbar.right[] | select(.icon == "github") | .href' altdoc/quarto_website.yml)
           EXPECTED_REPO_URL="https://github.com/$HEAD_REPO"
-          if [ "$ACTUAL_REPO_URL" != "$EXPECTED_REPO_URL" ] \
-            || [ "$ACTUAL_BRANCH" != "$HEAD_REF" ] \
-            || [ "$ACTUAL_NAV_HREF" != "$PR_URL" ]; then
+          if [[ "$ACTUAL_REPO_URL" != "$EXPECTED_REPO_URL" || "$ACTUAL_BRANCH" != "$HEAD_REF" || "$ACTUAL_NAV_HREF" != "$PR_URL" ]]; then
             echo "::error::PR-preview link rewrite did not produce the expected values"
             echo "  repo-url:    got '$ACTUAL_REPO_URL'    expected '$EXPECTED_REPO_URL'"
             echo "  repo-branch: got '$ACTUAL_BRANCH'    expected '$HEAD_REF'"
