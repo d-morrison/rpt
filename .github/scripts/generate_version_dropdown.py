@@ -3,7 +3,9 @@
 Reads the current dev version from DESCRIPTION and all release tags from git,
 then rewrites the "Versions" menu block in altdoc/quarto_website.yml so that:
   - The current stable release is labeled "vX.Y.Z (stable)" → root URL
-  - The development build is labeled "<version> (dev)"      → /dev/ URL
+  - Pre-release builds are labeled "vX.Y.Z-tag (pre-release)" → /vX.Y.Z-tag/ URL
+  - The development build (when DESCRIPTION is a pre-release version) is labeled
+    "<version> (dev)"                                          → /dev/ URL
   - A separator followed by each older tag links to /vX.Y.Z/ (previous versions)
 
 This script is called by the docs GitHub Actions workflow before render_docs().
@@ -27,6 +29,21 @@ def _parse_version(content):
         if m:
             return m.group(1).strip()
     return None
+
+
+def _is_prerelease_version(version: str) -> bool:
+    """Return True if version looks like an R development/pre-release version.
+
+    R development versions have a 4th component >= 9000 (e.g. '1.2.3.9000').
+    Any additional components also qualify.
+    """
+    parts = version.split(".")
+    if len(parts) == 4:
+        try:
+            return int(parts[3]) >= 9000
+        except ValueError:
+            return True  # non-numeric 4th component = pre-release
+    return len(parts) > 4
 
 
 def _run_git(*args):
@@ -76,7 +93,13 @@ if result.returncode != 0:
     sys.exit(1)
 all_tags = result.stdout.strip().split("\n") if result.stdout.strip() else []
 release_tags = [t for t in all_tags if re.match(r"^v\d+\.\d+\.\d+$", t)]
+# Pre-release tags: R-style 4-component (v1.0.0.9000) or suffixed (v1.0.0-beta.1, v1.0.0-rc1)
+prerelease_tags = [
+    t for t in all_tags
+    if re.match(r"^v\d+\.\d+\.\d+\..+$", t) or re.match(r"^v\d+\.\d+\.\d+-.+$", t)
+]
 latest_tag = release_tags[0] if release_tags else None
+latest_prerelease_tag = prerelease_tags[0] if prerelease_tags else None
 prev_tags = release_tags[1:] if len(release_tags) > 1 else []
 
 # --- Locate and replace the Versions block in quarto_website.yml ---
@@ -131,7 +154,19 @@ if latest_tag:
         f"{ii}  href: {BASE_URL}\n",
     ]
 
-if dev_version:
+# Only show the pre-release entry if it is newer than the latest stable release
+if latest_prerelease_tag and (
+    latest_tag is None or latest_prerelease_tag > latest_tag
+):
+    new_block += [
+        f'{ii}- text: "{latest_prerelease_tag} (pre-release)"\n',
+        f"{ii}  href: {BASE_URL}{latest_prerelease_tag}/\n",
+    ]
+
+# Only show the dev entry when the current DESCRIPTION version is itself a
+# pre-release (e.g. 1.2.3.9000), meaning work-in-progress docs live at /dev/.
+# If main has a stable version string, there is no separate /dev/ build.
+if dev_version and _is_prerelease_version(dev_version):
     new_block += [
         f'{ii}- text: "{dev_version} (dev)"\n',
         f"{ii}  href: {BASE_URL}dev/\n",
