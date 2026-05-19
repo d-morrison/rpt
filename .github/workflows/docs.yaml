@@ -108,6 +108,21 @@ jobs:
       - name: Generate version dropdown
         run: python3 .github/scripts/generate_version_dropdown.py
 
+      # On PR-preview builds, redirect quarto's "Edit this page" / "View
+      # source" links to the PR head branch and the navbar GitHub icon to the
+      # PR conversation page, so reviewers can click straight to the right
+      # place. Non-PR builds leave the YAML alone. See issue #136.
+      - name: Rewrite quarto repo links for PR preview
+        if: github.event_name == 'pull_request'
+        env:
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          yq -i '.website."repo-url" = "https://github.com/" + strenv(HEAD_REPO)' altdoc/quarto_website.yml
+          yq -i '.website."repo-branch" = strenv(HEAD_REF)' altdoc/quarto_website.yml
+          yq -i '(.website.navbar.right[] | select(.icon == "github")).href = strenv(PR_URL)' altdoc/quarto_website.yml
+
       - name: Build site
         # uncomment the next two lines to get full debugging output
         # env:
