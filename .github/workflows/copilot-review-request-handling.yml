@@ -6,35 +6,58 @@ on:
   pull_request_review:
     types: [submitted]
 
+# `start` and `finish` fire on different events, so we can't pass state via
+# step outputs. We use the label `ai-review-in-progress` as a marker: `start`
+# adds it after removing d-morrison; `finish` only re-requests d-morrison if
+# the marker is present (and clears it). This keeps the workflow from adding
+# d-morrison to PRs where they were never originally a reviewer.
+
 jobs:
   start:
     if: |
       github.event_name == 'pull_request' &&
-      contains(github.event.requested_reviewer.login, 'opilot')
+      (github.event.requested_reviewer.login == 'Copilot' ||
+       github.event.requested_reviewer.login == 'copilot-pull-request-reviewer[bot]') &&
+      contains(github.event.pull_request.requested_reviewers.*.login, 'd-morrison')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      issues: write
     steps:
       - name: Remove review request from d-morrison while Copilot is reviewing
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           gh api -X DELETE \
-            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers" \
-            -f "reviewers[]=d-morrison" || true
+            "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
+            -f "reviewers[]=d-morrison" \
+            || echo "::warning::failed to remove d-morrison from reviewers on PR #$PR_NUMBER"
+          gh api -X POST \
+            "repos/${{ github.repository }}/issues/$PR_NUMBER/labels" \
+            -f "labels[]=ai-review-in-progress" \
+            || echo "::warning::failed to add ai-review-in-progress label to PR #$PR_NUMBER"
 
   finish:
     if: |
       github.event_name == 'pull_request_review' &&
-      contains(github.event.review.user.login, 'opilot')
+      (github.event.review.user.login == 'Copilot' ||
+       github.event.review.user.login == 'copilot-pull-request-reviewer[bot]') &&
+      contains(github.event.pull_request.labels.*.name, 'ai-review-in-progress')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      issues: write
     steps:
       - name: Re-request review from d-morrison when Copilot finishes reviewing
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           gh api -X POST \
-            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers" \
-            -f "reviewers[]=d-morrison" || true
+            "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
+            -f "reviewers[]=d-morrison" \
+            || echo "::warning::failed to re-request d-morrison as reviewer on PR #$PR_NUMBER"
+          gh api -X DELETE \
+            "repos/${{ github.repository }}/issues/$PR_NUMBER/labels/ai-review-in-progress" \
+            || echo "::warning::failed to remove ai-review-in-progress label from PR #$PR_NUMBER"
