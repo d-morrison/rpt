@@ -1,0 +1,40 @@
+name: Copilot Review Request Handling
+
+on:
+  pull_request:
+    types: [review_requested]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  start:
+    if: |
+      github.event_name == 'pull_request' &&
+      contains(github.event.requested_reviewer.login, 'opilot')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Remove review request from d-morrison while Copilot is reviewing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X DELETE \
+            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers" \
+            -f "reviewers[]=d-morrison" || true
+
+  finish:
+    if: |
+      github.event_name == 'pull_request_review' &&
+      contains(github.event.review.user.login, 'opilot')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Re-request review from d-morrison when Copilot finishes reviewing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X POST \
+            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers" \
+            -f "reviewers[]=d-morrison" || true
