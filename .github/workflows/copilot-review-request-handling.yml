@@ -77,7 +77,8 @@ jobs:
     if: |
       github.event_name == 'pull_request_review' &&
       (github.event.review.user.login == 'Copilot' ||
-       github.event.review.user.login == 'copilot-pull-request-reviewer')
+       github.event.review.user.login == 'copilot-pull-request-reviewer') &&
+      github.event.pull_request.user.login != 'd-morrison'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write

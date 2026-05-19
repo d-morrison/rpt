@@ -37,9 +37,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}"
-          # Default to "false" on any API/parse error so the re-request step
-          # (gated on had_reviewer == 'true') doesn't silently skip on a
-          # transient failure that left d-morrison removed.
+          # On any GET error / empty response, treat as "not a reviewer" so
+          # both the DELETE below and the matching re-request step skip,
+          # leaving the PR state untouched rather than partially modified.
           HAD_REVIEWER=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER" \
             --jq '[.requested_reviewers[].login] | any(. == "d-morrison")' \
             2>/dev/null) || HAD_REVIEWER=false

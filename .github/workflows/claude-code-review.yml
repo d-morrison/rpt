@@ -31,9 +31,16 @@ jobs:
         with:
           fetch-depth: 1
 
+      # Skip reviewer toggling on fork PRs: GitHub downgrades GITHUB_TOKEN
+      # to read-only for fork events even when `pull-requests: write` is
+      # declared, so the DELETE / POST below would 403. The job-level
+      # reviewer (Run Claude Code Review) still runs because it uses its
+      # own OAuth token.
       - name: Remove review request from d-morrison while Claude is reviewing
         id: remove_reviewer
-        if: github.event.pull_request.number
+        if: |
+          github.event.pull_request.number &&
+          github.event.pull_request.head.repo.full_name == github.repository
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HAD_REVIEWER: ${{ contains(github.event.pull_request.requested_reviewers.*.login, 'd-morrison') }}
@@ -61,6 +68,7 @@ jobs:
         if: |
           always() &&
           github.event.pull_request.number &&
+          github.event.pull_request.head.repo.full_name == github.repository &&
           steps.remove_reviewer.outputs.had_reviewer == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
