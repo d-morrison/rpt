@@ -69,6 +69,7 @@ Replace `packagename` with your actual package name in:
 - [ ] Enable GitHub Actions in repository settings
 - [ ] Set up Codecov (optional): add CODECOV_TOKEN secret
 - [ ] Enable GitHub Pages for altdoc site
+- [ ] Apply branch rulesets: `.github/scripts/apply-rulesets.sh` (requires admin access; see `.github/rulesets/README.md`)
 - [ ] Create initial release/tag when ready
 - [ ] Add repository topics/tags
 
