@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
+      pull-requests: write
       issues: read
       id-token: write
 
@@ -30,6 +30,28 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      # Skip reviewer toggling on fork PRs: GitHub downgrades GITHUB_TOKEN
+      # to read-only for fork events even when `pull-requests: write` is
+      # declared, so the DELETE / POST below would 403. The job-level
+      # reviewer (Run Claude Code Review) still runs because it uses its
+      # own OAuth token.
+      - name: Remove review request from d-morrison while Claude is reviewing
+        id: remove_reviewer
+        if: |
+          github.event.pull_request.number &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HAD_REVIEWER: ${{ contains(github.event.pull_request.requested_reviewers.*.login, 'd-morrison') }}
+        run: |
+          echo "had_reviewer=$HAD_REVIEWER" >> "$GITHUB_OUTPUT"
+          if [ "$HAD_REVIEWER" = "true" ]; then
+            gh api -X DELETE \
+              "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers" \
+              -f "reviewers[]=d-morrison" \
+              || echo "::warning::failed to remove d-morrison from reviewers on PR #${{ github.event.pull_request.number }}"
+          fi
 
       - name: Run Claude Code Review
         id: claude-review
@@ -41,4 +63,18 @@ jobs:
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
+
+      - name: Re-request review from d-morrison when Claude finishes reviewing
+        if: |
+          always() &&
+          github.event.pull_request.number &&
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          steps.remove_reviewer.outputs.had_reviewer == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X POST \
+            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers" \
+            -f "reviewers[]=d-morrison" \
+            || echo "::warning::failed to re-request d-morrison as reviewer on PR #${{ github.event.pull_request.number }}"
 
