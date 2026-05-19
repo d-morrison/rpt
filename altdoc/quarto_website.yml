@@ -15,10 +15,10 @@ project:
 bibliography: vignettes/references.bib
 website:
   title: "$ALTDOC_PACKAGE_NAME"
-  # `repo-url`, `repo-branch`, and the navbar github icon's `href` below are
-  # rewritten in-place by .github/workflows/docs.yaml on PR-preview builds, so
-  # "Edit this page" / "View source" / the navbar GitHub link point at the PR
-  # branch and the PR conversation page instead of the main repo.
+  # On PR-preview builds, .github/workflows/docs.yaml rewrites `repo-url` and
+  # the navbar GitHub icon's `href` below, and inserts `repo-branch` (absent
+  # here; added dynamically), so "Edit this page" / "View source" / the navbar
+  # GitHub link point at the PR branch and PR conversation page, not main.
   repo-url: https://github.com/UCD-SERG/rpt
   repo-actions: [edit, source, issue]
   navbar:
