@@ -318,8 +318,8 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption>
 <div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-93ac229bc4d5476a0967" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-93ac229bc4d5476a0967">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a7bb92c69ff2553ec676" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-a7bb92c69ff2553ec676">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -387,8 +387,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption>
 <div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-0235c007eecfc02d8e07" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-0235c007eecfc02d8e07">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-bb56cd90e42cccf45b95" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-bb56cd90e42cccf45b95">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -607,8 +607,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption>
 <div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-6a3bc7b4f87568d22d31" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-6a3bc7b4f87568d22d31">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-fba8fd15448a2784bc58" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-fba8fd15448a2784bc58">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -626,8 +626,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption>
 <div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-1fbe661ae7e69a76a591" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1fbe661ae7e69a76a591">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-db9579d01ad683f63106" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-db9579d01ad683f63106">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
