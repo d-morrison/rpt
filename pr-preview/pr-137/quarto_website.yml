@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: ../docs/
+  pre-render: scripts/fix-man-source-urls.sh
   render:
     - "*.qmd" # Render all Quarto markdown files
     - "*.md" # Also render plain markdown files
