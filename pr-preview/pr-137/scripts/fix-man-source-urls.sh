@@ -1,37 +1,42 @@
 #!/usr/bin/env bash
-# Quarto pre-render script: inject correct source-url into altdoc-generated
-# man page .qmd files before Quarto renders them.
+# Quarto post-render script: fix "View source" links in man page HTML output.
 #
 # Man pages are generated at build time from man/*.Rd; the generated .qmd
 # files are never committed to git, so Quarto's default "View source" URL
-# (based on the .qmd path) would 404.  We redirect "View source" to the
-# committed .Rd file instead.
+# (based on the .qmd path) would 404.  This script rewrites those URLs in
+# the rendered HTML to point to the committed .Rd file instead.
 #
-# This script runs from the Quarto project root (altdoc/), after altdoc has
-# generated the .qmd files and before Quarto renders them.
+# This script runs from the Quarto project root (altdoc/), after Quarto has
+# rendered all pages into ../docs/.
 set -euo pipefail
 
-# Read repo settings from the project YAML.  On PR-preview builds these are
-# already rewritten by .github/workflows/docs.yaml before altdoc is invoked.
-REPO_URL=$(yq '.website."repo-url"' quarto_website.yml)
-REPO_BRANCH=$(yq '.website."repo-branch" // "main"' quarto_website.yml)
+DOCS_MAN="../docs/man"
 
-export MAN_REPO_URL="$REPO_URL"
-export MAN_REPO_BRANCH="$REPO_BRANCH"
+if [ ! -d "$DOCS_MAN" ]; then
+    echo "fix-man-source-urls: no output at $DOCS_MAN, skipping"
+    exit 0
+fi
 
 python3 - <<'PYEOF'
-import pathlib, os
+import pathlib, re
 
-repo_url = os.environ["MAN_REPO_URL"]
-repo_branch = os.environ["MAN_REPO_BRANCH"]
+docs_man = pathlib.Path("../docs/man")
+patched = 0
+for html in sorted(docs_man.glob("*.html")):
+    stem = html.stem
+    content = html.read_text(encoding="utf-8")
+    # Replace the href that Quarto generates for the "View source" button.
+    # Quarto writes:  href="<repo-url>/blob/<branch>/man/<stem>.qmd"
+    # We want:        href="<repo-url>/blob/<branch>/man/<stem>.Rd"
+    new_content = re.sub(
+        rf'(href="[^"]+/man/{re.escape(stem)})\.qmd(")',
+        rf'\1.Rd\2',
+        content,
+    )
+    if new_content != content:
+        html.write_text(new_content, encoding="utf-8")
+        patched += 1
+        print(f"  fixed: {html.name}", flush=True)
 
-for qmd in pathlib.Path("man").glob("*.qmd"):
-    stem = qmd.stem
-    source_url = f"{repo_url}/blob/{repo_branch}/man/{stem}.Rd"
-    content = qmd.read_text()
-    # Only inject if not already present and file starts with YAML front matter
-    if "source-url:" not in content and content.startswith("---\n"):
-        # Insert source-url as the first key after the opening ---
-        content = "---\nsource-url: " + source_url + "\n" + content[4:]
-        qmd.write_text(content)
+print(f"fix-man-source-urls: patched {patched} file(s)")
 PYEOF
