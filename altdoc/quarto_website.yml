@@ -21,6 +21,9 @@ website:
   # here; added dynamically), so "Edit this page" / "View source" / the navbar
   # GitHub link point at the PR branch and PR conversation page, not main.
   repo-url: https://github.com/UCD-SERG/rpt
+  # The `issue` action's URL is derived from `repo-url`; because the PR-preview
+  # rewrite repoints `repo-url`, docs.yaml repoints the rendered "Report an
+  # issue" link at the base repo's main issues page after rendering.
   repo-actions: [edit, source, issue]
   navbar:
     search: true

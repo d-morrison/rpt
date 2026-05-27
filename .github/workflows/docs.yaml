@@ -163,6 +163,19 @@ jobs:
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
 
+      # Quarto's `issue` repo-action derives its URL from `repo-url`, which the
+      # PR-preview step above repoints at the PR head repo/branch — so the
+      # rendered "Report an issue" link would otherwise land on the fork (and on
+      # the /issues/new form). Repoint it at the base repository's main issues
+      # page so it's stable across dev, release, and PR-preview builds.
+      - name: Point "Report an issue" links at the repo issues page
+        env:
+          ISSUES_URL: https://github.com/${{ github.repository }}/issues
+        run: |
+          find docs -name '*.html' -exec \
+            sed -i -E 's#href="https://github\.com/[^"]*/issues/new[^"]*"#href="'"$ISSUES_URL"'"#g' {} +
+          echo "Repointed 'Report an issue' links to $ISSUES_URL"
+
       # If event is workflow_dispatch with stable selected, deploy to root
       - name: '[dispatch stable] Set documentation subdirectory to root'
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable'

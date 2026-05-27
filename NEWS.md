@@ -4,6 +4,9 @@
   page, and "Edit this page" / "View source" resolve to the correct fork and
   branch. Man-page "View source" links now point at the committed `.Rd` source
   file rather than the build-time-generated `.qmd` file (#136).
+- The "Report an issue" documentation link now always points at the
+  repository's main issues page, including on PR previews (where it previously
+  followed the rewritten `repo-url`).
 
 - Updated README to cover new template features:
   - Working examples for `example_function()` and `calculate_summary()`
