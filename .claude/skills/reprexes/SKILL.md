@@ -95,7 +95,7 @@ but nothing more.
   session (via `callr` since reprex 2.0) and emits code **plus actual
   output**.
   Copy the code and call `reprex::reprex()` (reads the clipboard by default),
-  or point it at a file with `reprex(input = "/tmp/reprex.R")` — handy from a
+  or point it at a file with `reprex::reprex(input = "/tmp/reprex.R")` — handy from a
   non-interactive CLI session where there's no clipboard. Useful arguments:
   - `venue =` — output format: `"gh"` (GitHub-flavored Markdown, default),
     `"so"`/`"ds"` (Stack Overflow / Discourse), `"slack"`, `"R"` (runnable
@@ -107,10 +107,10 @@ but nothing more.
     come back as normal R results).
   - `wd =` — set the working directory when the code needs one.
   - Use this when the reprex is destined for a PR comment or an upstream
-    issue. Companion helpers clean up "wild-caught" reprexes: `reprex_clean()`
-    (strip a GitHub/SO paste), `reprex_rescue()` (from console output), and
-    `reprex_invert()` (recover clean code from a rendered reprex).
-  - Validation bonus: because `reprex()` runs in a fresh session, if it errors
+    issue. Companion helpers clean up "wild-caught" reprexes: `reprex::reprex_clean()`
+    (strip a GitHub/SO paste), `reprex::reprex_rescue()` (from console output), and
+    `reprex::reprex_invert()` (recover clean code from a rendered reprex).
+  - Validation bonus: because `reprex::reprex()` runs in a fresh session, if it errors
     on a missing object or package, your example wasn't actually
     self-contained — fix that before sharing.
 - When the bug might be **version-dependent**, capture `sessionInfo()` (or set
