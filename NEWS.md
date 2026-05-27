@@ -5,7 +5,6 @@
   branch. Man-page "View source" links now point at the committed `.Rd` source
   file rather than the build-time-generated `.qmd` file (#136).
 
-
 - Updated README to cover new template features:
   - Working examples for `example_function()` and `calculate_summary()`
   - Multi-format Quarto vignettes/articles (HTML, RevealJS slides, DOCX)
