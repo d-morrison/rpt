@@ -300,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/dev/">
- <span class="dropdown-text">0.0.0.9018 (dev)</span></a>
+ <span class="dropdown-text">0.0.0.9019 (dev)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -476,6 +476,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>On PR-preview builds, the navbar GitHub icon now links to the PR conversation page, and “Edit this page” / “View source” resolve to the correct fork and branch. Man-page “View source” links now point at the committed <code>.Rd</code> source file rather than the build-time-generated <code>.qmd</code> file (<a href="https://github.com/UCD-SERG/rpt/issues/136">#136</a>).</p></li>
 <li><p>The “Report an issue” documentation link now always points at the repository’s main issues page, including on PR previews (where it previously followed the rewritten <code>repo-url</code>).</p></li>
+<li><p>Added a committed Claude Code configuration (<code>.claude/</code>) and a <code>CLAUDE.md</code> guidance file, so packages created from this template inherit slash commands, safe execution permissions, and a PR-review skill out of the box.</p></li>
 <li><p>Updated README to cover new template features:</p>
 <ul>
 <li>Working examples for <code>example_function()</code> and <code>calculate_summary()</code></li>
