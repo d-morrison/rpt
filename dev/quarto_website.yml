@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: ../docs/
+  post-render: scripts/fix-man-source-urls.sh
   render:
     - "*.qmd"              # Render all Quarto markdown files
     - "*.md"               # Also render plain markdown files
@@ -15,7 +16,14 @@ project:
 bibliography: vignettes/references.bib
 website:
   title: "$ALTDOC_PACKAGE_NAME"
+  # On PR-preview builds, .github/workflows/docs.yaml rewrites `repo-url` and
+  # the navbar GitHub icon's `href` below, and inserts `repo-branch` (absent
+  # here; added dynamically), so "Edit this page" / "View source" / the navbar
+  # GitHub link point at the PR branch and PR conversation page, not main.
   repo-url: https://github.com/UCD-SERG/rpt
+  # The `issue` action's URL is derived from `repo-url`; because the PR-preview
+  # rewrite repoints `repo-url`, docs.yaml repoints the rendered "Report an
+  # issue" link at the base repo's main issues page after rendering.
   repo-actions: [edit, source, issue]
   navbar:
     search: true
@@ -25,7 +33,7 @@ website:
         menu:
           - text: "v1.0.1 (stable)"
             href: https://ucd-serg.github.io/rpt/
-          - text: "0.0.0.9019 (dev)"
+          - text: "0.0.0.9020 (dev)"
             href: https://ucd-serg.github.io/rpt/dev/
           - text: "---"
           - text: "v1.0.0"
