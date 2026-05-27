@@ -77,6 +77,39 @@ jobs:
               || echo "::warning::failed to remove ai-review-in-progress label from PR #$PR_NUMBER"
           fi
 
+  start_dmorrison_added_late:
+    # Closes the reviewer-ordering gap: if d-morrison is added as a reviewer
+    # *after* Copilot is already reviewing (the ai-review-in-progress label is
+    # already present), the `start` job never fires for this event — its
+    # requested_reviewer is d-morrison, not Copilot. Remove d-morrison here so
+    # their notification stays suppressed until `finish` re-requests them.
+    if: |
+      github.event_name == 'pull_request' &&
+      github.event.action == 'review_requested' &&
+      github.event.requested_reviewer.login == 'd-morrison'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Remove d-morrison if an AI review is already in progress
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Query live label state rather than trusting the event payload.
+          HAS_LABEL=$(gh api "repos/${{ github.repository }}/issues/$PR_NUMBER/labels" \
+            --jq '[.[].name] | any(. == "ai-review-in-progress")' \
+            2>/dev/null) || HAS_LABEL=false
+          if [ "$HAS_LABEL" != "true" ]; then
+            echo "No AI review in progress; leaving d-morrison's review request in place"
+            exit 0
+          fi
+          gh api -X DELETE \
+            "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
+            -f "reviewers[]=d-morrison" \
+            || echo "::warning::failed to remove d-morrison from reviewers on PR #$PR_NUMBER"
+
   finish:
     if: |
       github.event_name == 'pull_request_review' &&
@@ -100,7 +133,7 @@ jobs:
             --jq '[.[].name] | any(. == "ai-review-in-progress")' \
             2>/dev/null) || HAS_LABEL=false
           if [ "$HAS_LABEL" != "true" ]; then
-            echo "ai-review-in-progress label not present; skipping (start job has not yet removed d-morrison)"
+            echo "ai-review-in-progress label not present; d-morrison was not removed, nothing to restore"
             exit 0
           fi
           gh api -X POST \
