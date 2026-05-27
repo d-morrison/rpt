@@ -106,8 +106,9 @@ but nothing more.
   - Validation bonus: because `reprex()` runs in a fresh session, if it errors
     on a missing object or package, your example wasn't actually
     self-contained — fix that before sharing.
-- When the bug might be **version-dependent**, capture `sessionInfo()` (or
-  run `tidyverse_update()`) in the reprex so versions are part of the record.
+- When the bug might be **version-dependent**, capture `sessionInfo()` (or use
+  `reprex(..., session_info = TRUE)` / `sessioninfo::session_info()`) so versions
+  are part of the record.
 - Build artifacts (`_site/`, `_freeze/`, `.quarto/`) are common confounders
   for "it renders differently" bugs — a clean standalone render sidesteps
   stale freeze caches.
