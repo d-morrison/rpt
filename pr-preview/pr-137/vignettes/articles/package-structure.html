@@ -550,7 +550,7 @@ div.csl-indent {
   <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more"><span class="header-section-number">11</span> Learn More</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12</span> Summary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">13</span> References</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rpt/edit/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rpt/blob/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/d-morrison/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="package-structure-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="package-structure.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rpt/edit/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rpt/blob/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/d-morrison/rpt/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="package-structure-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="package-structure.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../vignettes/getting-started.html">Articles</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/quarto_article.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../vignettes/articles/package-structure.html">Package Function Structure</a></li></ol></nav><h1 class="title display-7">Package Function Structure</h1></header><header id="title-block-header">
@@ -620,8 +620,8 @@ div.csl-indent {
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption><div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-5ae51445ee904d7fe5ed" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5ae51445ee904d7fe5ed">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-6d1bc262f113c794857f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6d1bc262f113c794857f">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -684,8 +684,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption><div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-18c895c2d72f47be5917" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-18c895c2d72f47be5917">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3fd847771bdf86ca45dd" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3fd847771bdf86ca45dd">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -922,8 +922,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption><div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-1ceefc2af9a6783687c0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1ceefc2af9a6783687c0">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f93146ad8664a5aa0eb6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f93146ad8664a5aa0eb6">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -937,8 +937,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 <figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption><div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-30ae5620240b352f426f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-30ae5620240b352f426f">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ac4167d458183e983036" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ac4167d458183e983036">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -1591,4 +1591,4 @@ window.addEventListener("load", alignEquationAnchorsWithDefault);
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/rpt/edit/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rpt/blob/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/d-morrison/rpt/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/rpt/edit/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rpt/blob/claude/issue-136-pr-preview-links/vignettes/articles/package-structure.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/d-morrison/rpt/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
