@@ -8,6 +8,9 @@
   repository's main issues page, including on PR previews (where it previously
   followed the rewritten `repo-url`).
 
+- Added a committed Claude Code configuration (`.claude/`) and a `CLAUDE.md`
+  guidance file, so packages created from this template inherit slash commands,
+  safe execution permissions, and a PR-review skill out of the box.
 - Updated README to cover new template features:
   - Working examples for `example_function()` and `calculate_summary()`
   - Multi-format Quarto vignettes/articles (HTML, RevealJS slides, DOCX)
