@@ -6,7 +6,7 @@ allowed-tools:
 
 Run `Rscript -e 'devtools::test()'` to run the testthat suite.
 
-Report any failures or warnings grouped by test file, with the expectation that
-failed and the likely cause. If snapshot tests changed, note which snapshots
+Report any failures or warnings grouped by test file, noting which expectation
+failed and its likely cause. If snapshot tests changed, note which snapshots
 differ and whether the change looks intentional (don't blindly accept snapshot
 updates). If everything passes, say so.
