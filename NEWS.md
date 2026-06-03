@@ -1,5 +1,16 @@
 # rpt (development version)
 
+- On PR-preview builds, the navbar GitHub icon now links to the PR conversation
+  page, and "Edit this page" / "View source" resolve to the correct fork and
+  branch. Man-page "View source" links now point at the committed `.Rd` source
+  file rather than the build-time-generated `.qmd` file (#136).
+- The "Report an issue" documentation link now always points at the
+  repository's main issues page, including on PR previews (where it previously
+  followed the rewritten `repo-url`).
+
+- Added a committed Claude Code configuration (`.claude/`) and a `CLAUDE.md`
+  guidance file, so packages created from this template inherit slash commands,
+  safe execution permissions, and a PR-review skill out of the box.
 - Updated README to cover new template features:
   - Working examples for `example_function()` and `calculate_summary()`
   - Multi-format Quarto vignettes/articles (HTML, RevealJS slides, DOCX)

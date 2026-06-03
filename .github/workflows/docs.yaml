@@ -108,6 +108,49 @@ jobs:
       - name: Generate version dropdown
         run: python3 .github/scripts/generate_version_dropdown.py
 
+      # On PR-preview builds, redirect quarto's "Edit this page" / "View
+      # source" links to the PR head branch and the navbar GitHub icon to the
+      # PR conversation page, so reviewers can click straight to the right
+      # place. Non-PR builds leave the YAML alone. See issue #136.
+      #
+      # Must run AFTER `Generate version dropdown` — that script rewrites the
+      # navbar Versions block in-place. It currently leaves the `icon: github`
+      # entry untouched, but if its scope ever expanded to the whole navbar,
+      # the assertion below would catch the regression.
+      - name: Rewrite quarto repo links for PR preview
+        if: github.event_name == 'pull_request'
+        env:
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          # Preconditions: confirm the YAML still has the shape we're about
+          # to mutate. yq -i would happily *create* `.website.repo-url` if
+          # someone renamed the top-level key to (say) `site:`, leaving the
+          # real settings untouched and the postcondition check below
+          # passing green. Catch that here before we write anything.
+          yq -e '.website | has("repo-url")' altdoc/quarto_website.yml >/dev/null \
+            || { echo "::error::altdoc/quarto_website.yml has no .website.repo-url — schema may have changed; rewrite would silently create a misplaced key"; exit 1; }
+          yq -e '.website.navbar.right[] | select(.icon == "github")' altdoc/quarto_website.yml >/dev/null \
+            || { echo "::error::altdoc/quarto_website.yml has no navbar entry with icon: github — rewrite would silently no-op"; exit 1; }
+
+          yq -i '.website."repo-url" = "https://github.com/" + strenv(HEAD_REPO)' altdoc/quarto_website.yml
+          yq -i '.website."repo-branch" = strenv(HEAD_REF)' altdoc/quarto_website.yml
+          yq -i '(.website.navbar.right[] | select(.icon == "github")).href = strenv(PR_URL)' altdoc/quarto_website.yml
+
+          # Postcondition: confirm each rewrite produced the expected value.
+          ACTUAL_REPO_URL=$(yq '.website."repo-url"' altdoc/quarto_website.yml)
+          ACTUAL_BRANCH=$(yq '.website."repo-branch"' altdoc/quarto_website.yml)
+          ACTUAL_NAV_HREF=$(yq '.website.navbar.right[] | select(.icon == "github") | .href' altdoc/quarto_website.yml)
+          EXPECTED_REPO_URL="https://github.com/$HEAD_REPO"
+          if [[ "$ACTUAL_REPO_URL" != "$EXPECTED_REPO_URL" || "$ACTUAL_BRANCH" != "$HEAD_REF" || "$ACTUAL_NAV_HREF" != "$PR_URL" ]]; then
+            echo "::error::PR-preview link rewrite did not produce the expected values"
+            echo "  repo-url:    got '$ACTUAL_REPO_URL'    expected '$EXPECTED_REPO_URL'"
+            echo "  repo-branch: got '$ACTUAL_BRANCH'    expected '$HEAD_REF'"
+            echo "  nav href:    got '$ACTUAL_NAV_HREF' expected '$PR_URL'"
+            exit 1
+          fi
+
       - name: Build site
         # uncomment the next two lines to get full debugging output
         # env:
@@ -119,6 +162,19 @@ jobs:
           # sessioninfo::session_info() # already done in Install R dependencies
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
+
+      # Quarto's `issue` repo-action derives its URL from `repo-url`, which the
+      # PR-preview step above repoints at the PR head repo/branch — so the
+      # rendered "Report an issue" link would otherwise land on the fork (and on
+      # the /issues/new form). Repoint it at the base repository's main issues
+      # page so it's stable across dev, release, and PR-preview builds.
+      - name: Point "Report an issue" links at the repo issues page
+        env:
+          ISSUES_URL: https://github.com/${{ github.repository }}/issues
+        run: |
+          find docs -name '*.html' -exec \
+            sed -i -E 's#href="https://github\.com/[^"]*/issues/new[^"]*"#href="'"$ISSUES_URL"'"#g' {} +
+          echo "Repointed 'Report an issue' links to $ISSUES_URL"
 
       # If event is workflow_dispatch with stable selected, deploy to root
       - name: '[dispatch stable] Set documentation subdirectory to root'

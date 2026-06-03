@@ -1,6 +1,6 @@
 Package: rpt
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9018
+Version: 0.0.0.9020
 Authors@R: c(
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
   )
