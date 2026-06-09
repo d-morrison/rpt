@@ -84,6 +84,15 @@ jobs:
     # already present), the `start` job never fires for this event — its
     # requested_reviewer is d-morrison, not Copilot. Remove d-morrison here so
     # their notification stays suppressed until `finish` re-requests them.
+    #
+    # Known gap: if Copilot and d-morrison are requested in a single action,
+    # GitHub emits two `review_requested` events in an arbitrary order. When
+    # Copilot's fires first, `start` sees d-morrison not yet in
+    # requested_reviewers and skips (so no label is applied); d-morrison's
+    # event then reaches this job, finds no label, and also skips — leaving
+    # d-morrison notified immediately. Closing this would require polling, and
+    # failing open (an extra notification) is the safe failure mode, so we
+    # accept it.
     if: |
       github.event_name == 'pull_request' &&
       github.event.action == 'review_requested' &&
@@ -113,6 +122,10 @@ jobs:
             || echo "::warning::failed to remove d-morrison from reviewers on PR #$PR_NUMBER"
 
   finish:
+    # The `user.login != 'd-morrison'` guard is a cheap belt-and-suspenders:
+    # the live label check below would exit early anyway when d-morrison is the
+    # author (GitHub won't let an author be a requested reviewer, so `start`
+    # never applies the label), but the guard keeps the intent explicit.
     if: |
       github.event_name == 'pull_request_review' &&
       (github.event.review.user.login == 'Copilot' ||
@@ -132,6 +145,10 @@ jobs:
           # Query live label state; the event payload can be stale if `start`
           # hasn't applied the label yet (in which case `start`'s recovery
           # step will handle restoration).
+          #
+          # If Copilot submits between `start`'s label-add and its recovery
+          # check, both this step and `start`'s recovery may re-request
+          # d-morrison; the POST is idempotent, so the duplicate is harmless.
           HAS_LABEL=$(gh api "repos/${{ github.repository }}/issues/$PR_NUMBER/labels" \
             --jq '[.[].name] | any(. == "ai-review-in-progress")' \
             2>/dev/null) || HAS_LABEL=false
