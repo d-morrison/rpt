@@ -240,3 +240,7 @@ The template includes GitHub Actions workflows for:
 - Linting
 - Version checking
 - NEWS.md changelog checking
+
+### Workflow Time Limits
+
+Every job in a GitHub Actions workflow must set a `timeout-minutes` of at most 50. This caps the time a hung or runaway job can hold a runner. Place the key right after `runs-on:`. When adding a new workflow or job, set `timeout-minutes: 50` unless a tighter bound clearly fits.

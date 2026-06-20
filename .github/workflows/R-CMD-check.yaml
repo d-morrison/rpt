@@ -10,6 +10,7 @@ name: R-CMD-check.yaml
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
+    timeout-minutes: 50
     container: ${{ matrix.config.os == 'ubuntu-latest' && 'rocker/verse:latest' || null }}
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
