@@ -30,15 +30,27 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Capture PR head SHA before Claude
-        id: head_before
+      - name: Remove review request from d-morrison while Claude is working
+        id: remove_reviewer
         if: github.event.pull_request.number || github.event.issue.pull_request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}"
-          SHA=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER" --jq '.head.sha')
-          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          # On any GET error / empty response, treat as "not a reviewer" so
+          # both the DELETE below and the matching re-request step skip,
+          # leaving the PR state untouched rather than partially modified.
+          HAD_REVIEWER=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER" \
+            --jq '[.requested_reviewers[].login] | any(. == "d-morrison")' \
+            2>/dev/null) || HAD_REVIEWER=false
+          if [ -z "$HAD_REVIEWER" ]; then HAD_REVIEWER=false; fi
+          echo "had_reviewer=$HAD_REVIEWER" >> "$GITHUB_OUTPUT"
+          if [ "$HAD_REVIEWER" = "true" ]; then
+            gh api -X DELETE \
+              "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
+              -f "reviewers[]=d-morrison" \
+              || echo "::warning::failed to remove d-morrison from reviewers on PR #$PR_NUMBER"
+          fi
 
       - name: Run Claude Code
         id: claude
@@ -58,21 +70,17 @@ jobs:
           # or https://code.claude.com/docs/en/cli-reference for available options
           # claude_args: '--allowed-tools Bash(gh pr *)'
 
-      - name: Re-request review from d-morrison if Claude pushed commits
-        if: always() && (github.event.pull_request.number || github.event.issue.pull_request) && steps.head_before.outputs.sha != ''
+      - name: Re-request review from d-morrison when Claude finishes
+        if: |
+          always() &&
+          (github.event.pull_request.number || github.event.issue.pull_request) &&
+          steps.remove_reviewer.outputs.had_reviewer == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHA_BEFORE: ${{ steps.head_before.outputs.sha }}
         run: |
           PR_NUMBER="${{ github.event.pull_request.number || github.event.issue.number }}"
-          SHA_AFTER=$(gh api "repos/${{ github.repository }}/pulls/$PR_NUMBER" --jq '.head.sha')
-          echo "before=$SHA_BEFORE  after=$SHA_AFTER"
-          if [ "$SHA_AFTER" != "$SHA_BEFORE" ]; then
-            echo "Claude pushed new commits; re-requesting review."
-            gh api -X POST \
-              "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
-              -f "reviewers[]=d-morrison" || true
-          else
-            echo "No new commits on PR head; skipping re-request."
-          fi
+          gh api -X POST \
+            "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
+            -f "reviewers[]=d-morrison" \
+            || echo "::warning::failed to re-request d-morrison as reviewer on PR #$PR_NUMBER"
 
