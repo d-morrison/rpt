@@ -2,7 +2,7 @@
 #
 # This template embeds the shared `macros` repo as a git submodule (at
 # `vignettes/macros/`). Dependabot's `gitsubmodule` updater opens a PR whenever a
-# submodule's tracked branch (here, `main`) advances, so neither this template
+# submodule's default branch (currently `main`) advances, so neither this template
 # nor the packages generated from it have to bump the pointer by hand. See the
 # ADR at d-morrison/macros (docs/adr/0001-macros-submodule-versioning.md) for why
 # we track `main` rather than a pinned release tag.

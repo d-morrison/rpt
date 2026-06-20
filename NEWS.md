@@ -11,6 +11,10 @@
 - Added a committed Claude Code configuration (`.claude/`) and a `CLAUDE.md`
   guidance file, so packages created from this template inherit slash commands,
   safe execution permissions, and a PR-review skill out of the box.
+- Added a Dependabot configuration (`.github/dependabot.yml`) that keeps the
+  `macros` git submodule up to date automatically: Dependabot opens a PR
+  whenever the submodule advances, so packages created from this template
+  inherit hands-off submodule bumps.
 - Updated README to cover new template features:
   - Working examples for `example_function()` and `calculate_summary()`
   - Multi-format Quarto vignettes/articles (HTML, RevealJS slides, DOCX)
