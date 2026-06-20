@@ -474,6 +474,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="rpt-development-version" class="level1">
 <h1>rpt (development version)</h1>
 <ul>
+<li><p>Every CI workflow job now sets a <code>timeout-minutes</code> cap of at most 50, so a runaway or hung job can no longer tie up a runner indefinitely. The convention is documented in <code>.github/copilot-instructions.md</code> (<a href="https://github.com/UCD-SERG/rpt/issues/75">#75</a>).</p></li>
 <li><p>On PR-preview builds, the navbar GitHub icon now links to the PR conversation page, and “Edit this page” / “View source” resolve to the correct fork and branch. Man-page “View source” links now point at the committed <code>.Rd</code> source file rather than the build-time-generated <code>.qmd</code> file (<a href="https://github.com/UCD-SERG/rpt/issues/136">#136</a>).</p></li>
 <li><p>The “Report an issue” documentation link now always points at the repository’s main issues page, including on PR previews (where it previously followed the rewritten <code>repo-url</code>).</p></li>
 <li><p>Added a committed Claude Code configuration (<code>.claude/</code>) and a <code>CLAUDE.md</code> guidance file, so packages created from this template inherit slash commands, safe execution permissions, and a PR-review skill out of the box.</p></li>
