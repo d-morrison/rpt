@@ -31,10 +31,11 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
 This template documents the package with [altdoc](https://altdoc.etiennebacher.com/)
 + Quarto (not pkgdown):
 
-- `altdoc::render_docs()` generates man-page `.qmd` files from `man/*.Rd` at
-  build time, then invokes Quarto (project root `altdoc/`,
-  `altdoc/quarto_website.yml`) to render the site into `docs/`. Both the
-  generated man `.qmd` and the `docs/` output are gitignored — **not** committed.
+- `altdoc::render_docs()` generates man-page `.qmd` files (under `altdoc/man/`)
+  from `man/*.Rd` at build time, then invokes Quarto (project root `altdoc/`,
+  `altdoc/quarto_website.yml`) to render the site into `docs/`. The `docs/`
+  output is gitignored; the generated man `.qmd` files are regenerated each
+  build — **neither** is committed.
 - For doc or vignette changes, build and preview locally before requesting
   review: `altdoc::render_docs(verbose = TRUE)`, then `altdoc::preview_docs()`,
   and visually confirm the rendered site (math, code highlighting, links, nav).
