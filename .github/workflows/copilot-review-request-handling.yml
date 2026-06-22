@@ -24,6 +24,7 @@ jobs:
       contains(github.event.pull_request.requested_reviewers.*.login, 'd-morrison') &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     permissions:
       pull-requests: write
       issues: write
@@ -99,6 +100,7 @@ jobs:
       github.event.requested_reviewer.login == 'd-morrison' &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     permissions:
       pull-requests: write
       issues: write
@@ -133,6 +135,7 @@ jobs:
       github.event.pull_request.user.login != 'd-morrison' &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     permissions:
       pull-requests: write
       issues: write
@@ -171,6 +174,7 @@ jobs:
       contains(github.event.pull_request.labels.*.name, 'ai-review-in-progress') &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     permissions:
       pull-requests: write
       issues: write

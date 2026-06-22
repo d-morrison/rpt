@@ -11,6 +11,7 @@ jobs:
   Check-Changelog:
     name: Check Changelog Action
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     steps:
       - uses: UCD-SERG/changelog-check-action@v2
         with:

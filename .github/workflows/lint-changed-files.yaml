@@ -10,6 +10,7 @@ permissions: read-all
 jobs:
   lint-changed-files:
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     container:
       image: rocker/verse:latest
     env:

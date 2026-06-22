@@ -14,6 +14,7 @@ name: Version increment check
 jobs:
   version-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     container:
       image: rocker/verse:latest
     env:
