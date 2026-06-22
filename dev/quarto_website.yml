@@ -33,7 +33,7 @@ website:
         menu:
           - text: "v1.0.1 (stable)"
             href: https://ucd-serg.github.io/rpt/
-          - text: "0.0.0.9021 (dev)"
+          - text: "0.0.0.9022 (dev)"
             href: https://ucd-serg.github.io/rpt/dev/
           - text: "---"
           - text: "v1.0.0"
