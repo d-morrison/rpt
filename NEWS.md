@@ -1,5 +1,8 @@
 # rpt (development version)
 
+- Every CI workflow job now sets a `timeout-minutes` cap of at most 50, so a
+  runaway or hung job can no longer tie up a runner indefinitely. The convention
+  is documented in `.github/copilot-instructions.md` (#75).
 - On PR-preview builds, the navbar GitHub icon now links to the PR conversation
   page, and "Edit this page" / "View source" resolve to the correct fork and
   branch. Man-page "View source" links now point at the committed `.Rd` source
