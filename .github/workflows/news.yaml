@@ -10,6 +10,7 @@ on:
 jobs:
   Check-Changelog:
     name: Check Changelog Action
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
