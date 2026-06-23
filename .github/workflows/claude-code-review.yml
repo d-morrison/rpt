@@ -16,9 +16,9 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
-  # Allow claude.yml to dispatch a fresh review (e.g. after an @claude run
-  # pushes commits, or on an `@claude review` comment). GITHUB_TOKEN pushes
-  # don't fire `synchronize`, so an explicit dispatch path is needed.
+  # Allow manual re-review from the Actions UI (e.g. after an @claude run
+  # pushes commits). GITHUB_TOKEN pushes don't fire `synchronize`, so a
+  # manual dispatch path is useful.
   workflow_dispatch:
     inputs:
       pr_number:
@@ -75,7 +75,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           files=$(gh api "repos/$REPO/pulls/$PR_NUMBER/files" --paginate --jq '.[].filename' 2>/dev/null || true)
-          if printf '%s\n' "$files" | grep -qx '.github/workflows/claude-code-review.yml'; then
+          if printf '%s\n' "$files" | grep -qxF '.github/workflows/claude-code-review.yml'; then
             echo "self_mod=true" >> "$GITHUB_OUTPUT"
             echo "::notice::PR #$PR_NUMBER edits claude-code-review.yml — skipping self-review (runs after merge)."
           else
