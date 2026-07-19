@@ -30,4 +30,4 @@ jobs:
           needs: check
 
       - name: Run Spelling Check Test
-        uses: insightsengineering/r-spellcheck-action@v3.0.2
+        uses: insightsengineering/r-spellcheck-action@v3.0.3
