@@ -56,7 +56,7 @@ jobs:
       pull-requests: write
       issues: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
           # fetch-depth: 0 fetches all history and tags, which the version
