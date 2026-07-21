@@ -14,6 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
-      - uses: UCD-SERG/changelog-check-action@v2
+      - uses: UCD-SERG/changelog-check-action@v3
         with:
           changelog: NEWS.md
