@@ -21,7 +21,7 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
 - `R/`, `man/`, `NAMESPACE`, `DESCRIPTION` — R package source and generated docs
 - `tests/testthat/` — testthat suite (use snapshot tests where helpful)
 - `vignettes/` — package vignettes and `.qmd` articles
-- `altdoc/` — altdoc + Quarto documentation site config
+- `altdoc/` — altdoc + Quarto documentation site config (`quarto_website.yml`, `index.qmd`, post-render scripts)
 - `data-raw/` — scripts that generate package data
 - `inst/WORDLIST` — accepted spell-check terms
 - `.github/workflows/` — CI workflow definitions
@@ -31,9 +31,14 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
 This template documents the package with [altdoc](https://altdoc.etiennebacher.com/)
 + Quarto (not pkgdown):
 
-- `altdoc::render_docs()` generates `.qmd` files into `altdoc/man/` at build
-  time from `man/*.Rd`, then invokes Quarto to render the site. The generated
-  `altdoc/man/*.qmd` are **not** committed.
+- `altdoc::render_docs()` generates man-page `.qmd` files (under `altdoc/man/`)
+  from `man/*.Rd` at build time, then invokes Quarto (project root `altdoc/`,
+  `altdoc/quarto_website.yml`) to render the site into `docs/`. The `docs/`
+  output is gitignored; the generated man `.qmd` files are regenerated each
+  build — **neither** is committed.
+- For doc or vignette changes, build and preview locally before requesting
+  review: `altdoc::render_docs(verbose = TRUE)`, then `altdoc::preview_docs()`,
+  and visually confirm the rendered site (math, code highlighting, links, nav).
 - `.github/workflows/docs.yaml` builds and deploys the site: pushes to `main`
   go to `/dev/`, releases to `/`, and each PR gets a preview at
   `/preview/pr<number>/` via `rossjrw/pr-preview-action`. A `Versions` navbar
