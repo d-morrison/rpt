@@ -1,25 +1,62 @@
+# Automatic Claude Code review of pull requests.
+#
+# Runs the upstream `code-review@claude-code-plugins` plugin so we pick up
+# any improvements to the canonical review skill, then layers an
+# R-package-specific addendum on top.
+#
+# Each run posts a fresh review comment; prior reviews are left in place
+# so the PR keeps a visible history rather than a rolling sticky.
+#
+# Skips drafts, Dependabot bumps, and fork PRs (fork PRs can't read repo
+# secrets). Project guidance is in CLAUDE.md. Requires the
+# CLAUDE_CODE_OAUTH_TOKEN repository secret.
+
 name: Claude Code Review
 
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
-    # Optional: Only run on specific file changes
-    # paths:
-    #   - "src/**/*.ts"
-    #   - "src/**/*.tsx"
-    #   - "src/**/*.js"
-    #   - "src/**/*.jsx"
+  # Allow manual re-review from the Actions UI (e.g. after an @claude run
+  # pushes commits). GITHUB_TOKEN pushes don't fire `synchronize`, so a
+  # manual dispatch path is useful.
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull request number to review'
+        required: true
+        type: number
+
+# Serialize reviews per PR: a newer push cancels the in-progress review
+# of the now-stale diff so only the freshest review runs (and posts a
+# comment). Plain `cancel-in-progress: true` is safe here — this workflow
+# is read-only (its allowedTools grant no git push / commit), so it never
+# pushes a fix.
+# `|| inputs.pr_number` keeps a workflow_dispatch review in the same
+# group as the PR's pull_request reviews so they dedupe.
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number || inputs.pr_number }}
+  cancel-in-progress: true
 
 jobs:
   claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
-
+    # workflow_dispatch is a manual re-review from the Actions UI, so always
+    # run it — this intentionally bypasses the draft/Dependabot/fork guard
+    # below. A human with write access explicitly requesting a review can
+    # review any PR. For pull_request events, skip drafts, Dependabot bumps,
+    # and fork PRs (fork PRs can't read repo secrets via pull_request events,
+    # so CLAUDE_CODE_OAUTH_TOKEN would be empty and the run would fail with a
+    # noisy red check).
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.draft == false &&
+       github.event.pull_request.user.login != 'dependabot[bot]' &&
+       github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-latest
     timeout-minutes: 50
+    env:
+      # Resolve the PR number once: from the pull_request event, or the
+      # workflow_dispatch input when a manual re-review is triggered.
+      PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr_number }}
     permissions:
       contents: read
       pull-requests: write
@@ -27,6 +64,25 @@ jobs:
       id-token: write
 
     steps:
+      # A PR that changes THIS workflow file can't be reviewed by the action:
+      # its App-token exchange requires the review workflow to match the
+      # default branch, so it 401s — the action itself says this is normal
+      # and to ignore it. Rather than post a failing check, detect that case
+      # and skip the review; it runs normally once merged.
+      - name: Skip self-review when the PR edits this workflow
+        id: selfmod
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          files=$(gh api "repos/$REPO/pulls/$PR_NUMBER/files" --paginate --jq '.[].filename' 2>/dev/null || true)
+          if printf '%s\n' "$files" | grep -qxF '.github/workflows/claude-code-review.yml'; then
+            echo "self_mod=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::PR #$PR_NUMBER edits claude-code-review.yml — skipping self-review (runs after merge)."
+          else
+            echo "self_mod=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
@@ -44,7 +100,6 @@ jobs:
           github.event.pull_request.head.repo.full_name == github.repository
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
           HAD_REVIEWER: ${{ contains(github.event.pull_request.requested_reviewers.*.login, 'd-morrison') }}
         run: |
           echo "had_reviewer=$HAD_REVIEWER" >> "$GITHUB_OUTPUT"
@@ -57,14 +112,55 @@ jobs:
 
       - name: Run Claude Code Review
         id: claude-review
+        if: steps.selfmod.outputs.self_mod != 'true'
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # A `claude` remote session pushing a commit to a PR fires
+          # `synchronize` with the `claude` bot as actor; another CI
+          # workflow pushing a commit fires it as `github-actions[bot]`.
+          # Without allowing these bots the action aborts with "Workflow
+          # initiated by non-human actor" and posts no review. The job
+          # `if:` already restricts runs to same-repo, non-Dependabot PRs,
+          # so accepting these bots here is safe.
+          allowed_bots: "github-actions[bot],claude"
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
-          prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
+          track_progress: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+          prompt: |
+            /code-review:code-review ${{ github.repository }}/pull/${{ env.PR_NUMBER }}
+
+            In addition to the standard checks above, this is an R package
+            template following UCD-SERG standards, so also prioritize:
+
+            1. **R package correctness**
+               - Roxygen2 docs are in sync (`devtools::document()` is required
+                 before committing; `R-check-docs.yml` enforces this).
+               - `NAMESPACE` and `man/` are not edited by hand.
+               - `README.md` is generated from `README.Rmd`; edits go there.
+
+            2. **R style** (`.lintr.R` is authoritative)
+               - snake_case names, line length ≤ 80 chars, no `T`/`F` for
+                 TRUE/FALSE, no `:::`-style internal calls.
+               - Tidyverse idioms and native `|>` pipe.
+
+            3. **Testing**
+               - New/changed behaviour is covered by testthat.
+               - Random outputs use `set.seed()` so snapshots are deterministic.
+
+            4. **Changelog**
+               - Every user-facing change has a `NEWS.md` bullet
+                 (`news.yaml` enforces this; a missing entry is a CI failure).
+
+            5. **CI hygiene**
+               - No new dependencies without a `DESCRIPTION` entry.
+               - Spell-check / lint failures are fixed at the source,
+                 not suppressed.
+
+            **Post line-specific findings as inline review comments** anchored
+            to the relevant line(s). Reserve the top-level summary for a brief
+            overall verdict plus any finding not tied to a specific line;
+            don't restate each inline comment there. Skip generic praise.
 
       - name: Re-request review from d-morrison when Claude finishes reviewing
         if: |
@@ -74,10 +170,8 @@ jobs:
           steps.remove_reviewer.outputs.had_reviewer == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           gh api -X POST \
             "repos/${{ github.repository }}/pulls/$PR_NUMBER/requested_reviewers" \
             -f "reviewers[]=d-morrison" \
             || echo "::warning::failed to re-request d-morrison as reviewer on PR #$PR_NUMBER"
-
