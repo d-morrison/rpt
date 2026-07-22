@@ -32,7 +32,7 @@ website:
       - text: Versions
         menu:
           - text: Stable
-            href: https://ucd-serg.github.io/rpt/
+            href: https://ucd-serg.github.io/rpt/latest-tag/
           # $ALTDOC_PACKAGE_VERSION is substituted by altdoc during local builds.
           # The docs workflow replaces this entire block with dynamically generated
           # version labels (including the latest release tag and previous versions).

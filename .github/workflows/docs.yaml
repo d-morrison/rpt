@@ -191,9 +191,9 @@ jobs:
           echo "subdir=dev" >> $GITHUB_ENV
           echo "landing_target=dev" >> $GITHUB_ENV
 
-      # If event is a release, deploy stable docs to /latest-tag/
+      # If event is a non-prerelease release, deploy stable docs to /latest-tag/
       - name: "[release] Set documentation subdirectory to /latest-tag/"
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' && !github.event.release.prerelease
         run: |
           echo "subdir=latest-tag" >> $GITHUB_ENV
           echo "landing_target=latest-tag" >> $GITHUB_ENV
@@ -211,7 +211,7 @@ jobs:
           echo "Landing target is set to: ${{ env.landing_target }}"
 
       - name: Build root landing page redirect
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && env.landing_target != ''
         env:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           GITHUB_EVENT_REPOSITORY_NAME: ${{ github.event.repository.name }}
@@ -219,7 +219,7 @@ jobs:
         run: python3 .github/scripts/generate_multiversion_landing_page.py
 
       - name: Deploy to GitHub pages 🚀
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && env.subdir != ''
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean-exclude: |
@@ -232,7 +232,7 @@ jobs:
           target-folder: ${{ env.subdir }}
 
       - name: Deploy root landing page
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && env.landing_target != ''
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean: false
