@@ -3,7 +3,8 @@
 # Deploys altdoc for Pull Requests, releases, and pushes to main branch.
 # PRs are deployed to /preview/pr<number>/
 # Main branch is deployed to /dev/ (development docs)
-# Releases are deployed to / (stable docs)
+# Releases are deployed to /latest-tag/ and /vX.Y.Z/ (stable docs)
+# Root (/) is a redirect landing page into the default docs version.
 on:
   pull_request:
     types:
@@ -176,33 +177,46 @@ jobs:
             sed -i -E 's#href="https://github\.com/[^"]*/issues/new[^"]*"#href="'"$ISSUES_URL"'"#g' {} +
           echo "Repointed 'Report an issue' links to $ISSUES_URL"
 
-      # If event is workflow_dispatch with stable selected, deploy to root
-      - name: '[dispatch stable] Set documentation subdirectory to root'
+      # If event is workflow_dispatch with stable selected, deploy to /latest-tag/
+      - name: '[dispatch stable] Set documentation subdirectory to /latest-tag/'
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable'
         run: |
-          echo "subdir=" >> $GITHUB_ENV
+          echo "subdir=latest-tag" >> $GITHUB_ENV
+          echo "landing_target=latest-tag" >> $GITHUB_ENV
 
       # If event is workflow_dispatch with dev selected, deploy to /dev/
       - name: '[dispatch dev] Set documentation subdirectory to /dev/'
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'dev'
         run: |
           echo "subdir=dev" >> $GITHUB_ENV
+          echo "landing_target=dev" >> $GITHUB_ENV
 
-      # If event is a release, deploy stable docs to root
-      - name: "[release] Set documentation subdirectory to root"
+      # If event is a release, deploy stable docs to /latest-tag/
+      - name: "[release] Set documentation subdirectory to /latest-tag/"
         if: github.event_name == 'release'
         run: |
-          echo "subdir=" >> $GITHUB_ENV
+          echo "subdir=latest-tag" >> $GITHUB_ENV
+          echo "landing_target=latest-tag" >> $GITHUB_ENV
 
       # If event is a push to main, deploy development docs to /dev/
       - name: "[main] Set documentation subdirectory to /dev/"
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           echo "subdir=dev" >> $GITHUB_ENV
+          echo "landing_target=dev" >> $GITHUB_ENV
 
       - name: Debug subdir
         run: |
           echo "Subdir is set to: ${{ env.subdir }}"
+          echo "Landing target is set to: ${{ env.landing_target }}"
+
+      - name: Build root landing page redirect
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_EVENT_REPOSITORY_NAME: ${{ github.event.repository.name }}
+          LANDING_TARGET: ${{ env.landing_target }}
+        run: python3 .github/scripts/generate_multiversion_landing_page.py
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
@@ -211,13 +225,22 @@ jobs:
           clean-exclude: |
             pr-preview
             dev
+            latest-tag
             v[0-9]*
           branch: gh-pages # potentially different from ${{ env.PREVIEW_BRANCH }}
           folder: docs
           target-folder: ${{ env.subdir }}
 
+      - name: Deploy root landing page
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: false
+          branch: gh-pages
+          folder: site-root
+
       # On release, also deploy docs to a versioned subdirectory (e.g. /v1.0.0/)
-      # so previous releases remain accessible after future releases overwrite root.
+      # so previous releases remain accessible and directly linkable.
       - name: "[release] Deploy to version subdirectory"
         if: github.event_name == 'release'
         uses: JamesIves/github-pages-deploy-action@v4

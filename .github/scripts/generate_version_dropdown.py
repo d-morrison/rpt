@@ -128,7 +128,7 @@ new_block = [
 if latest_tag:
     new_block += [
         f'{ii}- text: "{latest_tag} (stable)"\n',
-        f"{ii}  href: {BASE_URL}\n",
+        f"{ii}  href: {BASE_URL}latest-tag/\n",
     ]
 
 if dev_version:

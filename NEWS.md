@@ -7,6 +7,9 @@
   page, and "Edit this page" / "View source" resolve to the correct fork and
   branch. Man-page "View source" links now point at the committed `.Rd` source
   file rather than the build-time-generated `.qmd` file (#136).
+- Docs deployment now uses versioned directories for stable/dev docs (`/latest-tag/`,
+  `/dev/`, and release tags like `/v1.2.3/`), and publishes a root landing-page
+  redirect in the same style as `r-pkgdown-multiversion`.
 - The "Report an issue" documentation link now always points at the
   repository's main issues page, including on PR previews (where it previously
   followed the rewritten `repo-url`).
