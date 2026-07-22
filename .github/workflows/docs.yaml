@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable' && github.event.inputs.release_tag || github.ref }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable' && format('refs/tags/{0}', github.event.inputs.release_tag) || github.ref }}
           submodules: recursive
           # fetch-depth: 0 fetches all history and tags, which the version
           # dropdown script needs to discover all release tags
@@ -72,9 +72,12 @@ jobs:
       - name: Determine latest stable release tag
         id: latest-stable-tag
         shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LATEST_STABLE_TAG=$(
-            git tag --list 'v*' \
+            gh api repos/${{ github.repository }}/releases --paginate \
+              --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name' \
               | awk '/^v[0-9]+\.[0-9]+\.[0-9]+$/' \
               | sort -V \
               | tail -n 1
@@ -249,6 +252,38 @@ jobs:
           echo "subdir=dev" >> $GITHUB_ENV
           echo "landing_target=dev" >> $GITHUB_ENV
 
+      # On first rollout, /latest-tag/ may not exist yet on gh-pages.
+      # Bootstrap it once from the archived latest stable release directory.
+      - name: "[main] Prepare one-time /latest-tag/ bootstrap if missing"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          LATEST_STABLE_TAG: ${{ steps.latest-stable-tag.outputs.latest_stable_tag }}
+        run: |
+          echo "bootstrap_latest_tag=false" >> "$GITHUB_ENV"
+          if [[ -z "$LATEST_STABLE_TAG" ]]; then
+            echo "No published stable release tag found; skipping /latest-tag/ bootstrap."
+            exit 0
+          fi
+
+          git fetch origin gh-pages --depth=1
+          if git ls-tree -d --name-only origin/gh-pages latest-tag | grep -qx latest-tag; then
+            echo "/latest-tag/ already exists; skipping bootstrap."
+            exit 0
+          fi
+
+          if ! git ls-tree -d --name-only origin/gh-pages "$LATEST_STABLE_TAG" | grep -qx "$LATEST_STABLE_TAG"; then
+            echo "No /$LATEST_STABLE_TAG/ directory exists on gh-pages; skipping bootstrap."
+            exit 0
+          fi
+
+          BOOTSTRAP_WORKTREE="$(mktemp -d)"
+          git worktree add --detach "$BOOTSTRAP_WORKTREE" origin/gh-pages
+          mkdir -p site-latest-tag-bootstrap
+          cp -R "$BOOTSTRAP_WORKTREE/$LATEST_STABLE_TAG"/. site-latest-tag-bootstrap/
+          git worktree remove "$BOOTSTRAP_WORKTREE" --force
+          echo "bootstrap_latest_tag=true" >> "$GITHUB_ENV"
+
       - name: Debug subdir
         run: |
           echo "Subdir is set to: ${{ env.subdir }}"
@@ -282,6 +317,15 @@ jobs:
           clean: false
           branch: gh-pages
           folder: site-root
+
+      - name: "[main] Bootstrap /latest-tag/ from latest stable archive"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && env.bootstrap_latest_tag == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: false
+          branch: gh-pages
+          folder: site-latest-tag-bootstrap
+          target-folder: latest-tag
 
       # On release, also deploy docs to a versioned subdirectory (e.g. /v1.0.0/)
       # so previous releases remain accessible and directly linkable.
