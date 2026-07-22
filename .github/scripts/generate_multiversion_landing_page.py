@@ -16,7 +16,7 @@ def main():
     output_dir = pathlib.Path("site-root")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    url = f"https://{owner}.github.io/{repo}/{target}"
+    url = f"https://{owner}.github.io/{repo}/{target}/"
     html = (
         "<!DOCTYPE html>\n"
         '<meta charset="utf-8">\n'

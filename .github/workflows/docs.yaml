@@ -36,6 +36,10 @@ on:
         options:
           - dev
           - stable
+      release_tag:
+        description: Stable release tag to deploy when version=stable (for example, v1.2.3)
+        required: false
+        type: string
 
 name: docs
 
@@ -59,10 +63,49 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable' && github.event.inputs.release_tag || github.ref }}
           submodules: recursive
           # fetch-depth: 0 fetches all history and tags, which the version
           # dropdown script needs to discover all release tags
           fetch-depth: 0
+
+      - name: Determine latest stable release tag
+        id: latest-stable-tag
+        shell: bash
+        run: |
+          LATEST_STABLE_TAG=$(
+            git tag --list \
+              | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+              | sort -V \
+              | tail -n 1
+          )
+          if [[ -z "$LATEST_STABLE_TAG" ]]; then
+            echo "::error::No stable release tag matching vX.Y.Z was found"
+            exit 1
+          fi
+          echo "latest_stable_tag=$LATEST_STABLE_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Validate stable workflow_dispatch input
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable'
+        shell: bash
+        run: |
+          RELEASE_TAG='${{ github.event.inputs.release_tag }}'
+          LATEST_STABLE_TAG='${{ steps.latest-stable-tag.outputs.latest_stable_tag }}'
+
+          if [[ -z "$RELEASE_TAG" ]]; then
+            echo "::error::workflow_dispatch version=stable requires release_tag"
+            exit 1
+          fi
+
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::release_tag must match vX.Y.Z"
+            exit 1
+          fi
+
+          if [[ "$RELEASE_TAG" != "$LATEST_STABLE_TAG" ]]; then
+            echo "::error::release_tag must be the latest stable tag ($LATEST_STABLE_TAG) to update /latest-tag/ and the root landing page"
+            exit 1
+          fi
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -191,9 +234,9 @@ jobs:
           echo "subdir=dev" >> $GITHUB_ENV
           echo "landing_target=dev" >> $GITHUB_ENV
 
-      # If event is a non-prerelease release, deploy stable docs to /latest-tag/
+      # If event is the latest non-prerelease release, deploy stable docs to /latest-tag/
       - name: "[release] Set documentation subdirectory to /latest-tag/"
-        if: github.event_name == 'release' && !github.event.release.prerelease
+        if: github.event_name == 'release' && !github.event.release.prerelease && github.ref_name == steps.latest-stable-tag.outputs.latest_stable_tag
         run: |
           echo "subdir=latest-tag" >> $GITHUB_ENV
           echo "landing_target=latest-tag" >> $GITHUB_ENV

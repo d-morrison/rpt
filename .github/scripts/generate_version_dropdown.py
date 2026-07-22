@@ -2,7 +2,7 @@
 
 Reads the current dev version from DESCRIPTION and all release tags from git,
 then rewrites the "Versions" menu block in altdoc/quarto_website.yml so that:
-  - The current stable release is labeled "vX.Y.Z (stable)" → root URL
+  - The current stable release is labeled "vX.Y.Z (stable)" → /latest-tag/ URL
   - The development build is labeled "<version> (dev)"      → /dev/ URL
   - A separator followed by each older tag links to /vX.Y.Z/ (previous versions)
 
