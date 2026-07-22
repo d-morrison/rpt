@@ -79,10 +79,6 @@ jobs:
               | sort -V \
               | tail -n 1
           )
-          if [[ -z "$LATEST_STABLE_TAG" ]]; then
-            echo "::error::No stable release tag matching vX.Y.Z was found"
-            exit 1
-          fi
           echo "latest_stable_tag=$LATEST_STABLE_TAG" >> "$GITHUB_OUTPUT"
 
       - name: Validate stable workflow_dispatch input
@@ -94,6 +90,11 @@ jobs:
 
           if [[ -z "$RELEASE_TAG" ]]; then
             echo "::error::workflow_dispatch version=stable requires release_tag"
+            exit 1
+          fi
+
+          if [[ -z "$LATEST_STABLE_TAG" ]]; then
+            echo "::error::No stable release tag matching vX.Y.Z was found"
             exit 1
           fi
 
