@@ -136,6 +136,7 @@ jobs:
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          working-directory: ${{ env.DOCS_SOURCE_DIR }}
           needs: |
             connect
             website
@@ -337,7 +338,12 @@ jobs:
         if: github.event_name != 'pull_request' && env.landing_target != ''
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          clean: false
+          clean: true
+          clean-exclude: |
+            pr-preview
+            dev
+            latest-tag
+            v[0-9]*
           branch: gh-pages
           folder: site-root
 

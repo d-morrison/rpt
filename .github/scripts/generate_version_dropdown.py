@@ -74,6 +74,7 @@ if dev_version is None:
 # Get release tags (vX.Y.Z only; tags with a dev component like v1.0.0.9000
 # are excluded because they are not final releases)
 release_tags = []
+release_query_succeeded = False
 
 gh_token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
 github_repository = os.environ.get("GITHUB_REPOSITORY")
@@ -96,10 +97,11 @@ if gh_token and github_repository:
         print(f"Failed to execute gh command: {e}", file=sys.stderr)
         sys.exit(1)
     if result.returncode == 0:
+        release_query_succeeded = True
         all_tags = result.stdout.strip().split("\n") if result.stdout.strip() else []
         release_tags = [t for t in all_tags if re.match(r"^v\d+\.\d+\.\d+$", t)]
 
-if not release_tags:
+if not release_query_succeeded and not release_tags:
     result = _run_git("tag", "--sort=-version:refname")
     if result.returncode != 0:
         print(f"git tag command failed:\n{result.stderr}", file=sys.stderr)
