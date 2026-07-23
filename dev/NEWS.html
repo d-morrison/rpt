@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a28d57623bb1501f2d5adc4c6bd772f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-28eebafa1563988b73446f6e417031f0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-a28d57623bb1501f2d5adc4c6bd772f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3b0a2887666d7ddefb129c96e5da6a62.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-14cc35b04e49f1562c9e070a92dcb131.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-3b0a2887666d7ddefb129c96e5da6a62.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
 <link href="site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -300,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/dev/">
- <span class="dropdown-text">0.0.0.9023 (dev)</span></a>
+ <span class="dropdown-text">0.0.0.9024 (dev)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -310,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/UCD-SERG/rpt"> <i class="bi bi-github" role="img" aria-label="rpt GitHub">
+    <a class="nav-link" href="https://github.com/d-morrison/rpt"> <i class="bi bi-github" role="img" aria-label="rpt GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -474,8 +474,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="rpt-development-version" class="level1">
 <h1>rpt (development version)</h1>
 <ul>
-<li><p>Every CI workflow job now sets a <code>timeout-minutes</code> cap of at most 50, so a runaway or hung job can no longer tie up a runner indefinitely. The convention is documented in <code>.github/copilot-instructions.md</code> (<a href="https://github.com/UCD-SERG/rpt/issues/75">#75</a>).</p></li>
-<li><p>On PR-preview builds, the navbar GitHub icon now links to the PR conversation page, and “Edit this page” / “View source” resolve to the correct fork and branch. Man-page “View source” links now point at the committed <code>.Rd</code> source file rather than the build-time-generated <code>.qmd</code> file (<a href="https://github.com/UCD-SERG/rpt/issues/136">#136</a>).</p></li>
+<li><p>Fixed README/site badges for this fork by pointing badge URLs at <code>d-morrison/rpt</code>, removing fork-invalid CodeFactor/CRAN badges, and updating package URLs in <code>DESCRIPTION</code> (<a href="https://github.com/d-morrison/rpt/issues/160">#160</a>).</p></li>
+<li><p>Every CI workflow job now sets a <code>timeout-minutes</code> cap of at most 50, so a runaway or hung job can no longer tie up a runner indefinitely. The convention is documented in <code>.github/copilot-instructions.md</code> (<a href="https://github.com/d-morrison/rpt/issues/75">#75</a>).</p></li>
+<li><p>On PR-preview builds, the navbar GitHub icon now links to the PR conversation page, and “Edit this page” / “View source” resolve to the correct fork and branch. Man-page “View source” links now point at the committed <code>.Rd</code> source file rather than the build-time-generated <code>.qmd</code> file (<a href="https://github.com/d-morrison/rpt/issues/136">#136</a>).</p></li>
 <li><p>The “Report an issue” documentation link now always points at the repository’s main issues page, including on PR previews (where it previously followed the rewritten <code>repo-url</code>).</p></li>
 <li><p>Added a committed Claude Code configuration (<code>.claude/</code>) and a <code>CLAUDE.md</code> guidance file, so packages created from this template inherit slash commands, safe execution permissions, and a PR-review skill out of the box.</p></li>
 <li><p>Added a Dependabot configuration (<code>.github/dependabot.yml</code>) that keeps the <code>macros</code> git submodule and the pinned GitHub Actions in <code>.github/workflows/</code> up to date automatically: Dependabot opens a PR whenever the submodule advances or a newer action release is available, so packages created from this template inherit hands-off submodule and action bumps.</p></li>
@@ -491,8 +492,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>Updated the docs workflow for altdoc multiversion deployment inspired by <code>etiennebacher/jarl</code>: pushes to <code>main</code> now deploy documentation to <code>/dev/</code>, while releases deploy stable documentation to <code>/</code>.</p></li>
 <li><p>Enhanced the docs site version dropdown to show version numbers: the current release is labeled with its tag (e.g., <code>v1.0.0 (stable)</code>), the development version is labeled with its <code>DESCRIPTION</code> version (e.g., <code>0.0.0.9017 (dev)</code>), and a “Previous versions” section lists all older release tags with links to their archived docs. Releases are now also deployed to a versioned subdirectory (e.g., <code>/v1.0.0/</code>) so prior docs remain accessible after new releases.</p></li>
-<li><p>Fixed LaTeX macros appearing as visible raw text on the documentation website (<a href="https://github.com/UCD-SERG/rpt/issues/111">#111</a>) by moving the <code>macros</code> git submodule to <code>vignettes/macros/</code>, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple <code>{{&lt; include macros/macros.qmd &gt;}}</code> shortcode; Quarto/pandoc expands the macro definitions at compile time</p></li>
-<li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for <code>revealjs</code>, <code>pptx</code>, and <code>beamer</code> formats explicitly (<a href="https://github.com/UCD-SERG/rpt/issues/103">#103</a>)</p></li>
+<li><p>Fixed LaTeX macros appearing as visible raw text on the documentation website (<a href="https://github.com/d-morrison/rpt/issues/111">#111</a>) by moving the <code>macros</code> git submodule to <code>vignettes/macros/</code>, which includes it in the package tarball and makes it available in both vignettes (R CMD check) and articles (altdoc) via a simple <code>{{&lt; include macros/macros.qmd &gt;}}</code> shortcode; Quarto/pandoc expands the macro definitions at compile time</p></li>
+<li><p>Extended <code>slidebreak</code> shortcode to support all slide deck formats (RevealJS, PowerPoint, Beamer) by checking for <code>revealjs</code>, <code>pptx</code>, and <code>beamer</code> formats explicitly (<a href="https://github.com/d-morrison/rpt/issues/103">#103</a>)</p></li>
 <li><p>Added demonstration of mathematical notation in roxygen2 comments using cross-format compatible syntax (<code>\eqn{}</code>, <code>\deqn{}</code>)</p></li>
 <li><p>Installed Quarto extensions for enhanced documentation: <code>d-morrison/div-anchors</code> (permalink anchors for theorem/proof divs), <code>d-morrison/equation-anchors</code> (permalink anchors for equations), and <code>sun123zxy/callouty-theorem</code> (render theorems as callout blocks). Added callouty-theorem YAML settings based on <code>d-morrison/rme</code>.</p></li>
 <li><p>Added package structure visualization article using foodwebr to demonstrate function dependencies and call graphs</p></li>
@@ -501,11 +502,11 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.</p></li>
 <li><p>Removed pkgdown-specific configurations and workflows.</p></li>
 <li><p>Retained RevealJS multi-format support for Quarto vignettes and articles.</p></li>
-<li><p>Fixed index page rendering by switching from <code>index.md</code> to <code>index.qmd</code> to properly process Quarto include directive (<a href="https://github.com/UCD-SERG/rpt/issues/58">#58</a>)</p></li>
-<li><p>Switched from <code>pkgdown</code> to <code>altdoc</code> (<a href="https://github.com/UCD-SERG/rpt/issues/45">#45</a>)</p></li>
+<li><p>Fixed index page rendering by switching from <code>index.md</code> to <code>index.qmd</code> to properly process Quarto include directive (<a href="https://github.com/d-morrison/rpt/issues/58">#58</a>)</p></li>
+<li><p>Switched from <code>pkgdown</code> to <code>altdoc</code> (<a href="https://github.com/d-morrison/rpt/issues/45">#45</a>)</p></li>
 <li><p>Updated lintr configuration to match serodynamics reference with enhanced linter rules</p></li>
-<li><p>PR preview comments now use <code>recreate: true</code> to ensure they always appear at the bottom of the PR conversation, preventing them from being hidden in collapsed sections (<a href="https://github.com/UCD-SERG/rpt/issues/31">#31</a>)</p></li>
-<li><p>Added RevealJS presentation format for Quarto vignettes and articles in pkgdown documentation. HTML pages now display an “Other Formats” section with links to slide versions (<a href="https://github.com/UCD-SERG/rpt/issues/29">#29</a>)</p></li>
+<li><p>PR preview comments now use <code>recreate: true</code> to ensure they always appear at the bottom of the PR conversation, preventing them from being hidden in collapsed sections (<a href="https://github.com/d-morrison/rpt/issues/31">#31</a>)</p></li>
+<li><p>Added RevealJS presentation format for Quarto vignettes and articles in pkgdown documentation. HTML pages now display an “Other Formats” section with links to slide versions (<a href="https://github.com/d-morrison/rpt/issues/29">#29</a>)</p></li>
 </ul>
 </section>
 <section id="rpt-0.0.0.9000" class="level1">
