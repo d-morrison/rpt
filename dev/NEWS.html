@@ -300,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/dev/">
- <span class="dropdown-text">0.0.0.9024 (dev)</span></a>
+ <span class="dropdown-text">1.0.2 (dev)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -459,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rpt-development-version" id="toc-rpt-development-version" class="nav-link active" data-scroll-target="#rpt-development-version">rpt (development version)</a></li>
+  <li><a href="#rpt-1.0.2" id="toc-rpt-1.0.2" class="nav-link active" data-scroll-target="#rpt-1.0.2">rpt 1.0.2</a></li>
   <li><a href="#rpt-0.0.0.9000" id="toc-rpt-0.0.0.9000" class="nav-link" data-scroll-target="#rpt-0.0.0.9000">rpt 0.0.0.9000</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCD-SERG/rpt/edit/main/NEWS.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UCD-SERG/rpt/blob/main/NEWS.md" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/d-morrison/rpt/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -471,10 +471,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="rpt-development-version" class="level1">
-<h1>rpt (development version)</h1>
+<section id="rpt-1.0.2" class="level1">
+<h1>rpt 1.0.2</h1>
 <ul>
 <li><p>Fixed README/site badges for this fork by pointing badge URLs at <code>d-morrison/rpt</code>, removing fork-invalid CodeFactor/CRAN badges, and updating package URLs in <code>DESCRIPTION</code> (<a href="https://github.com/d-morrison/rpt/issues/160">#160</a>).</p></li>
+<li><p>Released <code>v1.0.2</code> to validate multiversion documentation deployment, including stable <code>/</code>, development <code>/dev/</code>, and versioned release docs (<code>/v1.0.2/</code>) (<a href="https://github.com/d-morrison/rpt/issues/161">#161</a>).</p></li>
 <li><p>Every CI workflow job now sets a <code>timeout-minutes</code> cap of at most 50, so a runaway or hung job can no longer tie up a runner indefinitely. The convention is documented in <code>.github/copilot-instructions.md</code> (<a href="https://github.com/d-morrison/rpt/issues/75">#75</a>).</p></li>
 <li><p>On PR-preview builds, the navbar GitHub icon now links to the PR conversation page, and “Edit this page” / “View source” resolve to the correct fork and branch. Man-page “View source” links now point at the committed <code>.Rd</code> source file rather than the build-time-generated <code>.qmd</code> file (<a href="https://github.com/d-morrison/rpt/issues/136">#136</a>).</p></li>
 <li><p>Docs deployment now uses versioned directories for stable/development docs (<code>/latest-tag/</code>, <code>/dev/</code>, and release tags like <code>/v1.2.3/</code>), and publishes a root landing-page redirect in the same style as <code>r-pkgdown-multiversion</code> (<a href="https://github.com/d-morrison/rpt/issues/158">#158</a>).</p></li>
