@@ -1,5 +1,9 @@
 # rpt (development version)
 
+- Fixed README/site badges for this fork by pointing badge URLs at
+  `d-morrison/rpt`, removing fork-invalid CodeFactor/CRAN badges, and updating
+  package URLs in `DESCRIPTION` (#160).
+
 - Every CI workflow job now sets a `timeout-minutes` cap of at most 50, so a
   runaway or hung job can no longer tie up a runner indefinitely. The convention
   is documented in `.github/copilot-instructions.md` (#75).
