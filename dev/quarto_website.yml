@@ -32,7 +32,7 @@ website:
       - text: Versions
         menu:
           - text: "v1.0.1 (stable)"
-            href: https://ucd-serg.github.io/rpt/
+            href: https://ucd-serg.github.io/rpt/latest-tag/
           - text: "0.0.0.9024 (dev)"
             href: https://ucd-serg.github.io/rpt/dev/
           - text: "---"

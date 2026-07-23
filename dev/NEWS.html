@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3b0a2887666d7ddefb129c96e5da6a62.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-14cc35b04e49f1562c9e070a92dcb131.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-3b0a2887666d7ddefb129c96e5da6a62.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a28d57623bb1501f2d5adc4c6bd772f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-28eebafa1563988b73446f6e417031f0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a28d57623bb1501f2d5adc4c6bd772f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
 <link href="site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -295,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-versions">    
         <li>
-    <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/">
+    <a class="dropdown-item" href="https://ucd-serg.github.io/rpt/latest-tag/">
  <span class="dropdown-text">v1.0.1 (stable)</span></a>
   </li>  
         <li>
@@ -477,6 +477,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Fixed README/site badges for this fork by pointing badge URLs at <code>d-morrison/rpt</code>, removing fork-invalid CodeFactor/CRAN badges, and updating package URLs in <code>DESCRIPTION</code> (<a href="https://github.com/d-morrison/rpt/issues/160">#160</a>).</p></li>
 <li><p>Every CI workflow job now sets a <code>timeout-minutes</code> cap of at most 50, so a runaway or hung job can no longer tie up a runner indefinitely. The convention is documented in <code>.github/copilot-instructions.md</code> (<a href="https://github.com/d-morrison/rpt/issues/75">#75</a>).</p></li>
 <li><p>On PR-preview builds, the navbar GitHub icon now links to the PR conversation page, and “Edit this page” / “View source” resolve to the correct fork and branch. Man-page “View source” links now point at the committed <code>.Rd</code> source file rather than the build-time-generated <code>.qmd</code> file (<a href="https://github.com/d-morrison/rpt/issues/136">#136</a>).</p></li>
+<li><p>Docs deployment now uses versioned directories for stable/development docs (<code>/latest-tag/</code>, <code>/dev/</code>, and release tags like <code>/v1.2.3/</code>), and publishes a root landing-page redirect in the same style as <code>r-pkgdown-multiversion</code> (<a href="https://github.com/d-morrison/rpt/issues/158">#158</a>).</p></li>
 <li><p>The “Report an issue” documentation link now always points at the repository’s main issues page, including on PR previews (where it previously followed the rewritten <code>repo-url</code>).</p></li>
 <li><p>Added a committed Claude Code configuration (<code>.claude/</code>) and a <code>CLAUDE.md</code> guidance file, so packages created from this template inherit slash commands, safe execution permissions, and a PR-review skill out of the box.</p></li>
 <li><p>Added a Dependabot configuration (<code>.github/dependabot.yml</code>) that keeps the <code>macros</code> git submodule and the pinned GitHub Actions in <code>.github/workflows/</code> up to date automatically: Dependabot opens a PR whenever the submodule advances or a newer action release is available, so packages created from this template inherit hands-off submodule and action bumps.</p></li>
