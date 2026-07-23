@@ -15,23 +15,6 @@ import sys
 import os
 from pathlib import Path
 
-# Base URL for the deployed documentation site.
-# Derived from GITHUB_REPOSITORY (owner/repo) so forks and renamed repos
-# automatically use the correct GitHub Pages URL without manual updates.
-# GITHUB_REPOSITORY is set automatically in GitHub Actions; when running
-# locally, set it manually or the fallback URL will be used.
-_github_repository = os.environ.get("GITHUB_REPOSITORY")
-if _github_repository and "/" in _github_repository:
-    _owner, _repo_name = _github_repository.split("/", 1)
-    BASE_URL = f"https://{_owner}.github.io/{_repo_name}/"
-else:
-    print(
-        "Warning: GITHUB_REPOSITORY is not set; "
-        "falling back to https://d-morrison.github.io/rpt/. "
-        "Set GITHUB_REPOSITORY=owner/repo to generate correct URLs.",
-        file=sys.stderr,
-    )
-    BASE_URL = "https://d-morrison.github.io/rpt/"
 REPO_DIR = Path(os.environ.get("DOCS_SOURCE_DIR", ".")).resolve()
 
 # --- Helpers ---
@@ -58,6 +41,29 @@ def _run_git(*args):
         print(f"Failed to execute git command: {e}", file=sys.stderr)
         sys.exit(1)
 
+
+def _docs_base_url():
+    """Return the GitHub Pages base URL used for docs links."""
+    configured_url = os.environ.get("DOCS_BASE_URL", "").strip()
+    if configured_url:
+        return configured_url.rstrip("/") + "/"
+
+    repository = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if "/" in repository:
+        owner, repo = repository.split("/", 1)
+        if owner and repo:
+            return f"https://{owner}.github.io/{repo}/"
+
+    owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "").strip()
+    repo = os.environ.get("GITHUB_EVENT_REPOSITORY_NAME", "").strip()
+    if owner and repo:
+        return f"https://{owner}.github.io/{repo}/"
+
+    # Fallback for local runs without GitHub Actions metadata.
+    return "https://d-morrison.github.io/rpt/"
+
+
+BASE_URL = _docs_base_url()
 
 # --- Gather version information ---
 
