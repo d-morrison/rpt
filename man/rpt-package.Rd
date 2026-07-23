@@ -11,9 +11,9 @@ What the package does (one paragraph).
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/UCD-SERG/rpt}
-  \item \url{https://ucd-serg.github.io/rpt/}
-  \item Report bugs at \url{https://github.com/UCD-SERG/rpt/issues}
+  \item \url{https://github.com/d-morrison/rpt}
+  \item \url{https://d-morrison.github.io/rpt/}
+  \item Report bugs at \url{https://github.com/d-morrison/rpt/issues}
 }
 
 }
