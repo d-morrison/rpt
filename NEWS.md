@@ -1,5 +1,7 @@
-# rpt 1.0.2
+# rpt (development version)
 
+- Bumped the development version to `1.0.2.9000` after the `v1.0.2` release so
+  `/dev/` docs stay labeled with the live development version.
 - Fixed README/site badges for this fork by pointing badge URLs at
   `d-morrison/rpt`, removing fork-invalid CodeFactor/CRAN badges, and updating
   package URLs in `DESCRIPTION` (#160).
