@@ -16,8 +16,22 @@ import os
 from pathlib import Path
 
 # Base URL for the deployed documentation site.
-# Update this when adapting the template for a different repository.
-BASE_URL = "https://ucd-serg.github.io/rpt/"
+# Derived from GITHUB_REPOSITORY (owner/repo) so forks and renamed repos
+# automatically use the correct GitHub Pages URL without manual updates.
+# GITHUB_REPOSITORY is set automatically in GitHub Actions; when running
+# locally, set it manually or the fallback URL will be used.
+_github_repository = os.environ.get("GITHUB_REPOSITORY")
+if _github_repository and "/" in _github_repository:
+    _owner, _repo_name = _github_repository.split("/", 1)
+    BASE_URL = f"https://{_owner}.github.io/{_repo_name}/"
+else:
+    print(
+        "Warning: GITHUB_REPOSITORY is not set; "
+        "falling back to https://d-morrison.github.io/rpt/. "
+        "Set GITHUB_REPOSITORY=owner/repo to generate correct URLs.",
+        file=sys.stderr,
+    )
+    BASE_URL = "https://d-morrison.github.io/rpt/"
 REPO_DIR = Path(os.environ.get("DOCS_SOURCE_DIR", ".")).resolve()
 
 # --- Helpers ---
