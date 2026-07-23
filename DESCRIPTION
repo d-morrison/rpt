@@ -6,8 +6,8 @@ Authors@R: c(
   )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-URL: https://github.com/UCD-SERG/rpt, https://ucd-serg.github.io/rpt/
-BugReports: https://github.com/UCD-SERG/rpt/issues
+URL: https://github.com/d-morrison/rpt, https://d-morrison.github.io/rpt/
+BugReports: https://github.com/d-morrison/rpt/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Language: en-US
