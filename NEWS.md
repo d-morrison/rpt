@@ -1,8 +1,11 @@
-# rpt (development version)
+# rpt 1.0.2
 
 - Fixed README/site badges for this fork by pointing badge URLs at
   `d-morrison/rpt`, removing fork-invalid CodeFactor/CRAN badges, and updating
   package URLs in `DESCRIPTION` (#160).
+- Released `v1.0.2` to validate multiversion documentation deployment,
+  including stable `/`, development `/dev/`, and versioned release docs
+  (`/v1.0.2/`) (#161).
 
 - Every CI workflow job now sets a `timeout-minutes` cap of at most 50, so a
   runaway or hung job can no longer tie up a runner indefinitely. The convention
