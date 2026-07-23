@@ -12,10 +12,13 @@ This script is called by the docs GitHub Actions workflow before render_docs().
 import subprocess
 import re
 import sys
+import os
+from pathlib import Path
 
 # Base URL for the deployed documentation site.
 # Update this when adapting the template for a different repository.
 BASE_URL = "https://ucd-serg.github.io/rpt/"
+REPO_DIR = Path(os.environ.get("DOCS_SOURCE_DIR", ".")).resolve()
 
 # --- Helpers ---
 
@@ -58,7 +61,7 @@ if result.returncode == 0:
 if dev_version is None:
     # Fallback: read local DESCRIPTION (works for non-release builds)
     try:
-        with open("DESCRIPTION") as f:
+        with open(REPO_DIR / "DESCRIPTION") as f:
             dev_version = _parse_version(f.read())
     except OSError as e:
         print(f"Could not open DESCRIPTION: {e}", file=sys.stderr)
@@ -70,19 +73,51 @@ if dev_version is None:
 
 # Get release tags (vX.Y.Z only; tags with a dev component like v1.0.0.9000
 # are excluded because they are not final releases)
-result = _run_git("tag", "--sort=-version:refname")
-if result.returncode != 0:
-    print(f"git tag command failed:\n{result.stderr}", file=sys.stderr)
-    sys.exit(1)
-all_tags = result.stdout.strip().split("\n") if result.stdout.strip() else []
-release_tags = [t for t in all_tags if re.match(r"^v\d+\.\d+\.\d+$", t)]
+release_tags = []
+
+gh_token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+github_repository = os.environ.get("GITHUB_REPOSITORY")
+if gh_token and github_repository:
+    try:
+        result = subprocess.run(
+            [
+                "gh",
+                "api",
+                f"repos/{github_repository}/releases",
+                "--paginate",
+                "--jq",
+                '.[] | select(.draft == false and .prerelease == false) | .tag_name',
+            ],
+            capture_output=True,
+            text=True,
+            env={**os.environ, "GH_TOKEN": gh_token},
+        )
+    except OSError as e:
+        print(f"Failed to execute gh command: {e}", file=sys.stderr)
+        sys.exit(1)
+    if result.returncode == 0:
+        all_tags = result.stdout.strip().split("\n") if result.stdout.strip() else []
+        release_tags = [t for t in all_tags if re.match(r"^v\d+\.\d+\.\d+$", t)]
+
+if not release_tags:
+    result = _run_git("tag", "--sort=-version:refname")
+    if result.returncode != 0:
+        print(f"git tag command failed:\n{result.stderr}", file=sys.stderr)
+        sys.exit(1)
+    all_tags = result.stdout.strip().split("\n") if result.stdout.strip() else []
+    release_tags = [t for t in all_tags if re.match(r"^v\d+\.\d+\.\d+$", t)]
+
+def _semver_key(tag):
+    return tuple(int(part) for part in tag.lstrip("v").split("."))
+
+release_tags = sorted(set(release_tags), key=_semver_key, reverse=True)
 latest_tag = release_tags[0] if release_tags else None
 prev_tags = release_tags[1:] if len(release_tags) > 1 else []
 
 # --- Locate and replace the Versions block in quarto_website.yml ---
 
 try:
-    with open("altdoc/quarto_website.yml") as f:
+    with open(REPO_DIR / "altdoc/quarto_website.yml") as f:
         lines = f.readlines()
 except OSError as e:
     print(f"Could not open altdoc/quarto_website.yml: {e}", file=sys.stderr)
@@ -149,7 +184,7 @@ if prev_tags:
 # Write the updated file
 new_lines = lines[:start_idx] + new_block + lines[end_idx:]
 try:
-    with open("altdoc/quarto_website.yml", "w") as f:
+    with open(REPO_DIR / "altdoc/quarto_website.yml", "w") as f:
         f.writelines(new_lines)
 except OSError as e:
     print(f"Could not write to altdoc/quarto_website.yml: {e}", file=sys.stderr)

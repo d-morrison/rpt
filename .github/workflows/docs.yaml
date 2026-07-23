@@ -56,6 +56,7 @@ jobs:
       group: docs-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      DOCS_SOURCE_DIR: .
     permissions:
       contents: write
       pull-requests: write
@@ -63,7 +64,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable' && format('refs/tags/{0}', github.event.inputs.release_tag) || github.ref }}
           submodules: recursive
           # fetch-depth: 0 fetches all history and tags, which the version
           # dropdown script needs to discover all release tags
@@ -111,6 +111,16 @@ jobs:
             exit 1
           fi
 
+      - name: Prepare stable source checkout for workflow_dispatch
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable'
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.inputs.release_tag }}
+        run: |
+          git worktree add --detach stable-source "refs/tags/$RELEASE_TAG"
+          git -C stable-source submodule update --init --recursive
+          echo "DOCS_SOURCE_DIR=stable-source" >> "$GITHUB_ENV"
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
@@ -154,6 +164,10 @@ jobs:
           echo "Development environment setup complete!"
 
       - name: Generate version dropdown
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          DOCS_SOURCE_DIR: ${{ env.DOCS_SOURCE_DIR }}
         run: python3 .github/scripts/generate_version_dropdown.py
 
       # On PR-preview builds, redirect quarto's "Edit this page" / "View
@@ -171,25 +185,27 @@ jobs:
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+          DOCS_SOURCE_DIR: ${{ env.DOCS_SOURCE_DIR }}
         run: |
           # Preconditions: confirm the YAML still has the shape we're about
           # to mutate. yq -i would happily *create* `.website.repo-url` if
           # someone renamed the top-level key to (say) `site:`, leaving the
           # real settings untouched and the postcondition check below
           # passing green. Catch that here before we write anything.
-          yq -e '.website | has("repo-url")' altdoc/quarto_website.yml >/dev/null \
-            || { echo "::error::altdoc/quarto_website.yml has no .website.repo-url — schema may have changed; rewrite would silently create a misplaced key"; exit 1; }
-          yq -e '.website.navbar.right[] | select(.icon == "github")' altdoc/quarto_website.yml >/dev/null \
-            || { echo "::error::altdoc/quarto_website.yml has no navbar entry with icon: github — rewrite would silently no-op"; exit 1; }
+          QUARTO_YML="$DOCS_SOURCE_DIR/altdoc/quarto_website.yml"
+          yq -e '.website | has("repo-url")' "$QUARTO_YML" >/dev/null \
+            || { echo "::error::$QUARTO_YML has no .website.repo-url — schema may have changed; rewrite would silently create a misplaced key"; exit 1; }
+          yq -e '.website.navbar.right[] | select(.icon == "github")' "$QUARTO_YML" >/dev/null \
+            || { echo "::error::$QUARTO_YML has no navbar entry with icon: github — rewrite would silently no-op"; exit 1; }
 
-          yq -i '.website."repo-url" = "https://github.com/" + strenv(HEAD_REPO)' altdoc/quarto_website.yml
-          yq -i '.website."repo-branch" = strenv(HEAD_REF)' altdoc/quarto_website.yml
-          yq -i '(.website.navbar.right[] | select(.icon == "github")).href = strenv(PR_URL)' altdoc/quarto_website.yml
+          yq -i '.website."repo-url" = "https://github.com/" + strenv(HEAD_REPO)' "$QUARTO_YML"
+          yq -i '.website."repo-branch" = strenv(HEAD_REF)' "$QUARTO_YML"
+          yq -i '(.website.navbar.right[] | select(.icon == "github")).href = strenv(PR_URL)' "$QUARTO_YML"
 
           # Postcondition: confirm each rewrite produced the expected value.
-          ACTUAL_REPO_URL=$(yq '.website."repo-url"' altdoc/quarto_website.yml)
-          ACTUAL_BRANCH=$(yq '.website."repo-branch"' altdoc/quarto_website.yml)
-          ACTUAL_NAV_HREF=$(yq '.website.navbar.right[] | select(.icon == "github") | .href' altdoc/quarto_website.yml)
+          ACTUAL_REPO_URL=$(yq '.website."repo-url"' "$QUARTO_YML")
+          ACTUAL_BRANCH=$(yq '.website."repo-branch"' "$QUARTO_YML")
+          ACTUAL_NAV_HREF=$(yq '.website.navbar.right[] | select(.icon == "github") | .href' "$QUARTO_YML")
           EXPECTED_REPO_URL="https://github.com/$HEAD_REPO"
           if [[ "$ACTUAL_REPO_URL" != "$EXPECTED_REPO_URL" || "$ACTUAL_BRANCH" != "$HEAD_REF" || "$ACTUAL_NAV_HREF" != "$PR_URL" ]]; then
             echo "::error::PR-preview link rewrite did not produce the expected values"
@@ -204,10 +220,13 @@ jobs:
         # env:
           # QUARTO_LOG_LEVEL: DEBUG
         timeout-minutes: 20
+        env:
+          DOCS_SOURCE_DIR: ${{ env.DOCS_SOURCE_DIR }}
         run: |
           # If parallel = TRUE in render_docs()
           # future::plan(future::multicore)
           # sessioninfo::session_info() # already done in Install R dependencies
+          setwd(Sys.getenv("DOCS_SOURCE_DIR"))
           altdoc::render_docs(verbose = TRUE, parallel = FALSE, freeze = FALSE)
         shell: Rscript {0}
 
@@ -219,8 +238,9 @@ jobs:
       - name: Point "Report an issue" links at the repo issues page
         env:
           ISSUES_URL: https://github.com/${{ github.repository }}/issues
+          DOCS_SOURCE_DIR: ${{ env.DOCS_SOURCE_DIR }}
         run: |
-          find docs -name '*.html' -exec \
+          find "$DOCS_SOURCE_DIR/docs" -name '*.html' -exec \
             sed -i -E 's#href="https://github\.com/[^"]*/issues/new[^"]*"#href="'"$ISSUES_URL"'"#g' {} +
           echo "Repointed 'Report an issue' links to $ISSUES_URL"
 
@@ -259,6 +279,7 @@ jobs:
         shell: bash
         env:
           LATEST_STABLE_TAG: ${{ steps.latest-stable-tag.outputs.latest_stable_tag }}
+          BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: |
           echo "bootstrap_latest_tag=false" >> "$GITHUB_ENV"
           if [[ -z "$LATEST_STABLE_TAG" ]]; then
@@ -281,6 +302,8 @@ jobs:
           git worktree add --detach "$BOOTSTRAP_WORKTREE" origin/gh-pages
           mkdir -p site-latest-tag-bootstrap
           cp -R "$BOOTSTRAP_WORKTREE/$LATEST_STABLE_TAG"/. site-latest-tag-bootstrap/
+          find site-latest-tag-bootstrap -name '*.html' -exec \
+            sed -i -E 's#href="'"$BASE_URL"'"#href="'"$BASE_URL"'latest-tag/"#g' {} +
           git worktree remove "$BOOTSTRAP_WORKTREE" --force
           echo "bootstrap_latest_tag=true" >> "$GITHUB_ENV"
 
@@ -307,7 +330,7 @@ jobs:
             latest-tag
             v[0-9]*
           branch: gh-pages # potentially different from ${{ env.PREVIEW_BRANCH }}
-          folder: docs
+          folder: ${{ env.DOCS_SOURCE_DIR }}/docs
           target-folder: ${{ env.subdir }}
 
       - name: Deploy root landing page
@@ -335,7 +358,7 @@ jobs:
         with:
           clean: false
           branch: gh-pages
-          folder: docs
+          folder: ${{ env.DOCS_SOURCE_DIR }}/docs
           target-folder: ${{ github.ref_name }}
 
       - name: Deploy PR Preview
@@ -343,7 +366,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: docs
+          source-dir: ${{ env.DOCS_SOURCE_DIR }}/docs
           preview-branch: ${{ env.PREVIEW_BRANCH }}
           comment: "false"
           wait-for-pages-deployment: false
