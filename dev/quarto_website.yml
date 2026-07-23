@@ -31,11 +31,13 @@ website:
     right:
       - text: Versions
         menu:
-          - text: "v1.0.1 (stable)"
+          - text: "v1.0.2 (stable)"
             href: https://ucd-serg.github.io/rpt/latest-tag/
-          - text: "1.0.2 (dev)"
+          - text: "1.0.2.9000 (dev)"
             href: https://ucd-serg.github.io/rpt/dev/
           - text: "---"
+          - text: "v1.0.1"
+            href: https://ucd-serg.github.io/rpt/v1.0.1/
           - text: "v1.0.0"
             href: https://ucd-serg.github.io/rpt/v1.0.0/
       - icon: github
