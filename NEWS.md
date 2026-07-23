@@ -1,5 +1,9 @@
 # rpt (development version)
 
+- Fixed the hard-coded docs base URL in the version dropdown generator
+  (`.github/scripts/generate_version_dropdown.py`) by deriving `BASE_URL`
+  dynamically from `DOCS_BASE_URL`, GitHub repository metadata, or a
+  local fallback, so dropdown links always point to the correct site (#164).
 - Bumped the development version to `1.0.2.9000` after the `v1.0.2` release so
   `/dev/` docs stay labeled with the live development version.
 - Fixed README/site badges for this fork by pointing badge URLs at
