@@ -185,6 +185,24 @@ local function generateTypstStyles()
   return typst
 end
 
+---Normalizes a YAML boolean field: pandoc's Lua metadata already hands
+---real booleans through for unquoted `true`/`false`, but a quoted `"true"`/
+---`"false"` string is also accepted. Returns nil (no override) for anything
+---else, including unset fields.
+---@param value boolean|string|nil
+---@return boolean|nil
+local function normalizeBoolean(value)
+  if type(value) == "boolean" then
+    return value
+  end
+  if type(value) == "string" then
+    local lowered = value:lower()
+    if lowered == "true" then return true end
+    if lowered == "false" then return false end
+  end
+  return nil
+end
+
 ---Parses custom callout definitions from document metadata
 ---@param meta pandoc.Meta The document metadata
 local function parseCustomCallouts(meta)
@@ -195,7 +213,7 @@ local function parseCustomCallouts(meta)
       customCallouts[k] = {
         type = tostring(k),
         title = v.title or k:gsub("^%l", string.upper),
-        icon = v.icon == 'true' or nil,
+        icon = normalizeBoolean(v.icon),
         appearance = v.appearance or nil,
         collapse = v.collapse or nil,
         icon_symbol = v['icon-symbol'] or nil,

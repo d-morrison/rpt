@@ -99,6 +99,12 @@ format:
     grid:
       sidebar-width: 340px
       margin-width: 340px
+  revealjs:
+    # Project-level filters merge with each vignette/article's own
+    # `format: revealjs:` front matter (they set `output-file:`; this adds
+    # a small link back to the standalone HTML page on every slide deck).
+    filters:
+      - d-morrison/revealjs-html-links
 
 filters:
   - slidebreak

@@ -33,7 +33,7 @@ function Pandoc(doc)
 
   function getHtmlBase() {
     var url = window.location.href.split("#")[0];
-    return url.replace(/-slides\.html$/, ".html");
+    return url.replace(/-(?:slides|revealjs)\.html$/, ".html");
   }
 
   function getCurrentSectionId() {
@@ -79,7 +79,8 @@ function Pandoc(doc)
   function initRevealJsHtmlLink() {
     var htmlBase = getHtmlBase();
 
-    // Don't add the link if the URL doesn't follow the -slides.html convention
+    // Don't add the link if the URL doesn't follow the -slides.html /
+    // -revealjs.html convention
     if (htmlBase === window.location.href.split("#")[0]) {
       return;
     }
