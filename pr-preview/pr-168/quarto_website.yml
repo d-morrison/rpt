@@ -1,0 +1,214 @@
+project:
+  type: website
+  output-dir: ../docs/
+  post-render: scripts/fix-man-source-urls.sh
+  render:
+    - "*.qmd" # Render all Quarto markdown files
+    - "*.md" # Also render plain markdown files
+    - "!README.md" # Except README which is used in index
+    - "!index.md" # Except index which is replaced by index.qmd
+    - "!data-raw/" # Exclude anything in the data-raw directory
+    - "!vignettes/macros/" # Exclude macros submodule (include-only, not a standalone article)
+# Note: freeze functionality can be set at a project level or for individual .qmd files
+# execute:
+#   freeze: false
+bibliography: vignettes/references.bib
+website:
+  title: "$ALTDOC_PACKAGE_NAME"
+  # On PR-preview builds, .github/workflows/docs.yaml rewrites `repo-url` and
+  # the navbar GitHub icon's `href` below, and inserts `repo-branch` (absent
+  # here; added dynamically), so "Edit this page" / "View source" / the navbar
+  # GitHub link point at the PR branch and PR conversation page, not main.
+  repo-url: https://github.com/d-morrison/rpt
+  # The `issue` action's URL is derived from `repo-url`; because the PR-preview
+  # rewrite repoints `repo-url`, docs.yaml repoints the rendered "Report an
+  # issue" link at the base repo's main issues page after rendering.
+  repo-actions: [edit, source, issue]
+  navbar:
+    search: true
+    pinned: false
+    right:
+      - text: Versions
+        menu:
+          - text: "v1.0.2 (stable)"
+            href: https://d-morrison.github.io/rpt/latest-tag/
+          - text: "1.0.2.9000 (dev)"
+            href: https://d-morrison.github.io/rpt/dev/
+          - text: "---"
+          - text: "v1.0.1"
+            href: https://d-morrison.github.io/rpt/v1.0.1/
+          - text: "v1.0.0"
+            href: https://d-morrison.github.io/rpt/v1.0.0/
+      - icon: github
+        href: https://github.com/d-morrison/rpt/pull/168
+        aria-label: $ALTDOC_PACKAGE_NAME GitHub
+    left:
+      - text: Documentation
+        file: man/rpt-package.qmd
+      - text: Articles
+        menu:
+          - text: "Getting started"
+            file: vignettes/getting-started.qmd
+          - text: "Intro vignette"
+            file: vignettes/quarto_vignette.qmd
+          - text: "Advanced"
+            file: vignettes/articles/quarto_article.qmd
+          - text: "Package Structure"
+            file: vignettes/articles/package-structure.qmd
+  sidebar:
+    collapse-level: 1
+    contents:
+      - text: Home
+        file: index.qmd
+        style: floating
+      - section: Articles
+        style: floating
+        contents:
+          - vignettes/getting-started.qmd
+          - vignettes/quarto_vignette.qmd
+          - section: Advanced
+            contents:
+              - vignettes/articles/quarto_article.qmd
+              - vignettes/articles/package-structure.qmd
+      - section: $ALTDOC_MAN_BLOCK
+        style: floating
+      - text: News
+        file: NEWS.md
+      - text: License
+        file: LICENSE.md
+      - text: Code of conduct
+        file: CODE_OF_CONDUCT.md
+      - text: Contributing
+        file: CONTRIBUTING.md
+      - text: Citation
+        file: CITATION.md
+  repo-branch: claude/ardia-racgz9
+format:
+  html:
+    code-link: true # enables downlit; see https://altdoc.etiennebacher.com/#/man/render_docs.md#auto-link-for-quarto-websites
+    theme:
+      light: default
+      dark: darkly
+    css: styles.css
+    number-sections: false
+    code-fold: show
+    echo: true
+    code-copy: true
+    code-overflow: scroll
+    title-block-style: none
+    toc: true
+    grid:
+      sidebar-width: 340px
+      margin-width: 340px
+filters:
+  - slidebreak
+  - d-morrison/div-anchors
+  - d-morrison/equation-anchors
+  - sun123zxy/callouty-theorem
+  - coatless-quarto/custom-callout
+  - quarto
+callouty-theorem:
+  # override-title: true for every type below (an improvement over qwt/rme's
+  # upstream config, which leaves it false for thm/lem/cor/prp/cnj/def/exm/exr):
+  # with override-title: false, Quarto's default callout title falls back to
+  # the raw `type:` code (e.g. a rendered callout literally titled "Exm"
+  # instead of "Example"). override-title: true renders the theorem-family
+  # English label plus the div's heading text, e.g. "Example (A first
+  # example)". Note this still doesn't produce Quarto's native crossref
+  # numbering ("Example 3.2") — wrapping the theorem in a generic callout
+  # (quarto.Callout) instead of rendering it as a native Theorem node loses
+  # that; a real numbered label would require deeper changes to the
+  # callouty-theorem extension itself.
+  thm:
+    override-title: true # override the callout title with
+    # the theorem-type label,
+    # appending the element name when provided
+    callout: # parameters of the wrapping callout
+      # see Quarto callout docs for details
+      type: lem # same color as lem (royal blue); color set in custom-callout block below
+      appearance: minimal
+  lem:
+    override-title: true
+    callout:
+      type: lem
+      appearance: minimal
+  cor:
+    override-title: true
+    callout:
+      type: cor
+      appearance: minimal
+  prp:
+    override-title: true
+    callout:
+      type: prp
+      appearance: minimal
+  cnj:
+    override-title: true
+    callout:
+      type: cnj
+      appearance: minimal
+  def:
+    override-title: true
+    callout:
+      type: def
+      appearance: minimal
+  exm:
+    override-title: true
+    callout:
+      type: exm
+      appearance: default
+      collapse: false
+      icon: false
+  exr:
+    override-title: true
+    callout:
+      type: exr
+      appearance: minimal
+  proof: # also support wrapping proof-like environments
+    override-title: true # override the callout title with
+    # the proof-type label,
+    # appending the element name when provided
+    callout:
+      type: proof
+      appearance: default
+      collapse: true
+      icon: true
+  solution:
+    override-title: true
+    callout:
+      type: solution
+      appearance: default
+      collapse: true
+      icon: false
+  remark:
+    override-title: true
+    callout:
+      type: remark
+      appearance: default
+      collapse: false
+      icon: true
+# Color palette for theorem/proof environments.
+# The coatless-quarto/custom-callout extension reads this block and injects
+# CSS (HTML) and LaTeX \definecolor (PDF) so each type gets a unique color.
+# Rules: no reds; thm shares lem's royal blue.
+custom-callout:
+  lem:
+    color: "#1565C0" # royal blue (also used for thm)
+  cor:
+    color: "#00838F" # dark cyan
+  prp:
+    color: "#827717" # dark olive
+  cnj:
+    color: "#558B2F" # grass green
+  def:
+    color: "#1B5E20" # forest green (very distinct from theorem types)
+  exm:
+    color: "#6A1B9A" # deep purple
+  exr:
+    color: "#FFA500" # orange
+  proof:
+    color: "#37474F" # blue-grey slate
+  solution:
+    color: "#4E342E" # dark cocoa
+  remark:
+    color: "#AD1457" # dark magenta
