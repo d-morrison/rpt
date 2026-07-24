@@ -6,10 +6,10 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
 <link href="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="UC Davis Seroepidemiology Research Group (UCD-SERG)">
   <meta name="dcterms.date" content="2026-07-24">
@@ -23,10 +23,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -218,6 +221,98 @@
   <script src="../../site_libs/viz-1.8.2/viz.js"></script>
   <link href="../../site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
   <script src="../../site_libs/grViz-binding-1.0.12/grViz.js"></script>
+  <style>
+  .reveal div.callout-solution.callout {
+    border-left-color: #4E342E;
+  }
+  .reveal div.callout-solution.callout-style-default .callout-title {
+    background-color: rgba(78, 52, 46, 0.13);
+  }
+  .reveal div.callout-solution.callout-style-default .callout-icon::before, .reveal div.callout-solution.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234E342E" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-def.callout {
+    border-left-color: #1B5E20;
+  }
+  .reveal div.callout-def.callout-style-default .callout-title {
+    background-color: rgba(27, 94, 32, 0.13);
+  }
+  .reveal div.callout-def.callout-style-default .callout-icon::before, .reveal div.callout-def.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%231B5E20" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-cnj.callout {
+    border-left-color: #558B2F;
+  }
+  .reveal div.callout-cnj.callout-style-default .callout-title {
+    background-color: rgba(85, 139, 47, 0.13);
+  }
+  .reveal div.callout-cnj.callout-style-default .callout-icon::before, .reveal div.callout-cnj.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23558B2F" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-cor.callout {
+    border-left-color: #00838F;
+  }
+  .reveal div.callout-cor.callout-style-default .callout-title {
+    background-color: rgba(0, 131, 143, 0.13);
+  }
+  .reveal div.callout-cor.callout-style-default .callout-icon::before, .reveal div.callout-cor.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2300838F" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-remark.callout {
+    border-left-color: #AD1457;
+  }
+  .reveal div.callout-remark.callout-style-default .callout-title {
+    background-color: rgba(173, 20, 87, 0.13);
+  }
+  .reveal div.callout-remark.callout-style-default .callout-icon::before, .reveal div.callout-remark.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23AD1457" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-proof.callout {
+    border-left-color: #37474F;
+  }
+  .reveal div.callout-proof.callout-style-default .callout-title {
+    background-color: rgba(55, 71, 79, 0.13);
+  }
+  .reveal div.callout-proof.callout-style-default .callout-icon::before, .reveal div.callout-proof.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2337474F" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-exr.callout {
+    border-left-color: #FFA500;
+  }
+  .reveal div.callout-exr.callout-style-default .callout-title {
+    background-color: rgba(255, 165, 0, 0.13);
+  }
+  .reveal div.callout-exr.callout-style-default .callout-icon::before, .reveal div.callout-exr.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23FFA500" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-prp.callout {
+    border-left-color: #827717;
+  }
+  .reveal div.callout-prp.callout-style-default .callout-title {
+    background-color: rgba(130, 119, 23, 0.13);
+  }
+  .reveal div.callout-prp.callout-style-default .callout-icon::before, .reveal div.callout-prp.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23827717" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-lem.callout {
+    border-left-color: #1565C0;
+  }
+  .reveal div.callout-lem.callout-style-default .callout-title {
+    background-color: rgba(21, 101, 192, 0.13);
+  }
+  .reveal div.callout-lem.callout-style-default .callout-icon::before, .reveal div.callout-lem.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%231565C0" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-exm.callout {
+    border-left-color: #6A1B9A;
+  }
+  .reveal div.callout-exm.callout-style-default .callout-title {
+    background-color: rgba(106, 27, 154, 0.13);
+  }
+  .reveal div.callout-exm.callout-style-default .callout-icon::before, .reveal div.callout-exm.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%236A1B9A" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -229,7 +324,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-UC Davis Seroepidemiology Research Group (UCD-SERG) 
+UC Davis Seroepidemiology Research Group (UCD-SERG)
 </div>
 </div>
 </div>
@@ -241,7 +336,7 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -271,14 +366,14 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">install.packages</span>(<span class="st">"foodwebr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">install.packages</span>(<span class="st">"foodwebr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Or from GitHub for the latest development version:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"lewinfox/foodwebr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"lewinfox/foodwebr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -289,20 +384,20 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(foodwebr)</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a><span class="co"># Create a foodweb for the example_function</span></span>
-<span id="cb4-4"><a></a>fw <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function)</span>
-<span id="cb4-5"><a></a>fw</span>
-<span id="cb4-6"><a></a><span class="co">#&gt; # A `foodweb`: 6 vertices and 7 edges </span></span>
-<span id="cb4-7"><a></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
-<span id="cb4-8"><a></a><span class="co">#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }</span></span>
-<span id="cb4-9"><a></a><span class="co">#&gt;   calculate_summary() -&gt; { example_function(), format_result(), clean_data() }</span></span>
-<span id="cb4-10"><a></a><span class="co">#&gt;   calculate_statistic() -&gt; { clean_data() }</span></span>
-<span id="cb4-11"><a></a><span class="co">#&gt;   format_result()</span></span>
-<span id="cb4-12"><a></a><span class="co">#&gt;   clean_data() -&gt; { validate_input() }</span></span>
-<span id="cb4-13"><a></a><span class="co">#&gt;   validate_input()</span></span>
-<span id="cb4-14"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">library</span>(foodwebr)</span>
+<span id="cb4-2"><a aria-label="2"></a></span>
+<span id="cb4-3"><a aria-label="3"></a><span class="co"># Create a foodweb for the example_function</span></span>
+<span id="cb4-4"><a aria-label="4"></a>fw <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function)</span>
+<span id="cb4-5"><a aria-label="5"></a>fw</span>
+<span id="cb4-6"><a aria-label="6"></a><span class="co">#&gt; # A `foodweb`: 6 vertices and 7 edges </span></span>
+<span id="cb4-7"><a aria-label="7"></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
+<span id="cb4-8"><a aria-label="8"></a><span class="co">#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }</span></span>
+<span id="cb4-9"><a aria-label="9"></a><span class="co">#&gt;   calculate_summary() -&gt; { example_function(), format_result(), clean_data() }</span></span>
+<span id="cb4-10"><a aria-label="10"></a><span class="co">#&gt;   calculate_statistic() -&gt; { clean_data() }</span></span>
+<span id="cb4-11"><a aria-label="11"></a><span class="co">#&gt;   format_result()</span></span>
+<span id="cb4-12"><a aria-label="12"></a><span class="co">#&gt;   clean_data() -&gt; { validate_input() }</span></span>
+<span id="cb4-13"><a aria-label="13"></a><span class="co">#&gt;   validate_input()</span></span>
+<span id="cb4-14"><a aria-label="14"></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <h3 id="plotting-the-dependency-graph">Plotting the Dependency Graph</h3>
@@ -310,7 +405,7 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plot</span>(fw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">plot</span>(fw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="fig-basic-foodweb" class="cell-output-display quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -318,8 +413,8 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 Figure&nbsp;1: Basic function dependency graph for example_function
 </figcaption>
 <div aria-describedby="fig-basic-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-e595c43aa9495ed459d4" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-e595c43aa9495ed459d4">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-8682209ba62d61516c47" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-8682209ba62d61516c47">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -347,11 +442,11 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Show only connected functions (default)</span></span>
-<span id="cb6-2"><a></a>fw_filtered <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function, <span class="at">filter =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="co"># Show all functions in the environment</span></span>
-<span id="cb6-5"><a></a>fw_all <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function, <span class="at">filter =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="co"># Show only connected functions (default)</span></span>
+<span id="cb6-2"><a aria-label="2"></a>fw_filtered <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function, <span class="at">filter =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-3"><a aria-label="3"></a></span>
+<span id="cb6-4"><a aria-label="4"></a><span class="co"># Show all functions in the environment</span></span>
+<span id="cb6-5"><a aria-label="5"></a>fw_all <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function, <span class="at">filter =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <h3 id="examining-the-entire-package">Examining the Entire Package</h3>
@@ -359,27 +454,27 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Get the package namespace environment</span></span>
-<span id="cb7-2"><a></a>pkg_env <span class="ot">&lt;-</span> <span class="fu">asNamespace</span>(<span class="st">"rpt"</span>)</span>
-<span id="cb7-3"><a></a></span>
-<span id="cb7-4"><a></a><span class="co"># Create foodweb for entire package</span></span>
-<span id="cb7-5"><a></a>fw_pkg <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">env =</span> pkg_env)</span>
-<span id="cb7-6"><a></a>fw_pkg</span>
-<span id="cb7-7"><a></a><span class="co">#&gt; # A `foodweb`: 6 vertices and 7 edges </span></span>
-<span id="cb7-8"><a></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
-<span id="cb7-9"><a></a><span class="co">#&gt;   calculate_statistic() -&gt; { clean_data() }</span></span>
-<span id="cb7-10"><a></a><span class="co">#&gt;   calculate_summary() -&gt; { clean_data(), example_function(), format_result() }</span></span>
-<span id="cb7-11"><a></a><span class="co">#&gt;   clean_data() -&gt; { validate_input() }</span></span>
-<span id="cb7-12"><a></a><span class="co">#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }</span></span>
-<span id="cb7-13"><a></a><span class="co">#&gt;   format_result()</span></span>
-<span id="cb7-14"><a></a><span class="co">#&gt;   validate_input()</span></span>
-<span id="cb7-15"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="co"># Get the package namespace environment</span></span>
+<span id="cb7-2"><a aria-label="2"></a>pkg_env <span class="ot">&lt;-</span> <span class="fu">asNamespace</span>(<span class="st">"rpt"</span>)</span>
+<span id="cb7-3"><a aria-label="3"></a></span>
+<span id="cb7-4"><a aria-label="4"></a><span class="co"># Create foodweb for entire package</span></span>
+<span id="cb7-5"><a aria-label="5"></a>fw_pkg <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">env =</span> pkg_env)</span>
+<span id="cb7-6"><a aria-label="6"></a>fw_pkg</span>
+<span id="cb7-7"><a aria-label="7"></a><span class="co">#&gt; # A `foodweb`: 6 vertices and 7 edges </span></span>
+<span id="cb7-8"><a aria-label="8"></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
+<span id="cb7-9"><a aria-label="9"></a><span class="co">#&gt;   calculate_statistic() -&gt; { clean_data() }</span></span>
+<span id="cb7-10"><a aria-label="10"></a><span class="co">#&gt;   calculate_summary() -&gt; { clean_data(), example_function(), format_result() }</span></span>
+<span id="cb7-11"><a aria-label="11"></a><span class="co">#&gt;   clean_data() -&gt; { validate_input() }</span></span>
+<span id="cb7-12"><a aria-label="12"></a><span class="co">#&gt;   example_function() -&gt; { calculate_statistic(), format_result() }</span></span>
+<span id="cb7-13"><a aria-label="13"></a><span class="co">#&gt;   format_result()</span></span>
+<span id="cb7-14"><a aria-label="14"></a><span class="co">#&gt;   validate_input()</span></span>
+<span id="cb7-15"><a aria-label="15"></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">plot</span>(fw_pkg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">plot</span>(fw_pkg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="fig-package-foodweb" class="cell-output-display quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -387,8 +482,8 @@ Figure&nbsp;1: Basic function dependency graph for example_function
 Figure&nbsp;2: Complete dependency graph for all package functions
 </figcaption>
 <div aria-describedby="fig-package-foodweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-33580a676f0fabee0f98" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-33580a676f0fabee0f98">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a0e6270759f2264472a7" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-a0e6270759f2264472a7">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"format_result()\"\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -409,16 +504,16 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Convert to text representation for inspection</span></span>
-<span id="cb9-2"><a></a><span class="fu">cat</span>(<span class="fu">as.character</span>(fw_pkg))</span>
-<span id="cb9-3"><a></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
-<span id="cb9-4"><a></a><span class="co">#&gt;   "calculate_statistic()" -&gt; { "clean_data()" }</span></span>
-<span id="cb9-5"><a></a><span class="co">#&gt;   "calculate_summary()" -&gt; { "clean_data()", "example_function()", "format_result()" }</span></span>
-<span id="cb9-6"><a></a><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
-<span id="cb9-7"><a></a><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
-<span id="cb9-8"><a></a><span class="co">#&gt;   "format_result()"</span></span>
-<span id="cb9-9"><a></a><span class="co">#&gt;   "validate_input()"</span></span>
-<span id="cb9-10"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="co"># Convert to text representation for inspection</span></span>
+<span id="cb9-2"><a aria-label="2"></a><span class="fu">cat</span>(<span class="fu">as.character</span>(fw_pkg))</span>
+<span id="cb9-3"><a aria-label="3"></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
+<span id="cb9-4"><a aria-label="4"></a><span class="co">#&gt;   "calculate_statistic()" -&gt; { "clean_data()" }</span></span>
+<span id="cb9-5"><a aria-label="5"></a><span class="co">#&gt;   "calculate_summary()" -&gt; { "clean_data()", "example_function()", "format_result()" }</span></span>
+<span id="cb9-6"><a aria-label="6"></a><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
+<span id="cb9-7"><a aria-label="7"></a><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
+<span id="cb9-8"><a aria-label="8"></a><span class="co">#&gt;   "format_result()"</span></span>
+<span id="cb9-9"><a aria-label="9"></a><span class="co">#&gt;   "validate_input()"</span></span>
+<span id="cb9-10"><a aria-label="10"></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -457,17 +552,17 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># List all functions in the package</span></span>
-<span id="cb10-2"><a></a>pkg_functions <span class="ot">&lt;-</span> <span class="fu">ls</span>(<span class="fu">asNamespace</span>(<span class="st">"rpt"</span>))</span>
-<span id="cb10-3"><a></a><span class="fu">cat</span>(<span class="st">"Package functions:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb10-4"><a></a><span class="co">#&gt; Package functions:</span></span>
-<span id="cb10-5"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-"</span>, <span class="fu">sort</span>(pkg_functions), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb10-6"><a></a><span class="co">#&gt; - calculate_statistic</span></span>
-<span id="cb10-7"><a></a><span class="co">#&gt; - calculate_summary</span></span>
-<span id="cb10-8"><a></a><span class="co">#&gt; - clean_data</span></span>
-<span id="cb10-9"><a></a><span class="co">#&gt; - example_function</span></span>
-<span id="cb10-10"><a></a><span class="co">#&gt; - format_result</span></span>
-<span id="cb10-11"><a></a><span class="co">#&gt; - validate_input</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="co"># List all functions in the package</span></span>
+<span id="cb10-2"><a aria-label="2"></a>pkg_functions <span class="ot">&lt;-</span> <span class="fu">ls</span>(<span class="fu">asNamespace</span>(<span class="st">"rpt"</span>))</span>
+<span id="cb10-3"><a aria-label="3"></a><span class="fu">cat</span>(<span class="st">"Package functions:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-4"><a aria-label="4"></a><span class="co">#&gt; Package functions:</span></span>
+<span id="cb10-5"><a aria-label="5"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"-"</span>, <span class="fu">sort</span>(pkg_functions), <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb10-6"><a aria-label="6"></a><span class="co">#&gt; - calculate_statistic</span></span>
+<span id="cb10-7"><a aria-label="7"></a><span class="co">#&gt; - calculate_summary</span></span>
+<span id="cb10-8"><a aria-label="8"></a><span class="co">#&gt; - clean_data</span></span>
+<span id="cb10-9"><a aria-label="9"></a><span class="co">#&gt; - example_function</span></span>
+<span id="cb10-10"><a aria-label="10"></a><span class="co">#&gt; - format_result</span></span>
+<span id="cb10-11"><a aria-label="11"></a><span class="co">#&gt; - validate_input</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The dependency relationships are:</p>
@@ -494,31 +589,31 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"tidygraph"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb11-2"><a></a>  tg <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(fw_pkg)</span>
-<span id="cb11-3"><a></a>  <span class="fu">print</span>(tg)</span>
-<span id="cb11-4"><a></a>}</span>
-<span id="cb11-5"><a></a><span class="co">#&gt; # A tbl_graph: 6 nodes and 7 edges</span></span>
-<span id="cb11-6"><a></a><span class="co">#&gt; #</span></span>
-<span id="cb11-7"><a></a><span class="co">#&gt; # A directed acyclic simple graph with 1 component</span></span>
-<span id="cb11-8"><a></a><span class="co">#&gt; #</span></span>
-<span id="cb11-9"><a></a><span class="co">#&gt; # Node Data: 6 × 1 (active)</span></span>
-<span id="cb11-10"><a></a><span class="co">#&gt;   name               </span></span>
-<span id="cb11-11"><a></a><span class="co">#&gt;   &lt;chr&gt;              </span></span>
-<span id="cb11-12"><a></a><span class="co">#&gt; 1 calculate_statistic</span></span>
-<span id="cb11-13"><a></a><span class="co">#&gt; 2 calculate_summary  </span></span>
-<span id="cb11-14"><a></a><span class="co">#&gt; 3 clean_data         </span></span>
-<span id="cb11-15"><a></a><span class="co">#&gt; 4 example_function   </span></span>
-<span id="cb11-16"><a></a><span class="co">#&gt; 5 format_result      </span></span>
-<span id="cb11-17"><a></a><span class="co">#&gt; 6 validate_input     </span></span>
-<span id="cb11-18"><a></a><span class="co">#&gt; #</span></span>
-<span id="cb11-19"><a></a><span class="co">#&gt; # Edge Data: 7 × 2</span></span>
-<span id="cb11-20"><a></a><span class="co">#&gt;    from    to</span></span>
-<span id="cb11-21"><a></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
-<span id="cb11-22"><a></a><span class="co">#&gt; 1     1     3</span></span>
-<span id="cb11-23"><a></a><span class="co">#&gt; 2     2     3</span></span>
-<span id="cb11-24"><a></a><span class="co">#&gt; 3     2     4</span></span>
-<span id="cb11-25"><a></a><span class="co">#&gt; # ℹ 4 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"tidygraph"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb11-2"><a aria-label="2"></a>  tg <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(fw_pkg)</span>
+<span id="cb11-3"><a aria-label="3"></a>  <span class="fu">print</span>(tg)</span>
+<span id="cb11-4"><a aria-label="4"></a>}</span>
+<span id="cb11-5"><a aria-label="5"></a><span class="co">#&gt; # A tbl_graph: 6 nodes and 7 edges</span></span>
+<span id="cb11-6"><a aria-label="6"></a><span class="co">#&gt; #</span></span>
+<span id="cb11-7"><a aria-label="7"></a><span class="co">#&gt; # A directed acyclic simple graph with 1 component</span></span>
+<span id="cb11-8"><a aria-label="8"></a><span class="co">#&gt; #</span></span>
+<span id="cb11-9"><a aria-label="9"></a><span class="co">#&gt; # Node Data: 6 × 1 (active)</span></span>
+<span id="cb11-10"><a aria-label="10"></a><span class="co">#&gt;   name               </span></span>
+<span id="cb11-11"><a aria-label="11"></a><span class="co">#&gt;   &lt;chr&gt;              </span></span>
+<span id="cb11-12"><a aria-label="12"></a><span class="co">#&gt; 1 calculate_statistic</span></span>
+<span id="cb11-13"><a aria-label="13"></a><span class="co">#&gt; 2 calculate_summary  </span></span>
+<span id="cb11-14"><a aria-label="14"></a><span class="co">#&gt; 3 clean_data         </span></span>
+<span id="cb11-15"><a aria-label="15"></a><span class="co">#&gt; 4 example_function   </span></span>
+<span id="cb11-16"><a aria-label="16"></a><span class="co">#&gt; 5 format_result      </span></span>
+<span id="cb11-17"><a aria-label="17"></a><span class="co">#&gt; 6 validate_input     </span></span>
+<span id="cb11-18"><a aria-label="18"></a><span class="co">#&gt; #</span></span>
+<span id="cb11-19"><a aria-label="19"></a><span class="co">#&gt; # Edge Data: 7 × 2</span></span>
+<span id="cb11-20"><a aria-label="20"></a><span class="co">#&gt;    from    to</span></span>
+<span id="cb11-21"><a aria-label="21"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></span>
+<span id="cb11-22"><a aria-label="22"></a><span class="co">#&gt; 1     1     3</span></span>
+<span id="cb11-23"><a aria-label="23"></a><span class="co">#&gt; 2     2     3</span></span>
+<span id="cb11-24"><a aria-label="24"></a><span class="co">#&gt; 3     2     4</span></span>
+<span id="cb11-25"><a aria-label="25"></a><span class="co">#&gt; # ℹ 4 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <h3 id="customizing-visualizations">Customizing Visualizations</h3>
@@ -526,10 +621,10 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># These arguments are passed to DiagrammeR::grViz()</span></span>
-<span id="cb12-2"><a></a><span class="fu">plot</span>(fw_pkg, </span>
-<span id="cb12-3"><a></a>     <span class="at">width =</span> <span class="dv">800</span>, </span>
-<span id="cb12-4"><a></a>     <span class="at">height =</span> <span class="dv">600</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a><span class="co"># These arguments are passed to DiagrammeR::grViz()</span></span>
+<span id="cb12-2"><a aria-label="2"></a><span class="fu">plot</span>(fw_pkg, </span>
+<span id="cb12-3"><a aria-label="3"></a>     <span class="at">width =</span> <span class="dv">800</span>, </span>
+<span id="cb12-4"><a aria-label="4"></a>     <span class="at">height =</span> <span class="dv">600</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <h3 id="exporting-as-text">Exporting as Text</h3>
@@ -537,17 +632,17 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># As text</span></span>
-<span id="cb13-2"><a></a>foodweb_text <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">env =</span> <span class="fu">asNamespace</span>(<span class="st">"rpt"</span>), <span class="at">as.text =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-3"><a></a><span class="fu">cat</span>(foodweb_text)</span>
-<span id="cb13-4"><a></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
-<span id="cb13-5"><a></a><span class="co">#&gt;   "calculate_statistic()" -&gt; { "clean_data()" }</span></span>
-<span id="cb13-6"><a></a><span class="co">#&gt;   "calculate_summary()" -&gt; { "clean_data()", "example_function()", "format_result()" }</span></span>
-<span id="cb13-7"><a></a><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
-<span id="cb13-8"><a></a><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
-<span id="cb13-9"><a></a><span class="co">#&gt;   "format_result()"</span></span>
-<span id="cb13-10"><a></a><span class="co">#&gt;   "validate_input()"</span></span>
-<span id="cb13-11"><a></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="co"># As text</span></span>
+<span id="cb13-2"><a aria-label="2"></a>foodweb_text <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">env =</span> <span class="fu">asNamespace</span>(<span class="st">"rpt"</span>), <span class="at">as.text =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-3"><a aria-label="3"></a><span class="fu">cat</span>(foodweb_text)</span>
+<span id="cb13-4"><a aria-label="4"></a><span class="co">#&gt; digraph 'foodweb' {</span></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="co">#&gt;   "calculate_statistic()" -&gt; { "clean_data()" }</span></span>
+<span id="cb13-6"><a aria-label="6"></a><span class="co">#&gt;   "calculate_summary()" -&gt; { "clean_data()", "example_function()", "format_result()" }</span></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="co">#&gt;   "clean_data()" -&gt; { "validate_input()" }</span></span>
+<span id="cb13-8"><a aria-label="8"></a><span class="co">#&gt;   "example_function()" -&gt; { "calculate_statistic()", "format_result()" }</span></span>
+<span id="cb13-9"><a aria-label="9"></a><span class="co">#&gt;   "format_result()"</span></span>
+<span id="cb13-10"><a aria-label="10"></a><span class="co">#&gt;   "validate_input()"</span></span>
+<span id="cb13-11"><a aria-label="11"></a><span class="co">#&gt; }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -598,8 +693,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>fw_example <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function)</span>
-<span id="cb14-2"><a></a><span class="fu">plot</span>(fw_example)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>fw_example <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> example_function)</span>
+<span id="cb14-2"><a aria-label="2"></a><span class="fu">plot</span>(fw_example)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="fig-example-function" class="cell-output-display quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -607,8 +702,8 @@ Figure&nbsp;2: Complete dependency graph for all package functions
 Figure&nbsp;3: Dependency graph for example_function showing all related functions
 </figcaption>
 <div aria-describedby="fig-example-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-8e3c3bbf37ac8ac6c6cf" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-8e3c3bbf37ac8ac6c6cf">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-155b9319fc4e8f6cbb35" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-155b9319fc4e8f6cbb35">{"x":{"diagram":"digraph \"foodweb\" {\n  \"example_function()\" -> { \"calculate_statistic()\", \"format_result()\" }\n  \"calculate_summary()\" -> { \"example_function()\", \"format_result()\", \"clean_data()\" }\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n  \"format_result()\"\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"validate_input()\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -617,8 +712,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>fw_summary <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> calculate_summary)</span>
-<span id="cb15-2"><a></a><span class="fu">plot</span>(fw_summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>fw_summary <span class="ot">&lt;-</span> <span class="fu">foodweb</span>(<span class="at">FUN =</span> calculate_summary)</span>
+<span id="cb15-2"><a aria-label="2"></a><span class="fu">plot</span>(fw_summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="fig-summary-function" class="cell-output-display quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -626,8 +721,8 @@ Figure&nbsp;3: Dependency graph for example_function showing all related functio
 Figure&nbsp;4: Dependency graph for calculate_summary showing its relationships
 </figcaption>
 <div aria-describedby="fig-summary-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-70cc1432deaf095498d5" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-70cc1432deaf095498d5">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-d40829d714c60eac3aca" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d40829d714c60eac3aca">{"x":{"diagram":"digraph \"foodweb\" {\n  \"calculate_summary()\" -> { \"clean_data()\", \"example_function()\", \"format_result()\" }\n  \"clean_data()\" -> { \"validate_input()\" }\n  \"example_function()\" -> { \"format_result()\", \"calculate_statistic()\" }\n  \"format_result()\"\n  \"validate_input()\"\n  \"calculate_statistic()\" -> { \"clean_data()\" }\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </figure>
 </div>
@@ -856,6 +951,123 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("load", alignEquationAnchorsWithDefault);
 </script>
 
+<script>
+(function () {
+  var css = [
+    "#revealjs-html-link {",
+    "  position: fixed;",
+    "  top: 8px;",
+    "  right: 8px;",
+    "  z-index: 31;",
+    "  font-size: 0.55em;",
+    "  line-height: 1;",
+    "}",
+    "#revealjs-html-link a {",
+    "  color: rgba(0, 0, 0, 0.75);",
+    "  text-decoration: none;",
+    "  border: 1px solid rgba(0, 0, 0, 0.3);",
+    "  padding: 4px 8px;",
+    "  border-radius: 4px;",
+    "  background: rgba(255, 255, 255, 0.9);",
+    "  transition: color 0.15s, background 0.15s;",
+    "}",
+    "#revealjs-html-link a:hover {",
+    "  color: rgba(0, 0, 0, 0.95);",
+    "  background: rgba(255, 255, 255, 1);",
+    "  border-color: rgba(0, 0, 0, 0.5);",
+    "}"
+  ].join("\n");
+
+  function getHtmlBase() {
+    var url = window.location.href.split("#")[0];
+    return url.replace(/-(?:slides|revealjs)\.html$/, ".html");
+  }
+
+  function getCurrentSectionId() {
+    if (typeof Reveal === "undefined" || !Reveal.getCurrentSlide) {
+      return null;
+    }
+    var slide = Reveal.getCurrentSlide();
+    if (!slide) {
+      return null;
+    }
+    // If the current slide itself has an id, use it
+    if (slide.id) {
+      return slide.id;
+    }
+    // Walk backwards through sibling sections to find the nearest one with an id
+    var sibling = slide.previousElementSibling;
+    while (sibling) {
+      if (sibling.tagName === "SECTION" && sibling.id) {
+        return sibling.id;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    // Fall back to the first section[id] inside the parent container
+    var parent = slide.parentElement;
+    if (parent && parent.tagName === "SECTION") {
+      var firstNamed = parent.querySelector("section[id]");
+      if (firstNamed) {
+        return firstNamed.id;
+      }
+    }
+    return null;
+  }
+
+  function updateHtmlLink() {
+    var anchor = document.getElementById("revealjs-html-anchor");
+    if (!anchor) {
+      return;
+    }
+    var sectionId = getCurrentSectionId();
+    anchor.href = getHtmlBase() + (sectionId ? "#" + sectionId : "");
+  }
+
+  function initRevealJsHtmlLink() {
+    var htmlBase = getHtmlBase();
+
+    // Don't add the link if the URL doesn't follow the -slides.html /
+    // -revealjs.html convention
+    if (htmlBase === window.location.href.split("#")[0]) {
+      return;
+    }
+
+    // Inject styles
+    var styleElement = document.createElement("style");
+    styleElement.textContent = css;
+    document.head.appendChild(styleElement);
+
+    // Create the link element and append it directly to body so it stays
+    // visible across all slides regardless of Reveal.js section visibility
+    var div = document.createElement("div");
+    div.id = "revealjs-html-link";
+    var anchor = document.createElement("a");
+    anchor.id = "revealjs-html-anchor";
+    anchor.href = htmlBase;
+    anchor.target = "_blank";
+    anchor.title = "View this section in the HTML notes";
+    anchor.setAttribute("aria-label", "View this section in the HTML notes");
+    anchor.innerHTML = "&#128196;&nbsp;Webpage version";
+    div.appendChild(anchor);
+    document.body.appendChild(div);
+
+    // Register Reveal.js slide-change listener to keep the link updated
+    if (typeof Reveal !== "undefined") {
+      Reveal.on("ready", updateHtmlLink);
+      Reveal.on("slidechanged", updateHtmlLink);
+    }
+
+    updateHtmlLink();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initRevealJsHtmlLink);
+  } else {
+    initRevealJsHtmlLink();
+  }
+})();
+</script>
+
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1046,7 +1258,7 @@ window.addEventListener("load", alignEquationAnchorsWithDefault);
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

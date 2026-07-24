@@ -6,10 +6,13 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.js"></script>
-<link href="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../../site_libs/quarto-contrib/div-anchors-1.0.0/div-anchors.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="UC Davis Seroepidemiology Research Group (UCD-SERG)">
   <meta name="dcterms.date" content="2026-07-24">
@@ -23,10 +26,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -213,6 +219,98 @@
       margin-right: 0; 
     }
   </style>
+  <style>
+  .reveal div.callout-proof.callout {
+    border-left-color: #37474F;
+  }
+  .reveal div.callout-proof.callout-style-default .callout-title {
+    background-color: rgba(55, 71, 79, 0.13);
+  }
+  .reveal div.callout-proof.callout-style-default .callout-icon::before, .reveal div.callout-proof.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2337474F" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-lem.callout {
+    border-left-color: #1565C0;
+  }
+  .reveal div.callout-lem.callout-style-default .callout-title {
+    background-color: rgba(21, 101, 192, 0.13);
+  }
+  .reveal div.callout-lem.callout-style-default .callout-icon::before, .reveal div.callout-lem.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%231565C0" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-solution.callout {
+    border-left-color: #4E342E;
+  }
+  .reveal div.callout-solution.callout-style-default .callout-title {
+    background-color: rgba(78, 52, 46, 0.13);
+  }
+  .reveal div.callout-solution.callout-style-default .callout-icon::before, .reveal div.callout-solution.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234E342E" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-def.callout {
+    border-left-color: #1B5E20;
+  }
+  .reveal div.callout-def.callout-style-default .callout-title {
+    background-color: rgba(27, 94, 32, 0.13);
+  }
+  .reveal div.callout-def.callout-style-default .callout-icon::before, .reveal div.callout-def.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%231B5E20" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-exm.callout {
+    border-left-color: #6A1B9A;
+  }
+  .reveal div.callout-exm.callout-style-default .callout-title {
+    background-color: rgba(106, 27, 154, 0.13);
+  }
+  .reveal div.callout-exm.callout-style-default .callout-icon::before, .reveal div.callout-exm.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%236A1B9A" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-exr.callout {
+    border-left-color: #FFA500;
+  }
+  .reveal div.callout-exr.callout-style-default .callout-title {
+    background-color: rgba(255, 165, 0, 0.13);
+  }
+  .reveal div.callout-exr.callout-style-default .callout-icon::before, .reveal div.callout-exr.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23FFA500" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-cor.callout {
+    border-left-color: #00838F;
+  }
+  .reveal div.callout-cor.callout-style-default .callout-title {
+    background-color: rgba(0, 131, 143, 0.13);
+  }
+  .reveal div.callout-cor.callout-style-default .callout-icon::before, .reveal div.callout-cor.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2300838F" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-cnj.callout {
+    border-left-color: #558B2F;
+  }
+  .reveal div.callout-cnj.callout-style-default .callout-title {
+    background-color: rgba(85, 139, 47, 0.13);
+  }
+  .reveal div.callout-cnj.callout-style-default .callout-icon::before, .reveal div.callout-cnj.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23558B2F" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-prp.callout {
+    border-left-color: #827717;
+  }
+  .reveal div.callout-prp.callout-style-default .callout-title {
+    background-color: rgba(130, 119, 23, 0.13);
+  }
+  .reveal div.callout-prp.callout-style-default .callout-icon::before, .reveal div.callout-prp.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23827717" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  .reveal div.callout-remark.callout {
+    border-left-color: #AD1457;
+  }
+  .reveal div.callout-remark.callout-style-default .callout-title {
+    background-color: rgba(173, 20, 87, 0.13);
+  }
+  .reveal div.callout-remark.callout-style-default .callout-icon::before, .reveal div.callout-remark.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23AD1457" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/></svg>');
+  }
+  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -224,7 +322,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-UC Davis Seroepidemiology Research Group (UCD-SERG) 
+UC Davis Seroepidemiology Research Group (UCD-SERG)
 </div>
 </div>
 </div>
@@ -236,7 +334,7 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(rpt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -267,19 +365,19 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Generate sample data</span></span>
-<span id="cb2-2"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb2-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb2-4"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a><span class="co"># Create scatter plot</span></span>
-<span id="cb2-7"><a></a><span class="fu">plot</span>(x, y, </span>
-<span id="cb2-8"><a></a>     <span class="at">main =</span> <span class="st">"Example Scatter Plot"</span>,</span>
-<span id="cb2-9"><a></a>     <span class="at">xlab =</span> <span class="st">"X Variable"</span>,</span>
-<span id="cb2-10"><a></a>     <span class="at">ylab =</span> <span class="st">"Y Variable"</span>,</span>
-<span id="cb2-11"><a></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb2-12"><a></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>))</span>
-<span id="cb2-13"><a></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="co"># Generate sample data</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-3"><a aria-label="3"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb2-4"><a aria-label="4"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb2-5"><a aria-label="5"></a></span>
+<span id="cb2-6"><a aria-label="6"></a><span class="co"># Create scatter plot</span></span>
+<span id="cb2-7"><a aria-label="7"></a><span class="fu">plot</span>(x, y, </span>
+<span id="cb2-8"><a aria-label="8"></a>     <span class="at">main =</span> <span class="st">"Example Scatter Plot"</span>,</span>
+<span id="cb2-9"><a aria-label="9"></a>     <span class="at">xlab =</span> <span class="st">"X Variable"</span>,</span>
+<span id="cb2-10"><a aria-label="10"></a>     <span class="at">ylab =</span> <span class="st">"Y Variable"</span>,</span>
+<span id="cb2-11"><a aria-label="11"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb2-12"><a aria-label="12"></a>     <span class="at">col =</span> <span class="fu">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>))</span>
+<span id="cb2-13"><a aria-label="13"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center">
@@ -288,7 +386,7 @@ UC Davis Seroepidemiology Research Group (UCD-SERG)
 Figure&nbsp;1: Scatter plot demonstrating cross-referencing
 </figcaption>
 <div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="quarto_article_files/figure-revealjs/fig-scatter-1.png" width="672">
+<a href="quarto_article_files/figure-revealjs/fig-scatter-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Scatter plot demonstrating cross-referencing"><img data-src="quarto_article_files/figure-revealjs/fig-scatter-1.png" width="672"></a>
 </div>
 </figure>
 </div>
@@ -298,13 +396,13 @@ Figure&nbsp;1: Scatter plot demonstrating cross-referencing
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>data_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-2"><a></a>  <span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>, <span class="st">"SD"</span>, <span class="st">"Min"</span>, <span class="st">"Max"</span>),</span>
-<span id="cb3-3"><a></a>  <span class="at">X =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">median</span>(x), <span class="fu">sd</span>(x), <span class="fu">min</span>(x), <span class="fu">max</span>(x)),</span>
-<span id="cb3-4"><a></a>  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">mean</span>(y), <span class="fu">median</span>(y), <span class="fu">sd</span>(y), <span class="fu">min</span>(y), <span class="fu">max</span>(y))</span>
-<span id="cb3-5"><a></a>)</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_summary, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>data_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>, <span class="st">"SD"</span>, <span class="st">"Min"</span>, <span class="st">"Max"</span>),</span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="at">X =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">median</span>(x), <span class="fu">sd</span>(x), <span class="fu">min</span>(x), <span class="fu">max</span>(x)),</span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">mean</span>(y), <span class="fu">median</span>(y), <span class="fu">sd</span>(y), <span class="fu">min</span>(y), <span class="fu">max</span>(y))</span>
+<span id="cb3-5"><a aria-label="5"></a>)</span>
+<span id="cb3-6"><a aria-label="6"></a></span>
+<span id="cb3-7"><a aria-label="7"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_summary, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="tbl-summary" class="cell quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
@@ -360,25 +458,25 @@ Table&nbsp;1: Summary statistics for example data
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code for data preparation</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Prepare more complex data</span></span>
-<span id="cb4-2"><a></a>complex_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-3"><a></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>,</span>
-<span id="cb4-4"><a></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">25</span>),</span>
-<span id="cb4-5"><a></a>  <span class="at">value1 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">15</span>),</span>
-<span id="cb4-6"><a></a>  <span class="at">value2 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">10</span>)</span>
-<span id="cb4-7"><a></a>)</span>
-<span id="cb4-8"><a></a></span>
-<span id="cb4-9"><a></a><span class="co"># Calculate group statistics</span></span>
-<span id="cb4-10"><a></a>group_stats <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb4-11"><a></a>  <span class="fu">cbind</span>(value1, value2) <span class="sc">~</span> group, </span>
-<span id="cb4-12"><a></a>  <span class="at">data =</span> complex_data, </span>
-<span id="cb4-13"><a></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
-<span id="cb4-14"><a></a>)</span>
-<span id="cb4-15"><a></a></span>
-<span id="cb4-16"><a></a><span class="fu">print</span>(group_stats)</span>
-<span id="cb4-17"><a></a><span class="co">#&gt;   group value1.mean value1.sd value2.mean value2.sd</span></span>
-<span id="cb4-18"><a></a><span class="co">#&gt; 1     A   101.61247  14.63952   51.727220 10.047051</span></span>
-<span id="cb4-19"><a></a><span class="co">#&gt; 2     B    98.13191  13.84514   53.261796  8.934998</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="co"># Prepare more complex data</span></span>
+<span id="cb4-2"><a aria-label="2"></a>complex_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-3"><a aria-label="3"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb4-4"><a aria-label="4"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">25</span>),</span>
+<span id="cb4-5"><a aria-label="5"></a>  <span class="at">value1 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">15</span>),</span>
+<span id="cb4-6"><a aria-label="6"></a>  <span class="at">value2 =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">10</span>)</span>
+<span id="cb4-7"><a aria-label="7"></a>)</span>
+<span id="cb4-8"><a aria-label="8"></a></span>
+<span id="cb4-9"><a aria-label="9"></a><span class="co"># Calculate group statistics</span></span>
+<span id="cb4-10"><a aria-label="10"></a>group_stats <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb4-11"><a aria-label="11"></a>  <span class="fu">cbind</span>(value1, value2) <span class="sc">~</span> group, </span>
+<span id="cb4-12"><a aria-label="12"></a>  <span class="at">data =</span> complex_data, </span>
+<span id="cb4-13"><a aria-label="13"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb4-14"><a aria-label="14"></a>)</span>
+<span id="cb4-15"><a aria-label="15"></a></span>
+<span id="cb4-16"><a aria-label="16"></a><span class="fu">print</span>(group_stats)</span>
+<span id="cb4-17"><a aria-label="17"></a><span class="co">#&gt;   group value1.mean value1.sd value2.mean value2.sd</span></span>
+<span id="cb4-18"><a aria-label="18"></a><span class="co">#&gt; 1     A   101.61247  14.63952   51.727220 10.047051</span></span>
+<span id="cb4-19"><a aria-label="19"></a><span class="co">#&gt; 2     B    98.13191  13.84514   53.261796  8.934998</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <h3 id="tabsets">Tabsets</h3>
@@ -390,7 +488,7 @@ Table&nbsp;1: Summary statistics for example data
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="quarto_article_files/figure-revealjs/unnamed-chunk-3-1.png" width="672"></p>
+<p><a href="quarto_article_files/figure-revealjs/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="quarto_article_files/figure-revealjs/unnamed-chunk-3-1.png" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -473,7 +571,7 @@ Table&nbsp;1: Summary statistics for example data
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="quarto_article_files/figure-revealjs/unnamed-chunk-6-1.png" width="672"></p>
+<p><a href="quarto_article_files/figure-revealjs/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="quarto_article_files/figure-revealjs/unnamed-chunk-6-1.png" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -486,14 +584,14 @@ Table&nbsp;1: Summary statistics for example data
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Numeric vector</span></span>
-<span id="cb7-2"><a></a><span class="fu">example_function</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>))</span>
-<span id="cb7-3"><a></a><span class="co">#&gt; [1] 15</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="co"># Using with generated data</span></span>
-<span id="cb7-6"><a></a>random_data <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span>
-<span id="cb7-7"><a></a><span class="fu">example_function</span>(random_data)</span>
-<span id="cb7-8"><a></a><span class="co">#&gt; [1] 47.43</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="co"># Numeric vector</span></span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">example_function</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>))</span>
+<span id="cb7-3"><a aria-label="3"></a><span class="co">#&gt; [1] 15</span></span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a><span class="co"># Using with generated data</span></span>
+<span id="cb7-6"><a aria-label="6"></a>random_data <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span>
+<span id="cb7-7"><a aria-label="7"></a><span class="fu">example_function</span>(random_data)</span>
+<span id="cb7-8"><a aria-label="8"></a><span class="co">#&gt; [1] 47.43</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -501,8 +599,11 @@ Table&nbsp;1: Summary statistics for example data
 <h2><span class="header-section-number">5</span> Theorem Environments</h2>
 <p>The <code>callouty-theorem</code> extension renders Quarto theorem and proof environments as styled callout blocks. This makes theorems, definitions, examples, and proofs visually distinct and easier to navigate.</p>
 <h3 id="definitions-and-theorems">Definitions and Theorems</h3>
-<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout callout-def no-icon callout-titled callout-style-simple">
 <div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition (Standard Error)</strong></p>
+</div>
 <div class="callout-content">
 <div id="def-se" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1 (Standard Error)</strong></span> The <strong>standard error</strong> of the mean for a sample of size <span class="math inline">\(n\)</span> with standard deviation <span class="math inline">\(s\)</span> is:</p>
@@ -511,8 +612,11 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 </div>
-<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout callout-lem no-icon callout-titled callout-style-simple">
 <div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem (Central Limit Theorem)</strong></p>
+</div>
 <div class="callout-content">
 <div id="thm-clt" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 1 (Central Limit Theorem)</strong></span> Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be independent and identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>. Then as <span class="math inline">\(n \to \infty\)</span>:</p>
@@ -521,7 +625,7 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 </div>
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-proof callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -537,8 +641,11 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 <h3 id="lemmas-and-corollaries">Lemmas and Corollaries</h3>
-<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout callout-lem no-icon callout-titled callout-style-simple">
 <div class="callout-body">
+<div class="callout-title">
+<p><strong>Lemma (Variance of a Sum)</strong></p>
+</div>
 <div class="callout-content">
 <div id="lem-var-sum" class="theorem lemma">
 <p><span class="theorem-title"><strong>Lemma 1 (Variance of a Sum)</strong></span> For independent random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
@@ -547,8 +654,11 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 </div>
-<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout callout-cor no-icon callout-titled callout-style-simple">
 <div class="callout-body">
+<div class="callout-title">
+<p><strong>Corollary (Confidence Interval from CLT)</strong></p>
+</div>
 <div class="callout-content">
 <div id="cor-se-clt" class="theorem corollary">
 <p><span class="theorem-title"><strong>Corollary 1 (Confidence Interval from CLT)</strong></span> By <a href="#/thm-clt" class="quarto-xref">Theorem&nbsp;1</a> and <a href="#/def-se" class="quarto-xref">Definition&nbsp;1</a>, an approximate 95% confidence interval for <span class="math inline">\(\mu\)</span> is:</p>
@@ -558,29 +668,35 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 <h3 id="examples-and-exercises">Examples and Exercises</h3>
-<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout callout-exm no-icon callout-titled callout-style-default">
 <div class="callout-body">
+<div class="callout-title">
+<p><strong>Example (95% Confidence Interval)</strong></p>
+</div>
 <div class="callout-content">
 <div id="exm-ci" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1 (95% Confidence Interval)</strong></span> For the sample below, we calculate a 95% confidence interval for the mean:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb8-2"><a></a>sample_vals <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb8-3"><a></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_vals)</span>
-<span id="cb8-4"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_vals) <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb8-5"><a></a>ci <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_vals) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
-<span id="cb8-6"><a></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Mean = %.3f, 95%% CI: [%.3f, %.3f]</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">mean</span>(sample_vals), ci[<span class="dv">1</span>], ci[<span class="dv">2</span>]))</span>
-<span id="cb8-7"><a></a><span class="co">#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb8-2"><a aria-label="2"></a>sample_vals <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb8-3"><a aria-label="3"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_vals)</span>
+<span id="cb8-4"><a aria-label="4"></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_vals) <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb8-5"><a aria-label="5"></a>ci <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_vals) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb8-6"><a aria-label="6"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Mean = %.3f, 95%% CI: [%.3f, %.3f]</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">mean</span>(sample_vals), ci[<span class="dv">1</span>], ci[<span class="dv">2</span>]))</span>
+<span id="cb8-7"><a aria-label="7"></a><span class="co">#&gt; Mean = 4.929, 95% CI: [4.290, 5.567]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout callout-exr no-icon callout-titled callout-style-simple">
 <div class="callout-body">
+<div class="callout-title">
+<p><strong>Exercise (Exercise: Computing Standard Error)</strong></p>
+</div>
 <div class="callout-content">
 <div id="exr-se" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1 (Exercise: Computing Standard Error)</strong></span> Compute the standard error for a sample of size <span class="math inline">\(n = 100\)</span> with sample standard deviation <span class="math inline">\(s = 15\)</span>.</p>
@@ -588,7 +704,7 @@ Table&nbsp;1: Summary statistics for example data
 </div>
 </div>
 </div>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout callout-solution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Solution</strong></p>
@@ -832,6 +948,123 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("load", alignEquationAnchorsWithDefault);
 </script>
 
+<script>
+(function () {
+  var css = [
+    "#revealjs-html-link {",
+    "  position: fixed;",
+    "  top: 8px;",
+    "  right: 8px;",
+    "  z-index: 31;",
+    "  font-size: 0.55em;",
+    "  line-height: 1;",
+    "}",
+    "#revealjs-html-link a {",
+    "  color: rgba(0, 0, 0, 0.75);",
+    "  text-decoration: none;",
+    "  border: 1px solid rgba(0, 0, 0, 0.3);",
+    "  padding: 4px 8px;",
+    "  border-radius: 4px;",
+    "  background: rgba(255, 255, 255, 0.9);",
+    "  transition: color 0.15s, background 0.15s;",
+    "}",
+    "#revealjs-html-link a:hover {",
+    "  color: rgba(0, 0, 0, 0.95);",
+    "  background: rgba(255, 255, 255, 1);",
+    "  border-color: rgba(0, 0, 0, 0.5);",
+    "}"
+  ].join("\n");
+
+  function getHtmlBase() {
+    var url = window.location.href.split("#")[0];
+    return url.replace(/-(?:slides|revealjs)\.html$/, ".html");
+  }
+
+  function getCurrentSectionId() {
+    if (typeof Reveal === "undefined" || !Reveal.getCurrentSlide) {
+      return null;
+    }
+    var slide = Reveal.getCurrentSlide();
+    if (!slide) {
+      return null;
+    }
+    // If the current slide itself has an id, use it
+    if (slide.id) {
+      return slide.id;
+    }
+    // Walk backwards through sibling sections to find the nearest one with an id
+    var sibling = slide.previousElementSibling;
+    while (sibling) {
+      if (sibling.tagName === "SECTION" && sibling.id) {
+        return sibling.id;
+      }
+      sibling = sibling.previousElementSibling;
+    }
+    // Fall back to the first section[id] inside the parent container
+    var parent = slide.parentElement;
+    if (parent && parent.tagName === "SECTION") {
+      var firstNamed = parent.querySelector("section[id]");
+      if (firstNamed) {
+        return firstNamed.id;
+      }
+    }
+    return null;
+  }
+
+  function updateHtmlLink() {
+    var anchor = document.getElementById("revealjs-html-anchor");
+    if (!anchor) {
+      return;
+    }
+    var sectionId = getCurrentSectionId();
+    anchor.href = getHtmlBase() + (sectionId ? "#" + sectionId : "");
+  }
+
+  function initRevealJsHtmlLink() {
+    var htmlBase = getHtmlBase();
+
+    // Don't add the link if the URL doesn't follow the -slides.html /
+    // -revealjs.html convention
+    if (htmlBase === window.location.href.split("#")[0]) {
+      return;
+    }
+
+    // Inject styles
+    var styleElement = document.createElement("style");
+    styleElement.textContent = css;
+    document.head.appendChild(styleElement);
+
+    // Create the link element and append it directly to body so it stays
+    // visible across all slides regardless of Reveal.js section visibility
+    var div = document.createElement("div");
+    div.id = "revealjs-html-link";
+    var anchor = document.createElement("a");
+    anchor.id = "revealjs-html-anchor";
+    anchor.href = htmlBase;
+    anchor.target = "_blank";
+    anchor.title = "View this section in the HTML notes";
+    anchor.setAttribute("aria-label", "View this section in the HTML notes");
+    anchor.innerHTML = "&#128196;&nbsp;Webpage version";
+    div.appendChild(anchor);
+    document.body.appendChild(div);
+
+    // Register Reveal.js slide-change listener to keep the link updated
+    if (typeof Reveal !== "undefined") {
+      Reveal.on("ready", updateHtmlLink);
+      Reveal.on("slidechanged", updateHtmlLink);
+    }
+
+    updateHtmlLink();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initRevealJsHtmlLink);
+  } else {
+    initRevealJsHtmlLink();
+  }
+})();
+</script>
+
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1022,7 +1255,7 @@ window.addEventListener("load", alignEquationAnchorsWithDefault);
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1254,6 +1487,38 @@ window.addEventListener("load", alignEquationAnchorsWithDefault);
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>
