@@ -99,12 +99,6 @@ format:
     grid:
       sidebar-width: 340px
       margin-width: 340px
-  revealjs:
-    # Project-level filters merge with each vignette/article's own
-    # `format: revealjs:` front matter (they set `output-file:`; this adds
-    # a small link back to the standalone HTML page on every slide deck).
-    filters:
-      - d-morrison/revealjs-html-links
 
 filters:
   - slidebreak
@@ -112,6 +106,17 @@ filters:
   - d-morrison/equation-anchors
   - sun123zxy/callouty-theorem
   - coatless-quarto/custom-callout
+  # Declaring `revealjs:` as a project-level format (instead of registering
+  # this filter here) would apply RevealJS as a format to every rendered
+  # page — including index.qmd, man pages, and NEWS.md — breaking the docs
+  # build, since Quarto would then try to produce both an .html and a
+  # RevealJS output at the same output path for pages with no dedicated
+  # `output-file:`. The filter itself already guards on
+  # `string.match(FORMAT, "revealjs")` and returns immediately for every
+  # other format, so it's safe in the global chain and only activates for
+  # the vignettes/articles that already opt into `format: revealjs:` in
+  # their own front matter.
+  - d-morrison/revealjs-html-links
   - quarto
 
 callouty-theorem:
