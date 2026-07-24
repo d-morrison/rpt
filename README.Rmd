@@ -103,6 +103,8 @@ The following Quarto extensions are preinstalled to enhance documentation:
 | [`d-morrison/div-anchors`](https://github.com/d-morrison/div-anchors) | Permalink anchors for theorem/proof divs |
 | [`d-morrison/equation-anchors`](https://github.com/d-morrison/equation-anchors) | Permalink anchors for numbered equations |
 | [`sun123zxy/callouty-theorem`](https://github.com/sun123zxy/callouty-theorem) | Render theorems, definitions, and proofs as callout blocks |
+| [`coatless-quarto/custom-callout`](https://github.com/coatless-quarto/custom-callout) | Distinct colors per theorem/callout type, driven by the `custom-callout:` YAML block |
+| [`d-morrison/revealjs-html-links`](https://github.com/d-morrison/revealjs-html-links) | Adds a link back to the standalone HTML page on every RevealJS slide deck |
 
 ### LaTeX Macro Submodule
 
