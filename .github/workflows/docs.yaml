@@ -245,6 +245,18 @@ jobs:
             sed -i -E 's#href="https://github\.com/[^"]*/issues/new[^"]*"#href="'"$ISSUES_URL"'"#g' {} +
           echo "Repointed 'Report an issue' links to $ISSUES_URL"
 
+      # Stable docs can be rendered from an older release tag checkout where the
+      # navbar version links still used the historical UCD-SERG docs domain.
+      # Normalize those links to this repository's Pages URL before deployment.
+      - name: Rewrite legacy docs base URL in rendered HTML
+        env:
+          DOCS_SOURCE_DIR: ${{ env.DOCS_SOURCE_DIR }}
+          BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          find "$DOCS_SOURCE_DIR/docs" -name '*.html' -exec \
+            sed -i -E 's#https://ucd-serg\.github\.io/rpt/#'"$BASE_URL"'#g' {} +
+          echo "Rewrote legacy docs links to $BASE_URL"
+
       # If event is workflow_dispatch with stable selected, deploy to /latest-tag/
       - name: '[dispatch stable] Set documentation subdirectory to /latest-tag/'
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.version == 'stable'
