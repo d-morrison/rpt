@@ -1,9 +1,11 @@
 # rpt (development version)
 
-- Fixed the hard-coded docs base URL in the version dropdown generator
-  (`.github/scripts/generate_version_dropdown.py`) by deriving `BASE_URL`
-  dynamically from `DOCS_BASE_URL`, GitHub repository metadata, or a
-  local fallback, so dropdown links always point to the correct site (#164).
+- `_docs_base_url()` in the version dropdown generator
+  (`.github/scripts/generate_version_dropdown.py`) now warns on stderr when
+  it falls back to the hard-coded `https://d-morrison.github.io/rpt/` default
+  (no `DOCS_BASE_URL` or GitHub repository metadata available), so a fork
+  running the script locally is told its dropdown links may point at the
+  wrong site instead of silently generating incorrect links (#164).
 - Bumped the development version to `1.0.2.9000` after the `v1.0.2` release so
   `/dev/` docs stay labeled with the live development version.
 - Fixed README/site badges for this fork by pointing badge URLs at
