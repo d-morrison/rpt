@@ -60,6 +60,11 @@ def _docs_base_url():
         return f"https://{owner}.github.io/{repo}/"
 
     # Fallback for local runs without GitHub Actions metadata.
+    print(
+        "Warning: no DOCS_BASE_URL or GitHub repository metadata found; "
+        "falling back to https://d-morrison.github.io/rpt/",
+        file=sys.stderr,
+    )
     return "https://d-morrison.github.io/rpt/"
 
 
