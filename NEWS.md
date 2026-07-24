@@ -1,5 +1,11 @@
 # rpt (development version)
 
+- `_docs_base_url()` in the version dropdown generator
+  (`.github/scripts/generate_version_dropdown.py`) now warns on `stderr` when
+  it falls back to the hard-coded `https://d-morrison.github.io/rpt/` default
+  (no `DOCS_BASE_URL` or GitHub repository metadata available), so a fork
+  running the script locally is told its dropdown links may point at the
+  wrong site instead of silently generating incorrect links (#164).
 - Installed the `coatless-quarto/custom-callout` and `d-morrison/revealjs-html-links`
   Quarto extensions (ported from `d-morrison/qwt` and `d-morrison/rme`) and wired
   `coatless-quarto/custom-callout` into the docs site's `callouty-theorem` filter
