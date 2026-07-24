@@ -4,6 +4,7 @@ format:
     toc: true
     html-math-method: mathjax
     fig-cap-location: top
+    lightbox: true
   revealjs:
     reference-location: document
     echo: true
@@ -16,5 +17,6 @@ format:
     number-sections: true
     number-depth: 2
     fig-cap-location: top
+    lightbox: true
   docx:
     number-sections: true
