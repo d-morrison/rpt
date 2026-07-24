@@ -1,5 +1,12 @@
 # rpt (development version)
 
+- Installed the `coatless-quarto/custom-callout` and `d-morrison/revealjs-html-links`
+  Quarto extensions (ported from `d-morrison/qwt` and `d-morrison/rme`) and wired
+  `coatless-quarto/custom-callout` into the docs site's `callouty-theorem` filter
+  chain so theorem/example/proof callouts get distinct colors. Also switched every
+  `callouty-theorem` type to `override-title: true`, since `false` rendered a bare
+  callout title like `Exm` instead of a readable label — now every type shows its
+  English name plus the heading text, e.g. `Example (A first example)`.
 - Bumped the development version to `1.0.2.9000` after the `v1.0.2` release so
   `/dev/` docs stay labeled with the live development version.
 - Fixed README/site badges for this fork by pointing badge URLs at
