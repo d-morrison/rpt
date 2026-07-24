@@ -1,7 +1,7 @@
 # rpt (development version)
 
 - `_docs_base_url()` in the version dropdown generator
-  (`.github/scripts/generate_version_dropdown.py`) now warns on stderr when
+  (`.github/scripts/generate_version_dropdown.py`) now warns on `stderr` when
   it falls back to the hard-coded `https://d-morrison.github.io/rpt/` default
   (no `DOCS_BASE_URL` or GitHub repository metadata available), so a fork
   running the script locally is told its dropdown links may point at the
