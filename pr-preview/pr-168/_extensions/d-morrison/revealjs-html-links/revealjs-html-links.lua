@@ -3,6 +3,10 @@ function Pandoc(doc)
     return doc
   end
 
+  -- The link's default-state color/background opacity (0.75 / 0.9) is
+  -- tuned for WCAG AA contrast (>=4.5:1) at this small 0.55em text size;
+  -- the original 0.5/0.8 opacity fell to roughly 4:1, and lower still
+  -- over dark slide backgrounds.
   local script = [[
 <script>
 (function () {
@@ -16,18 +20,18 @@ function Pandoc(doc)
     "  line-height: 1;",
     "}",
     "#revealjs-html-link a {",
-    "  color: rgba(0, 0, 0, 0.5);",
+    "  color: rgba(0, 0, 0, 0.75);",
     "  text-decoration: none;",
-    "  border: 1px solid rgba(0, 0, 0, 0.2);",
+    "  border: 1px solid rgba(0, 0, 0, 0.3);",
     "  padding: 4px 8px;",
     "  border-radius: 4px;",
-    "  background: rgba(255, 255, 255, 0.8);",
+    "  background: rgba(255, 255, 255, 0.9);",
     "  transition: color 0.15s, background 0.15s;",
     "}",
     "#revealjs-html-link a:hover {",
-    "  color: rgba(0, 0, 0, 0.9);",
-    "  background: rgba(255, 255, 255, 0.98);",
-    "  border-color: rgba(0, 0, 0, 0.4);",
+    "  color: rgba(0, 0, 0, 0.95);",
+    "  background: rgba(255, 255, 255, 1);",
+    "  border-color: rgba(0, 0, 0, 0.5);",
     "}"
   ].join("\n");
 
