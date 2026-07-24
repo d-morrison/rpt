@@ -96,6 +96,7 @@ format:
     code-copy: true
     code-overflow: scroll
     title-block-style: none
+    lightbox: true
     toc: true
     grid:
       sidebar-width: 340px
